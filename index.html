@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moring Labs | Premium macOS Apps</title>
+    <title>Moring Labs | Independent macOS Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -12,212 +12,85 @@
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
             background-color: #fbfbfd; 
-            color: #1d1d1f; 
-            overflow-x: hidden; 
+            color: #1d1d1f;
         }
 
-        /* 浅色高级毛玻璃导航 */
         .glass-nav { 
             background: rgba(255, 255, 255, 0.75); 
             backdrop-filter: blur(24px) saturate(180%); 
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* 横向滑动长廊隐藏滚动条 */
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* 画廊滑动轨道 */
-        .gallery-track { 
-            display: flex; 
-            gap: 2rem; 
-            padding: 2rem 50vw 4rem 2rem; /* 保证最后一张图能居中 */
-        }
-        
-        /* 截图卡片：去掉多余文字，纯展示你的精美图片 */
-        .shot-wrapper {
-            flex: 0 0 85%; 
-            max-width: 900px;
-            border-radius: 2rem; 
-            overflow: hidden;
+        /* 极简卡片的悬浮效果 */
+        .app-card {
             background: #ffffff;
             border: 1px solid rgba(0,0,0,0.04);
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
-            scroll-snap-align: center;
-            position: relative;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
         }
-        
-        .shot-wrapper:hover {
-            transform: scale(1.02) translateY(-10px);
-            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15);
+        .app-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12);
             border: 1px solid rgba(0,0,0,0.08);
         }
 
-        /* 骨架屏呼吸灯动画（解决加载时难看的问题） */
-        .skeleton {
-            position: absolute; inset: 0; background: #f0f0f5;
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
-
-        /* 滚动渐显动画 */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* App 图标柔和阴影 */
-        .icon-shadow { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); border: 1px solid rgba(0,0,0,0.05); }
+        .icon-shadow { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white">
+<body class="antialiased">
 
-    <nav class="glass-nav fixed top-0 w-full z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="glass-nav fixed top-0 w-full z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <span class="text-xl font-extrabold tracking-tighter text-black flex items-center gap-2">
                 <i class="fab fa-apple text-xl"></i> MORING LABS
             </span>
-            <div class="relative group">
-                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
-                    <option value="en">🇺🇸 English</option>
-                    <option value="zh-CN">🇨🇳 简体中文</option>
-                    <option value="zh-TW">🇭🇰 繁體中文</option>
-                    <option value="ja">🇯🇵 日本語</option>
-                    <option value="de">🇩🇪 Deutsch</option>
-                    <option value="fr">🇫🇷 Français</option>
-                    <option value="es">🇪🇸 Español</option>
-                    <option value="it">🇮🇹 Italiano</option>
-                    <option value="ko">🇰🇷 한국어</option>
-                    <option value="pt">🇧🇷 Português</option>
-                    <option value="ru">🇷🇺 Русский</option>
-                </select>
-                <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
+            <div class="text-sm font-semibold text-gray-500 hover:text-black transition-colors">
+                <a href="mailto:strivemoring@gmail.com">Contact Us</a>
             </div>
         </div>
     </nav>
 
-    <header class="pt-48 pb-20 px-6 text-center reveal">
+    <header class="pt-48 pb-24 px-6 text-center">
         <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-black to-gray-600">
             Crafting pure native <br>experiences.
         </h1>
-        <p class="text-xl text-gray-500 font-medium max-w-2xl mx-auto">Independent macOS studio focused on performance, privacy, and elegant design.</p>
+        <p class="text-xl text-gray-500 font-medium max-w-2xl mx-auto">An independent macOS studio focused on performance, privacy, and elegant design.</p>
     </header>
 
-    <main id="portfolio-container" class="pb-32 flex flex-col gap-40 overflow-hidden"></main>
+    <main class="max-w-6xl mx-auto px-6 pb-32">
+        <h2 class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-8 ml-2">Our Products</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <a href="pdf-assistant.html" class="app-card rounded-[2.5rem] p-8 md:p-10 block group">
+                <div class="flex items-start gap-6 mb-8">
+                    <img src="APP/PDF Merge & Split Assistant_Assets/PDF Merge & Split Assistant-AppIcon.webp" 
+                         class="w-24 h-24 rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500" alt="PDF Assistant">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2 leading-tight">PDF Merge & <br>Split Assistant</h3>
+                        <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded-full">macOS Native</span>
+                    </div>
+                </div>
+                <p class="text-gray-500 text-lg font-medium mb-8">The ultimate privacy-focused PDF tool. 100% offline, blazing fast.</p>
+                <div class="flex items-center text-black font-bold group-hover:text-blue-600 transition-colors">
+                    Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
 
-    <footer class="py-12 border-t border-gray-200/60 bg-white/50">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium">
-            <p>&copy; 2026 Moring Labs. Built for macOS.</p>
-            <div class="space-x-6 mt-4 md:mt-0">
-                <a href="mailto:strivemoring@gmail.com" class="hover:text-black transition-colors">Contact</a>
+            <div class="rounded-[2.5rem] p-8 md:p-10 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center text-center bg-gray-50/50 min-h-[300px]">
+                <div class="w-20 h-20 bg-gray-200 rounded-3xl mb-6 flex items-center justify-center">
+                    <i class="fas fa-hammer text-2xl text-gray-400"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-400 mb-2">New Project</h3>
+                <p class="text-gray-400 font-medium">In development...</p>
             </div>
+
         </div>
+    </main>
+
+    <footer class="py-12 border-t border-gray-200/60 bg-white/50 text-center">
+        <p class="text-sm text-gray-500 font-medium">&copy; 2026 Moring Labs. Built for macOS.</p>
     </footer>
 
-    <script>
-        // ==========================================
-        // 核心配置区：管理你的所有软件
-        // ==========================================
-        const APPS_CONFIG = [
-            {
-                name: "PDF Merge & Split Assistant",
-                versionDir: "2.1.0",
-                versionFile: "2_1_0",
-                platform: "Mac",
-                imgCount: 4, // 动态生成4张画廊图
-                taglines: {
-                    "en": "Privacy-focused, native macOS PDF management.",
-                    "zh-CN": "隐私至上，专为 macOS 设计的原生 PDF 工具。"
-                }
-            }
-            // 以后有新软件，复制上面这段，改个名字就搞定！
-        ];
-
-        // 严格遵循你的语言文件夹命名规范
-        const LANG_MAP = {
-            "en": "en-US", "zh-CN": "zh-Hans", "zh-TW": "zh-Hant",
-            "ja": "ja", "ko": "ko", "de": "de-DE", "fr": "fr-FR",
-            "es": "es-ES", "it": "it", "pt": "pt-BR", "ru": "ru"
-        };
-
-        function renderPortfolio(langCode) {
-            const container = document.getElementById('portfolio-container');
-            container.innerHTML = ''; 
-            
-            const fLang = LANG_MAP[langCode] || "en-US";
-
-            APPS_CONFIG.forEach((app) => {
-                const basePath = `APP/${app.name}_Assets`;
-                const iconPath = `${basePath}/${app.name}-AppIcon.webp`;
-                const tagline = app.taglines[langCode] || app.taglines['en'];
-
-                const section = document.createElement('section');
-                section.className = 'reveal';
-                
-                // 构建 HTML
-                let htmlContent = `
-                    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start gap-8 text-center md:text-left mb-12">
-                        <img src="${iconPath}" class="w-32 h-32 md:w-40 md:h-40 rounded-[32px] icon-shadow" alt="${app.name} Icon">
-                        <div class="flex-1 pt-2">
-                            <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900">${app.name}</h2>
-                            <p class="text-xl text-gray-500 font-medium mb-8 max-w-2xl">${tagline}</p>
-                            <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                                <a href="#" class="bg-black text-white px-8 py-3 rounded-full font-bold hover:scale-105 hover:shadow-xl transition-all"><i class="fab fa-apple mr-2"></i> Mac App Store</a>
-                                <a href="privacy.html" class="px-8 py-3 rounded-full border border-gray-300 font-bold text-black hover:bg-gray-50 transition-colors">Privacy</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full overflow-x-auto hide-scrollbar snap-x snap-mandatory">
-                        <div class="gallery-track">
-                `;
-
-                // 注入截图，并加入骨架屏机制
-                for (let i = 1; i <= app.imgCount; i++) {
-                    const fileName = `${app.name}-${app.versionFile}-${fLang}-${app.platform}-${i}.webp`;
-                    const imgPath = `${basePath}/Screenshots/${app.versionDir}/${fLang}/${app.platform}/${fileName}`;
-                    
-                    htmlContent += `
-                        <div class="shot-wrapper">
-                            <div class="skeleton"></div>
-                            <img src="${imgPath}" class="w-full h-auto relative z-10 opacity-0 transition-opacity duration-700" 
-                                 onload="this.style.opacity=1; this.previousElementSibling.style.display='none';">
-                        </div>
-                    `;
-                }
-
-                htmlContent += `</div></div>`;
-                section.innerHTML = htmlContent;
-                container.appendChild(section);
-            });
-
-            // 重新触发滚动监听动画
-            observeElements();
-        }
-
-        function observeElements() {
-            const reveals = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            reveals.forEach(el => observer.observe(el));
-        }
-
-        function switchLang(lang) {
-            localStorage.setItem('moring_lang', lang);
-            renderPortfolio(lang);
-        }
-
-        window.onload = () => {
-            const savedLang = localStorage.getItem('moring_lang') || 'en';
-            document.getElementById('langSelector').value = savedLang;
-            renderPortfolio(savedLang);
-            setTimeout(() => document.querySelector('header.reveal').classList.add('active'), 100);
-        };
-    </script>
 </body>
 </html>
