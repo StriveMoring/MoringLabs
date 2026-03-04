@@ -21,7 +21,6 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* 极简卡片的悬浮效果 */
         .app-card {
             background: #ffffff;
             border: 1px solid rgba(0,0,0,0.04);
@@ -33,32 +32,44 @@
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12);
             border: 1px solid rgba(0,0,0,0.08);
         }
-
         .icon-shadow { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased fade-in">
 
     <nav class="glass-nav fixed top-0 w-full z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <span class="text-xl font-extrabold tracking-tighter text-black flex items-center gap-2">
                 <i class="fab fa-apple text-xl"></i> MORING LABS
             </span>
-            <div class="text-sm font-semibold text-gray-500 hover:text-black transition-colors">
-                <a href="mailto:strivemoring@gmail.com">Contact Us</a>
+            <div class="relative group">
+                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh-CN">🇨🇳 简体中文</option>
+                    <option value="zh-TW">🇭🇰 繁體中文</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="pt">🇧🇷 Português</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
             </div>
         </div>
     </nav>
 
     <header class="pt-48 pb-24 px-6 text-center">
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-black to-gray-600">
+        <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-black to-gray-600">
             Crafting pure native <br>experiences.
         </h1>
-        <p class="text-xl text-gray-500 font-medium max-w-2xl mx-auto">An independent macOS studio focused on performance, privacy, and elegant design.</p>
+        <p id="hero-desc" class="text-xl text-gray-500 font-medium max-w-2xl mx-auto">An independent macOS studio focused on performance, privacy, and elegant design.</p>
     </header>
 
     <main class="max-w-6xl mx-auto px-6 pb-32">
-        <h2 class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-8 ml-2">Our Products</h2>
+        <h2 id="section-title" class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-8 ml-2">Our Products</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
@@ -71,9 +82,9 @@
                         <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded-full">macOS Native</span>
                     </div>
                 </div>
-                <p class="text-gray-500 text-lg font-medium mb-8">The ultimate privacy-focused PDF tool. 100% offline, blazing fast.</p>
+                <p id="pdf-desc" class="text-gray-500 text-lg font-medium mb-8">The ultimate privacy-focused PDF tool. 100% offline, blazing fast.</p>
                 <div class="flex items-center text-black font-bold group-hover:text-blue-600 transition-colors">
-                    Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    <span id="pdf-learn">Learn More</span> <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </a>
 
@@ -81,16 +92,191 @@
                 <div class="w-20 h-20 bg-gray-200 rounded-3xl mb-6 flex items-center justify-center">
                     <i class="fas fa-hammer text-2xl text-gray-400"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-400 mb-2">New Project</h3>
-                <p class="text-gray-400 font-medium">In development...</p>
+                <h3 id="new-proj-title" class="text-xl font-bold text-gray-400 mb-2">New Project</h3>
+                <p id="new-proj-desc" class="text-gray-400 font-medium">In development...</p>
             </div>
 
         </div>
     </main>
 
-    <footer class="py-12 border-t border-gray-200/60 bg-white/50 text-center">
-        <p class="text-sm text-gray-500 font-medium">&copy; 2026 Moring Labs. Built for macOS.</p>
+    <footer class="py-12 border-t border-gray-200/60 bg-white/50 text-center flex flex-col items-center">
+        <p class="text-sm text-gray-500 font-medium mb-2">&copy; 2026 Moring Labs. Built for macOS.</p>
+        <a id="contact-us" href="mailto:strivemoring@gmail.com" class="text-sm text-blue-500 hover:text-blue-600 font-semibold transition-colors">Contact Us</a>
     </footer>
 
+    <script>
+        // --- 1. 11 种语言字典配置 ---
+        const TRANSLATIONS = {
+            "en": {
+                heroTitle: "Crafting pure native <br>experiences.",
+                heroDesc: "An independent macOS studio focused on performance, privacy, and elegant design.",
+                sectionTitle: "Our Products",
+                pdfDesc: "The ultimate privacy-focused PDF tool. 100% offline, blazing fast.",
+                pdfLearn: "Learn More",
+                newProjTitle: "New Project",
+                newProjDesc: "In development...",
+                contact: "Contact Us"
+            },
+            "zh-CN": {
+                heroTitle: "打造纯粹的<br>原生体验。",
+                heroDesc: "一家专注于性能、隐私和优雅设计的独立 macOS 工作室。",
+                sectionTitle: "我们的产品",
+                pdfDesc: "终极隐私保护 PDF 工具。100% 离线处理，极致快速。",
+                pdfLearn: "了解更多",
+                newProjTitle: "全新项目",
+                newProjDesc: "正在开发中...",
+                contact: "联系我们"
+            },
+            "zh-TW": {
+                heroTitle: "打造純粹的<br>原生體驗。",
+                heroDesc: "一家專注於效能、隱私和優雅設計的獨立 macOS 工作室。",
+                sectionTitle: "我們的產品",
+                pdfDesc: "終極隱私保護 PDF 工具。100% 離線處理，極致快速。",
+                pdfLearn: "了解更多",
+                newProjTitle: "全新項目",
+                newProjDesc: "正在開發中...",
+                contact: "聯絡我們"
+            },
+            "ja": {
+                heroTitle: "純粋なネイティブ<br>体験を。",
+                heroDesc: "パフォーマンス、プライバシー、エレガントなデザインに焦点を当てた独立系macOSスタジオ。",
+                sectionTitle: "製品情報",
+                pdfDesc: "究極のプライバシー重視PDFツール。100%オフライン、超高速。",
+                pdfLearn: "詳細を見る",
+                newProjTitle: "新プロジェクト",
+                newProjDesc: "開発中...",
+                contact: "お問い合わせ"
+            },
+            "de": {
+                heroTitle: "Echte native <br>Erlebnisse.",
+                heroDesc: "Ein unabhängiges macOS-Studio mit Fokus auf Leistung, Datenschutz und elegantes Design.",
+                sectionTitle: "Unsere Produkte",
+                pdfDesc: "Das ultimative datenschutzorientierte PDF-Tool. 100% offline, blitzschnell.",
+                pdfLearn: "Mehr erfahren",
+                newProjTitle: "Neues Projekt",
+                newProjDesc: "In Entwicklung...",
+                contact: "Kontakt"
+            },
+            "es": {
+                heroTitle: "Creando experiencias <br>nativas puras.",
+                heroDesc: "Un estudio independiente de macOS centrado en el rendimiento, la privacidad y el diseño elegante.",
+                sectionTitle: "Nuestros productos",
+                pdfDesc: "La herramienta PDF definitiva centrada en la privacidad. 100% sin conexión, ultrarrápida.",
+                pdfLearn: "Saber más",
+                newProjTitle: "Nuevo Proyecto",
+                newProjDesc: "En desarrollo...",
+                contact: "Contáctenos"
+            },
+            "fr": {
+                heroTitle: "Création d'expériences <br>natives pures.",
+                heroDesc: "Un studio macOS indépendant axé sur les performances, la confidentialité et le design élégant.",
+                sectionTitle: "Nos produits",
+                pdfDesc: "L'outil PDF ultime axé sur la confidentialité. 100% hors ligne, ultra rapide.",
+                pdfLearn: "En savoir plus",
+                newProjTitle: "Nouveau Projet",
+                newProjDesc: "En développement...",
+                contact: "Nous contacter"
+            },
+            "it": {
+                heroTitle: "Creiamo esperienze <br>native pure.",
+                heroDesc: "Uno studio macOS indipendente focalizzato su prestazioni, privacy e design elegante.",
+                sectionTitle: "I nostri prodotti",
+                pdfDesc: "Lo strumento PDF definitivo incentrato sulla privacy. 100% offline, velocissimo.",
+                pdfLearn: "Scopri di più",
+                newProjTitle: "Nuovo Progetto",
+                newProjDesc: "In sviluppo...",
+                contact: "Contattaci"
+            },
+            "ko": {
+                heroTitle: "순수한 네이티브 <br>경험 제작.",
+                heroDesc: "성능, 개인 정보 보호 및 우아한 디자인에 중점을 둔 독립 macOS 스튜디오입니다.",
+                sectionTitle: "우리의 제품",
+                pdfDesc: "개인 정보 보호에 중점을 둔 최고의 PDF 도구. 100% 오프라인, 초고속.",
+                pdfLearn: "더 알아보기",
+                newProjTitle: "새 프로젝트",
+                newProjDesc: "개발 중...",
+                contact: "문의하기"
+            },
+            "pt": {
+                heroTitle: "Criando experiências <br>nativas puras.",
+                heroDesc: "Um estúdio independente de macOS focado em desempenho, privacidade e design elegante.",
+                sectionTitle: "Nossos produtos",
+                pdfDesc: "A ferramenta PDF definitiva focada na privacidade. 100% offline, extremamente rápida.",
+                pdfLearn: "Saiba mais",
+                newProjTitle: "Novo Projeto",
+                newProjDesc: "Em desenvolvimento...",
+                contact: "Contate-nos"
+            },
+            "ru": {
+                heroTitle: "Создание чистого <br>нативного опыта.",
+                heroDesc: "Независимая студия macOS, ориентированная на производительность, конфиденциальность и элегантный дизайн.",
+                sectionTitle: "Наши продукты",
+                pdfDesc: "Идеальный PDF-инструмент с упором на конфиденциальность. 100% оффлайн, молниеносно.",
+                pdfLearn: "Узнать больше",
+                newProjTitle: "Новый проект",
+                newProjDesc: "В разработке...",
+                contact: "Связаться с нами"
+            }
+        };
+
+        // --- 2. 更新 DOM 文字 ---
+        function updateUI(lang) {
+            const data = TRANSLATIONS[lang] || TRANSLATIONS['en'];
+            
+            document.getElementById('hero-title').innerHTML = data.heroTitle;
+            document.getElementById('hero-desc').innerText = data.heroDesc;
+            document.getElementById('section-title').innerText = data.sectionTitle;
+            document.getElementById('pdf-desc').innerText = data.pdfDesc;
+            document.getElementById('pdf-learn').innerText = data.pdfLearn;
+            document.getElementById('new-proj-title').innerText = data.newProjTitle;
+            document.getElementById('new-proj-desc').innerText = data.newProjDesc;
+            document.getElementById('contact-us').innerText = data.contact;
+        }
+
+        // --- 3. 手动切换并记忆 ---
+        function switchLang(lang) {
+            localStorage.setItem('moring_lang', lang);
+            updateUI(lang);
+        }
+
+        // --- 4. 智能嗅探检测器 ---
+        function detectLanguage() {
+            // 优先级 1: 如果用户之前手动选过，尊重用户的选择
+            const savedLang = localStorage.getItem('moring_lang');
+            if (savedLang && TRANSLATIONS[savedLang]) {
+                return savedLang;
+            }
+
+            // 优先级 2: 自动检测浏览器语言
+            const browserLang = navigator.language || navigator.userLanguage;
+            
+            // 精准匹配逻辑
+            if (browserLang.startsWith('zh')) {
+                // 区分简繁体 (zh-CN, zh-Hans 为简体，其余默认给繁体)
+                return (browserLang.includes('CN') || browserLang.includes('Hans')) ? 'zh-CN' : 'zh-TW';
+            }
+            if (browserLang.startsWith('ja')) return 'ja';
+            if (browserLang.startsWith('ko')) return 'ko';
+            if (browserLang.startsWith('de')) return 'de';
+            if (browserLang.startsWith('fr')) return 'fr';
+            if (browserLang.startsWith('es')) return 'es';
+            if (browserLang.startsWith('it')) return 'it';
+            if (browserLang.startsWith('pt')) return 'pt';
+            if (browserLang.startsWith('ru')) return 'ru';
+
+            // 优先级 3: 都匹配不上，默认英文兜底
+            return 'en';
+        }
+
+        // 初始化
+        window.onload = () => {
+            const initialLang = detectLanguage();
+            document.getElementById('langSelector').value = initialLang;
+            updateUI(initialLang);
+            
+            // 顺便把选择的语言存入本地，这样跳转到 pdf-assistant.html 时可以继承语言设置
+            localStorage.setItem('moring_lang', initialLang);
+        };
+    </script>
 </body>
 </html>
