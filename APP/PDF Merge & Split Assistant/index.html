@@ -23,9 +23,21 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
+        /* 升级版：超大范围全局环境光晕 */
+        .ambient-glow {
+            position: absolute; 
+            width: 1200px; 
+            height: 1200px;
+            background: radial-gradient(circle, rgba(64,156,255,0.12) 0%, rgba(255,255,255,0) 70%);
+            top: -300px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            z-index: -1; 
+            pointer-events: none;
+        }
+
         .premium-shadow { box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0,0,0,0.05); }
         
-        /* Bento 卡片样式与悬浮物理效果 */
         .bento-card {
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             border: 1px solid rgba(0,0,0,0.04);
@@ -40,15 +52,14 @@
         @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
         .animate-fade-in { animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         
-        /* 骨架屏呼吸灯动画 */
         .skeleton-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
-
-        /* 图片平滑过渡 */
         .img-transition { transition: opacity 0.5s ease-in-out; }
     </style>
 </head>
 <body class="relative min-h-screen antialiased">
+
+    <div class="ambient-glow"></div>
 
     <nav class="glass-nav fixed top-0 w-full z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -78,7 +89,7 @@
     <main class="pt-32 pb-32 px-6 max-w-7xl mx-auto">
         <section class="flex flex-col items-center text-center animate-fade-in opacity-0">
             <div class="relative mb-8 mt-10 group">
-                <div class="absolute inset-0 bg-blue-500 rounded-3xl blur-2xl opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
+                <div class="absolute inset-0 bg-blue-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
                 <img id="appIcon" src="" class="relative w-36 h-36 md:w-40 md:h-40 rounded-[32px] premium-shadow border border-black/5" alt="App Icon">
             </div>
             <h1 id="appName" class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900"></h1>
@@ -160,9 +171,6 @@
     </footer>
 
     <script>
-        // ==========================================
-        // 配置区：因为在软件目录下，相对路径极为简单
-        // ==========================================
         const INFO = {
             name: "PDF Merge & Split Assistant",
             versionDir: "2.1.0",
@@ -175,14 +183,14 @@
             }
         };
 
-       const TEXTS = {
+        const TEXTS = {
             "en": {
                 tagline: "The ultimate native PDF tool. 100% offline, blazing fast.",
                 features: [
                     { title: "Seamless Merging", desc: "Drag and drop to combine multiple PDFs instantly." },
                     { title: "Precision Splitting", desc: "Extract exactly the pages you need with ease." },
                     { title: "Real-time Preview", desc: "See your changes instantly before saving." },
-                    { title: "Intuitive Page Rotation", desc: "Easily rotate any page to the perfect angle." }
+                    { title: "Intuitive Page Rotation", desc: "Freely rotate any page and preview changes in real-time—no need to merge before checking." }
                 ]
             },
             "zh-CN": {
@@ -191,7 +199,7 @@
                     { title: "拖拽无缝合并", desc: "轻松拖放，将多个 PDF 文件快速合并为一个。" },
                     { title: "灵活精准拆分", desc: "按需逐页提取或拆分多个文件，高效便捷。" },
                     { title: "实时视觉预览", desc: "所见即所得，操作前即刻确认最终呈现效果。" },
-                    { title: "直观页面旋转", desc: "轻松将任何页面旋转至最佳视觉角度。" }
+                    { title: "直观页面旋转", desc: "自由旋转任意页面并实时预览修改，无需等待合并即可确认最终排版。" }
                 ]
             },
             "zh-TW": {
@@ -200,7 +208,7 @@
                     { title: "拖曳無縫合併", desc: "輕鬆拖放，將多個 PDF 文件快速合併為一個。" },
                     { title: "靈活精準拆分", desc: "按需逐頁提取或拆分多個文件，高效便捷。" },
                     { title: "即時視覺預覽", desc: "所見即所得，操作前即刻確認最終呈現效果。" },
-                    { title: "直觀頁面旋轉", desc: "輕鬆將任何頁面旋轉至最佳視覺角度。" }
+                    { title: "直觀頁面旋轉", desc: "自由旋轉任意頁面並即時預覽修改，無需等待合併即可確認最終排版。" }
                 ]
             },
             "ja": {
@@ -209,7 +217,7 @@
                     { title: "シームレスな結合", desc: "ドラッグ＆ドロップで複数のPDFを即座に結合します。" },
                     { title: "正確な分割", desc: "必要なページだけを簡単に抽出できます。" },
                     { title: "リアルタイムプレビュー", desc: "保存する前に変更を即座に確認できます。" },
-                    { title: "直感的なページ回転", desc: "任意のページを最適な角度に簡単に回転させます。" }
+                    { title: "直感的なページ回転", desc: "任意のページを自由に回転してリアルタイムでプレビュー。結合前に結果を確認できます。" }
                 ]
             },
             "ko": {
@@ -217,8 +225,8 @@
                 features: [
                     { title: "매끄러운 병합", desc: "드래그 앤 드롭으로 여러 PDF를 즉시 병합하세요." },
                     { title: "정밀한 분할", desc: "필요한 페이지만 쉽게 추출할 수 있습니다." },
-                    { title: "실시간 미리보기", 대sc: "저장하기 전에 변경 사항을 즉시 확인하세요." },
-                    { title: "직관적인 페이지 회전", desc: "원하는 페이지를 완벽한 각도로 쉽게 회전하세요." }
+                    { title: "실시간 미리보기", desc: "저장하기 전에 변경 사항을 즉시 확인하세요." },
+                    { title: "직관적인 페이지 회전", desc: "원하는 페이지를 자유롭게 회전하고 실시간으로 미리 확인하세요. 병합 전에도 결과를 볼 수 있습니다." }
                 ]
             },
             "de": {
@@ -227,7 +235,7 @@
                     { title: "Nahtloses Zusammenführen", desc: "Drag & Drop, um mehrere PDFs sofort zu kombinieren." },
                     { title: "Präzises Teilen", desc: "Extrahieren Sie genau die Seiten, die Sie benötigen." },
                     { title: "Echtzeit-Vorschau", desc: "Sehen Sie Ihre Änderungen sofort, bevor Sie speichern." },
-                    { title: "Intuitive Seitendrehung", desc: "Drehen Sie jede Seite einfach in den perfekten Winkel." }
+                    { title: "Intuitive Seitendrehung", desc: "Seiten frei drehen und in Echtzeit in der Vorschau anzeigen – ohne vorheriges Zusammenführen." }
                 ]
             },
             "fr": {
@@ -236,7 +244,7 @@
                     { title: "Fusion transparente", desc: "Glissez et déposez pour combiner plusieurs PDF instantanément." },
                     { title: "Fractionnement précis", desc: "Extrayez facilement les pages dont vous avez exactement besoin." },
                     { title: "Aperçu en temps réel", desc: "Voyez vos modifications instantanément avant de sauvegarder." },
-                    { title: "Rotation intuitive", desc: "Faites pivoter facilement n'importe quelle page à l'angle parfait." }
+                    { title: "Rotation intuitive", desc: "Faites pivoter n'importe quelle page et prévisualisez en temps réel, sans avoir à fusionner d'abord." }
                 ]
             },
             "es": {
@@ -245,7 +253,7 @@
                     { title: "Fusión perfecta", desc: "Arrastra y suelta para combinar varios PDF al instante." },
                     { title: "División precisa", desc: "Extrae exactamente las páginas que necesitas con facilidad." },
                     { title: "Vista previa en tiempo real", desc: "Ve tus cambios al instante antes de guardar." },
-                    { title: "Rotación intuitiva", desc: "Gira fácilmente cualquier página al ángulo perfecto." }
+                    { title: "Rotación intuitiva", desc: "Gira cualquier página libremente y obtén una vista previa en tiempo real, sin necesidad de fusionar antes." }
                 ]
             },
             "it": {
@@ -254,7 +262,7 @@
                     { title: "Unione senza interruzioni", desc: "Trascina e rilascia per combinare più PDF all'istante." },
                     { title: "Divisione di precisione", desc: "Estrai esattamente le pagine di cui hai bisogno con facilità." },
                     { title: "Anteprima in tempo reale", desc: "Guarda le tue modifiche all'istante prima di salvare." },
-                    { title: "Rotazione intuitiva", desc: "Ruota facilmente qualsiasi pagina all'angolazione perfetta." }
+                    { title: "Rotazione intuitiva", desc: "Ruota liberamente qualsiasi pagina e visualizza l'anteprima in tempo reale, senza dover prima unire." }
                 ]
             },
             "pt": {
@@ -263,7 +271,7 @@
                     { title: "Mesclagem perfeita", desc: "Arraste e solte para combinar vários PDFs instantaneamente." },
                     { title: "Divisão precisa", desc: "Extraia exatamente as páginas que você precisa com facilidade." },
                     { title: "Visualização em tempo real", desc: "Veja suas alterações instantaneamente antes de salvar." },
-                    { title: "Rotação intuitiva", desc: "Gire facilmente qualquer página para o ângulo perfeito." }
+                    { title: "Rotação intuitiva", desc: "Gire livremente qualquer página e visualize em tempo real, sem precisar mesclar antes." }
                 ]
             },
             "ru": {
@@ -272,7 +280,7 @@
                     { title: "Бесшовное объединение", desc: "Перетащите файлы, чтобы мгновенно объединить несколько PDF." },
                     { title: "Точное разделение", desc: "С легкостью извлекайте именно те страницы, которые вам нужны." },
                     { title: "Предпросмотр онлайн", desc: "Мгновенно просматривайте изменения перед сохранением." },
-                    { title: "Интуитивный поворот", desc: "Легко поворачивайте любую страницу под нужным углом." }
+                    { title: "Интуитивный поворот", desc: "Свободно поворачивайте любую страницу и просматривайте результат в реальном времени до объединения." }
                 ]
             }
         };
@@ -281,12 +289,10 @@
             const fLang = INFO.langMap[lang] || "en-US";
             const currentText = TEXTS[lang] || TEXTS['en'];
 
-            // 1. 设置同级目录下的图标
             document.getElementById('appIcon').src = `${INFO.name}-AppIcon.webp`;
             document.getElementById('appName').innerText = INFO.name;
             document.getElementById('appTagline').innerText = currentText.tagline;
 
-            // 2. 循环处理 4 张卡片（文字 + 骨架屏平滑加载）
             for (let i = 1; i <= 4; i++) {
                 document.getElementById(`feat-title-${i}`).innerText = currentText.features[i-1].title;
                 document.getElementById(`feat-desc-${i}`).innerText = currentText.features[i-1].desc;
@@ -297,7 +303,6 @@
                 imgElement.style.opacity = '0';
                 skeleton.style.display = 'block';
 
-                // 重点：直接读取同级 Screenshots 文件夹！
                 const fileName = `${INFO.name}-${INFO.versionFile}-${fLang}-${INFO.platform}-${i}.webp`;
                 const path = `Screenshots/${INFO.versionDir}/${fLang}/${INFO.platform}/${fileName}`;
                 
@@ -314,15 +319,19 @@
             updateUI(lang);
         }
 
-        // 页面加载时自动读取主页传过来的语言配置
         window.onload = () => {
             const savedLang = localStorage.getItem('moring_lang') || navigator.language || 'en';
-            // 简单匹配下主语言
             let matchedLang = 'en';
             if(savedLang.includes('zh-CN') || savedLang.includes('zh-Hans')) matchedLang = 'zh-CN';
             else if(savedLang.includes('zh')) matchedLang = 'zh-TW';
             else if(savedLang.includes('ja')) matchedLang = 'ja';
-            // ...以此类推，为了安全兜底默认填 savedLang 如果匹配的话
+            else if(savedLang.includes('ko')) matchedLang = 'ko';
+            else if(savedLang.includes('de')) matchedLang = 'de';
+            else if(savedLang.includes('fr')) matchedLang = 'fr';
+            else if(savedLang.includes('es')) matchedLang = 'es';
+            else if(savedLang.includes('it')) matchedLang = 'it';
+            else if(savedLang.includes('pt')) matchedLang = 'pt';
+            else if(savedLang.includes('ru')) matchedLang = 'ru';
             
             const finalLang = INFO.langMap[savedLang] ? savedLang : matchedLang;
             
