@@ -59,13 +59,17 @@
     <nav class="glass-nav fixed top-0 w-full z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             
-            <a href="#" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-gray-800 to-black text-white flex items-center justify-center shadow-lg shadow-black/20">
-                    <i class="fas fa-layer-group text-sm"></i>
+            <a href="#" class="flex items-center gap-3 hover:opacity-80 transition-opacity group">
+                <div class="relative flex items-center justify-center w-9 h-9 rounded-xl bg-gray-900 border border-gray-700 shadow-lg shadow-cyan-900/20 overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 group-hover:opacity-100 opacity-40 transition-opacity duration-500"></div>
+                    <i class="fas fa-microchip text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-500 text-sm relative z-10 group-hover:scale-110 transition-transform duration-500"></i>
                 </div>
-                <span class="text-xl flex items-baseline">
-                    <span class="font-extrabold text-gray-900 tracking-tight">MORING</span>
-                    <span class="font-medium text-gray-500 tracking-widest ml-1 text-[0.8rem]">LABS</span>
+                <span class="text-xl flex items-center">
+                    <span class="font-extrabold text-gray-900 tracking-tighter">MORING</span>
+                    <span class="ml-1.5 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.8)] animate-pulse"></span>
+                        <span class="font-bold text-gray-500 tracking-[0.25em] text-[0.7rem] mt-0.5">LABS</span>
+                    </span>
                 </span>
             </a>
 
