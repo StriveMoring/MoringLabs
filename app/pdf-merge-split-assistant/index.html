@@ -26,12 +26,12 @@
     <div class="ambient-glow"></div>
 
     <nav class="glass-nav fixed top-0 w-full z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="../../index.html" class="text-lg font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2">
-                <i class="fas fa-chevron-left text-sm"></i> Moring Labs
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-sm">
+            <a href="../../index.html" class="font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2">
+                <i class="fas fa-chevron-left text-xs"></i> Moring Labs
             </a>
             <div class="relative group">
-                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
+                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
                     <option value="en">🇺🇸 English</option>
                     <option value="zh-CN">🇨🇳 简体中文</option>
                     <option value="zh-TW">🇭🇰 繁體中文</option>
@@ -57,7 +57,7 @@
             </div>
             <h1 id="appName" class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900"></h1>
             <p id="appTagline" class="text-xl md:text-2xl text-gray-500 font-medium mb-12 max-w-2xl leading-relaxed"></p>
-            <div class="flex flex-wrap justify-center gap-4 font-semibold text-base md:text-lg">
+            <div class="flex flex-wrap justify-center gap-4 font-semibold">
                 <a href="https://apps.apple.com/us/app/pdf-merge-split-assistant/id6758044607?mt=12" class="bg-black text-white px-8 md:px-10 py-4 rounded-full hover:scale-105 transition-all duration-300 flex items-center shadow-lg"><i class="fab fa-apple mr-2 text-xl"></i> Mac App Store</a>
                 <a href="privacy.html" class="bg-white text-black px-8 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300"><i class="fas fa-shield-alt mr-2 text-gray-400"></i> Privacy</a>
                 <a href="support.html" class="bg-white text-black px-8 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300"><i class="fas fa-life-ring mr-2 text-gray-400"></i> Support</a>
@@ -65,8 +65,7 @@
         </section>
 
         <section class="mt-24">
-            <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 animate-fade-in opacity-0" style="animation-delay: 0.2s;">
-                </div>
+            <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 animate-fade-in opacity-0" style="animation-delay: 0.2s;"></div>
         </section>
     </main>
 
@@ -79,11 +78,11 @@
         </div>
     </footer>
 
-    <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6 md:p-12 bg-white/40 backdrop-blur-2xl transition-all duration-500 opacity-0" onclick="closeModal()">
-        <div class="relative w-full h-full flex items-center justify-center pointer-events-none">
-            <img id="modalImage" src="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-2xl shadow-2xl transition-transform duration-500 scale-90 pointer-events-auto" onclick="event.stopPropagation()">
-            <button class="absolute top-4 right-4 md:top-0 md:right-[-48px] text-gray-400 hover:text-black transition-colors pointer-events-auto">
-                <i class="fas fa-times-circle text-3xl"></i>
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6 md:p-12 bg-white/50 backdrop-blur-3xl transition-all duration-500 opacity-0" onclick="closeModal()">
+        <div class="relative max-w-[90vw] max-h-[85vh] flex items-center justify-center pointer-events-none group/modal">
+            <img id="modalImage" src="" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl transition-transform duration-500 scale-90 pointer-events-auto" onclick="event.stopPropagation()">
+            <button class="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-10 h-10 md:w-12 md:h-12 bg-white/80 backdrop-blur-md rounded-full text-gray-400 hover:text-black shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto opacity-0 group-hover/modal:opacity-100">
+                <i class="fas fa-times text-xl"></i>
             </button>
         </div>
     </div>
@@ -104,7 +103,7 @@
             "fr": { tagline: "L'outil PDF natif ultime. 100% hors ligne, ultra rapide.", features: [{title: "Fusion fluide", desc: "Combinez plusieurs PDF instantanément par glisser-déposer."}, {title: "Fractionnement précis", desc: "Extrayez exactement les pages dont vous avez besoin."}, {title: "Aperçu en temps réel", desc: "Visualisez vos modifications avant de sauvegarder."}, {title: "Rotation intuitive", desc: "Faites pivoter les pages et voyez le résultat direct."}]},
             "es": { tagline: "La herramienta PDF nativa definitiva. 100% offline, ultrarrápida.", features: [{title: "Fusión sin fisuras", desc: "Arrastra y suelta para combinar varios PDF al instante."}, {title: "División de precisión", desc: "Extrae exactamente las páginas que necesitas fácilmente."}, {title: "Vista previa real", desc: "Mira tus cambios al instante antes de guardar."}, {title: "Rotación intuitiva", desc: "Gira cualquier página y previsualiza al momento."}]},
             "it": { tagline: "Lo strumento PDF nativo definitivo. 100% offline, velocissimo.", features: [{title: "Unione fluida", desc: "Trascina e rilascia per combinare più PDF all'istante."}, {title: "Divisione precisa", desc: "Estrai esattamente le pagine necessarie con facilità."}, {title: "Anteprima live", desc: "Visualizza le modifiche istantaneamente prima di salvare."}, {title: "Rotazione intuitiva", desc: "Ruota le pagine e verifica subito il risultato."}]},
-            "pt": { tagline: "A ferramenta PDF nativa definitiva. 100% offline, ultra rápida.", features: [{title: "Fusão perfeita", desc: "Arraste e solte para combinar vários PDFs instantaneamente."}, {title: "Divisão precisa", desc: "Extraia exatamente as páginas que precisa com facilidade."}, {title: "Prévia em tempo real", desc: "Veja as alterações instantaneamente antes de salvar."}, {title: "Rotação intuitiva", desc: "Gire qualquer página e visualize o resultado na hora."}]},
+            "pt": { tagline: "A ferramenta PDF nativa definitiva. 100% offline, ultra rápida.", features: [{title: "Fusão perfeita", desc: "Arraste e solte para combinar vários PDFs instantaneamente."}, {title: "Divisão precisa", desc: Portuguese: "Extraia exatamente as páginas que precisa com facilidade."}, {title: "Prévia em tempo real", desc: "Veja as alterações instantaneamente antes de salvar."}, {title: "Rotação intuitiva", desc: "Gire qualquer página e visualize o resultado na hora."}]},
             "ru": { tagline: "Лучший нативный PDF-инструмент. 100% офлайн, сверхбыстрый.", features: [{title: "Бесшовное слияние", desc: "Мгновенно объединяйте PDF перетаскиванием."}, {title: "Точное разделение", desc: "Легко извлекайте нужные страницы из документов."}, {title: "Живой предпросмотр", desc: "Мгновенно проверяйте результат перед сохранением."}, {title: "Интуитивный поворот", desc: "Свободно вращайте страницы с быстрым просмотром."}]}
         };
 
@@ -156,7 +155,7 @@
             const savedLang = localStorage.getItem('moring_lang') || navigator.language || 'en';
             let matched = 'en';
             if(savedLang.includes('zh-CN')) matched = 'zh-CN'; else if(savedLang.includes('zh')) matched = 'zh-TW';
-            else if(savedLang.includes('ja')) matched = 'ja'; else if(savedLang.includes('ko')) matched = 'ko';
+            else if(savedLang.includes('ja')) matched = 'ja'; else if(savedLang.includes('ko')) matched = Korean = 'ko';
             else if(savedLang.includes('de')) matched = 'de'; else if(savedLang.includes('fr')) matched = 'fr';
             else if(savedLang.includes('es')) matched = 'es'; else if(savedLang.includes('it')) matched = 'it';
             else if(savedLang.includes('pt')) matched = 'pt'; else if(savedLang.includes('ru')) matched = 'ru';
