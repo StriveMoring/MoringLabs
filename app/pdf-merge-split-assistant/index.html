@@ -65,7 +65,41 @@
         </section>
 
         <section class="mt-24">
-            <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 animate-fade-in opacity-0" style="animation-delay: 0.2s;"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 animate-fade-in opacity-0" style="animation-delay: 0.2s;">
+                
+                <div class="bento-card rounded-[2.5rem] p-8 flex flex-col">
+                    <div class="mb-8"><h3 id="feat-title-1" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-1" class="text-gray-500 font-medium text-lg leading-relaxed"></p></div>
+                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-1').src)">
+                        <div id="skeleton-1" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
+                        <img id="shot-1" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
+                    </div>
+                </div>
+
+                <div class="bento-card rounded-[2.5rem] p-8 flex flex-col">
+                    <div class="mb-8"><h3 id="feat-title-2" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-2" class="text-gray-500 font-medium text-lg leading-relaxed"></p></div>
+                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-2').src)">
+                        <div id="skeleton-2" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
+                        <img id="shot-2" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
+                    </div>
+                </div>
+
+                <div class="bento-card rounded-[2.5rem] p-8 flex flex-col">
+                    <div class="mb-8"><h3 id="feat-title-3" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-3" class="text-gray-500 font-medium text-lg leading-relaxed"></p></div>
+                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-3').src)">
+                        <div id="skeleton-3" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
+                        <img id="shot-3" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
+                    </div>
+                </div>
+
+                <div class="bento-card rounded-[2.5rem] p-8 flex flex-col">
+                    <div class="mb-8"><h3 id="feat-title-4" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-4" class="text-gray-500 font-medium text-lg leading-relaxed"></p></div>
+                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-4').src)">
+                        <div id="skeleton-4" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
+                        <img id="shot-4" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
+                    </div>
+                </div>
+
+            </div>
         </section>
     </main>
 
@@ -79,9 +113,9 @@
     </footer>
 
     <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6 md:p-12 bg-white/50 backdrop-blur-3xl transition-all duration-500 opacity-0" onclick="closeModal()">
-        <div class="relative max-w-[90vw] max-h-[85vh] flex items-center justify-center pointer-events-none group/modal">
-            <img id="modalImage" src="" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl transition-transform duration-500 scale-90 pointer-events-auto" onclick="event.stopPropagation()">
-            <button class="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-10 h-10 md:w-12 md:h-12 bg-white/80 backdrop-blur-md rounded-full text-gray-400 hover:text-black shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto opacity-0 group-hover/modal:opacity-100">
+        <div class="relative w-full h-full flex items-center justify-center pointer-events-none group/modal">
+            <img id="modalImage" src="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-2xl shadow-2xl transition-transform duration-500 scale-90 pointer-events-auto" onclick="event.stopPropagation()">
+            <button class="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-md rounded-full text-gray-400 hover:text-black shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto opacity-0 group-hover/modal:opacity-100">
                 <i class="fas fa-times text-xl"></i>
             </button>
         </div>
@@ -103,21 +137,9 @@
             "fr": { tagline: "L'outil PDF natif ultime. 100% hors ligne, ultra rapide.", features: [{title: "Fusion fluide", desc: "Combinez plusieurs PDF instantanément par glisser-déposer."}, {title: "Fractionnement précis", desc: "Extrayez exactement les pages dont vous avez besoin."}, {title: "Aperçu en temps réel", desc: "Visualisez vos modifications avant de sauvegarder."}, {title: "Rotation intuitive", desc: "Faites pivoter les pages et voyez le résultat direct."}]},
             "es": { tagline: "La herramienta PDF nativa definitiva. 100% offline, ultrarrápida.", features: [{title: "Fusión sin fisuras", desc: "Arrastra y suelta para combinar varios PDF al instante."}, {title: "División de precisión", desc: "Extrae exactamente las páginas que necesitas fácilmente."}, {title: "Vista previa real", desc: "Mira tus cambios al instante antes de guardar."}, {title: "Rotación intuitiva", desc: "Gira cualquier página y previsualiza al momento."}]},
             "it": { tagline: "Lo strumento PDF nativo definitivo. 100% offline, velocissimo.", features: [{title: "Unione fluida", desc: "Trascina e rilascia per combinare più PDF all'istante."}, {title: "Divisione precisa", desc: "Estrai esattamente le pagine necessarie con facilità."}, {title: "Anteprima live", desc: "Visualizza le modifiche istantaneamente prima di salvare."}, {title: "Rotazione intuitiva", desc: "Ruota le pagine e verifica subito il risultato."}]},
-            "pt": { tagline: "A ferramenta PDF nativa definitiva. 100% offline, ultra rápida.", features: [{title: "Fusão perfeita", desc: "Arraste e solte para combinar vários PDFs instantaneamente."}, {title: "Divisão precisa", desc: Portuguese: "Extraia exatamente as páginas que precisa com facilidade."}, {title: "Prévia em tempo real", desc: "Veja as alterações instantaneamente antes de salvar."}, {title: "Rotação intuitiva", desc: "Gire qualquer página e visualize o resultado na hora."}]},
+            "pt": { tagline: "A ferramenta PDF nativa definitiva. 100% offline, ultra rápida.", features: [{title: "Fusão perfeita", desc: "Arraste e solte para combinar vários PDFs instantaneamente."}, {title: "Divisão precisa", desc: "Extraia exatamente as páginas que precisa com facilidade."}, {title: "Prévia em tempo real", desc: "Veja as alterações instantaneamente antes de salvar."}, {title: "Rotação intuitiva", desc: "Gire qualquer página e visualize o resultado na hora."}]},
             "ru": { tagline: "Лучший нативный PDF-инструмент. 100% офлайн, сверхбыстрый.", features: [{title: "Бесшовное слияние", desc: "Мгновенно объединяйте PDF перетаскиванием."}, {title: "Точное разделение", desc: "Легко извлекайте нужные страницы из документов."}, {title: "Живой предпросмотр", desc: "Мгновенно проверяйте результат перед сохранением."}, {title: "Интуитивный поворот", desc: "Свободно вращайте страницы с быстрым просмотром."}]}
         };
-
-        const grid = document.getElementById('bento-grid');
-        for (let i = 1; i <= 4; i++) {
-            grid.innerHTML += `
-                <div class="bento-card rounded-[2.5rem] p-8 flex flex-col">
-                    <div class="mb-8"><h3 id="feat-title-${i}" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-${i}" class="text-gray-500 font-medium text-lg leading-relaxed"></p></div>
-                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in group/shot" onclick="openModal(document.getElementById('shot-${i}').src)">
-                        <div id="skeleton-${i}" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
-                        <img id="shot-${i}" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0 group-hover/shot:scale-[1.03] transition-transform duration-700">
-                    </div>
-                </div>`;
-        }
 
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
@@ -155,7 +177,7 @@
             const savedLang = localStorage.getItem('moring_lang') || navigator.language || 'en';
             let matched = 'en';
             if(savedLang.includes('zh-CN')) matched = 'zh-CN'; else if(savedLang.includes('zh')) matched = 'zh-TW';
-            else if(savedLang.includes('ja')) matched = 'ja'; else if(savedLang.includes('ko')) matched = Korean = 'ko';
+            else if(savedLang.includes('ja')) matched = 'ja'; else if(savedLang.includes('ko')) matched = 'ko';
             else if(savedLang.includes('de')) matched = 'de'; else if(savedLang.includes('fr')) matched = 'fr';
             else if(savedLang.includes('es')) matched = 'es'; else if(savedLang.includes('it')) matched = 'it';
             else if(savedLang.includes('pt')) matched = 'pt'; else if(savedLang.includes('ru')) matched = 'ru';
