@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Merge & Split Assistant - Moring Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; background-color: #fbfbfd; color: #1d1d1f; overflow-x: hidden; }
+        .glass-nav { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .gallery-track { display: flex; gap: 2rem; padding: 2rem 50vw 4rem 2rem; }
+        .shot-wrapper { flex: 0 0 85%; max-width: 900px; border-radius: 2rem; overflow: hidden; background: #ffffff; border: 1px solid rgba(0,0,0,0.04); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08); scroll-snap-align: center; position: relative; }
+        .shot-wrapper:hover { transform: scale(1.02) translateY(-10px); box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.08); }
+        .skeleton { position: absolute; inset: 0; background: #f0f0f5; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .icon-shadow { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); border: 1px solid rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-500 selection:text-white">
+
+    <nav class="glass-nav fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../../index.html" class="text-xl font-extrabold tracking-tighter text-black flex items-center gap-2 hover:opacity-70 transition-opacity">
+                <i class="fas fa-chevron-left text-sm mr-1"></i> MORING LABS
+            </a>
+            <div class="relative group">
+                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh-CN">🇨🇳 简体中文</option>
+                    <option value="zh-TW">🇭🇰 繁體中文</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="pt">🇧🇷 Português</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main id="portfolio-container" class="pt-32 pb-32 flex flex-col gap-40 overflow-hidden"></main>
+
+    <footer class="py-12 border-t border-gray-200/60 bg-white/50">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium">
+            <p>&copy; 2026 Moring Labs. Built for macOS.</p>
+            <div class="space-x-6 mt-4 md:mt-0">
+                <a href="support.html" class="hover:text-black transition-colors">Support</a>
+                <a href="privacy.html" class="hover:text-black transition-colors">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ==========================================
+        // 因为网页现在就放在软件文件夹里，配置极简！
+        // ==========================================
+        const APP_INFO = {
+            name: "PDF Merge & Split Assistant",
+            versionDir: "2.1.0",
+            versionFile: "2_1_0",
+            platform: "Mac",
+            imgCount: 4,
+            taglines: {
+                "en": "Privacy-focused, native macOS PDF management.",
+                "zh-CN": "隐私至上，专为 macOS 设计的原生 PDF 工具。"
+            }
+        };
+
+        const LANG_MAP = {
+            "en": "en-US", "zh-CN": "zh-Hans", "zh-TW": "zh-Hant",
+            "ja": "ja", "ko": "ko", "de": "de-DE", "fr": "fr-FR",
+            "es": "es-ES", "it": "it", "pt": "pt-BR", "ru": "ru"
+        };
+
+        function renderApp(langCode) {
+            const container = document.getElementById('portfolio-container');
+            container.innerHTML = ''; 
+            const fLang = LANG_MAP[langCode] || "en-US";
+            const tagline = APP_INFO.taglines[langCode] || APP_INFO.taglines['en'];
+
+            // 1. 设置相对路径（因为网页和图片在同一级目录，直接写名字即可！）
+            const iconPath = `${APP_INFO.name}-AppIcon.webp`;
+
+            const section = document.createElement('section');
+            section.className = 'reveal';
+            
+            let htmlContent = `
+                <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start gap-8 text-center md:text-left mb-12">
+                    <img src="${iconPath}" class="w-32 h-32 md:w-40 md:h-40 rounded-[32px] icon-shadow" alt="${APP_INFO.name} Icon">
+                    <div class="flex-1 pt-2">
+                        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900">${APP_INFO.name}</h1>
+                        <p class="text-xl text-gray-500 font-medium mb-8 max-w-2xl">${tagline}</p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                            <a href="#" class="bg-black text-white px-8 py-3 rounded-full font-bold hover:scale-105 hover:shadow-xl transition-all"><i class="fab fa-apple mr-2"></i> Mac App Store</a>
+                            <a href="privacy.html" class="px-8 py-3 rounded-full border border-gray-300 font-bold text-black hover:bg-gray-50 transition-colors">Privacy</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full overflow-x-auto hide-scrollbar snap-x snap-mandatory">
+                    <div class="gallery-track">
+            `;
+
+            for (let i = 1; i <= APP_INFO.imgCount; i++) {
+                const fileName = `${APP_INFO.name}-${APP_INFO.versionFile}-${fLang}-${APP_INFO.platform}-${i}.webp`;
+                // 直接指向当前目录下的 Screenshots 文件夹！
+                const imgPath = `Screenshots/${APP_INFO.versionDir}/${fLang}/${APP_INFO.platform}/${fileName}`;
+                
+                htmlContent += `
+                    <div class="shot-wrapper">
+                        <div class="skeleton"></div>
+                        <img src="${imgPath}" class="w-full h-auto relative z-10 opacity-0 transition-opacity duration-700" 
+                             onload="this.style.opacity=1; this.previousElementSibling.style.display='none';">
+                    </div>
+                `;
+            }
+
+            htmlContent += `</div></div>`;
+            section.innerHTML = htmlContent;
+            container.appendChild(section);
+            observeElements();
+        }
+
+        function observeElements() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.1 });
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        function switchLang(lang) {
+            localStorage.setItem('moring_lang', lang);
+            renderApp(lang);
+        }
+
+        window.onload = () => {
+            const savedLang = localStorage.getItem('moring_lang') || 'en';
+            document.getElementById('langSelector').value = savedLang;
+            renderApp(savedLang);
+            setTimeout(() => document.querySelector('section.reveal').classList.add('active'), 100);
+        };
+    </script>
+</body>
+</html>
