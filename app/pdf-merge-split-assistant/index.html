@@ -8,50 +8,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
-            background-color: #fbfbfd; 
-            color: #1d1d1f;
-            overflow-x: hidden;
-        }
-
-        .glass-nav { 
-            background: rgba(255, 255, 255, 0.75); 
-            backdrop-filter: blur(24px) saturate(180%); 
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .ambient-glow {
-            position: absolute; 
-            width: 1200px; 
-            height: 1200px;
-            background: radial-gradient(circle, rgba(64,156,255,0.12) 0%, rgba(255,255,255,0) 70%);
-            top: -300px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            z-index: -1; 
-            pointer-events: none;
-        }
-
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; background-color: #fbfbfd; color: #1d1d1f; overflow-x: hidden; }
+        .glass-nav { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .ambient-glow { position: absolute; width: 1200px; height: 1200px; background: radial-gradient(circle, rgba(64,156,255,0.12) 0%, rgba(255,255,255,0) 70%); top: -300px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
         .premium-shadow { box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0,0,0,0.05); }
-        
-        .bento-card {
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(0,0,0,0.04);
-            background: #ffffff;
-            overflow: hidden; /* 确保内容绝不溢出容器 */
-        }
-        .bento-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12);
-            border: 1px solid rgba(0,0,0,0.08);
-        }
-
+        .bento-card { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(0,0,0,0.04); background: #ffffff; overflow: hidden; }
+        .bento-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12); border: 1px solid rgba(0,0,0,0.08); }
         @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
         .animate-fade-in { animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        
         .skeleton-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
         .img-transition { transition: opacity 0.5s ease-in-out; }
@@ -66,18 +30,17 @@
             <a href="../../index.html" class="text-lg font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2">
                 <i class="fas fa-chevron-left text-sm"></i> Moring Labs
             </a>
-            
             <div class="relative group">
                 <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
                     <option value="en">🇺🇸 English</option>
                     <option value="zh-CN">🇨🇳 简体中文</option>
                     <option value="zh-TW">🇭🇰 繁體中文</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="ko">🇰🇷 한국어</option>
                     <option value="de">🇩🇪 Deutsch</option>
                     <option value="fr">🇫🇷 Français</option>
                     <option value="es">🇪🇸 Español</option>
                     <option value="it">🇮🇹 Italiano</option>
-                    <option value="ja">🇯🇵 日本語</option>
-                    <option value="ko">🇰🇷 한국어</option>
                     <option value="pt">🇧🇷 Português</option>
                     <option value="ru">🇷🇺 Русский</option>
                 </select>
@@ -94,303 +57,115 @@
             </div>
             <h1 id="appName" class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900"></h1>
             <p id="appTagline" class="text-xl md:text-2xl text-gray-500 font-medium mb-12 max-w-2xl leading-relaxed"></p>
-            
             <div class="flex flex-wrap justify-center gap-4 font-semibold text-base md:text-lg">
-                <a href="https://apps.apple.com/us/app/pdf-merge-split-assistant/id6758044607?mt=12" class="bg-black text-white px-8 md:px-10 py-4 rounded-full hover:scale-105 transition-all duration-300 flex items-center shadow-lg">
-                    <i class="fab fa-apple mr-2 text-xl"></i> Mac App Store
-                </a>
-                <a href="privacy.html" class="bg-white text-black px-8 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300">
-                    <i class="fas fa-shield-alt mr-2 text-gray-400"></i> Privacy
-                </a>
-                <a href="support.html" class="bg-white text-black px-8 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300">
-                    <i class="fas fa-life-ring mr-2 text-gray-400"></i> Support
-                </a>
+                <a href="https://apps.apple.com/us/app/pdf-merge-split-assistant/id6758044607?mt=12" class="bg-black text-white px-8 md:px-10 py-4 rounded-full hover:scale-105 transition-all duration-300 flex items-center shadow-lg"><i class="fab fa-apple mr-2 text-xl"></i> Mac App Store</a>
+                <a href="privacy.html" class="bg-white text-black px-8 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300"><i class="fas fa-shield-alt mr-2 text-gray-400"></i> Privacy</a>
+                <a href="support.html" class="bg-white text-black px-8 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300"><i class="fas fa-life-ring mr-2 text-gray-400"></i> Support</a>
             </div>
         </section>
 
         <section class="mt-24">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 animate-fade-in opacity-0" style="animation-delay: 0.2s;">
-                
-                <div class="bento-card rounded-[2.5rem] p-8">
-                    <div class="mb-8">
-                        <h3 id="feat-title-1" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3>
-                        <p id="feat-desc-1" class="text-gray-500 font-medium text-lg leading-relaxed"></p>
-                    </div>
-                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner">
-                        <div id="skeleton-1" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
-                        <img id="shot-1" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
-                    </div>
+            <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 animate-fade-in opacity-0" style="animation-delay: 0.2s;">
                 </div>
-
-                <div class="bento-card rounded-[2.5rem] p-8">
-                    <div class="mb-8">
-                        <h3 id="feat-title-2" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3>
-                        <p id="feat-desc-2" class="text-gray-500 font-medium text-lg leading-relaxed"></p>
-                    </div>
-                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner">
-                        <div id="skeleton-2" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
-                        <img id="shot-2" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
-                    </div>
-                </div>
-
-                <div class="bento-card rounded-[2.5rem] p-8">
-                    <div class="mb-8">
-                        <h3 id="feat-title-3" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3>
-                        <p id="feat-desc-3" class="text-gray-500 font-medium text-lg leading-relaxed"></p>
-                    </div>
-                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner">
-                        <div id="skeleton-3" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
-                        <img id="shot-3" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
-                    </div>
-                </div>
-
-                <div class="bento-card rounded-[2.5rem] p-8">
-                    <div class="mb-8">
-                        <h3 id="feat-title-4" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3>
-                        <p id="feat-desc-4" class="text-gray-500 font-medium text-lg leading-relaxed"></p>
-                    </div>
-                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner">
-                        <div id="skeleton-4" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
-                        <img id="shot-4" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
-                    </div>
-                </div>
-
-            </div>
         </section>
     </main>
 
-    <footer class="py-12 border-t border-gray-200/60 bg-white/50">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium">
-            <p>&copy; 2026 Moring Labs. Built for macOS.</p>
-            <div class="space-x-6 mt-4 md:mt-0">
-                <a href="../../index.html" class="hover:text-black transition-colors">Studio Home</a>
-                <a href="support.html" class="hover:text-black transition-colors">Support</a>
-                <a href="privacy.html" class="hover:text-black transition-colors">Privacy</a>
-            </div>
+    <footer class="py-12 border-t border-gray-200/60 bg-white/50 text-center flex flex-col items-center">
+        <p class="text-sm text-gray-500 font-medium mb-2">&copy; 2026 Moring Labs. Built for macOS.</p>
+        <div class="space-x-6">
+            <a href="../../index.html" class="hover:text-black transition-colors">Studio Home</a>
+            <a href="support.html" class="hover:text-black transition-colors">Support</a>
+            <a href="privacy.html" class="hover:text-black transition-colors">Privacy</a>
         </div>
     </footer>
 
-    <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 md:p-12 bg-white/40 backdrop-blur-2xl transition-all duration-500 opacity-0" onclick="closeModal()">
-    <div class="relative max-w-6xl w-full h-full flex items-center justify-center">
-        <img id="modalImage" src="" class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl transition-transform duration-500 scale-90" onclick="event.stopPropagation()">
-        <button class="absolute top-0 right-0 m-4 text-gray-400 hover:text-black transition-colors">
-            <i class="fas fa-times text-2xl"></i>
-        </button>
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-2 md:p-4 bg-white/40 backdrop-blur-2xl transition-all duration-500 opacity-0" onclick="closeModal()">
+        <div class="relative max-w-[95vw] max-h-[95vh] flex items-center justify-center">
+            <img id="modalImage" src="" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-transform duration-500 scale-90" onclick="event.stopPropagation()">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors bg-white/80 rounded-full w-10 h-10 flex items-center justify-center shadow-sm">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
     </div>
-</div>
 
     <script>
         const INFO = {
-            name: "PDF Merge & Split Assistant",
-            versionDir: "2.1.0",
-            versionFile: "2_1_0",
-            platform: "Mac",
-            langMap: {
-                "en": "en-US", "zh-CN": "zh-Hans", "zh-TW": "zh-Hant",
-                "ja": "ja", "ko": "ko", "de": "de-DE", "fr": "fr-FR",
-                "es": "es-ES", "it": "it", "pt": "pt-BR", "ru": "ru"
-            }
+            name: "PDF Merge & Split Assistant", versionDir: "2.1.0", versionFile: "2_1_0", platform: "Mac",
+            langMap: { "en": "en-US", "zh-CN": "zh-Hans", "zh-TW": "zh-Hant", "ja": "ja", "ko": "ko", "de": "de-DE", "fr": "fr-FR", "es": "es-ES", "it": "it", "pt": "pt-BR", "ru": "ru" }
         };
 
         const TEXTS = {
-            "en": {
-                tagline: "The ultimate native PDF tool. 100% offline, blazing fast.",
-                features: [
-                    { title: "Seamless Merging", desc: "Drag and drop to combine multiple PDFs instantly." },
-                    { title: "Precision Splitting", desc: "Extract exactly the pages you need with ease." },
-                    { title: "Real-time Preview", desc: "See your changes instantly before saving." },
-                    { title: "Intuitive Page Rotation", desc: "Freely rotate any page and preview changes in real-time." }
-                ]
-            },
-            "zh-CN": {
-                tagline: "极速、安全的 macOS 原生 PDF 工具。100% 离线处理。",
-                features: [
-                    { title: "拖拽无缝合并", desc: "轻松拖放，将多个 PDF 文件快速合并为一个。" },
-                    { title: "灵活精准拆分", desc: "按需逐页提取或拆分多个文件，高效便捷。" },
-                    { title: "实时视觉预览", desc: "所见即所得，操作前即刻确认最终呈现效果。" },
-                    { title: "直观页面旋转", desc: "自由旋转任意页面并实时预览修改，无需等待合并。" }
-                ]
-            },
-            "zh-TW": {
-                tagline: "極速、安全的 macOS 原生 PDF 工具。100% 離線處理。",
-                features: [
-                    { title: "拖曳無縫合併", desc: "輕鬆拖放，將多個 PDF 文件快速合併為一個。" },
-                    { title: "靈活精準拆分", desc: "按需逐頁提取或拆分多個文件，高效便捷。" },
-                    { title: "即時視覺預覽", desc: "所見即所得，操作前即刻確認最終呈現效果。" },
-                    { title: "直觀頁面旋轉", desc: "自由旋轉任意頁面並即時預覽修改，無需等待合併。" }
-                ]
-            },
-            "ja": {
-                tagline: "究極のプライバシー重視のネイティブPDFツール。100％オフライン、超高速。",
-                features: [
-                    { title: "シームレスな結合", desc: "ドラッグ＆ドロップで複数のPDFを即座に結合します。" },
-                    { title: "正確な分割", desc: "必要なページだけを簡単に抽出できます。" },
-                    { title: "リアルタイムプレビュー", desc: "保存する前に変更を即座に確認できます。" },
-                    { title: "直感的なページ回転", desc: "任意のページを自由に回転してリアルタイムでプレビュー。" }
-                ]
-            },
-            "ko": {
-                tagline: "궁극의 개인 정보 보호 네이티브 PDF 도구. 100% 오프라인, 초고속.",
-                features: [
-                    { title: "매끄러운 병합", desc: "드래그 앤 드롭으로 여러 PDF를 즉시 병합하세요." },
-                    { title: "정밀한 분할", desc: "필요한 페이지만 쉽게 추출할 수 있습니다." },
-                    { title: "실시간 미리보기", desc: "저장하기 전에 변경 사항을 즉시 확인하세요." },
-                    { title: "직관적인 페이지 회전", desc: "원하는 페이지를 자유롭게 회전하고 실시간으로 미리 확인하세요." }
-                ]
-            },
-            "de": {
-                tagline: "Das ultimative native PDF-Tool. 100% offline, blitzschnell.",
-                features: [
-                    { title: "Nahtloses Zusammenführen", desc: "Drag & Drop, um mehrere PDFs sofort zu kombinieren." },
-                    { title: "Präzises Teilen", desc: "Extrahieren Sie genau die Seiten, die Sie benötigen." },
-                    { title: "Echtzeit-Vorschau", desc: "Sehen Sie Ihre Änderungen sofort, bevor Sie speichern." },
-                    { title: "Intuitive Seitendrehung", desc: "Seiten frei drehen und in Echtzeit in der Vorschau anzeigen." }
-                ]
-            },
-            "fr": {
-                tagline: "L'outil PDF natif ultime. 100% hors ligne, ultra rapide.",
-                features: [
-                    { title: "Fusion transparente", desc: "Glissez et déposez pour combiner plusieurs PDF instantanément." },
-                    { title: "Fractionnement précis", desc: "Extrayez facilement les pages dont vous avez exactement besoin." },
-                    { title: "Aperçu en temps réel", desc: "Voyez vos modifications instantanément avant de sauvegarder." },
-                    { title: "Rotation intuitive", desc: "Faites pivoter n'importe quelle page et prévisualisez en temps réel." }
-                ]
-            },
-            "es": {
-                tagline: "La herramienta PDF nativa definitiva. 100% sin conexión, ultrarrápida.",
-                features: [
-                    { title: "Fusión perfecta", desc: "Arrastra y suelta para combinar varios PDF al instante." },
-                    { title: "División precisa", desc: "Extrae exactamente las páginas que necesitas con facilidad." },
-                    { title: "Vista previa en tiempo real", desc: "Ve tus cambios al instante antes de guardar." },
-                    { title: "Rotación intuitiva", desc: "Gira cualquier página libremente y obtén una vista previa en tiempo real." }
-                ]
-            },
-            "it": {
-                tagline: "Lo strumento PDF nativo definitivo. 100% offline, velocissimo.",
-                features: [
-                    { title: "Unione senza interruzioni", desc: "Trascina e rilascia per combinare più PDF all'istante." },
-                    { title: "Divisione di precisione", desc: "Estrai esattamente le pagine di cui hai bisogno con facilità." },
-                    { title: "Anteprima in tempo reale", desc: "Guarda le tue modifiche all'istante prima di salvare." },
-                    { title: "Rotazione intuitiva", desc: "Ruota liberamente qualsiasi pagina e visualizza l'anteprima in tempo reale." }
-                ]
-            },
-            "pt": {
-                tagline: "A ferramenta PDF nativa definitiva. 100% offline, extremamente rápida.",
-                features: [
-                    { title: "Mesclagem perfeita", desc: "Arraste e solte para combinar vários PDFs instantaneamente." },
-                    { title: "Divisão precisa", desc: "Extraia exatamente as páginas que você precisa com facilidade." },
-                    { title: "Visualização em tempo real", desc: "Veja suas alterações instantaneamente antes de salvar." },
-                    { title: "Rotação intuitiva", Portuguese: "Gire livremente qualquer página e visualize em tempo real." }
-                ]
-            },
-            "ru": {
-                tagline: "Идеальный нативный PDF-инструмент. 100% оффлайн, молниеносно.",
-                features: [
-                    { title: "Бесшовное объединение", desc: "Перетащите файлы, чтобы мгновенно объединить несколько PDF." },
-                    { title: "Точное разделение", desc: "С легкостью извлекайте именно те страницы, которые вам нужны." },
-                    { title: "Предпросмотр онлайн", desc: "Мгновенно просматривайте изменения перед сохранением." },
-                    { title: "Интуитивный поворот", desc: "Свободно поворачивайте любую страницу и просматривайте результат." }
-                ]
-            }
+            "en": { tagline: "The ultimate native PDF tool. 100% offline, blazing fast.", features: [{title: "Seamless Merging", desc: "Drag and drop to combine multiple PDFs instantly."}, {title: "Precision Splitting", desc: "Extract exactly the pages you need with ease."}, {title: "Real-time Preview", desc: "See your changes instantly before saving."}, {title: "Intuitive Rotation", desc: "Freely rotate any page and preview changes in real-time."}]},
+            "zh-CN": { tagline: "极速、安全的 macOS 原生 PDF 工具。100% 离线处理。", features: [{title: "拖拽无缝合并", desc: "轻松拖放，将多个 PDF 文件快速合并为一个。"}, {title: "灵活精准拆分", desc: "按需逐页提取或拆分多个文件，高效便捷。"}, {title: "实时视觉预览", desc: "所见即所得，操作前即刻确认最终呈现效果。"}, {title: "直观页面旋转", desc: "自由旋转任意页面并实时预览修改，无需等待合并。"}]},
+            "zh-TW": { tagline: "極速、安全的 macOS 原生 PDF 工具。100% 離線處理。", features: [{title: "拖曳無縫合併", desc: "輕鬆拖放，將多個 PDF 文件快速合併為一個。"}, {title: "靈活精準拆分", desc: "按需逐頁提取或拆分多個文件，高效便捷。"}, {title: "即時視覺預覽", desc: "所見即所得，操作前即刻確認最終呈現效果。"}, {title: "直觀頁面旋轉", desc: "自由旋轉任意頁面並即時預覽修改，無需等待合併。"}]},
+            "ja": { tagline: "究極のネイティブPDFツール。100%オフライン、超高速。", features: [{title: "スムーズな結合", desc: "ドラッグ&ドロップで複数のPDFを瞬時に結合。"}, {title: "精密な分割", desc: "必要なページだけを簡単に抽出・分割。"}, {title: "リアルタイム表示", desc: "保存前に変更を即座に確認できるプレビュー。"}, {title: "直感的な回転", desc: "ページを自由に回転し、その場で結果を確認。"}]},
+            "ko": { tagline: "최고의 네이티브 PDF 도구. 100% 오프라인, 초고속 처리.", features: [{title: "원활한 병합", desc: "드래그 앤 드롭으로 여러 PDF를 즉시 병합합니다."}, {title: "정밀한 분할", desc: "필요한 페이지만 쉽고 정확하게 추출합니다."}, {title: "실시간 미리보기", desc: "저장하기 전에 변경 사항을 즉시 확인하십시오."}, {title: "직관적인 회전", desc: "페이지를 자유롭게 회전하고 즉시 결과를 확인."}]},
+            "de": { tagline: "Das ultimative native PDF-Tool. 100% offline, blitzschnell.", features: [{title: "Nahtloses Zusammenführen", desc: "Mehrere PDFs per Drag & Drop sofort kombinieren."}, {title: "Präzises Teilen", desc: "Genau die Seiten extrahieren, die Sie benötigen."}, {title: "Echtzeit-Vorschau", desc: "Änderungen sofort vor dem Speichern sehen."}, {title: "Intuitive Rotation", desc: "Seiten frei drehen und sofort in der Vorschau prüfen."}]},
+            "fr": { tagline: "L'outil PDF natif ultime. 100% hors ligne, ultra rapide.", features: [{title: "Fusion fluide", desc: "Combinez plusieurs PDF instantanément par glisser-déposer."}, {title: "Fractionnement précis", desc: "Extrayez exactement les pages dont vous avez besoin."}, {title: "Aperçu en temps réel", desc: "Visualisez vos modifications avant de sauvegarder."}, {title: "Rotation intuitive", desc: "Faites pivoter les pages et voyez le résultat direct."}]},
+            "es": { tagline: "La herramienta PDF nativa definitiva. 100% offline, ultrarrápida.", features: [{title: "Fusión sin fisuras", desc: "Arrastra y suelta para combinar varios PDF al instante."}, {title: "División de precisión", desc: "Extrae exactamente las páginas que necesitas fácilmente."}, {title: "Vista previa real", desc: "Mira tus cambios al instante antes de guardar."}, {title: "Rotación intuitiva", desc: "Gira cualquier página y previsualiza al momento."}]},
+            "it": { tagline: "Lo strumento PDF nativo definitivo. 100% offline, velocissimo.", features: [{title: "Unione fluida", desc: "Trascina e rilascia per combinare più PDF all'istante."}, {title: "Divisione precisa", desc: "Estrai esattamente le pagine necessarie con facilità."}, {title: "Anteprima live", desc: "Visualizza le modifiche istantaneamente prima di salvare."}, {title: "Rotazione intuitiva", desc: "Ruota le pagine e verifica subito il risultato."}]},
+            "pt": { tagline: "A ferramenta PDF nativa definitiva. 100% offline, ultra rápida.", features: [{title: "Fusão perfeita", desc: "Arraste e solte para combinar vários PDFs instantaneamente."}, {title: "Divisão precisa", desc: "Extraia exatamente as páginas que precisa com facilidade."}, {title: "Prévia em tempo real", desc: "Veja as alterações instantaneamente antes de salvar."}, {title: "Rotação intuitiva", desc: "Gire qualquer página e visualize o resultado na hora."}]},
+            "ru": { tagline: "Лучший нативный PDF-инструмент. 100% офлайн, сверхбыстрый.", features: [{title: "Бесшовное слияние", desc: "Мгновенно объединяйте PDF перетаскиванием."}, {title: "Точное разделение", desc: "Легко извлекайте нужные страницы из документов."}, {title: "Живой предпросмотр", desc: "Мгновенно проверяйте результат перед сохранением."}, {title: "Интуитивный поворот", desc: "Свободно вращайте страницы с быстрым просмотром."}]}
         };
+
+        const grid = document.getElementById('bento-grid');
+        for (let i = 1; i <= 4; i++) {
+            grid.innerHTML += `
+                <div class="bento-card rounded-[2.5rem] p-8 flex flex-col">
+                    <div class="mb-8"><h3 id="feat-title-${i}" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-${i}" class="text-gray-500 font-medium text-lg leading-relaxed"></p></div>
+                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-${i}').src)">
+                        <div id="skeleton-${i}" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
+                        <img id="shot-${i}" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
+                    </div>
+                </div>`;
+        }
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+
+        function openModal(src) {
+            if(!src) return; modalImg.src = src; modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.add('opacity-100'); modalImg.classList.add('scale-100'); modalImg.classList.remove('scale-90'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('opacity-100'); modalImg.classList.add('scale-90'); modalImg.classList.remove('scale-100');
+            setTimeout(() => { modal.classList.add('hidden'); document.body.style.overflow = ''; }, 400);
+        }
 
         function updateUI(lang) {
             const fLang = INFO.langMap[lang] || "en-US";
-            const currentText = TEXTS[lang] || TEXTS['en'];
-
+            const data = TEXTS[lang] || TEXTS['en'];
             document.getElementById('appIcon').src = `${INFO.name}-AppIcon.webp`;
             document.getElementById('appName').innerText = INFO.name;
-            document.getElementById('appTagline').innerText = currentText.tagline;
-
+            document.getElementById('appTagline').innerText = data.tagline;
             for (let i = 1; i <= 4; i++) {
-                document.getElementById(`feat-title-${i}`).innerText = currentText.features[i-1].title;
-                document.getElementById(`feat-desc-${i}`).innerText = currentText.features[i-1].desc;
-
-                const imgElement = document.getElementById(`shot-${i}`);
-                const skeleton = document.getElementById(`skeleton-${i}`);
-                
-                imgElement.style.opacity = '0';
-                skeleton.style.display = 'block';
-
-                const fileName = `${INFO.name}-${INFO.versionFile}-${fLang}-${INFO.platform}-${i}.webp`;
-                const path = `Screenshots/${INFO.versionDir}/${fLang}/${INFO.platform}/${fileName}`;
-                
-                imgElement.onload = () => {
-                    skeleton.style.display = 'none';
-                    imgElement.style.opacity = '1'; 
-                };
-                imgElement.src = path;
+                document.getElementById(`feat-title-${i}`).innerText = data.features[i-1].title;
+                document.getElementById(`feat-desc-${i}`).innerText = data.features[i-1].desc;
+                const img = document.getElementById(`shot-${i}`), sk = document.getElementById(`skeleton-${i}`);
+                img.style.opacity = '0'; sk.style.display = 'block';
+                img.onload = () => { sk.style.display = 'none'; img.style.opacity = '1'; };
+                img.src = `Screenshots/${INFO.versionDir}/${fLang}/${INFO.platform}/${INFO.name}-${INFO.versionFile}-${fLang}-${INFO.platform}-${i}.webp`;
             }
         }
 
-        function switchLang(lang) {
-            localStorage.setItem('moring_lang', lang);
-            updateUI(lang);
-        }
+        function switchLang(lang) { localStorage.setItem('moring_lang', lang); updateUI(lang); }
 
         window.onload = () => {
             const savedLang = localStorage.getItem('moring_lang') || navigator.language || 'en';
-            let matchedLang = 'en';
-            if(savedLang.includes('zh-CN') || savedLang.includes('zh-Hans')) matchedLang = 'zh-CN';
-            else if(savedLang.includes('zh')) matchedLang = 'zh-TW';
-            else if(savedLang.includes('ja')) matchedLang = 'ja';
-            else if(savedLang.includes('ko')) matchedLang = 'ko';
-            else if(savedLang.includes('de')) matchedLang = 'de';
-            else if(savedLang.includes('fr')) matchedLang = 'fr';
-            else if(savedLang.includes('es')) matchedLang = 'es';
-            else if(savedLang.includes('it')) matchedLang = 'it';
-            else if(savedLang.includes('pt')) matchedLang = 'pt';
-            else if(savedLang.includes('ru')) matchedLang = 'ru';
-            
-            const finalLang = INFO.langMap[savedLang] ? savedLang : matchedLang;
-            
-            const selector = document.getElementById('langSelector');
-            if(selector.querySelector(`option[value="${finalLang}"]`)) {
-                selector.value = finalLang;
-            }
-            updateUI(finalLang);
+            let matched = 'en';
+            if(savedLang.includes('zh-CN')) matched = 'zh-CN'; else if(savedLang.includes('zh')) matched = 'zh-TW';
+            else if(savedLang.includes('ja')) matched = 'ja'; else if(savedLang.includes('ko')) matched = 'ko';
+            else if(savedLang.includes('de')) matched = 'de'; else if(savedLang.includes('fr')) matched = 'fr';
+            else if(savedLang.includes('es')) matched = 'es'; else if(savedLang.includes('it')) matched = 'it';
+            else if(savedLang.includes('pt')) matched = 'pt'; else if(savedLang.includes('ru')) matched = 'ru';
+            const final = INFO.langMap[matched] ? matched : 'en';
+            document.getElementById('langSelector').value = final;
+            updateUI(final);
             setTimeout(() => document.querySelector('section.animate-fade-in').classList.add('opacity-100'), 100);
         };
-
-        // 全屏预览功能逻辑
-const modal = document.getElementById('imageModal');
-const modalImg = document.getElementById('modalImage');
-
-// 为所有截图添加点击事件
-for (let i = 1; i <= 4; i++) {
-    const img = document.getElementById(`shot-${i}`);
-    img.style.cursor = 'zoom-in'; // 鼠标悬停时显示放大镜
-    img.onclick = function() {
-        openModal(this.src);
-    };
-}
-
-function openModal(src) {
-    modalImg.src = src;
-    modal.classList.remove('hidden');
-    // 强制触发重绘，确保动画生效
-    setTimeout(() => {
-        modal.classList.add('opacity-100');
-        modalImg.classList.add('scale-100');
-        modalImg.classList.remove('scale-90');
-    }, 10);
-    document.body.style.overflow = 'hidden'; // 锁定背景滚动
-}
-
-function closeModal() {
-    modal.classList.remove('opacity-100');
-    modalImg.classList.add('scale-90');
-    modalImg.classList.remove('scale-100');
-    setTimeout(() => {
-        modal.classList.add('hidden');
-        document.body.style.overflow = ''; // 恢复滚动
-    }, 400); // 等待动画结束
-}
-
-// 支持 ESC 键关闭
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-});
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
     </script>
 </body>
 </html>
