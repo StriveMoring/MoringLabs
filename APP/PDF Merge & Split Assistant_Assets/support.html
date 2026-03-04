@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - PDF Merge & Split Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', -apple-system, sans-serif; scroll-behavior: smooth; }
+        .faq-answer { display: none; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active i { transform: rotate(180deg); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <nav class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <span class="font-bold text-lg tracking-tight text-slate-900">PDF Merge & Split Assistant</span>
+            <div class="relative inline-block text-left">
+                <select onchange="updateLang(this.value)" id="langSelector" class="block w-full bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer">
+                    <option value="en">🇺🇸 English (US)</option>
+                    <option value="zh-CN">🇨🇳 中文 (简体)</option>
+                    <option value="zh-TW">🇭🇰 中文 (繁體)</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="es">🇪🇸 Español (ES)</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="pt">🇧🇷 Português (BR)</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-12">
+        <header class="mb-16 text-center">
+            <h1 id="mainTitle" class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Support & Help Center</h1>
+            <p id="subTitle" class="text-xl text-slate-500 max-w-2xl mx-auto">Everything you need to know about using PDF Merge & Split Assistant on macOS.</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-object-group text-xl"></i>
+                </div>
+                <h2 id="mergeTitle" class="text-2xl font-bold mb-4">How to Merge</h2>
+                <ul id="mergeList" class="space-y-3 text-slate-600">
+                    </ul>
+            </div>
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-scissors text-xl"></i>
+                </div>
+                <h2 id="splitTitle" class="text-2xl font-bold mb-4">How to Split</h2>
+                <ul id="splitList" class="space-y-3 text-slate-600">
+                    </ul>
+            </div>
+        </div>
+
+        <section class="mb-16">
+            <h2 id="faqSectionTitle" class="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+            <div id="faqContainer" class="space-y-4 max-w-3xl mx-auto">
+                </div>
+        </section>
+
+        <section class="bg-slate-900 text-white rounded-3xl p-8 md:p-12 mb-16">
+            <h2 id="specsTitle" class="text-2xl font-bold mb-8">System Requirements</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8" id="specsGrid">
+                </div>
+        </section>
+
+        <section class="text-center py-12 border-t border-slate-200">
+            <h2 id="contactTitle" class="text-2xl font-bold mb-4 text-slate-900">Still need help?</h2>
+            <p id="contactText" class="text-slate-500 mb-8">Our support team is ready to assist you.</p>
+            <a href="mailto:strivemoring@gmail.com" class="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
+                <i class="fas fa-envelope mr-2"></i> strivemoring@gmail.com
+            </a>
+        </section>
+    </main>
+
+    <footer class="py-12 text-center text-slate-400 text-sm">
+        <p>&copy; 2026 Moring Labs. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            "en": {
+                mainTitle: "Support & Help Center",
+                subTitle: "Everything you need to know about using PDF Merge & Split Assistant on macOS.",
+                mergeTitle: "Merge PDF",
+                mergeList: ["Drag & Drop PDFs into the list", "Adjust order by dragging items", "Preview the result in real-time", "Click 'Merge' to save"],
+                splitTitle: "Split PDF",
+                splitList: ["Add files to the split tab", "Click 'Split' and choose a folder", "Pages are saved as 'Filename_PageN.pdf'", "Supports multi-file batch processing"],
+                faqSectionTitle: "Common Questions",
+                faqs: [
+                    { q: "Is my data safe?", a: "Yes. All processing is 100% offline. Files never leave your Mac." },
+                    { q: "What are the Free Version limits?", a: "Merge up to 3 files and split up to 5 pages per document." },
+                    { q: "How to restore my Pro purchase?", a: "Open the upgrade window and click 'Restore Purchase'." }
+                ],
+                specsTitle: "System Requirements",
+                specs: { os: "macOS 13.5+", chip: "Apple & Intel", size: "10 MB", net: "None (Offline)" },
+                contactTitle: "Still need help?",
+                contactText: "Our support team is ready to assist you."
+            },
+            "zh-CN": {
+                mainTitle: "支持与帮助中心",
+                subTitle: "关于在 macOS 上使用 PDF Merge & Split Assistant 的一切指南。",
+                mergeTitle: "合并 PDF",
+                mergeList: ["将 PDF 拖入列表", "拖拽列表项调整顺序", "实时预览合并效果", "点击“合并”即可保存"],
+                splitTitle: "拆分 PDF",
+                splitList: ["在拆分选项卡中添加文件", "点击“拆分”并选择保存目录", "文件将按“原文件名_第N页”保存", "支持多文件批量处理"],
+                faqSectionTitle: "常见问题",
+                faqs: [
+                    { q: "我的数据安全吗？", a: "100% 安全。所有处理均在本地离线完成，文件绝不上传。" },
+                    { q: "免费版有什么限制？", a: "合并最多 3 个文件，拆分最多 5 页。" },
+                    { q: "如何恢复专业版购买？", a: "打开升级界面，点击“恢复购买”即可。" }
+                ],
+                specsTitle: "系统要求",
+                specs: { os: "macOS 13.5+", chip: "M芯片 & Intel", size: "10 MB", net: "仅内购需要" },
+                contactTitle: "仍有疑问？",
+                contactText: "我们的支持团队随时准备为您提供帮助。"
+            },
+            "zh-TW": {
+                mainTitle: "支援與幫助中心",
+                subTitle: "關於在 macOS 上使用 PDF Merge & Split Assistant 的完整指南。",
+                mergeTitle: "合併 PDF",
+                mergeList: ["將 PDF 拖入清單", "拖拽清單項調整順序", "即時預覽合併效果", "點擊「合併」即可保存"],
+                splitTitle: "拆分 PDF",
+                splitList: ["在拆分選項卡中添加文件", "點擊「拆分」並選擇保存目錄", "文件將按「原文件名_第N頁」保存", "支持多文件批量處理"],
+                faqSectionTitle: "常見問題",
+                faqs: [
+                    { q: "我的數據安全嗎？", a: "100% 安全。所有處理均在本地離線完成，文件絕不上傳。" },
+                    { q: "免費版有什麼限制？", a: "合併最多 3 個文件，拆分最多 5 頁。" },
+                    { q: "如何恢復專業版購買？", a: "打開升級介面，點擊「恢復購買」即可。" }
+                ],
+                specsTitle: "系統要求",
+                specs: { os: "macOS 13.5+", chip: "M晶片 & Intel", size: "10 MB", net: "僅內購需要" },
+                contactTitle: "仍有疑問？",
+                contactText: "我們的支持團隊隨時準備為您提供幫助。"
+            },
+            "ja": {
+                mainTitle: "サポート＆ヘルプセンター",
+                subTitle: "macOSでの PDF Merge & Split Assistant の使用に関するすべてのガイド。",
+                mergeTitle: "PDF結合",
+                mergeList: ["PDFをリストにドラッグ", "ドラッグして順序を調整", "リアルタイムでプレビュー", "「結合」をクリックして保存"],
+                splitTitle: "PDF分割",
+                splitList: ["分割タブにファイルを追加", "「分割」をクリックして保存先を選択", "「ファイル名_Nページ」として保存", "複数ファイルのバッチ処理に対応"],
+                faqSectionTitle: "よくある質問",
+                faqs: [
+                    { q: "データは安全ですか？", a: "はい。すべての処理は100%オフラインで行われ、ファイルが送信されることはありません。" },
+                    { q: "無料版の制限は何ですか？", a: "最大3ファイルの結合、5ページまでの分割が可能です。" },
+                    { q: "プロ版の購入を復元するには？", a: "アップグレード画面を開き、「購入を復元」をクリックしてください。" }
+                ],
+                specsTitle: "システム要件",
+                specs: { os: "macOS 13.5+", chip: "Apple & Intel", size: "10 MB", net: "オフライン" },
+                contactTitle: "まだ助けが必要ですか？",
+                contactText: "サポートチームがお手伝いします。"
+            },
+            "ko": {
+                mainTitle: "지원 및 도움말 센터",
+                subTitle: "macOS용 PDF Merge & Split Assistant 사용에 관한 모든 안내.",
+                mergeTitle: "PDF 병합",
+                mergeList: ["PDF를 목록으로 드래그", "항목을 드래그하여 순서 조정", "실시간 미리보기 확인", "「병합」을 클릭하여 저장"],
+                splitTitle: "PDF 분할",
+                splitList: ["분할 탭에 파일 추가", "「분할」 클릭 후 폴더 선택", "「파일명_N페이지」로 저장", "다중 파일 일괄 처리 지원"],
+                faqSectionTitle: "자주 묻는 질문",
+                faqs: [
+                    { q: "내 데이터는 안전한가요?", a: "예. 모든 처리는 100% 오프라인으로 진행되며 파일은 외부로 전송되지 않습니다." },
+                    { q: "무료 버전의 제한은?", a: "최대 3개 파일 병합, 5페이지까지 분할 가능합니다." },
+                    { q: "프로 구매 복원 방법은?", a: "업그레이드 창에서 「구매 복원」을 클릭하세요." }
+                ],
+                specsTitle: "시스템 요구 사양",
+                specs: { os: "macOS 13.5+", chip: "Apple & Intel", size: "10 MB", net: "오프라인" },
+                contactTitle: "도움이 더 필요하신가요?",
+                contactText: "지원 팀이 도와드릴 준비가 되어 있습니다."
+            },
+            "de": {
+                mainTitle: "Support-Center",
+                subTitle: "Alles, was Sie über die Nutzung von PDF Merge & Split Assistant auf macOS wissen müssen.",
+                mergeTitle: "PDF Zusammenfügen",
+                mergeList: ["PDFs in die Liste ziehen", "Reihenfolge per Drag & Drop anpassen", "Echtzeit-Vorschau prüfen", "Auf 'Zusammenfügen' klicken"],
+                splitTitle: "PDF Trennen",
+                splitList: ["Dateien zum Trennen hinzufügen", "Auf 'Trennen' klicken & Ordner wählen", "Seiten werden einzeln gespeichert", "Batch-Verarbeitung unterstützt"],
+                faqSectionTitle: "Häufige Fragen",
+                faqs: [
+                    { q: "Sind meine Daten sicher?", a: "Ja. Die Verarbeitung erfolgt zu 100% lokal auf Ihrem Mac." },
+                    { q: "Limits der Gratisversion?", a: "Max. 3 Dateien zusammenfügen, 5 Seiten trennen." },
+                    { q: "Kauf wiederherstellen?", a: "Upgrade-Fenster öffnen und auf 'Kauf wiederherstellen' klicken." }
+                ],
+                specsTitle: "Systemanforderungen",
+                specs: { os: "macOS 13.5+", chip: "Apple & Intel", size: "10 MB", net: "Keine (Offline)" },
+                contactTitle: "Brauchen Sie Hilfe?",
+                contactText: "Unser Support-Team ist für Sie da."
+            },
+            "fr": {
+                mainTitle: "Centre d'Assistance",
+                subTitle: "Tout ce qu'il faut savoir sur PDF Merge & Split Assistant pour macOS.",
+                mergeTitle: "Fusionner PDF",
+                mergeList: ["Glisser les PDF dans la liste", "Ajuster l'ordre par glissement", "Aperçu en temps réel", "Cliquer sur 'Fusionner'"],
+                splitTitle: "Diviser PDF",
+                splitList: ["Ajouter des fichiers à diviser", "Cliquer sur 'Diviser' & choisir un dossier", "Fichiers nommés par page", "Traitement par lot supporté"],
+                faqSectionTitle: "Questions Fréquentes",
+                faqs: [
+                    { q: "Mes données sont-elles en sécurité ?", a: "Oui. Le traitement est 100% hors ligne." },
+                    { q: "Limites de la version gratuite ?", a: "Max 3 fichiers fusionnés, 5 pages divisées." },
+                    { q: "Restaurer mon achat ?", a: "Ouvrez la fenêtre Pro et cliquez sur 'Restaurer'." }
+                ],
+                specsTitle: "Configuration",
+                specs: { os: "macOS 13.5+", chip: "Apple & Intel", size: "10 MB", net: "Hors ligne" },
+                contactTitle: "Besoin d'aide ?",
+                contactText: "Notre équipe est à votre écoute."
+            },
+            "es": {
+                mainTitle: "Centro de Soporte",
+                subTitle: "Guía completa de PDF Merge & Split Assistant para macOS.",
+                mergeTitle: "Combinar PDF",
+                mergeList: ["Arrastra archivos a la lista", "Ordena arrastrando elementos", "Vista previa en tiempo real", "Pulsa 'Combinar' para guardar"],
+                splitTitle: "Dividir PDF",
+                splitList: ["Añade archivos para dividir", "Pulsa 'Dividir' y elige carpeta", "Se guardan por número de página", "Procesamiento por lotes"],
+                faqSectionTitle: "Preguntas Comunes",
+                faqs: [
+                    { q: "¿Mis datos están seguros?", a: "Sí. Todo el proceso es 100% local." },
+                    { q: "¿Límites de versión gratuita?", a: "Máx 3 archivos combinados, 5 páginas divididas." },
+                    { q: "¿Restaurar compra?", a: "En la ventana Pro, pulsa 'Restaurar compra'." }
+                ],
+                specsTitle: "Requisitos",
+                specs: { os: "macOS 13.5+", chip: "Apple & Intel", size: "10 MB", net: "Sin conexión" },
+                contactTitle: "¿Aún necesitas ayuda?",
+                contactText: "Nuestro equipo está listo para ayudarte."
+            },
+            "it": {
+                mainTitle: "Centro Assistenza",
+                subTitle: "Guida all'uso di PDF Merge & Split Assistant su macOS.",
+                mergeTitle: "Unisci PDF",
+                mergeList: ["Trascina i PDF nella lista", "Ordina trascinando gli elementi", "Anteprima in tempo reale", "Clicca 'Unisci'"],
+                splitTitle: "Dividi PDF",
+                splitList: ["Aggiungi file da dividere", "Clicca 'Dividi' e scegli cartella", "Salvati come 'Nome_PaginaN.pdf'", "Supporta elaborazione batch"],
+                faqSectionTitle: "Domande Frequenti",
+                faqs: [
+                    { q: "I dati sono al sicuro?", a: "Sì. L'elaborazione è 100% offline." },
+                    { q: "Limiti versione gratuita?", a: "Max 3 file uniti, 5 pagine divise." },
+                    { q: "Ripristinare acquisto?", a: "Apri upgrade e clicca 'Ripristina'." }
+                ],
+                specsTitle: "Requisiti",
+                specs: { os: "macOS 13.5+", chip: "Apple & Intel", size: "10 MB", net: "Offline" },
+                contactTitle: "Serve aiuto?",
+                contactText: "Il nostro team è a disposizione."
+            },
+            "pt": {
+                mainTitle: "Centro de Suporte",
+                subTitle: "Guia de uso do PDF Merge & Split Assistant no macOS.",
+                mergeTitle: "Mesclar PDF",
+                mergeList: ["Arraste os PDFs para a lista", "Ajuste a ordem arrastando", "Pré-visualização em tempo real", "Clique em 'Mesclar'"],
+                splitTitle: "Dividir PDF",
+                splitList: ["Adicione arquivos para dividir", "Clique em 'Dividir' e escolha a pasta", "Salvos por número de página", "Processamento em lote"],
+                faqSectionTitle: "Dúvidas Frequentes",
+                faqs: [
+                    { q: "Meus dados estão seguros?", a: "Sim. O processamento é 100% local." },
+                    { q: "Limites da versão grátis?", a: "Máx 3 arquivos mesclados, 5 páginas divididas." },
+                    { q: "Restaurar compra?", a: "Abra o upgrade e clique em 'Restaurar'." }
+                ],
+                specsTitle: "Requisitos",
+                specs: { os: "macOS 13.5+", chip: "Apple & Intel", size: "10 MB", net: "Offline" },
+                contactTitle: "Precisa de ajuda?",
+                contactText: "Nossa equipe está pronta para ajudar."
+            },
+            "ru": {
+                mainTitle: "Центр поддержки",
+                subTitle: "Руководство по PDF Merge & Split Assistant для macOS.",
+                mergeTitle: "Объединение",
+                mergeList: ["Перетащите PDF в список", "Измените порядок перетаскиванием", "Предпросмотр в реальном времени", "Нажмите 'Объединить'"],
+                splitTitle: "Разделение",
+                splitList: ["Добавьте файлы для разделения", "Нажмите 'Разделить' и выберите папку", "Сохраняется по страницам", "Пакетная обработка"],
+                faqSectionTitle: "Частые вопросы",
+                faqs: [
+                    { q: "Данные в безопасности?", a: "Да. Обработка на 100% локальна." },
+                    { q: "Ограничения бесплатной версии?", a: "До 3 файлов объединения, 5 страниц разделения." },
+                    { q: "Восстановить покупку?", a: "В окне апгрейда нажмите 'Восстановить'." }
+                ],
+                specsTitle: "Требования",
+                specs: { os: "macOS 13.5+", chip: "Apple и Intel", size: "10 МБ", net: "Оффлайн" },
+                contactTitle: "Нужна помощь?",
+                contactText: "Наша команда готова помочь."
+            }
+        };
+
+        function updateLang(langCode) {
+            const data = translations[langCode] || translations['en'];
+            
+            document.getElementById('mainTitle').innerText = data.mainTitle;
+            document.getElementById('subTitle').innerText = data.subTitle;
+            document.getElementById('mergeTitle').innerText = data.mergeTitle;
+            document.getElementById('splitTitle').innerText = data.splitTitle;
+            document.getElementById('faqSectionTitle').innerText = data.faqSectionTitle;
+            document.getElementById('specsTitle').innerText = data.specsTitle;
+            document.getElementById('contactTitle').innerText = data.contactTitle;
+            document.getElementById('contactText').innerText = data.contactText;
+
+            // Merge List
+            const mList = document.getElementById('mergeList');
+            mList.innerHTML = data.mergeList.map(item => `<li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i><span>${item}</span></li>`).join('');
+
+            // Split List
+            const sList = document.getElementById('splitList');
+            sList.innerHTML = data.splitList.map(item => `<li class="flex items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 mr-3"></i><span>${item}</span></li>`).join('');
+
+            // FAQ
+            const faqBox = document.getElementById('faqContainer');
+            faqBox.innerHTML = data.faqs.map((f, i) => `
+                <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow" onclick="this.classList.toggle('active')">
+                    <div class="px-6 py-4 flex justify-between items-center font-bold text-slate-900">
+                        ${f.q} <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer px-6 pb-4 text-slate-600 border-t border-slate-50 pt-3">
+                        ${f.a}
+                    </div>
+                </div>
+            `).join('');
+
+            // Specs
+            const specGrid = document.getElementById('specsGrid');
+            const icons = { os: 'desktop', chip: 'microchip', size: 'hdd', net: 'wifi' };
+            specGrid.innerHTML = Object.entries(data.specs).map(([key, val]) => `
+                <div class="text-center md:text-left">
+                    <div class="text-slate-500 mb-2 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-${icons[key]} mr-2"></i> ${key.toUpperCase()}
+                    </div>
+                    <div class="font-bold text-lg">${val}</div>
+                </div>
+            `).join('');
+
+            localStorage.setItem('preferredLang', langCode);
+        }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem('preferredLang') || 'en';
+            document.getElementById('langSelector').value = savedLang;
+            updateLang(savedLang);
+        }
+    </script>
+</body>
+</html>
