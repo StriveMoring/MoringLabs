@@ -46,7 +46,20 @@
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12);
             border: 1px solid rgba(0,0,0,0.08);
         }
+
+        /* 即将上线卡片的专属高级磨砂质感 */
+        .app-card.upcoming {
+            background: #fafafa;
+            border: 1px solid rgba(0,0,0,0.03);
+            cursor: default;
+        }
+        .app-card.upcoming:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+        }
+        
         .icon-shadow { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); }
+        .icon-upcoming { filter: saturate(80%) opacity(0.95); }
         
         @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
         .animate-fade-in { animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -94,14 +107,12 @@
     </nav>
 
     <header class="pt-48 pb-24 px-6 text-center animate-fade-in">
-        <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-black to-gray-600">
-            Crafting pure native <br>experiences.
-        </h1>
-        <p id="hero-desc" class="text-xl text-gray-500 font-medium max-w-2xl mx-auto">An independent app studio focused on performance, privacy, and elegant design.</p>
+        <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-black to-gray-600"></h1>
+        <p id="hero-desc" class="text-xl text-gray-500 font-medium max-w-2xl mx-auto"></p>
     </header>
 
     <main class="max-w-6xl mx-auto px-6 pb-32 animate-fade-in" style="animation-delay: 0.1s; opacity: 0;">
-        <h2 id="section-title" class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-8 ml-2">Our Products</h2>
+        <h2 id="section-title" class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-8 ml-2"></h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
@@ -114,18 +125,48 @@
                         <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded-full">macOS Native</span>
                     </div>
                 </div>
-                <p id="pdf-desc" class="text-gray-500 text-lg font-medium mb-8">The ultimate privacy-focused PDF tool. 100% offline, blazing fast.</p>
+                <p id="pdf-desc" class="text-gray-500 text-lg font-medium mb-8"></p>
                 <div class="flex items-center text-black font-bold group-hover:text-blue-600 transition-colors">
-                    <span id="pdf-learn">Learn More</span> <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    <span id="pdf-learn"></span> <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </a>
+
+            <div class="app-card upcoming rounded-[2.5rem] p-8 md:p-10 block group">
+                <div class="flex items-start gap-6 mb-8">
+                    <img src="app/appsubmitter/AppSubmitter-AppIcon.webp" 
+                         class="w-24 h-24 rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 icon-upcoming" alt="AppSubmitter">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2 leading-tight">AppSubmitter</h3>
+                        <span id="tag-coming-1" class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-bold rounded-full border border-indigo-100"></span>
+                    </div>
+                </div>
+                <p id="submitter-desc" class="text-gray-500 text-lg font-medium mb-8"></p>
+                <div class="flex items-center text-gray-400 font-bold">
+                    <span id="btn-coming-1"></span> <i class="fas fa-flask ml-2"></i>
+                </div>
+            </div>
+
+            <div class="app-card upcoming rounded-[2.5rem] p-8 md:p-10 block group">
+                <div class="flex items-start gap-6 mb-8">
+                    <img src="app/formatrocket/FormatRocket-AppIcon.webp" 
+                         class="w-24 h-24 rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 icon-upcoming" alt="FormatRocket">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2 leading-tight">FormatRocket</h3>
+                        <span id="tag-coming-2" class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-bold rounded-full border border-indigo-100"></span>
+                    </div>
+                </div>
+                <p id="rocket-desc" class="text-gray-500 text-lg font-medium mb-8"></p>
+                <div class="flex items-center text-gray-400 font-bold">
+                    <span id="btn-coming-2"></span> <i class="fas fa-flask ml-2"></i>
+                </div>
+            </div>
 
             <div class="rounded-[2.5rem] p-8 md:p-10 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center text-center bg-gray-50/50 min-h-[300px]">
                 <div class="w-20 h-20 bg-gray-200 rounded-3xl mb-6 flex items-center justify-center">
                     <i class="fas fa-hammer text-2xl text-gray-400"></i>
                 </div>
-                <h3 id="new-proj-title" class="text-xl font-bold text-gray-400 mb-2">New Project</h3>
-                <p id="new-proj-desc" class="text-gray-400 font-medium">In development...</p>
+                <h3 id="new-proj-title" class="text-xl font-bold text-gray-400 mb-2"></h3>
+                <p id="new-proj-desc" class="text-gray-400 font-medium"></p>
             </div>
 
         </div>
@@ -133,7 +174,7 @@
 
     <footer class="py-12 border-t border-gray-200/60 bg-white/50 text-center flex flex-col items-center">
         <p class="text-sm text-gray-500 font-medium mb-2">&copy; 2026 Moring Labs. Built with craftsmanship.</p>
-        <a id="contact-us" href="mailto:strivemoring@gmail.com" class="text-sm text-blue-500 hover:text-blue-600 font-semibold transition-colors">Contact Us</a>
+        <a id="contact-us" href="mailto:strivemoring@gmail.com" class="text-sm text-blue-500 hover:text-blue-600 font-semibold transition-colors"></a>
     </footer>
 
     <script>
@@ -144,6 +185,10 @@
                 sectionTitle: "Our Products",
                 pdfDesc: "The ultimate privacy-focused PDF tool. 100% offline, blazing fast.",
                 pdfLearn: "Learn More",
+                submitterDesc: "The ultimate App Store Connect manager. Automate localizations with AI, manage assets, and streamline your release workflow.",
+                rocketDesc: "Lightning-fast multimedia format converter. Transform your video, audio, and images effortlessly with pure native performance.",
+                tagComing: "Coming Soon",
+                btnComing: "In Testing",
                 newProjTitle: "New Project",
                 newProjDesc: "In development...",
                 contact: "Contact Us"
@@ -154,6 +199,10 @@
                 sectionTitle: "我们的产品",
                 pdfDesc: "终极隐私保护 PDF 工具。100% 离线处理，极致快速。",
                 pdfLearn: "了解更多",
+                submitterDesc: "终极 App Store Connect 管理工具。借助 AI 自动化本地化翻译，高效管理素材与发布流程。",
+                rocketDesc: "极速多媒体格式转换神器。以纯原生的性能，轻松、离线转换您的视频、音频和图片。",
+                tagComing: "即将推出",
+                btnComing: "内测中",
                 newProjTitle: "全新项目",
                 newProjDesc: "正在开发中...",
                 contact: "联系我们"
@@ -164,6 +213,10 @@
                 sectionTitle: "我們的產品",
                 pdfDesc: "終極隱私保護 PDF 工具。100% 離線處理，極致快速。",
                 pdfLearn: "了解更多",
+                submitterDesc: "終極 App Store Connect 管理工具。借助 AI 自動化本地化翻譯，高效管理素材與發布流程。",
+                rocketDesc: "極速多媒體格式轉換神器。以純原生的效能，輕鬆、離線轉換您的影片、音訊和圖片。",
+                tagComing: "即將推出",
+                btnComing: "內測中",
                 newProjTitle: "全新項目",
                 newProjDesc: "正在開發中...",
                 contact: "聯絡我們"
@@ -174,9 +227,27 @@
                 sectionTitle: "製品情報",
                 pdfDesc: "究極のプライバシー重視PDFツール。100%オフライン、超高速。",
                 pdfLearn: "詳細を見る",
+                submitterDesc: "究極のApp Store Connectマネージャー。AIによる翻訳とアセット管理で、リリース作業を自動化。",
+                rocketDesc: "超高速のマルチメディア変換ツール。ネイティブのパフォーマンスで動画や音声を簡単に変換。",
+                tagComing: "近日公開",
+                btnComing: "テスト中",
                 newProjTitle: "新プロジェクト",
                 newProjDesc: "開発中...",
                 contact: "お問い合わせ"
+            },
+            "ko": {
+                heroTitle: "순수한 네이티브 <br>경험 제작.",
+                heroDesc: "성능, 개인 정보 보호 및 우아한 디자인에 중점을 둔 독립 앱 스튜디오입니다.",
+                sectionTitle: "우리의 제품",
+                pdfDesc: "개인 정보 보호에 중점을 고도로 특화된 최고의 PDF 도구. 100% 오프라인, 초고속.",
+                pdfLearn: "더 알아보기",
+                submitterDesc: "최고의 App Store Connect 관리 도구. AI로 현지화를 자동화하고 릴리스 워크플로우를 간소화하세요.",
+                rocketDesc: "초고속 멀티미디어 포맷 변환 도구. 순수 네이티브 성능으로 비디오, 오디오 및 이미지를 쉽게 변환하세요.",
+                tagComing: "출시 예정",
+                btnComing: "테스트 중",
+                newProjTitle: "새 프로젝트",
+                newProjDesc: "개발 중...",
+                contact: "문의하기"
             },
             "de": {
                 heroTitle: "Echte native <br>Erlebnisse.",
@@ -184,19 +255,13 @@
                 sectionTitle: "Unsere Produkte",
                 pdfDesc: "Das ultimative datenschutzorientierte PDF-Tool. 100% offline, blitzschnell.",
                 pdfLearn: "Mehr erfahren",
+                submitterDesc: "Der ultimative App Store Connect Manager. Automatisieren Sie Lokalisierungen mit AI und verwalten Sie Assets effizient.",
+                rocketDesc: "Blitzschnelles Multimedia-Konvertierungstool. Transformieren Sie Ihre Videos, Audios und Bilder mühelos mit nativer Leistung.",
+                tagComing: "Demnächst",
+                btnComing: "Im Test",
                 newProjTitle: "Neues Projekt",
                 newProjDesc: "In Entwicklung...",
                 contact: "Kontakt"
-            },
-            "es": {
-                heroTitle: "Creando experiencias <br>nativas puras.",
-                heroDesc: "Un estudio de aplicaciones independiente centrado en el rendimiento, la privacidad y el diseño elegante.",
-                sectionTitle: "Nuestros productos",
-                pdfDesc: "La herramienta PDF definitiva centrada en la privacidad. 100% sin conexión, ultrarrápida.",
-                pdfLearn: "Saber más",
-                newProjTitle: "Nuevo Proyecto",
-                newProjDesc: "En desarrollo...",
-                contact: "Contáctenos"
             },
             "fr": {
                 heroTitle: "Création d'expériences <br>natives pures.",
@@ -204,9 +269,27 @@
                 sectionTitle: "Nos produits",
                 pdfDesc: "L'outil PDF ultime axé sur la confidentialité. 100% hors ligne, ultra rapide.",
                 pdfLearn: "En savoir plus",
+                submitterDesc: "Le gestionnaire ultime d'App Store Connect. Automatisez la localisation avec l'IA et gérez vos ressources efficacement.",
+                rocketDesc: "Outil de conversion multimédia ultra-rapide. Transformez vos vidéos, audios et images sans effort avec des performances natives.",
+                tagComing: "Bientôt disponible",
+                btnComing: "En test",
                 newProjTitle: "Nouveau Projet",
                 newProjDesc: "En développement...",
                 contact: "Nous contacter"
+            },
+            "es": {
+                heroTitle: "Creando experiencias <br>nativas puras.",
+                heroDesc: "Un estudio de aplicaciones independiente centrado en el rendimiento, la privacidad y el diseño elegante.",
+                sectionTitle: "Nuestros productos",
+                pdfDesc: "La herramienta PDF definitiva centrada en la privacidad. 100% sin conexión, ultrarrápida.",
+                pdfLearn: "Saber más",
+                submitterDesc: "El administrador definitivo de App Store Connect. Automatice traducciones con IA y gestione activos fácilmente.",
+                rocketDesc: "Herramienta de conversión multimedia ultrarrápida. Transforme sus vídeos, audios e imágenes sin esfuerzo con rendimiento nativo.",
+                tagComing: "Próximamente",
+                btnComing: "En pruebas",
+                newProjTitle: "Nuevo Proyecto",
+                newProjDesc: "En desarrollo...",
+                contact: "Contáctenos"
             },
             "it": {
                 heroTitle: "Creiamo esperienze <br>native pure.",
@@ -214,19 +297,13 @@
                 sectionTitle: "I nostri prodotti",
                 pdfDesc: "Lo strumento PDF definitivo incentrato sulla privacy. 100% offline, velocissimo.",
                 pdfLearn: "Scopri di più",
+                submitterDesc: "Il gestore definitivo per App Store Connect. Automatizza le traduzioni con l'IA e gestisci le risorse facilmente.",
+                rocketDesc: "Strumento di conversione multimediale ultraveloce. Trasforma i tuoi video, audio e immagini senza sforzo con prestazioni native.",
+                tagComing: "In arrivo",
+                btnComing: "In test",
                 newProjTitle: "Nuovo Progetto",
                 newProjDesc: "In sviluppo...",
                 contact: "Contattaci"
-            },
-            "ko": {
-                heroTitle: "순수한 네이티브 <br>경험 제작.",
-                heroDesc: "성능, 개인 정보 보호 및 우아한 디자인에 중점을 둔 독립 앱 스튜디오입니다.",
-                sectionTitle: "우리의 제품",
-                pdfDesc: "개인 정보 보호에 중점을 둔 최고의 PDF 도구. 100% 오프라인, 초고속.",
-                pdfLearn: "더 알아보기",
-                newProjTitle: "새 프로젝트",
-                newProjDesc: "개발 중...",
-                contact: "문의하기"
             },
             "pt": {
                 heroTitle: "Criando experiências <br>nativas puras.",
@@ -234,6 +311,10 @@
                 sectionTitle: "Nossos produtos",
                 pdfDesc: "A ferramenta PDF definitiva focada na privacidade. 100% offline, extremamente rápida.",
                 pdfLearn: "Saiba mais",
+                submitterDesc: "O gerenciador definitivo do App Store Connect. Automatize traduções com IA e gerencie ativos facilmente.",
+                rocketDesc: "Ferramenta de conversão multimídia ultrarrápida. Transforme seus vídeos, áudios e imagens sem esforço com desempenho nativo.",
+                tagComing: "Em breve",
+                btnComing: "Em teste",
                 newProjTitle: "Novo Projeto",
                 newProjDesc: "Em desenvolvimento...",
                 contact: "Contate-nos"
@@ -244,6 +325,10 @@
                 sectionTitle: "Наши продукты",
                 pdfDesc: "Идеальный PDF-инструмент с упором на конфиденциальность. 100% оффлайн, молниеносно.",
                 pdfLearn: "Узнать больше",
+                submitterDesc: "Идеальный менеджер App Store Connect. Автоматизируйте переводы с ИИ и легко управляйте ассетами.",
+                rocketDesc: "Сверхбыстрый мультимедийный конвертер. Преобразуйте видео, аудио и изображения без усилий с нативной производительностью.",
+                tagComing: "Скоро",
+                btnComing: "В тестировании",
                 newProjTitle: "Новый проект",
                 newProjDesc: "В разработке...",
                 contact: "Связаться с нами"
@@ -256,10 +341,21 @@
             document.getElementById('hero-title').innerHTML = data.heroTitle;
             document.getElementById('hero-desc').innerText = data.heroDesc;
             document.getElementById('section-title').innerText = data.sectionTitle;
+            
             document.getElementById('pdf-desc').innerText = data.pdfDesc;
             document.getElementById('pdf-learn').innerText = data.pdfLearn;
+            
+            document.getElementById('submitter-desc').innerText = data.submitterDesc;
+            document.getElementById('tag-coming-1').innerText = data.tagComing;
+            document.getElementById('btn-coming-1').innerText = data.btnComing;
+            
+            document.getElementById('rocket-desc').innerText = data.rocketDesc;
+            document.getElementById('tag-coming-2').innerText = data.tagComing;
+            document.getElementById('btn-coming-2').innerText = data.btnComing;
+            
             document.getElementById('new-proj-title').innerText = data.newProjTitle;
             document.getElementById('new-proj-desc').innerText = data.newProjDesc;
+            
             document.getElementById('contact-us').innerText = data.contact;
         }
 
