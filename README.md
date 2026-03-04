@@ -1,4 +1,4 @@
-#  Moring Labs
+#  Moring Labs
 
 > **Crafting pure native experiences with craftsmanship.**
 
