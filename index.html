@@ -9,58 +9,87 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
-        body { font-family: 'Inter', -apple-system, sans-serif; background-color: #000000; color: #ffffff; overflow-x: hidden; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
+            background-color: #fbfbfd; 
+            color: #1d1d1f; 
+            overflow-x: hidden; 
+        }
 
-        /* 极致的深色毛玻璃导航 */
+        /* 浅色高级毛玻璃导航 */
         .glass-nav { 
-            background: rgba(0, 0, 0, 0.6); 
+            background: rgba(255, 255, 255, 0.75); 
             backdrop-filter: blur(24px) saturate(180%); 
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         /* 横向滑动长廊隐藏滚动条 */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* 截图卡片的动态呼吸与悬浮效果 */
-        .gallery-track { display: flex; gap: 2rem; padding: 1rem 50vw 2rem 2rem; }
-        .shot-wrapper {
-            flex: 0 0 80%; max-width: 900px;
-            border-radius: 1.5rem; overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            scroll-snap-align: center;
+        /* 画廊滑动轨道 */
+        .gallery-track { 
+            display: flex; 
+            gap: 2rem; 
+            padding: 2rem 50vw 4rem 2rem; /* 保证最后一张图能居中 */
         }
+        
+        /* 截图卡片：去掉多余文字，纯展示你的精美图片 */
+        .shot-wrapper {
+            flex: 0 0 85%; 
+            max-width: 900px;
+            border-radius: 2rem; 
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+            scroll-snap-align: center;
+            position: relative;
+        }
+        
         .shot-wrapper:hover {
             transform: scale(1.02) translateY(-10px);
-            box-shadow: 0 30px 60px rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.08);
         }
+
+        /* 骨架屏呼吸灯动画（解决加载时难看的问题） */
+        .skeleton {
+            position: absolute; inset: 0; background: #f0f0f5;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
 
         /* 滚动渐显动画 */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* App 图标光晕 */
-        .icon-glow { filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.15)); }
+        /* App 图标柔和阴影 */
+        .icon-shadow { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); border: 1px solid rgba(0,0,0,0.05); }
     </style>
 </head>
 <body class="antialiased selection:bg-blue-500 selection:text-white">
 
-    <nav class="glass-nav fixed top-0 w-full z-50">
+    <nav class="glass-nav fixed top-0 w-full z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="text-xl font-extrabold tracking-tighter text-white flex items-center gap-2">
-                <i class="fab fa-apple"></i> MORING LABS
+            <span class="text-xl font-extrabold tracking-tighter text-black flex items-center gap-2">
+                <i class="fab fa-apple text-xl"></i> MORING LABS
             </span>
             <div class="relative group">
-                <select id="langSelector" onchange="switchLang(this.value)" class="bg-white/10 hover:bg-white/20 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none text-white border border-white/10">
-                    <option value="en" class="text-black">🇺🇸 English</option>
-                    <option value="zh-CN" class="text-black">🇨🇳 简体中文</option>
-                    <option value="zh-TW" class="text-black">🇭🇰 繁體中文</option>
-                    <option value="ja" class="text-black">🇯🇵 日本語</option>
-                    <option value="de" class="text-black">🇩🇪 Deutsch</option>
-                    <option value="es" class="text-black">🇪🇸 Español</option>
+                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh-CN">🇨🇳 简体中文</option>
+                    <option value="zh-TW">🇭🇰 繁體中文</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="pt">🇧🇷 Português</option>
+                    <option value="ru">🇷🇺 Русский</option>
                 </select>
                 <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
             </div>
@@ -68,26 +97,26 @@
     </nav>
 
     <header class="pt-48 pb-20 px-6 text-center reveal">
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-black to-gray-600">
             Crafting pure native <br>experiences.
         </h1>
-        <p class="text-xl text-gray-400 font-medium max-w-2xl mx-auto">Independent macOS studio focused on performance, privacy, and elegant design.</p>
+        <p class="text-xl text-gray-500 font-medium max-w-2xl mx-auto">Independent macOS studio focused on performance, privacy, and elegant design.</p>
     </header>
 
     <main id="portfolio-container" class="pb-32 flex flex-col gap-40 overflow-hidden"></main>
 
-    <footer class="py-12 border-t border-white/10 bg-black">
+    <footer class="py-12 border-t border-gray-200/60 bg-white/50">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium">
-            <p>&copy; 2026 Moring Labs.</p>
+            <p>&copy; 2026 Moring Labs. Built for macOS.</p>
             <div class="space-x-6 mt-4 md:mt-0">
-                <a href="mailto:strivemoring@gmail.com" class="hover:text-white transition-colors">Contact</a>
+                <a href="mailto:strivemoring@gmail.com" class="hover:text-black transition-colors">Contact</a>
             </div>
         </div>
     </footer>
 
     <script>
         // ==========================================
-        // 核心管理区：未来加新软件，只需在这里加一段配置！
+        // 核心配置区：管理你的所有软件
         // ==========================================
         const APPS_CONFIG = [
             {
@@ -95,60 +124,46 @@
                 versionDir: "2.1.0",
                 versionFile: "2_1_0",
                 platform: "Mac",
-                imgCount: 4, // 这个软件有几张图
+                imgCount: 4, // 动态生成4张画廊图
                 taglines: {
                     "en": "Privacy-focused, native macOS PDF management.",
                     "zh-CN": "隐私至上，专为 macOS 设计的原生 PDF 工具。"
                 }
             }
-            // 未来如果你要加上传工具，直接取消下面这段注释：
-            /*
-            ,{
-                name: "AppSubmitter",
-                versionDir: "1.0.0",
-                versionFile: "1_0_0",
-                platform: "Mac",
-                imgCount: 4,
-                taglines: {
-                    "en": "The ultimate tool for Apple developers to manage App Store Connect.",
-                    "zh-CN": "专为苹果开发者打造的 App Store Connect 管理利器。"
-                }
-            }
-            */
+            // 以后有新软件，复制上面这段，改个名字就搞定！
         ];
 
-        // 统一的语言映射表
+        // 严格遵循你的语言文件夹命名规范
         const LANG_MAP = {
             "en": "en-US", "zh-CN": "zh-Hans", "zh-TW": "zh-Hant",
             "ja": "ja", "ko": "ko", "de": "de-DE", "fr": "fr-FR",
             "es": "es-ES", "it": "it", "pt": "pt-BR", "ru": "ru"
         };
 
-        // 渲染整个作品集
         function renderPortfolio(langCode) {
             const container = document.getElementById('portfolio-container');
-            container.innerHTML = ''; // 清空容器
+            container.innerHTML = ''; 
             
             const fLang = LANG_MAP[langCode] || "en-US";
 
-            APPS_CONFIG.forEach((app, index) => {
+            APPS_CONFIG.forEach((app) => {
                 const basePath = `APP/${app.name}_Assets`;
                 const iconPath = `${basePath}/${app.name}-AppIcon.webp`;
                 const tagline = app.taglines[langCode] || app.taglines['en'];
 
-                // 1. 构建 App 的头部信息
                 const section = document.createElement('section');
                 section.className = 'reveal';
                 
+                // 构建 HTML
                 let htmlContent = `
                     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start gap-8 text-center md:text-left mb-12">
-                        <img src="${iconPath}" class="w-32 h-32 md:w-40 md:h-40 rounded-[32px] icon-glow border border-white/10" alt="${app.name} Icon">
+                        <img src="${iconPath}" class="w-32 h-32 md:w-40 md:h-40 rounded-[32px] icon-shadow" alt="${app.name} Icon">
                         <div class="flex-1 pt-2">
-                            <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">${app.name}</h2>
-                            <p class="text-xl text-gray-400 font-medium mb-8 max-w-2xl">${tagline}</p>
+                            <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900">${app.name}</h2>
+                            <p class="text-xl text-gray-500 font-medium mb-8 max-w-2xl">${tagline}</p>
                             <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                                <a href="#" class="bg-white text-black px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform"><i class="fab fa-apple mr-2"></i> Mac App Store</a>
-                                <a href="privacy.html" class="px-8 py-3 rounded-full border border-white/20 font-bold hover:bg-white/10 transition-colors">Privacy</a>
+                                <a href="#" class="bg-black text-white px-8 py-3 rounded-full font-bold hover:scale-105 hover:shadow-xl transition-all"><i class="fab fa-apple mr-2"></i> Mac App Store</a>
+                                <a href="privacy.html" class="px-8 py-3 rounded-full border border-gray-300 font-bold text-black hover:bg-gray-50 transition-colors">Privacy</a>
                             </div>
                         </div>
                     </div>
@@ -156,15 +171,16 @@
                         <div class="gallery-track">
                 `;
 
-                // 2. 动态生成截图
+                // 注入截图，并加入骨架屏机制
                 for (let i = 1; i <= app.imgCount; i++) {
                     const fileName = `${app.name}-${app.versionFile}-${fLang}-${app.platform}-${i}.webp`;
                     const imgPath = `${basePath}/Screenshots/${app.versionDir}/${fLang}/${app.platform}/${fileName}`;
                     
                     htmlContent += `
-                        <div class="shot-wrapper bg-white/5 relative flex items-center justify-center min-h-[300px]">
-                            <i class="fas fa-circle-notch fa-spin absolute text-white/20 text-3xl z-0"></i>
-                            <img src="${imgPath}" class="w-full h-auto relative z-10 opacity-0 transition-opacity duration-500" onload="this.style.opacity=1; this.previousElementSibling.style.display='none';">
+                        <div class="shot-wrapper">
+                            <div class="skeleton"></div>
+                            <img src="${imgPath}" class="w-full h-auto relative z-10 opacity-0 transition-opacity duration-700" 
+                                 onload="this.style.opacity=1; this.previousElementSibling.style.display='none';">
                         </div>
                     `;
                 }
@@ -174,11 +190,10 @@
                 container.appendChild(section);
             });
 
-            // 重新触发滚动监听
+            // 重新触发滚动监听动画
             observeElements();
         }
 
-        // 监听滚动动画 (让元素滑入屏幕时才有动画)
         function observeElements() {
             const reveals = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
