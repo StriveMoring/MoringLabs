@@ -7,17 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* 引入更高级的字体，更接近 Apple 官网的排版感觉 */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
-            background-color: #fbfbfd; 
+            background-color: #f5f5f7; 
             color: #1d1d1f;
             overflow-x: hidden;
         }
 
-        /* 极致的毛玻璃效果 */
         .glass-nav { 
             background: rgba(255, 255, 255, 0.75); 
             backdrop-filter: blur(24px) saturate(180%); 
@@ -25,55 +23,48 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* 高级阴影和动画 */
-        .premium-shadow {
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(0,0,0,0.02) inset;
-        }
+        .premium-shadow { box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08); }
         
-        .shot-card {
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Bento 卡片样式与悬浮物理效果 */
+        .bento-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             border: 1px solid rgba(0,0,0,0.04);
+            background: #ffffff;
         }
-        
-        .shot-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.15);
+        .bento-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12);
             border: 1px solid rgba(0,0,0,0.08);
         }
 
-        /* 背景环境光晕 */
         .ambient-glow {
-            position: absolute;
-            width: 800px;
-            height: 800px;
+            position: absolute; width: 800px; height: 800px;
             background: radial-gradient(circle, rgba(64,156,255,0.08) 0%, rgba(255,255,255,0) 70%);
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: -1;
-            pointer-events: none;
+            top: -200px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none;
         }
 
-        /* 渐变入场动画 */
-        @keyframes fade-in-up {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
         .animate-fade-in { animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
+        
+        /* 骨架屏呼吸灯动画 */
+        .skeleton-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+
+        /* 图片平滑过渡 */
+        .img-transition { transition: opacity 0.5s ease-in-out; }
     </style>
 </head>
 <body class="relative min-h-screen">
 
     <div class="ambient-glow"></div>
 
-    <nav class="glass-nav fixed top-0 w-full z-50 transition-all duration-300">
+    <nav class="glass-nav fixed top-0 w-full z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <span class="text-xl font-extrabold tracking-tighter text-black flex items-center gap-2">
                 <i class="fab fa-apple text-xl"></i> MORING LABS
             </span>
-            
             <div class="relative group">
                 <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
                     <option value="en">🇺🇸 English</option>
@@ -96,42 +87,69 @@
     <main class="pt-40 pb-32 px-6 max-w-7xl mx-auto">
         <section class="flex flex-col items-center text-center animate-fade-in opacity-0">
             <div class="relative mb-8 group">
-                <div class="absolute inset-0 bg-blue-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                <div class="absolute inset-0 bg-blue-500 rounded-3xl blur-2xl opacity-20 transition-opacity duration-500"></div>
                 <img id="appIcon" src="" class="relative w-36 h-36 md:w-40 md:h-40 rounded-[32px] premium-shadow border border-black/5" alt="App Icon">
             </div>
-
             <h1 id="appName" class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-600"></h1>
-            
             <p id="appTagline" class="text-xl md:text-2xl text-gray-500 font-medium mb-12 max-w-2xl leading-relaxed"></p>
             
             <div class="flex flex-wrap justify-center gap-4 font-semibold text-lg">
-                <a href="#" class="bg-black text-white px-10 py-4 rounded-full hover:scale-105 hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 flex items-center">
+                <a href="#" class="bg-black text-white px-10 py-4 rounded-full hover:scale-105 transition-all duration-300 flex items-center shadow-lg">
                     <i class="fab fa-apple mr-2 text-xl"></i> View on App Store
                 </a>
-                <a href="privacy.html" class="bg-white text-black px-10 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300 shadow-sm">
+                <a href="privacy.html" class="bg-white text-black px-10 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300">
                     Privacy Policy
                 </a>
             </div>
         </section>
 
         <section class="mt-24">
-            <div class="text-center mb-12 animate-fade-in opacity-0 delay-100">
-                <h2 class="text-sm font-bold tracking-widest text-gray-400 uppercase">Native Interface Preview</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 animate-fade-in opacity-0 delay-200" id="screenshot-gallery">
-                <div class="shot-card rounded-[2.5rem] overflow-hidden bg-white flex items-center justify-center p-2">
-                    <img id="shot-1" src="" class="w-full h-auto rounded-[2rem]" loading="lazy">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 animate-fade-in opacity-0" style="animation-delay: 0.2s;" id="features-gallery">
+                
+                <div class="bento-card rounded-[2.5rem] flex flex-col p-8">
+                    <div class="mb-8 text-left">
+                        <h3 id="feat-title-1" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3>
+                        <p id="feat-desc-1" class="text-gray-500 font-medium text-lg leading-relaxed"></p>
+                    </div>
+                    <div class="relative flex-1 bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center min-h-[250px]">
+                        <div id="skeleton-1" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
+                        <img id="shot-1" src="" class="w-full h-auto relative z-10 img-transition opacity-0">
+                    </div>
                 </div>
-                <div class="shot-card rounded-[2.5rem] overflow-hidden bg-white flex items-center justify-center p-2">
-                    <img id="shot-2" src="" class="w-full h-auto rounded-[2rem]" loading="lazy">
+
+                <div class="bento-card rounded-[2.5rem] flex flex-col p-8">
+                    <div class="mb-8 text-left">
+                        <h3 id="feat-title-2" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3>
+                        <p id="feat-desc-2" class="text-gray-500 font-medium text-lg leading-relaxed"></p>
+                    </div>
+                    <div class="relative flex-1 bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center min-h-[250px]">
+                        <div id="skeleton-2" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
+                        <img id="shot-2" src="" class="w-full h-auto relative z-10 img-transition opacity-0">
+                    </div>
                 </div>
-                <div class="shot-card rounded-[2.5rem] overflow-hidden bg-white flex items-center justify-center p-2">
-                    <img id="shot-3" src="" class="w-full h-auto rounded-[2rem]" loading="lazy">
+
+                <div class="bento-card rounded-[2.5rem] flex flex-col p-8">
+                    <div class="mb-8 text-left">
+                        <h3 id="feat-title-3" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3>
+                        <p id="feat-desc-3" class="text-gray-500 font-medium text-lg leading-relaxed"></p>
+                    </div>
+                    <div class="relative flex-1 bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center min-h-[250px]">
+                        <div id="skeleton-3" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
+                        <img id="shot-3" src="" class="w-full h-auto relative z-10 img-transition opacity-0">
+                    </div>
                 </div>
-                <div class="shot-card rounded-[2.5rem] overflow-hidden bg-white flex items-center justify-center p-2">
-                    <img id="shot-4" src="" class="w-full h-auto rounded-[2rem]" loading="lazy">
+
+                <div class="bento-card rounded-[2.5rem] flex flex-col p-8">
+                    <div class="mb-8 text-left">
+                        <h3 id="feat-title-4" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3>
+                        <p id="feat-desc-4" class="text-gray-500 font-medium text-lg leading-relaxed"></p>
+                    </div>
+                    <div class="relative flex-1 bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center min-h-[250px]">
+                        <div id="skeleton-4" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
+                        <img id="shot-4" src="" class="w-full h-auto relative z-10 img-transition opacity-0">
+                    </div>
                 </div>
+
             </div>
         </section>
     </main>
@@ -147,7 +165,6 @@
     </footer>
 
     <script>
-        // 【底层逻辑完全保留，零修改】
         const INFO = {
             name: "PDF Merge & Split Assistant",
             versionDir: "2.1.0",
@@ -160,28 +177,75 @@
             }
         };
 
+        // 增加了四张截图对应的说明文字，你可以随时修改
         const TEXTS = {
-            "en": "The ultimate privacy-focused native PDF tool for your Mac. 100% offline, blazing fast.",
-            "zh-CN": "极速、安全的 macOS 原生 PDF 工具。100% 离线处理，完美保护您的文档隐私。",
-            "zh-TW": "極速、安全的 macOS 原生 PDF 工具。100% 離線處理，完美保護您的文檔隱私。",
-            "ja": "Mac向けの究極のプライバシー重視のネイティブPDFツール。100％オフライン、超高速。"
+            "en": {
+                tagline: "The ultimate native PDF tool. 100% offline, blazing fast.",
+                features: [
+                    { title: "Seamless Merging", desc: "Drag and drop to combine multiple PDFs instantly." },
+                    { title: "Precision Splitting", desc: "Extract exactly the pages you need with ease." },
+                    { title: "Real-time Preview", desc: "See your changes instantly before saving." },
+                    { title: "100% Offline Privacy", desc: "Your files never leave your Mac. Absolute security." }
+                ]
+            },
+            "zh-CN": {
+                tagline: "极速、安全的 macOS 原生 PDF 工具。100% 离线处理。",
+                features: [
+                    { title: "拖拽无缝合并", desc: "轻松拖放，将多个 PDF 文件快速合并为一个。" },
+                    { title: "灵活精准拆分", desc: "按需逐页提取或拆分多个文件，高效便捷。" },
+                    { title: "实时视觉预览", desc: "所见即所得，操作前即刻确认最终呈现效果。" },
+                    { title: "绝对离线隐私", desc: "所有处理均在本地设备完成，绝不上传任何云端。" }
+                ]
+            },
+            "zh-TW": {
+                tagline: "極速、安全的 macOS 原生 PDF 工具。100% 離線處理。",
+                features: [
+                    { title: "拖曳無縫合併", desc: "輕鬆拖放，將多個 PDF 文件快速合併為一個。" },
+                    { title: "靈活精準拆分", desc: "按需逐頁提取或拆分多個文件，高效便捷。" },
+                    { title: "即時視覺預覽", desc: "所見即所得，操作前即刻確認最終呈現效果。" },
+                    { title: "絕對離線隱私", desc: "所有處理均在本地設備完成，絕不上傳任何雲端。" }
+                ]
+            }
         };
 
         function updateUI(lang) {
             const fLang = INFO.langMap[lang] || "en-US";
             const basePath = `APP/${INFO.name}_Assets`;
             
-            // 设置图标和文案
+            // 兜底逻辑：如果该语言没有配置描述，就默认用英文
+            const currentText = TEXTS[lang] || TEXTS['en'];
+
+            // 更新头部
             document.getElementById('appIcon').src = `${basePath}/${INFO.name}-AppIcon.webp`;
             document.getElementById('appName').innerText = INFO.name;
-            document.getElementById('appTagline').innerText = TEXTS[lang] || TEXTS['en'];
+            document.getElementById('appTagline').innerText = currentText.tagline;
 
-            // 拼接四张截图
+            // 循环处理 4 张卡片（文字 + 图片平滑加载）
             for (let i = 1; i <= 4; i++) {
+                // 1. 更新文字说明
+                document.getElementById(`feat-title-${i}`).innerText = currentText.features[i-1].title;
+                document.getElementById(`feat-desc-${i}`).innerText = currentText.features[i-1].desc;
+
+                // 2. 获取图片和骨架屏元素
+                const imgElement = document.getElementById(`shot-${i}`);
+                const skeleton = document.getElementById(`skeleton-${i}`);
+                
+                // 3. 切换状态：隐藏旧图，显示骨架屏呼吸灯
+                imgElement.style.opacity = '0';
+                skeleton.style.display = 'block';
+
+                // 4. 准备加载新图片
                 const fileName = `${INFO.name}-${INFO.versionFile}-${fLang}-${INFO.platform}-${i}.webp`;
                 const path = `${basePath}/Screenshots/${INFO.versionDir}/${fLang}/${INFO.platform}/${fileName}`;
                 
-                document.getElementById(`shot-${i}`).src = path;
+                // 5. 核心：只有当新图片真正在后台下载完毕后，才触发渐隐渐现效果
+                imgElement.onload = () => {
+                    skeleton.style.display = 'none'; // 关掉骨架屏
+                    imgElement.style.opacity = '1';  // 平滑浮现新图
+                };
+                
+                // 开始请求图片
+                imgElement.src = path;
             }
         }
 
