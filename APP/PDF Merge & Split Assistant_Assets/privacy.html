@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - PDF Merge & Split Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', -apple-system, sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <nav class="bg-white border-b sticky top-0 z-10">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="font-bold text-lg tracking-tight text-slate-900">PDF Merge & Split Assistant</span>
+            </div>
+            
+            <div class="relative inline-block text-left">
+                <select onchange="updateLang(this.value)" id="langSelector" class="block w-full bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer">
+                    <option value="en">🇺🇸 English (US)</option>
+                    <option value="zh-CN">🇨🇳 中文 (简体)</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="es">🇪🇸 Español (ES)</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="pt">🇧🇷 Português (BR)</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                    <option value="zh-TW">🇭🇰 中文 (繁體)</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <header class="mb-12 text-center">
+            <h1 id="mainTitle" class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Privacy Policy</h1>
+        </header>
+
+        <div class="bg-white shadow-xl shadow-slate-200/50 border border-slate-200 rounded-3xl p-8 md:p-12 transition-all">
+            <div id="content-container">
+                </div>
+
+            <div class="mt-12 pt-10 border-t border-slate-100">
+                <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                    <i class="fas fa-envelope-open-text mr-3 text-blue-600"></i>
+                    <span id="contactTitle">Contact Us</span>
+                </h3>
+                <p class="text-slate-600 leading-relaxed text-lg">
+                    <span id="contactText">If you have any questions, please contact:</span> 
+                    <a href="mailto:strivemoring@gmail.com" class="text-blue-600 hover:text-blue-700 underline underline-offset-4 font-semibold decoration-2 transition-colors">strivemoring@gmail.com</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 text-center text-slate-400 text-sm">
+        <p>&copy; 2026 Moring Labs. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            "en": {
+                title: "Privacy Policy",
+                contactTitle: "Contact Us",
+                contactText: "If you have any questions, please contact:",
+                sections: [
+                    { h: "Data Collection", p: "PDF Merge & Split Assistant does not collect, store, or share any personal data. All PDF processing is performed locally on your device." },
+                    { h: "File Access", p: "The app only accesses PDF files when you explicitly select them for the operations you specify." },
+                    { h: "In-App Purchases", p: "Transactions are processed by Apple. We do not collect or store any payment information." }
+                ]
+            },
+            "zh-CN": {
+                title: "隐私政策",
+                contactTitle: "联系方式",
+                contactText: "如有疑问，请联系：",
+                sections: [
+                    { h: "数据收集", p: "PDF Merge & Split Assistant 不收集、存储或共享任何个人数据。所有 PDF 处理操作均在您的本地设备上完成。" },
+                    { h: "文件访问", p: "应用仅在您明确选择文件时访问 PDF 文件，且仅用于您指定的合并或拆分操作。" },
+                    { h: "内购信息", p: "内购交易由 Apple 处理，我们不收集或存储任何付款信息。" }
+                ]
+            },
+            "de": {
+                title: "Datenschutzerklärung",
+                contactTitle: "Kontakt",
+                contactText: "Bei Fragen kontaktieren Sie bitte:",
+                sections: [
+                    { h: "Datenerhebung", p: "PDF Merge & Split Assistant sammelt, speichert oder teilt keine persönlichen Daten. Alle PDF-Verarbeitungsvorgänge werden lokal auf Ihrem Gerät durchgeführt." },
+                    { h: "Dateizugriff", p: "Die App greift nur auf PDF-Dateien zu, wenn Sie diese explizit für die von Ihnen angegebenen Vorgänge auswählen." },
+                    { h: "In-App-Käufe", p: "In-App-Käufe werden von Apple verarbeitet. Wir erfassen oder speichern keine Zahlungsinformationen." }
+                ]
+            },
+            "es": {
+                title: "Política de Privacidad",
+                contactTitle: "Contacto",
+                contactText: "Si tiene alguna pregunta, contacte con:",
+                sections: [
+                    { h: "Recopilación de Datos", p: "PDF Merge & Split Assistant no recopila, almacena ni comparte ningún dato personal. Todo el procesamiento se realiza localmente en su dispositivo." },
+                    { h: "Acceso a Archivos", p: "La aplicación solo accede a los archivos PDF cuando usted los selecciona explícitamente para las operaciones indicadas." },
+                    { h: "Compras en la App", p: "Las transacciones son procesadas por Apple. No recopilamos ni almacenamos información de pago." }
+                ]
+            },
+            "fr": {
+                title: "Politique de Confidentialité",
+                contactTitle: "Contact",
+                contactText: "Si vous avez des questions, veuillez contacter :",
+                sections: [
+                    { h: "Collecte de Données", p: "PDF Merge & Split Assistant ne collecte, ne stocke ni ne partage aucune donnée personnelle. Tous les traitements PDF sont effectués localement sur votre appareil." },
+                    { h: "Accès aux Fichiers", p: "L'application n'accède aux fichiers PDF que lorsque vous les sélectionnez explicitement pour les opérations spécifiées." },
+                    { h: "Achats Intégrés", p: "Les achats sont traités par Apple. Nous ne collectons ni ne stockons aucune information de paiement." }
+                ]
+            },
+            "it": {
+                title: "Informativa sulla Privacy",
+                contactTitle: "Contatti",
+                contactText: "In caso di domande, si prega di contattare:",
+                sections: [
+                    { h: "Raccolta Dati", p: "PDF Merge & Split Assistant non raccoglie, memorizza o condivide alcun dato personale. Tutte le operazioni sui PDF vengono eseguite localmente sul dispositivo." },
+                    { h: "Accesso ai File", p: "L'app accede ai file PDF solo quando vengono selezionati esplicitamente per le operazioni specificate." },
+                    { h: "Acquisti In-App", p: "Le transazioni sono gestite da Apple. Non raccogliamo né memorizziamo informazioni di pagamento." }
+                ]
+            },
+            "ja": {
+                title: "プライバシーポリシー",
+                contactTitle: "お問い合わせ",
+                contactText: "ご不明な点がございましたら、こちらまでご連絡ください：",
+                sections: [
+                    { h: "データの収集", p: "PDF Merge & Split Assistant は、個人データを収集、保存、共有しません。すべてのPDF処理はデバイス上でローカルに行われます。" },
+                    { h: "ファイルへのアクセス", p: "アプリは、ユーザーが明示的に選択したPDFファイルにのみアクセスし、指定された操作のみに使用します。" },
+                    { h: "アプリ内課金", p: "購入はAppleによって処理されます。支払い情報を収集または保存することはありません。" }
+                ]
+            },
+            "ko": {
+                title: "개인정보 처리방침",
+                contactTitle: "문의하기",
+                contactText: "문의 사항이 있으시면 다음으로 연락해 주십시오:",
+                sections: [
+                    { h: "데이터 수집", p: "PDF Merge & Split Assistant 는 어떠한 개인 데이터도 수집, 저장 또는 공유하지 않습니다. 모든 PDF 처리 작업은 사용자의 기기에서 로컬로 수행됩니다." },
+                    { h: "파일 액세스", p: "앱은 사용자가 명시적으로 선택한 PDF 파일에만 액세스하며, 지정된 작업에만 사용됩니다." },
+                    { h: "인앱 구매", p: "구매 내역은 Apple에서 처리합니다. 당사는 결제 정보를 수집하거나 저장하지 않습니다." }
+                ]
+            },
+            "pt": {
+                title: "Política de Privacidade",
+                contactTitle: "Contato",
+                contactText: "Se você tiver alguma dúvida, entre em contato:",
+                sections: [
+                    { h: "Coleta de Dados", p: "PDF Merge & Split Assistant não coleta, armazena ou compartilha dados pessoais. Todo o processamento de PDF é feito localmente no seu dispositivo." },
+                    { h: "Acesso a Archivos", p: "O aplicativo acessa arquivos PDF apenas quando você os seleciona explicitamente para las operaciones especificadas." },
+                    { h: "Compras no Aplicativo", p: "As transações são processadas pela Apple. Não coletamos nem armazenamos informações de pagamento." }
+                ]
+            },
+            "ru": {
+                title: "Политика конфиденциальности",
+                contactTitle: "Контактная информация",
+                contactText: "Если у вас есть вопросы, свяжитесь с нами:",
+                sections: [
+                    { h: "Сбор данных", p: "PDF Merge & Split Assistant не собирает, не хранит и не передает никакие персональные данные. Все операции с PDF выполняются локально на вашем устройстве." },
+                    { h: "Доступ к файлам", p: "Приложение получает доступ к PDF-файлам только тогда, когда вы их выбираете для выполнения определенных операций." },
+                    { h: "Встроенные покупки", p: "Покупки обрабатываются Apple. Мы не собираем и не храним платежную информацию." }
+                ]
+            },
+            "zh-TW": {
+                title: "隱私政策",
+                contactTitle: "聯絡方式",
+                contactText: "如有疑問，請聯絡：",
+                sections: [
+                    { h: "資料收集", p: "PDF Merge & Split Assistant 不收集、儲存或分享任何個人資料。所有 PDF 處理操作均在您的本地設備上完成。" },
+                    { h: "檔案存取", p: "應用僅在您明確選擇檔案時存取 PDF 檔案，且僅用於您指定的合併或拆分操作。" },
+                    { h: "內購資訊", p: "內購交易由 Apple 處理，我們不收集或儲存任何付款資訊。" }
+                ]
+            }
+        };
+
+        function updateLang(langCode) {
+            const data = translations[langCode] || translations['en'];
+            
+            document.title = data.title + " - PDF Merge & Split Assistant";
+            document.getElementById('mainTitle').innerText = data.title;
+            document.getElementById('contactTitle').innerText = data.contactTitle;
+            document.getElementById('contactText').innerText = data.contactText;
+            
+            const container = document.getElementById('content-container');
+            container.innerHTML = '';
+            data.sections.forEach(section => {
+                const div = document.createElement('div');
+                div.className = 'mb-10 last:mb-0';
+                div.innerHTML = `
+                    <h2 class="text-xl font-bold text-slate-900 mb-4 tracking-tight border-l-4 border-blue-600 pl-4">${section.h}</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg">${section.p}</p>
+                `;
+                container.appendChild(div);
+            });
+            localStorage.setItem('preferredLang', langCode);
+        }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem('preferredLang') || 'en';
+            document.getElementById('langSelector').value = savedLang;
+            updateLang(savedLang);
+        }
+    </script>
+</body>
+</html>
