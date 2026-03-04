@@ -170,6 +170,15 @@
         </div>
     </footer>
 
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 md:p-12 bg-white/40 backdrop-blur-2xl transition-all duration-500 opacity-0" onclick="closeModal()">
+    <div class="relative max-w-6xl w-full h-full flex items-center justify-center">
+        <img id="modalImage" src="" class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl transition-transform duration-500 scale-90" onclick="event.stopPropagation()">
+        <button class="absolute top-0 right-0 m-4 text-gray-400 hover:text-black transition-colors">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+</div>
+
     <script>
         const INFO = {
             name: "PDF Merge & Split Assistant",
@@ -342,6 +351,46 @@
             updateUI(finalLang);
             setTimeout(() => document.querySelector('section.animate-fade-in').classList.add('opacity-100'), 100);
         };
+
+        // 全屏预览功能逻辑
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImage');
+
+// 为所有截图添加点击事件
+for (let i = 1; i <= 4; i++) {
+    const img = document.getElementById(`shot-${i}`);
+    img.style.cursor = 'zoom-in'; // 鼠标悬停时显示放大镜
+    img.onclick = function() {
+        openModal(this.src);
+    };
+}
+
+function openModal(src) {
+    modalImg.src = src;
+    modal.classList.remove('hidden');
+    // 强制触发重绘，确保动画生效
+    setTimeout(() => {
+        modal.classList.add('opacity-100');
+        modalImg.classList.add('scale-100');
+        modalImg.classList.remove('scale-90');
+    }, 10);
+    document.body.style.overflow = 'hidden'; // 锁定背景滚动
+}
+
+function closeModal() {
+    modal.classList.remove('opacity-100');
+    modalImg.classList.add('scale-90');
+    modalImg.classList.remove('scale-100');
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // 恢复滚动
+    }, 400); // 等待动画结束
+}
+
+// 支持 ESC 键关闭
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+});
     </script>
 </body>
 </html>
