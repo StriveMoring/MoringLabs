@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moring Labs | Independent macOS Studio</title>
+    <title>Moring Labs | Independent App Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -39,8 +39,8 @@
 
     <nav class="glass-nav fixed top-0 w-full z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="text-xl font-extrabold tracking-tighter text-black flex items-center gap-2">
-                <i class="fab fa-apple text-xl"></i> MORING LABS
+            <span class="text-xl font-extrabold tracking-widest text-black">
+                MORING LABS
             </span>
             <div class="relative group">
                 <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
@@ -65,7 +65,7 @@
         <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-black to-gray-600">
             Crafting pure native <br>experiences.
         </h1>
-        <p id="hero-desc" class="text-xl text-gray-500 font-medium max-w-2xl mx-auto">An independent macOS studio focused on performance, privacy, and elegant design.</p>
+        <p id="hero-desc" class="text-xl text-gray-500 font-medium max-w-2xl mx-auto">An independent app studio focused on performance, privacy, and elegant design.</p>
     </header>
 
     <main class="max-w-6xl mx-auto px-6 pb-32">
@@ -100,16 +100,16 @@
     </main>
 
     <footer class="py-12 border-t border-gray-200/60 bg-white/50 text-center flex flex-col items-center">
-        <p class="text-sm text-gray-500 font-medium mb-2">&copy; 2026 Moring Labs. Built for macOS.</p>
+        <p class="text-sm text-gray-500 font-medium mb-2">&copy; 2026 Moring Labs. Built with craftsmanship.</p>
         <a id="contact-us" href="mailto:strivemoring@gmail.com" class="text-sm text-blue-500 hover:text-blue-600 font-semibold transition-colors">Contact Us</a>
     </footer>
 
     <script>
-        // --- 1. 11 种语言字典配置 ---
+        // --- 1. 11 种语言字典配置 (全部去除了 macOS 工作室的局限，改为跨平台的"应用工作室") ---
         const TRANSLATIONS = {
             "en": {
                 heroTitle: "Crafting pure native <br>experiences.",
-                heroDesc: "An independent macOS studio focused on performance, privacy, and elegant design.",
+                heroDesc: "An independent app studio focused on performance, privacy, and elegant design.",
                 sectionTitle: "Our Products",
                 pdfDesc: "The ultimate privacy-focused PDF tool. 100% offline, blazing fast.",
                 pdfLearn: "Learn More",
@@ -119,7 +119,7 @@
             },
             "zh-CN": {
                 heroTitle: "打造纯粹的<br>原生体验。",
-                heroDesc: "一家专注于性能、隐私和优雅设计的独立 macOS 工作室。",
+                heroDesc: "一家专注于性能、隐私和优雅设计的独立应用工作室。",
                 sectionTitle: "我们的产品",
                 pdfDesc: "终极隐私保护 PDF 工具。100% 离线处理，极致快速。",
                 pdfLearn: "了解更多",
@@ -129,7 +129,7 @@
             },
             "zh-TW": {
                 heroTitle: "打造純粹的<br>原生體驗。",
-                heroDesc: "一家專注於效能、隱私和優雅設計的獨立 macOS 工作室。",
+                heroDesc: "一家專注於效能、隱私和優雅設計的獨立應用工作室。",
                 sectionTitle: "我們的產品",
                 pdfDesc: "終極隱私保護 PDF 工具。100% 離線處理，極致快速。",
                 pdfLearn: "了解更多",
@@ -139,7 +139,7 @@
             },
             "ja": {
                 heroTitle: "純粋なネイティブ<br>体験を。",
-                heroDesc: "パフォーマンス、プライバシー、エレガントなデザインに焦点を当てた独立系macOSスタジオ。",
+                heroDesc: "パフォーマンス、プライバシー、エレガントなデザインに焦点を当てた独立系アプリスタジオ。",
                 sectionTitle: "製品情報",
                 pdfDesc: "究極のプライバシー重視PDFツール。100%オフライン、超高速。",
                 pdfLearn: "詳細を見る",
@@ -149,7 +149,7 @@
             },
             "de": {
                 heroTitle: "Echte native <br>Erlebnisse.",
-                heroDesc: "Ein unabhängiges macOS-Studio mit Fokus auf Leistung, Datenschutz und elegantes Design.",
+                heroDesc: "Ein unabhängiges App-Studio mit Fokus auf Leistung, Datenschutz und elegantes Design.",
                 sectionTitle: "Unsere Produkte",
                 pdfDesc: "Das ultimative datenschutzorientierte PDF-Tool. 100% offline, blitzschnell.",
                 pdfLearn: "Mehr erfahren",
@@ -159,7 +159,7 @@
             },
             "es": {
                 heroTitle: "Creando experiencias <br>nativas puras.",
-                heroDesc: "Un estudio independiente de macOS centrado en el rendimiento, la privacidad y el diseño elegante.",
+                heroDesc: "Un estudio de aplicaciones independiente centrado en el rendimiento, la privacidad y el diseño elegante.",
                 sectionTitle: "Nuestros productos",
                 pdfDesc: "La herramienta PDF definitiva centrada en la privacidad. 100% sin conexión, ultrarrápida.",
                 pdfLearn: "Saber más",
@@ -169,7 +169,7 @@
             },
             "fr": {
                 heroTitle: "Création d'expériences <br>natives pures.",
-                heroDesc: "Un studio macOS indépendant axé sur les performances, la confidentialité et le design élégant.",
+                heroDesc: "Un studio d'applications indépendant axé sur les performances, la confidentialité et le design élégant.",
                 sectionTitle: "Nos produits",
                 pdfDesc: "L'outil PDF ultime axé sur la confidentialité. 100% hors ligne, ultra rapide.",
                 pdfLearn: "En savoir plus",
@@ -179,7 +179,7 @@
             },
             "it": {
                 heroTitle: "Creiamo esperienze <br>native pure.",
-                heroDesc: "Uno studio macOS indipendente focalizzato su prestazioni, privacy e design elegante.",
+                heroDesc: "Uno studio di app indipendente focalizzato su prestazioni, privacy e design elegante.",
                 sectionTitle: "I nostri prodotti",
                 pdfDesc: "Lo strumento PDF definitivo incentrato sulla privacy. 100% offline, velocissimo.",
                 pdfLearn: "Scopri di più",
@@ -189,7 +189,7 @@
             },
             "ko": {
                 heroTitle: "순수한 네이티브 <br>경험 제작.",
-                heroDesc: "성능, 개인 정보 보호 및 우아한 디자인에 중점을 둔 독립 macOS 스튜디오입니다.",
+                heroDesc: "성능, 개인 정보 보호 및 우아한 디자인에 중점을 둔 독립 앱 스튜디오입니다.",
                 sectionTitle: "우리의 제품",
                 pdfDesc: "개인 정보 보호에 중점을 둔 최고의 PDF 도구. 100% 오프라인, 초고속.",
                 pdfLearn: "더 알아보기",
@@ -199,7 +199,7 @@
             },
             "pt": {
                 heroTitle: "Criando experiências <br>nativas puras.",
-                heroDesc: "Um estúdio independente de macOS focado em desempenho, privacidade e design elegante.",
+                heroDesc: "Um estúdio de aplicativos independente focado em desempenho, privacidade e design elegante.",
                 sectionTitle: "Nossos produtos",
                 pdfDesc: "A ferramenta PDF definitiva focada na privacidade. 100% offline, extremamente rápida.",
                 pdfLearn: "Saiba mais",
@@ -209,7 +209,7 @@
             },
             "ru": {
                 heroTitle: "Создание чистого <br>нативного опыта.",
-                heroDesc: "Независимая студия macOS, ориентированная на производительность, конфиденциальность и элегантный дизайн.",
+                heroDesc: "Независимая студия разработки приложений, ориентированная на производительность, конфиденциальность и элегантный дизайн.",
                 sectionTitle: "Наши продукты",
                 pdfDesc: "Идеальный PDF-инструмент с упором на конфиденциальность. 100% оффлайн, молниеносно.",
                 pdfLearn: "Узнать больше",
