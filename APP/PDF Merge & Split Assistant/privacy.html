@@ -229,7 +229,8 @@
             }
         };
 
-        function updateLang(langCode) {
+        // 单纯负责更新界面的 DOM 操作
+        function updateUI(langCode) {
             const data = translations[langCode] || translations['en'];
             
             document.title = data.title + " | PDF Merge & Split Assistant";
@@ -249,20 +250,26 @@
                 `;
                 container.appendChild(div);
             });
+        }
 
-            // 统一使用 moring_lang，实现多页面语言同步切换
+        // 绑定给下拉菜单的函数：存缓存 + 调更新
+        function switchLang(langCode) {
             localStorage.setItem('moring_lang', langCode);
+            updateUI(langCode);
         }
 
         window.onload = function() {
-            // 读取其他页面保存的语言，或者自动匹配
+            // 读取其他页面保存的语言，兜底英语
             const savedLang = localStorage.getItem('moring_lang') || 'en';
+            const finalLang = translations[savedLang] ? savedLang : 'en';
             
             const selector = document.getElementById('langSelector');
-            if(selector.querySelector(`option[value="${savedLang}"]`)) {
-                selector.value = savedLang;
+            if(selector.querySelector(`option[value="${finalLang}"]`)) {
+                selector.value = finalLang;
             }
-            updateLang(savedLang);
+            
+            // 初次加载更新界面
+            updateUI(finalLang);
             
             setTimeout(() => document.querySelector('main.animate-fade-in').classList.add('opacity-100'), 100);
         }
