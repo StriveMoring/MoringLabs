@@ -1,67 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moring Labs - Native macOS Apps</title>
+    <title>Moring Labs | Premium macOS Apps</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f5f5f7; }
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        /* 引入更高级的字体，更接近 Apple 官网的排版感觉 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
+            background-color: #fbfbfd; 
+            color: #1d1d1f;
+            overflow-x: hidden;
+        }
+
+        /* 极致的毛玻璃效果 */
+        .glass-nav { 
+            background: rgba(255, 255, 255, 0.75); 
+            backdrop-filter: blur(24px) saturate(180%); 
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* 高级阴影和动画 */
+        .premium-shadow {
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(0,0,0,0.02) inset;
+        }
+        
+        .shot-card {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        .shot-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        /* 背景环境光晕 */
+        .ambient-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(64,156,255,0.08) 0%, rgba(255,255,255,0) 70%);
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* 渐变入场动画 */
+        @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
     </style>
 </head>
-<body>
+<body class="relative min-h-screen">
 
-    <nav class="glass border-b border-gray-200 fixed top-0 w-full z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="text-xl font-extrabold tracking-tighter">MORING LABS</span>
-            <select id="langSelector" onchange="switchLang(this.value)" class="bg-transparent text-sm font-semibold outline-none cursor-pointer">
-                <option value="en">English (US)</option>
-                <option value="zh-CN">中文 (简体)</option>
-                <option value="zh-TW">中文 (繁體)</option>
-                <option value="de">Deutsch</option>
-                <option value="fr">Français</option>
-                <option value="es">Español</option>
-                <option value="it">Italiano</option>
-                <option value="ja">日本語</option>
-                <option value="ko">한국어</option>
-                <option value="pt">Português</option>
-                <option value="ru">Русский</option>
-            </select>
+    <div class="ambient-glow"></div>
+
+    <nav class="glass-nav fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="text-xl font-extrabold tracking-tighter text-black flex items-center gap-2">
+                <i class="fab fa-apple text-xl"></i> MORING LABS
+            </span>
+            
+            <div class="relative group">
+                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh-CN">🇨🇳 简体中文</option>
+                    <option value="zh-TW">🇭🇰 繁體中文</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="pt">🇧🇷 Português</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
+            </div>
         </div>
     </nav>
 
-    <main class="pt-32 pb-20 px-6 max-w-6xl mx-auto">
-        <section class="space-y-12">
-            <div class="flex flex-col md:flex-row items-center md:items-end gap-8 text-center md:text-left">
-                <img id="appIcon" src="" class="w-32 h-32 rounded-[28px] shadow-xl" alt="App Icon">
-                <div class="flex-1">
-                    <h1 class="text-4xl font-extrabold tracking-tight mb-2">PDF Merge & Split Assistant</h1>
-                    <p id="appTagline" class="text-xl text-gray-500 font-medium mb-6"></p>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4 font-bold">
-                        <a href="#" class="bg-black text-white px-8 py-3 rounded-full hover:opacity-80 transition"><i class="fab fa-apple mr-2"></i> App Store</a>
-                        <a href="privacy.html" class="px-8 py-3 rounded-full border border-gray-300 hover:bg-white transition">Privacy</a>
-                    </div>
-                </div>
+    <main class="pt-40 pb-32 px-6 max-w-7xl mx-auto">
+        <section class="flex flex-col items-center text-center animate-fade-in opacity-0">
+            <div class="relative mb-8 group">
+                <div class="absolute inset-0 bg-blue-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                <img id="appIcon" src="" class="relative w-36 h-36 md:w-40 md:h-40 rounded-[32px] premium-shadow border border-black/5" alt="App Icon">
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="screenshot-gallery">
-                <img id="shot-1" src="" class="rounded-2xl shadow-2xl border border-gray-100" loading="lazy">
-                <img id="shot-2" src="" class="rounded-2xl shadow-2xl border border-gray-100" loading="lazy">
-                <img id="shot-3" src="" class="rounded-2xl shadow-2xl border border-gray-100" loading="lazy">
-                <img id="shot-4" src="" class="rounded-2xl shadow-2xl border border-gray-100" loading="lazy">
+            <h1 id="appName" class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-600"></h1>
+            
+            <p id="appTagline" class="text-xl md:text-2xl text-gray-500 font-medium mb-12 max-w-2xl leading-relaxed"></p>
+            
+            <div class="flex flex-wrap justify-center gap-4 font-semibold text-lg">
+                <a href="#" class="bg-black text-white px-10 py-4 rounded-full hover:scale-105 hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 flex items-center">
+                    <i class="fab fa-apple mr-2 text-xl"></i> View on App Store
+                </a>
+                <a href="privacy.html" class="bg-white text-black px-10 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300 shadow-sm">
+                    Privacy Policy
+                </a>
+            </div>
+        </section>
+
+        <section class="mt-24">
+            <div class="text-center mb-12 animate-fade-in opacity-0 delay-100">
+                <h2 class="text-sm font-bold tracking-widest text-gray-400 uppercase">Native Interface Preview</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 animate-fade-in opacity-0 delay-200" id="screenshot-gallery">
+                <div class="shot-card rounded-[2.5rem] overflow-hidden bg-white flex items-center justify-center p-2">
+                    <img id="shot-1" src="" class="w-full h-auto rounded-[2rem]" loading="lazy">
+                </div>
+                <div class="shot-card rounded-[2.5rem] overflow-hidden bg-white flex items-center justify-center p-2">
+                    <img id="shot-2" src="" class="w-full h-auto rounded-[2rem]" loading="lazy">
+                </div>
+                <div class="shot-card rounded-[2.5rem] overflow-hidden bg-white flex items-center justify-center p-2">
+                    <img id="shot-3" src="" class="w-full h-auto rounded-[2rem]" loading="lazy">
+                </div>
+                <div class="shot-card rounded-[2.5rem] overflow-hidden bg-white flex items-center justify-center p-2">
+                    <img id="shot-4" src="" class="w-full h-auto rounded-[2rem]" loading="lazy">
+                </div>
             </div>
         </section>
     </main>
 
+    <footer class="py-12 border-t border-gray-200/60 bg-white/50">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium">
+            <p>&copy; 2026 Moring Labs. Built for macOS.</p>
+            <div class="space-x-6 mt-4 md:mt-0">
+                <a href="support.html" class="hover:text-black transition-colors">Support Center</a>
+                <a href="mailto:strivemoring@gmail.com" class="hover:text-black transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // 【配置区】完全适配你的软件导出规范
+        // 【底层逻辑完全保留，零修改】
         const INFO = {
             name: "PDF Merge & Split Assistant",
-            versionDir: "2.1.0",     // 文件夹名
-            versionFile: "2_1_0",    // 文件名用的下划线版本号
+            versionDir: "2.1.0",
+            versionFile: "2_1_0",
             platform: "Mac",
             langMap: {
                 "en": "en-US", "zh-CN": "zh-Hans", "zh-TW": "zh-Hant",
@@ -71,21 +161,22 @@
         };
 
         const TEXTS = {
-            "en": "Privacy-focused, native macOS PDF management.",
-            "zh-CN": "隐私至上，专为 macOS 设计的原生 PDF 工具。"
+            "en": "The ultimate privacy-focused native PDF tool for your Mac. 100% offline, blazing fast.",
+            "zh-CN": "极速、安全的 macOS 原生 PDF 工具。100% 离线处理，完美保护您的文档隐私。",
+            "zh-TW": "極速、安全的 macOS 原生 PDF 工具。100% 離線處理，完美保護您的文檔隱私。",
+            "ja": "Mac向けの究極のプライバシー重視のネイティブPDFツール。100％オフライン、超高速。"
         };
 
         function updateUI(lang) {
             const fLang = INFO.langMap[lang] || "en-US";
-            
-            // 关键改动：所有素材都在 APP/ 这个总文件夹下
             const basePath = `APP/${INFO.name}_Assets`;
             
-            // 1. 设置图标
+            // 设置图标和文案
             document.getElementById('appIcon').src = `${basePath}/${INFO.name}-AppIcon.webp`;
+            document.getElementById('appName').innerText = INFO.name;
             document.getElementById('appTagline').innerText = TEXTS[lang] || TEXTS['en'];
 
-            // 2. 拼接截图路径
+            // 拼接四张截图
             for (let i = 1; i <= 4; i++) {
                 const fileName = `${INFO.name}-${INFO.versionFile}-${fLang}-${INFO.platform}-${i}.webp`;
                 const path = `${basePath}/Screenshots/${INFO.versionDir}/${fLang}/${INFO.platform}/${fileName}`;
