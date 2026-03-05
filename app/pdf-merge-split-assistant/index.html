@@ -11,11 +11,20 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; background-color: #fbfbfd; color: #1d1d1f; overflow-x: hidden; }
+        
+        /* 核心修复：锁死视口宽度，根治光晕撑爆屏幕和放大图片飞出视口的问题 */
+        html, body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
+            background-color: #fbfbfd; 
+            color: #1d1d1f; 
+            overflow-x: hidden; 
+            width: 100vw;
+            max-width: 100%;
+        }
+        
         .glass-nav { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .ambient-glow { position: absolute; width: 1200px; height: 1200px; background: radial-gradient(circle, rgba(64,156,255,0.12) 0%, rgba(255,255,255,0) 70%); top: -300px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
         .premium-shadow { box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0,0,0,0.05); }
@@ -33,12 +42,12 @@
     <div class="ambient-glow"></div>
 
     <nav class="glass-nav fixed top-0 w-full z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-sm">
-            <a href="../../" class="font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2">
-                <i class="fas fa-chevron-left text-xs"></i> Moring Labs
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center text-sm gap-2">
+            <a href="../../" class="font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2 flex-shrink-0">
+                <i class="fas fa-chevron-left text-xs"></i> <span class="hidden sm:inline">Moring Labs</span><span class="sm:hidden">Back</span>
             </a>
-            <div class="relative group">
-                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
+            <div class="relative group flex-shrink-0">
+                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-1.5 md:py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[105px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
                     <option value="en">🇺🇸 English</option>
                     <option value="zh-CN">🇨🇳 简体中文</option>
                     <option value="zh-TW">🇭🇰 繁體中文</option>
@@ -51,56 +60,57 @@
                     <option value="pt">🇧🇷 Português</option>
                     <option value="ru">🇷🇺 Русский</option>
                 </select>
-                <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
+                <i class="fas fa-chevron-down absolute right-2.5 md:right-3 top-1/2 -translate-y-1/2 text-[9px] md:text-[10px] pointer-events-none opacity-60"></i>
             </div>
         </div>
     </nav>
 
-    <main class="pt-32 pb-32 px-6 max-w-7xl mx-auto">
+    <main class="pt-24 md:pt-32 pb-24 md:pb-32 px-4 md:px-6 max-w-7xl mx-auto">
         <section class="flex flex-col items-center text-center animate-fade-in opacity-0">
-            <div class="relative mb-8 mt-10 group">
+            <div class="relative mb-6 md:mb-8 mt-6 md:mt-10 group">
                 <div class="absolute inset-0 bg-blue-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-                <img id="appIcon" src="" class="relative w-36 h-36 md:w-40 md:h-40 rounded-[32px] premium-shadow border border-black/5" alt="App Icon">
+                <img id="appIcon" src="" class="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-[28px] md:rounded-[32px] premium-shadow border border-black/5" alt="App Icon">
             </div>
-            <h1 id="appName" class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900"></h1>
-            <p id="appTagline" class="text-xl md:text-2xl text-gray-500 font-medium mb-12 max-w-2xl leading-relaxed"></p>
-            <div class="flex flex-wrap justify-center gap-4 font-semibold">
-                <a href="https://apps.apple.com/us/app/pdf-merge-split-assistant/id6758044607?mt=12" class="bg-black text-white px-8 md:px-10 py-4 rounded-full hover:scale-105 transition-all duration-300 flex items-center shadow-lg"><i class="fab fa-apple mr-2 text-xl"></i> Mac App Store</a>
-                <a href="privacy.html" class="bg-white text-black px-8 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300"><i class="fas fa-shield-alt mr-2 text-gray-400"></i> Privacy</a>
-                <a href="support.html" class="bg-white text-black px-8 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300"><i class="fas fa-life-ring mr-2 text-gray-400"></i> Support</a>
+            <h1 id="appName" class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900 break-words px-2"></h1>
+            <p id="appTagline" class="text-lg sm:text-xl md:text-2xl text-gray-500 font-medium mb-8 md:mb-12 max-w-2xl leading-relaxed px-2"></p>
+            
+            <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4 font-semibold w-full sm:w-auto">
+                <a href="https://apps.apple.com/us/app/pdf-merge-split-assistant/id6758044607?mt=12" class="w-full sm:w-auto bg-black text-white text-sm md:text-base px-6 py-3.5 md:px-10 md:py-4 rounded-full hover:scale-105 transition-all duration-300 flex items-center justify-center shadow-lg"><i class="fab fa-apple mr-2 text-lg md:text-xl"></i> Mac App Store</a>
+                <a href="privacy.html" class="w-full sm:w-auto bg-white text-black text-sm md:text-base px-6 py-3.5 md:px-8 md:py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300 flex items-center justify-center"><i class="fas fa-shield-alt mr-2 text-gray-400"></i> Privacy</a>
+                <a href="support.html" class="w-full sm:w-auto bg-white text-black text-sm md:text-base px-6 py-3.5 md:px-8 md:py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300 flex items-center justify-center"><i class="fas fa-life-ring mr-2 text-gray-400"></i> Support</a>
             </div>
         </section>
 
-        <section class="mt-24">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 animate-fade-in opacity-0" style="animation-delay: 0.2s;">
+        <section class="mt-16 md:mt-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 animate-fade-in opacity-0" style="animation-delay: 0.2s;">
                 
-                <div class="bento-card rounded-[2.5rem] p-8 flex flex-col">
-                    <div class="mb-8"><h3 id="feat-title-1" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-1" class="text-gray-500 font-medium text-lg leading-relaxed"></p></div>
-                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-1').src)">
+                <div class="bento-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 flex flex-col">
+                    <div class="mb-6 md:mb-8"><h3 id="feat-title-1" class="text-xl md:text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-1" class="text-base md:text-lg text-gray-500 font-medium leading-relaxed"></p></div>
+                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-[1.5rem] md:rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-1').src)">
                         <div id="skeleton-1" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
                         <img id="shot-1" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
                     </div>
                 </div>
 
-                <div class="bento-card rounded-[2.5rem] p-8 flex flex-col">
-                    <div class="mb-8"><h3 id="feat-title-2" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-2" class="text-gray-500 font-medium text-lg leading-relaxed"></p></div>
-                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-2').src)">
+                <div class="bento-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 flex flex-col">
+                    <div class="mb-6 md:mb-8"><h3 id="feat-title-2" class="text-xl md:text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-2" class="text-base md:text-lg text-gray-500 font-medium leading-relaxed"></p></div>
+                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-[1.5rem] md:rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-2').src)">
                         <div id="skeleton-2" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
                         <img id="shot-2" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
                     </div>
                 </div>
 
-                <div class="bento-card rounded-[2.5rem] p-8 flex flex-col">
-                    <div class="mb-8"><h3 id="feat-title-3" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-3" class="text-gray-500 font-medium text-lg leading-relaxed"></p></div>
-                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-3').src)">
+                <div class="bento-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 flex flex-col">
+                    <div class="mb-6 md:mb-8"><h3 id="feat-title-3" class="text-xl md:text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-3" class="text-base md:text-lg text-gray-500 font-medium leading-relaxed"></p></div>
+                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-[1.5rem] md:rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-3').src)">
                         <div id="skeleton-3" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
                         <img id="shot-3" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
                     </div>
                 </div>
 
-                <div class="bento-card rounded-[2.5rem] p-8 flex flex-col">
-                    <div class="mb-8"><h3 id="feat-title-4" class="text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-4" class="text-gray-500 font-medium text-lg leading-relaxed"></p></div>
-                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-4').src)">
+                <div class="bento-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 flex flex-col">
+                    <div class="mb-6 md:mb-8"><h3 id="feat-title-4" class="text-xl md:text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-4" class="text-base md:text-lg text-gray-500 font-medium leading-relaxed"></p></div>
+                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-[1.5rem] md:rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-4').src)">
                         <div id="skeleton-4" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
                         <img id="shot-4" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0">
                     </div>
@@ -111,18 +121,18 @@
     </main>
 
     <footer class="py-12 border-t border-gray-200/60 bg-white/50 text-center flex flex-col items-center">
-        <p class="text-sm text-gray-500 font-medium mb-2">&copy; 2026 Moring Labs. Built for macOS.</p>
-        <div class="space-x-6">
+        <p class="text-sm text-gray-500 font-medium mb-4 md:mb-2">&copy; 2026 Moring Labs. Built for macOS.</p>
+        <div class="space-x-4 md:space-x-6 text-sm md:text-base">
             <a href="../../" class="hover:text-black transition-colors">Studio Home</a>
             <a href="support.html" class="hover:text-black transition-colors">Support</a>
             <a href="privacy.html" class="hover:text-black transition-colors">Privacy</a>
         </div>
     </footer>
 
-    <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6 md:p-12 bg-white/50 backdrop-blur-3xl transition-all duration-500 opacity-0" onclick="closeModal()">
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 md:p-12 bg-white/50 backdrop-blur-3xl transition-all duration-500 opacity-0" onclick="closeModal()">
         <div class="relative w-full h-full flex items-center justify-center pointer-events-none group/modal">
-            <img id="modalImage" src="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-2xl shadow-2xl transition-transform duration-500 scale-90 pointer-events-auto" onclick="event.stopPropagation()">
-            <button class="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-md rounded-full text-gray-400 hover:text-black shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto opacity-0 group-hover/modal:opacity-100">
+            <img id="modalImage" src="" class="max-w-[95vw] md:max-w-[90vw] max-h-[85vh] object-contain rounded-xl md:rounded-2xl shadow-2xl transition-transform duration-500 scale-90 pointer-events-auto" onclick="event.stopPropagation()">
+            <button class="fixed top-4 right-4 md:top-8 md:right-8 w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-md rounded-full text-gray-400 hover:text-black shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto opacity-100 md:opacity-0 group-hover/modal:opacity-100">
                 <i class="fas fa-times text-xl"></i>
             </button>
         </div>
