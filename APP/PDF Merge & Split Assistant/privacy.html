@@ -1,74 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - PDF Merge & Split Assistant</title>
+    <title>Privacy Policy | PDF Merge & Split Assistant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', -apple-system, sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
+            background-color: #fbfbfd; 
+            color: #1d1d1f;
+            overflow-x: hidden;
+        }
+
+        .glass-nav { 
+            background: rgba(255, 255, 255, 0.75); 
+            backdrop-filter: blur(24px) saturate(180%); 
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* 统一的高级环境光晕 */
+        .ambient-glow {
+            position: absolute; 
+            width: 1200px; 
+            height: 1200px;
+            background: radial-gradient(circle, rgba(64,156,255,0.08) 0%, rgba(255,255,255,0) 70%);
+            top: -300px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            z-index: -1; 
+            pointer-events: none;
+        }
+
+        /* Bento 卡片风格 */
+        .bento-card {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+            border-radius: 2.5rem;
+        }
+
+        @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="relative min-h-screen antialiased">
 
-    <nav class="bg-white border-b sticky top-0 z-10">
-        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <span class="font-bold text-lg tracking-tight text-slate-900">PDF Merge & Split Assistant</span>
-            </div>
+    <div class="ambient-glow"></div>
+
+    <nav class="glass-nav fixed top-0 w-full z-50">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-lg font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2">
+                <i class="fas fa-chevron-left text-sm"></i> <span id="nav-back-text">Back to App</span>
+            </a>
             
-            <div class="relative inline-block text-left">
-                <select onchange="updateLang(this.value)" id="langSelector" class="block w-full bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer">
-                    <option value="en">🇺🇸 English (US)</option>
-                    <option value="zh-CN">🇨🇳 中文 (简体)</option>
+            <div class="relative group">
+                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh-CN">🇨🇳 简体中文</option>
+                    <option value="zh-TW">🇭🇰 繁體中文</option>
                     <option value="de">🇩🇪 Deutsch</option>
-                    <option value="es">🇪🇸 Español (ES)</option>
                     <option value="fr">🇫🇷 Français</option>
+                    <option value="es">🇪🇸 Español</option>
                     <option value="it">🇮🇹 Italiano</option>
                     <option value="ja">🇯🇵 日本語</option>
                     <option value="ko">🇰🇷 한국어</option>
-                    <option value="pt">🇧🇷 Português (BR)</option>
+                    <option value="pt">🇧🇷 Português</option>
                     <option value="ru">🇷🇺 Русский</option>
-                    <option value="zh-TW">🇭🇰 中文 (繁體)</option>
                 </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-                    <i class="fas fa-chevron-down text-xs"></i>
-                </div>
+                <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-4 py-12">
+    <main class="pt-32 pb-32 px-6 max-w-4xl mx-auto animate-fade-in opacity-0">
         <header class="mb-12 text-center">
-            <h1 id="mainTitle" class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Privacy Policy</h1>
+            <h1 id="mainTitle" class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">Privacy Policy</h1>
+            <p class="text-lg text-gray-500 font-medium">PDF Merge & Split Assistant</p>
         </header>
 
-        <div class="bg-white shadow-xl shadow-slate-200/50 border border-slate-200 rounded-3xl p-8 md:p-12 transition-all">
-            <div id="content-container">
-                </div>
+        <div class="bento-card p-8 md:p-12">
+            <div id="content-container" class="space-y-10"></div>
 
-            <div class="mt-12 pt-10 border-t border-slate-100">
-                <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
-                    <i class="fas fa-envelope-open-text mr-3 text-blue-600"></i>
+            <div class="mt-12 pt-10 border-t border-gray-100">
+                <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                    <i class="fas fa-envelope-open-text mr-3 text-blue-500"></i>
                     <span id="contactTitle">Contact Us</span>
                 </h3>
-                <p class="text-slate-600 leading-relaxed text-lg">
+                <p class="text-gray-500 font-medium text-lg flex flex-wrap items-center gap-2">
                     <span id="contactText">If you have any questions, please contact:</span> 
-                    <a href="mailto:strivemoring@gmail.com" class="text-blue-600 hover:text-blue-700 underline underline-offset-4 font-semibold decoration-2 transition-colors">strivemoring@gmail.com</a>
+                    <a href="mailto:strivemoring@gmail.com" class="text-blue-500 hover:text-blue-600 font-semibold transition-colors">strivemoring@gmail.com</a>
                 </p>
             </div>
         </div>
     </main>
 
-    <footer class="py-12 text-center text-slate-400 text-sm">
-        <p>&copy; 2026 Moring Labs. All rights reserved.</p>
+    <footer class="py-12 text-center">
+        <p class="text-sm text-gray-400 font-medium">&copy; 2026 Moring Labs. All rights reserved.</p>
     </footer>
 
     <script>
+        // 11 国语言翻译字典
         const translations = {
             "en": {
+                backText: "Back to App",
                 title: "Privacy Policy",
                 contactTitle: "Contact Us",
                 contactText: "If you have any questions, please contact:",
@@ -79,6 +118,7 @@
                 ]
             },
             "zh-CN": {
+                backText: "返回应用",
                 title: "隐私政策",
                 contactTitle: "联系方式",
                 contactText: "如有疑问，请联系：",
@@ -89,6 +129,7 @@
                 ]
             },
             "de": {
+                backText: "Zurück zur App",
                 title: "Datenschutzerklärung",
                 contactTitle: "Kontakt",
                 contactText: "Bei Fragen kontaktieren Sie bitte:",
@@ -99,6 +140,7 @@
                 ]
             },
             "es": {
+                backText: "Volver a la App",
                 title: "Política de Privacidad",
                 contactTitle: "Contacto",
                 contactText: "Si tiene alguna pregunta, contacte con:",
@@ -109,6 +151,7 @@
                 ]
             },
             "fr": {
+                backText: "Retour à l'App",
                 title: "Politique de Confidentialité",
                 contactTitle: "Contact",
                 contactText: "Si vous avez des questions, veuillez contacter :",
@@ -119,6 +162,7 @@
                 ]
             },
             "it": {
+                backText: "Torna all'App",
                 title: "Informativa sulla Privacy",
                 contactTitle: "Contatti",
                 contactText: "In caso di domande, si prega di contattare:",
@@ -129,6 +173,7 @@
                 ]
             },
             "ja": {
+                backText: "アプリに戻る",
                 title: "プライバシーポリシー",
                 contactTitle: "お問い合わせ",
                 contactText: "ご不明な点がございましたら、こちらまでご連絡ください：",
@@ -139,6 +184,7 @@
                 ]
             },
             "ko": {
+                backText: "앱으로 돌아가기",
                 title: "개인정보 처리방침",
                 contactTitle: "문의하기",
                 contactText: "문의 사항이 있으시면 다음으로 연락해 주십시오:",
@@ -149,16 +195,18 @@
                 ]
             },
             "pt": {
+                backText: "Voltar ao App",
                 title: "Política de Privacidade",
                 contactTitle: "Contato",
                 contactText: "Se você tiver alguma dúvida, entre em contato:",
                 sections: [
                     { h: "Coleta de Dados", p: "PDF Merge & Split Assistant não coleta, armazena ou compartilha dados pessoais. Todo o processamento de PDF é feito localmente no seu dispositivo." },
-                    { h: "Acesso a Archivos", p: "O aplicativo acessa arquivos PDF apenas quando você os seleciona explicitamente para las operaciones especificadas." },
+                    { h: "Acesso a Arquivos", p: "O aplicativo acessa arquivos PDF apenas quando você os seleciona explicitamente para as operações especificadas." },
                     { h: "Compras no Aplicativo", p: "As transações são processadas pela Apple. Não coletamos nem armazenamos informações de pagamento." }
                 ]
             },
             "ru": {
+                backText: "Назад к приложению",
                 title: "Политика конфиденциальности",
                 contactTitle: "Контактная информация",
                 contactText: "Если у вас есть вопросы, свяжитесь с нами:",
@@ -169,6 +217,7 @@
                 ]
             },
             "zh-TW": {
+                backText: "返回應用",
                 title: "隱私政策",
                 contactTitle: "聯絡方式",
                 contactText: "如有疑問，請聯絡：",
@@ -183,29 +232,39 @@
         function updateLang(langCode) {
             const data = translations[langCode] || translations['en'];
             
-            document.title = data.title + " - PDF Merge & Split Assistant";
+            document.title = data.title + " | PDF Merge & Split Assistant";
+            document.getElementById('nav-back-text').innerText = data.backText;
             document.getElementById('mainTitle').innerText = data.title;
             document.getElementById('contactTitle').innerText = data.contactTitle;
             document.getElementById('contactText').innerText = data.contactText;
             
             const container = document.getElementById('content-container');
             container.innerHTML = '';
+            
             data.sections.forEach(section => {
                 const div = document.createElement('div');
-                div.className = 'mb-10 last:mb-0';
                 div.innerHTML = `
-                    <h2 class="text-xl font-bold text-slate-900 mb-4 tracking-tight border-l-4 border-blue-600 pl-4">${section.h}</h2>
-                    <p class="text-slate-600 leading-relaxed text-lg">${section.p}</p>
+                    <h2 class="text-xl font-bold text-gray-900 mb-3 tracking-tight">${section.h}</h2>
+                    <p class="text-gray-500 font-medium leading-relaxed text-lg">${section.p}</p>
                 `;
                 container.appendChild(div);
             });
-            localStorage.setItem('preferredLang', langCode);
+
+            // 统一使用 moring_lang，实现多页面语言同步切换
+            localStorage.setItem('moring_lang', langCode);
         }
 
         window.onload = function() {
-            const savedLang = localStorage.getItem('preferredLang') || 'en';
-            document.getElementById('langSelector').value = savedLang;
+            // 读取其他页面保存的语言，或者自动匹配
+            const savedLang = localStorage.getItem('moring_lang') || 'en';
+            
+            const selector = document.getElementById('langSelector');
+            if(selector.querySelector(`option[value="${savedLang}"]`)) {
+                selector.value = savedLang;
+            }
             updateLang(savedLang);
+            
+            setTimeout(() => document.querySelector('main.animate-fade-in').classList.add('opacity-100'), 100);
         }
     </script>
 </body>
