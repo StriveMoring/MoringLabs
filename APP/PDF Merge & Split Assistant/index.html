@@ -77,14 +77,15 @@
 
     <main class="pt-32 pb-32 px-6 max-w-7xl mx-auto">
         <section class="flex flex-col items-center text-center animate-fade-in opacity-0">
-            <div class="relative mb-8 mt-10">
-                <img id="appIcon" src="" class="relative w-36 h-36 md:w-40 md:h-40 rounded-[32px] premium-shadow" alt="App Icon">
+            <div class="relative mb-8 mt-10 group">
+                <div class="absolute inset-0 bg-blue-500 rounded-3xl blur-2xl opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
+                <img id="appIcon" src="" class="relative w-36 h-36 md:w-40 md:h-40 rounded-[32px] premium-shadow border border-black/5" alt="App Icon">
             </div>
             <h1 id="appName" class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900"></h1>
             <p id="appTagline" class="text-xl md:text-2xl text-gray-500 font-medium mb-12 max-w-2xl leading-relaxed"></p>
             
             <div class="flex flex-wrap justify-center gap-4 font-semibold text-base md:text-lg">
-                <a href="#" class="bg-black text-white px-8 md:px-10 py-4 rounded-full hover:scale-105 transition-all duration-300 flex items-center shadow-lg">
+                <a href="https://apps.apple.com/us/app/pdf-merge-split-assistant/id6758044607?mt=12" class="bg-black text-white px-8 md:px-10 py-4 rounded-full hover:scale-105 transition-all duration-300 flex items-center shadow-lg">
                     <i class="fab fa-apple mr-2 text-xl"></i> Mac App Store
                 </a>
                 <a href="privacy.html" class="bg-white text-black px-8 py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300">
@@ -174,14 +175,14 @@
             }
         };
 
-        const TEXTS = {
+       const TEXTS = {
             "en": {
                 tagline: "The ultimate native PDF tool. 100% offline, blazing fast.",
                 features: [
                     { title: "Seamless Merging", desc: "Drag and drop to combine multiple PDFs instantly." },
                     { title: "Precision Splitting", desc: "Extract exactly the pages you need with ease." },
                     { title: "Real-time Preview", desc: "See your changes instantly before saving." },
-                    { title: "100% Offline Privacy", desc: "Your files never leave your Mac. Absolute security." }
+                    { title: "Intuitive Page Rotation", desc: "Easily rotate any page to the perfect angle." }
                 ]
             },
             "zh-CN": {
@@ -190,7 +191,7 @@
                     { title: "拖拽无缝合并", desc: "轻松拖放，将多个 PDF 文件快速合并为一个。" },
                     { title: "灵活精准拆分", desc: "按需逐页提取或拆分多个文件，高效便捷。" },
                     { title: "实时视觉预览", desc: "所见即所得，操作前即刻确认最终呈现效果。" },
-                    { title: "绝对离线隐私", desc: "所有处理均在本地设备完成，绝不上传任何云端。" }
+                    { title: "直观页面旋转", desc: "轻松将任何页面旋转至最佳视觉角度。" }
                 ]
             },
             "zh-TW": {
@@ -199,7 +200,79 @@
                     { title: "拖曳無縫合併", desc: "輕鬆拖放，將多個 PDF 文件快速合併為一個。" },
                     { title: "靈活精準拆分", desc: "按需逐頁提取或拆分多個文件，高效便捷。" },
                     { title: "即時視覺預覽", desc: "所見即所得，操作前即刻確認最終呈現效果。" },
-                    { title: "絕對離線隱私", desc: "所有處理均在本地設備完成，絕不上傳任何雲端。" }
+                    { title: "直觀頁面旋轉", desc: "輕鬆將任何頁面旋轉至最佳視覺角度。" }
+                ]
+            },
+            "ja": {
+                tagline: "究極のプライバシー重視のネイティブPDFツール。100％オフライン、超高速。",
+                features: [
+                    { title: "シームレスな結合", desc: "ドラッグ＆ドロップで複数のPDFを即座に結合します。" },
+                    { title: "正確な分割", desc: "必要なページだけを簡単に抽出できます。" },
+                    { title: "リアルタイムプレビュー", desc: "保存する前に変更を即座に確認できます。" },
+                    { title: "直感的なページ回転", desc: "任意のページを最適な角度に簡単に回転させます。" }
+                ]
+            },
+            "ko": {
+                tagline: "궁극의 개인 정보 보호 네이티브 PDF 도구. 100% 오프라인, 초고속.",
+                features: [
+                    { title: "매끄러운 병합", desc: "드래그 앤 드롭으로 여러 PDF를 즉시 병합하세요." },
+                    { title: "정밀한 분할", desc: "필요한 페이지만 쉽게 추출할 수 있습니다." },
+                    { title: "실시간 미리보기", 대sc: "저장하기 전에 변경 사항을 즉시 확인하세요." },
+                    { title: "직관적인 페이지 회전", desc: "원하는 페이지를 완벽한 각도로 쉽게 회전하세요." }
+                ]
+            },
+            "de": {
+                tagline: "Das ultimative native PDF-Tool. 100% offline, blitzschnell.",
+                features: [
+                    { title: "Nahtloses Zusammenführen", desc: "Drag & Drop, um mehrere PDFs sofort zu kombinieren." },
+                    { title: "Präzises Teilen", desc: "Extrahieren Sie genau die Seiten, die Sie benötigen." },
+                    { title: "Echtzeit-Vorschau", desc: "Sehen Sie Ihre Änderungen sofort, bevor Sie speichern." },
+                    { title: "Intuitive Seitendrehung", desc: "Drehen Sie jede Seite einfach in den perfekten Winkel." }
+                ]
+            },
+            "fr": {
+                tagline: "L'outil PDF natif ultime. 100% hors ligne, ultra rapide.",
+                features: [
+                    { title: "Fusion transparente", desc: "Glissez et déposez pour combiner plusieurs PDF instantanément." },
+                    { title: "Fractionnement précis", desc: "Extrayez facilement les pages dont vous avez exactement besoin." },
+                    { title: "Aperçu en temps réel", desc: "Voyez vos modifications instantanément avant de sauvegarder." },
+                    { title: "Rotation intuitive", desc: "Faites pivoter facilement n'importe quelle page à l'angle parfait." }
+                ]
+            },
+            "es": {
+                tagline: "La herramienta PDF nativa definitiva. 100% sin conexión, ultrarrápida.",
+                features: [
+                    { title: "Fusión perfecta", desc: "Arrastra y suelta para combinar varios PDF al instante." },
+                    { title: "División precisa", desc: "Extrae exactamente las páginas que necesitas con facilidad." },
+                    { title: "Vista previa en tiempo real", desc: "Ve tus cambios al instante antes de guardar." },
+                    { title: "Rotación intuitiva", desc: "Gira fácilmente cualquier página al ángulo perfecto." }
+                ]
+            },
+            "it": {
+                tagline: "Lo strumento PDF nativo definitivo. 100% offline, velocissimo.",
+                features: [
+                    { title: "Unione senza interruzioni", desc: "Trascina e rilascia per combinare più PDF all'istante." },
+                    { title: "Divisione di precisione", desc: "Estrai esattamente le pagine di cui hai bisogno con facilità." },
+                    { title: "Anteprima in tempo reale", desc: "Guarda le tue modifiche all'istante prima di salvare." },
+                    { title: "Rotazione intuitiva", desc: "Ruota facilmente qualsiasi pagina all'angolazione perfetta." }
+                ]
+            },
+            "pt": {
+                tagline: "A ferramenta PDF nativa definitiva. 100% offline, extremamente rápida.",
+                features: [
+                    { title: "Mesclagem perfeita", desc: "Arraste e solte para combinar vários PDFs instantaneamente." },
+                    { title: "Divisão precisa", desc: "Extraia exatamente as páginas que você precisa com facilidade." },
+                    { title: "Visualização em tempo real", desc: "Veja suas alterações instantaneamente antes de salvar." },
+                    { title: "Rotação intuitiva", desc: "Gire facilmente qualquer página para o ângulo perfeito." }
+                ]
+            },
+            "ru": {
+                tagline: "Идеальный нативный PDF-инструмент. 100% оффлайн, молниеносно.",
+                features: [
+                    { title: "Бесшовное объединение", desc: "Перетащите файлы, чтобы мгновенно объединить несколько PDF." },
+                    { title: "Точное разделение", desc: "С легкостью извлекайте именно те страницы, которые вам нужны." },
+                    { title: "Предпросмотр онлайн", desc: "Мгновенно просматривайте изменения перед сохранением." },
+                    { title: "Интуитивный поворот", desc: "Легко поворачивайте любую страницу под нужным углом." }
                 ]
             }
         };
