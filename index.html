@@ -15,11 +15,14 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
-        body { 
+        /* 核心修复点：将 html 和 body 一起锁死宽度，彻底杜绝 1200px 光晕撑开手机屏幕的问题 */
+        html, body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
             background-color: #fbfbfd; 
             color: #1d1d1f;
             overflow-x: hidden;
+            width: 100vw;
+            max-width: 100%;
         }
 
         .glass-nav { 
@@ -124,7 +127,8 @@
                 <div class="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
                     <img src="app/pdf-merge-split-assistant/PDF Merge & Split Assistant-AppIcon.webp" 
                          class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 flex-shrink-0" alt="PDF Assistant">
-                    <div class="min-w-0"> <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2 leading-tight break-words">PDF Merge & <br class="hidden sm:block">Split Assistant</h3>
+                    <div class="min-w-0">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2 leading-tight break-words">PDF Merge & <br class="hidden sm:block">Split Assistant</h3>
                         <span class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-gray-100 text-gray-600 text-[10px] md:text-xs font-bold rounded-full">macOS Native</span>
                     </div>
                 </div>
