@@ -1,100 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support - PDF Merge & Split Assistant</title>
+    <title>Support | PDF Merge & Split Assistant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', -apple-system, sans-serif; scroll-behavior: smooth; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
+            background-color: #fbfbfd; 
+            color: #1d1d1f;
+            overflow-x: hidden;
+        }
+
+        .glass-nav { 
+            background: rgba(255, 255, 255, 0.75); 
+            backdrop-filter: blur(24px) saturate(180%); 
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .ambient-glow {
+            position: absolute; 
+            width: 1200px; 
+            height: 1200px;
+            background: radial-gradient(circle, rgba(64,156,255,0.08) 0%, rgba(255,255,255,0) 70%);
+            top: -300px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            z-index: -1; 
+            pointer-events: none;
+        }
+
+        .bento-card {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+            border-radius: 2.5rem;
+        }
+        .bento-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        /* 专门为 FAQ 写的展开动画样式 */
         .faq-answer { display: none; }
-        .faq-item.active .faq-answer { display: block; }
-        .faq-item.active i { transform: rotate(180deg); }
+        .faq-item.active .faq-answer { display: block; animation: fadeIn 0.4s ease-in-out; }
+        .faq-item.active .fa-chevron-down { transform: rotate(180deg); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="relative min-h-screen antialiased">
 
-    <nav class="bg-white border-b sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-            <span class="font-bold text-lg tracking-tight text-slate-900">PDF Merge & Split Assistant</span>
-            <div class="relative inline-block text-left">
-                <select onchange="updateLang(this.value)" id="langSelector" class="block w-full bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer">
-                    <option value="en">🇺🇸 English (US)</option>
-                    <option value="zh-CN">🇨🇳 中文 (简体)</option>
-                    <option value="zh-TW">🇭🇰 中文 (繁體)</option>
+    <div class="ambient-glow"></div>
+
+    <nav class="glass-nav fixed top-0 w-full z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-lg font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2">
+                <i class="fas fa-chevron-left text-sm"></i> <span id="nav-back-text">Back to App</span>
+            </a>
+            
+            <div class="relative group">
+                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh-CN">🇨🇳 简体中文</option>
+                    <option value="zh-TW">🇭🇰 繁體中文</option>
                     <option value="de">🇩🇪 Deutsch</option>
-                    <option value="es">🇪🇸 Español (ES)</option>
                     <option value="fr">🇫🇷 Français</option>
+                    <option value="es">🇪🇸 Español</option>
                     <option value="it">🇮🇹 Italiano</option>
                     <option value="ja">🇯🇵 日本語</option>
                     <option value="ko">🇰🇷 한국어</option>
-                    <option value="pt">🇧🇷 Português (BR)</option>
+                    <option value="pt">🇧🇷 Português</option>
                     <option value="ru">🇷🇺 Русский</option>
                 </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-                    <i class="fas fa-chevron-down text-xs"></i>
-                </div>
+                <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-4 py-12">
+    <main class="pt-32 pb-32 px-6 max-w-5xl mx-auto animate-fade-in opacity-0">
         <header class="mb-16 text-center">
-            <h1 id="mainTitle" class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Support & Help Center</h1>
-            <p id="subTitle" class="text-xl text-slate-500 max-w-2xl mx-auto">Everything you need to know about using PDF Merge & Split Assistant on macOS.</p>
+            <h1 id="mainTitle" class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">Support & Help Center</h1>
+            <p id="subTitle" class="text-xl text-gray-500 font-medium max-w-2xl mx-auto">Everything you need to know about using PDF Merge & Split Assistant.</p>
         </header>
 
-        <div class="grid md:grid-cols-2 gap-8 mb-16">
-            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
-                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                    <i class="fas fa-object-group text-xl"></i>
+        <div class="grid md:grid-cols-2 gap-8 mb-20">
+            <div class="bento-card p-8 md:p-10">
+                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner border border-blue-100">
+                    <i class="fas fa-object-group text-2xl"></i>
                 </div>
-                <h2 id="mergeTitle" class="text-2xl font-bold mb-4">How to Merge</h2>
-                <ul id="mergeList" class="space-y-3 text-slate-600">
-                    </ul>
+                <h2 id="mergeTitle" class="text-2xl font-bold mb-6 text-gray-900 tracking-tight">How to Merge</h2>
+                <ul id="mergeList" class="space-y-4 text-gray-600 font-medium text-lg"></ul>
             </div>
-            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
-                <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
-                    <i class="fas fa-scissors text-xl"></i>
+            
+            <div class="bento-card p-8 md:p-10">
+                <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner border border-indigo-100">
+                    <i class="fas fa-scissors text-2xl"></i>
                 </div>
-                <h2 id="splitTitle" class="text-2xl font-bold mb-4">How to Split</h2>
-                <ul id="splitList" class="space-y-3 text-slate-600">
-                    </ul>
+                <h2 id="splitTitle" class="text-2xl font-bold mb-6 text-gray-900 tracking-tight">How to Split</h2>
+                <ul id="splitList" class="space-y-4 text-gray-600 font-medium text-lg"></ul>
             </div>
         </div>
 
-        <section class="mb-16">
-            <h2 id="faqSectionTitle" class="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
-            <div id="faqContainer" class="space-y-4 max-w-3xl mx-auto">
-                </div>
+        <section class="mb-20">
+            <h2 id="faqSectionTitle" class="text-3xl font-bold text-center mb-10 text-gray-900 tracking-tight">Frequently Asked Questions</h2>
+            <div id="faqContainer" class="space-y-4 max-w-3xl mx-auto"></div>
         </section>
 
-        <section class="bg-slate-900 text-white rounded-3xl p-8 md:p-12 mb-16">
-            <h2 id="specsTitle" class="text-2xl font-bold mb-8">System Requirements</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8" id="specsGrid">
-                </div>
+        <section class="bg-gray-900 text-white rounded-[2.5rem] p-8 md:p-12 mb-20 shadow-2xl shadow-gray-900/20 border border-gray-800 transition-transform hover:-translate-y-1 duration-500">
+            <h2 id="specsTitle" class="text-2xl font-bold mb-10 tracking-tight">System Requirements</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8" id="specsGrid"></div>
         </section>
 
-        <section class="text-center py-12 border-t border-slate-200">
-            <h2 id="contactTitle" class="text-2xl font-bold mb-4 text-slate-900">Still need help?</h2>
-            <p id="contactText" class="text-slate-500 mb-8">Our support team is ready to assist you.</p>
-            <a href="mailto:strivemoring@gmail.com" class="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
+        <section class="text-center py-12 border-t border-gray-200/60">
+            <h2 id="contactTitle" class="text-2xl font-bold mb-4 text-gray-900 tracking-tight">Still need help?</h2>
+            <p id="contactText" class="text-gray-500 font-medium mb-8 text-lg">Our support team is ready to assist you.</p>
+            <a href="mailto:strivemoring@gmail.com" class="inline-flex items-center px-10 py-4 bg-black text-white font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-xl shadow-black/10">
                 <i class="fas fa-envelope mr-2"></i> strivemoring@gmail.com
             </a>
         </section>
     </main>
 
-    <footer class="py-12 text-center text-slate-400 text-sm">
-        <p>&copy; 2026 Moring Labs. All rights reserved.</p>
+    <footer class="py-12 text-center">
+        <p class="text-sm text-gray-400 font-medium">&copy; 2026 Moring Labs. All rights reserved.</p>
     </footer>
 
     <script>
+        // 11 国语言完整翻译字典
         const translations = {
             "en": {
+                backText: "Back to App",
                 mainTitle: "Support & Help Center",
-                subTitle: "Everything you need to know about using PDF Merge & Split Assistant on macOS.",
+                subTitle: "Everything you need to know about using PDF Merge & Split Assistant.",
                 mergeTitle: "Merge PDF",
                 mergeList: ["Drag & Drop PDFs into the list", "Adjust order by dragging items", "Preview the result in real-time", "Click 'Merge' to save"],
                 splitTitle: "Split PDF",
@@ -111,8 +157,9 @@
                 contactText: "Our support team is ready to assist you."
             },
             "zh-CN": {
+                backText: "返回应用",
                 mainTitle: "支持与帮助中心",
-                subTitle: "关于在 macOS 上使用 PDF Merge & Split Assistant 的一切指南。",
+                subTitle: "关于使用 PDF Merge & Split Assistant 的一切指南。",
                 mergeTitle: "合并 PDF",
                 mergeList: ["将 PDF 拖入列表", "拖拽列表项调整顺序", "实时预览合并效果", "点击“合并”即可保存"],
                 splitTitle: "拆分 PDF",
@@ -129,8 +176,9 @@
                 contactText: "我们的支持团队随时准备为您提供帮助。"
             },
             "zh-TW": {
+                backText: "返回應用",
                 mainTitle: "支援與幫助中心",
-                subTitle: "關於在 macOS 上使用 PDF Merge & Split Assistant 的完整指南。",
+                subTitle: "關於使用 PDF Merge & Split Assistant 的完整指南。",
                 mergeTitle: "合併 PDF",
                 mergeList: ["將 PDF 拖入清單", "拖拽清單項調整順序", "即時預覽合併效果", "點擊「合併」即可保存"],
                 splitTitle: "拆分 PDF",
@@ -147,8 +195,9 @@
                 contactText: "我們的支持團隊隨時準備為您提供幫助。"
             },
             "ja": {
+                backText: "アプリに戻る",
                 mainTitle: "サポート＆ヘルプセンター",
-                subTitle: "macOSでの PDF Merge & Split Assistant の使用に関するすべてのガイド。",
+                subTitle: "PDF Merge & Split Assistant の使用に関するすべてのガイド。",
                 mergeTitle: "PDF結合",
                 mergeList: ["PDFをリストにドラッグ", "ドラッグして順序を調整", "リアルタイムでプレビュー", "「結合」をクリックして保存"],
                 splitTitle: "PDF分割",
@@ -165,8 +214,9 @@
                 contactText: "サポートチームがお手伝いします。"
             },
             "ko": {
+                backText: "앱으로 돌아가기",
                 mainTitle: "지원 및 도움말 센터",
-                subTitle: "macOS용 PDF Merge & Split Assistant 사용에 관한 모든 안내.",
+                subTitle: "PDF Merge & Split Assistant 사용에 관한 모든 안내.",
                 mergeTitle: "PDF 병합",
                 mergeList: ["PDF를 목록으로 드래그", "항목을 드래그하여 순서 조정", "실시간 미리보기 확인", "「병합」을 클릭하여 저장"],
                 splitTitle: "PDF 분할",
@@ -183,8 +233,9 @@
                 contactText: "지원 팀이 도와드릴 준비가 되어 있습니다."
             },
             "de": {
+                backText: "Zurück zur App",
                 mainTitle: "Support-Center",
-                subTitle: "Alles, was Sie über die Nutzung von PDF Merge & Split Assistant auf macOS wissen müssen.",
+                subTitle: "Alles, was Sie über die Nutzung von PDF Merge & Split Assistant wissen müssen.",
                 mergeTitle: "PDF Zusammenfügen",
                 mergeList: ["PDFs in die Liste ziehen", "Reihenfolge per Drag & Drop anpassen", "Echtzeit-Vorschau prüfen", "Auf 'Zusammenfügen' klicken"],
                 splitTitle: "PDF Trennen",
@@ -201,8 +252,9 @@
                 contactText: "Unser Support-Team ist für Sie da."
             },
             "fr": {
+                backText: "Retour à l'App",
                 mainTitle: "Centre d'Assistance",
-                subTitle: "Tout ce qu'il faut savoir sur PDF Merge & Split Assistant pour macOS.",
+                subTitle: "Tout ce qu'il faut savoir sur PDF Merge & Split Assistant.",
                 mergeTitle: "Fusionner PDF",
                 mergeList: ["Glisser les PDF dans la liste", "Ajuster l'ordre par glissement", "Aperçu en temps réel", "Cliquer sur 'Fusionner'"],
                 splitTitle: "Diviser PDF",
@@ -219,8 +271,9 @@
                 contactText: "Notre équipe est à votre écoute."
             },
             "es": {
+                backText: "Volver a la App",
                 mainTitle: "Centro de Soporte",
-                subTitle: "Guía completa de PDF Merge & Split Assistant para macOS.",
+                subTitle: "Guía completa de PDF Merge & Split Assistant.",
                 mergeTitle: "Combinar PDF",
                 mergeList: ["Arrastra archivos a la lista", "Ordena arrastrando elementos", "Vista previa en tiempo real", "Pulsa 'Combinar' para guardar"],
                 splitTitle: "Dividir PDF",
@@ -237,8 +290,9 @@
                 contactText: "Nuestro equipo está listo para ayudarte."
             },
             "it": {
+                backText: "Torna all'App",
                 mainTitle: "Centro Assistenza",
-                subTitle: "Guida all'uso di PDF Merge & Split Assistant su macOS.",
+                subTitle: "Guida all'uso di PDF Merge & Split Assistant.",
                 mergeTitle: "Unisci PDF",
                 mergeList: ["Trascina i PDF nella lista", "Ordina trascinando gli elementi", "Anteprima in tempo reale", "Clicca 'Unisci'"],
                 splitTitle: "Dividi PDF",
@@ -255,8 +309,9 @@
                 contactText: "Il nostro team è a disposizione."
             },
             "pt": {
+                backText: "Voltar ao App",
                 mainTitle: "Centro de Suporte",
-                subTitle: "Guia de uso do PDF Merge & Split Assistant no macOS.",
+                subTitle: "Guia de uso do PDF Merge & Split Assistant.",
                 mergeTitle: "Mesclar PDF",
                 mergeList: ["Arraste os PDFs para a lista", "Ajuste a ordem arrastando", "Pré-visualização em tempo real", "Clique em 'Mesclar'"],
                 splitTitle: "Dividir PDF",
@@ -273,8 +328,9 @@
                 contactText: "Nossa equipe está pronta para ajudar."
             },
             "ru": {
+                backText: "Назад к приложению",
                 mainTitle: "Центр поддержки",
-                subTitle: "Руководство по PDF Merge & Split Assistant для macOS.",
+                subTitle: "Руководство по PDF Merge & Split Assistant.",
                 mergeTitle: "Объединение",
                 mergeList: ["Перетащите PDF в список", "Измените порядок перетаскиванием", "Предпросмотр в реальном времени", "Нажмите 'Объединить'"],
                 splitTitle: "Разделение",
@@ -292,9 +348,10 @@
             }
         };
 
-        function updateLang(langCode) {
+        function updateUI(langCode) {
             const data = translations[langCode] || translations['en'];
             
+            document.getElementById('nav-back-text').innerText = data.backText;
             document.getElementById('mainTitle').innerText = data.mainTitle;
             document.getElementById('subTitle').innerText = data.subTitle;
             document.getElementById('mergeTitle').innerText = data.mergeTitle;
@@ -304,46 +361,65 @@
             document.getElementById('contactTitle').innerText = data.contactTitle;
             document.getElementById('contactText').innerText = data.contactText;
 
-            // Merge List
+            // Merge List - 加入了优雅的打钩图标和布局
             const mList = document.getElementById('mergeList');
-            mList.innerHTML = data.mergeList.map(item => `<li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i><span>${item}</span></li>`).join('');
+            mList.innerHTML = data.mergeList.map(item => `
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i><span>${item}</span>
+                </li>`).join('');
 
             // Split List
             const sList = document.getElementById('splitList');
-            sList.innerHTML = data.splitList.map(item => `<li class="flex items-start"><i class="fas fa-check-circle text-indigo-500 mt-1 mr-3"></i><span>${item}</span></li>`).join('');
+            sList.innerHTML = data.splitList.map(item => `
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-indigo-500 mt-1 mr-3"></i><span>${item}</span>
+                </li>`).join('');
 
-            // FAQ
+            // FAQ 渲染 - 植入 bento 样式与展开动画
             const faqBox = document.getElementById('faqContainer');
-            faqBox.innerHTML = data.faqs.map((f, i) => `
-                <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow" onclick="this.classList.toggle('active')">
-                    <div class="px-6 py-4 flex justify-between items-center font-bold text-slate-900">
-                        ${f.q} <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+            faqBox.innerHTML = data.faqs.map((f) => `
+                <div class="faq-item bento-card overflow-hidden cursor-pointer" onclick="this.classList.toggle('active')">
+                    <div class="px-8 py-5 flex justify-between items-center font-bold text-gray-900 text-lg">
+                        ${f.q} <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
                     </div>
-                    <div class="faq-answer px-6 pb-4 text-slate-600 border-t border-slate-50 pt-3">
+                    <div class="faq-answer px-8 pb-6 text-gray-600 font-medium border-t border-gray-50 pt-4">
                         ${f.a}
                     </div>
                 </div>
             `).join('');
 
-            // Specs
+            // Specs 渲染 (黑底卡片专用图标和布局)
             const specGrid = document.getElementById('specsGrid');
             const icons = { os: 'desktop', chip: 'microchip', size: 'hdd', net: 'wifi' };
             specGrid.innerHTML = Object.entries(data.specs).map(([key, val]) => `
                 <div class="text-center md:text-left">
-                    <div class="text-slate-500 mb-2 flex items-center justify-center md:justify-start">
-                        <i class="fas fa-${icons[key]} mr-2"></i> ${key.toUpperCase()}
+                    <div class="text-gray-400 mb-2 flex items-center justify-center md:justify-start text-sm tracking-wider font-semibold">
+                        <i class="fas fa-${icons[key]} mr-2 text-gray-500"></i> ${key.toUpperCase()}
                     </div>
-                    <div class="font-bold text-lg">${val}</div>
+                    <div class="font-bold text-xl">${val}</div>
                 </div>
             `).join('');
+        }
 
-            localStorage.setItem('preferredLang', langCode);
+        // 绑定给下拉菜单的函数：存缓存 + 调更新
+        function switchLang(langCode) {
+            localStorage.setItem('moring_lang', langCode);
+            updateUI(langCode);
         }
 
         window.onload = function() {
-            const savedLang = localStorage.getItem('preferredLang') || 'en';
-            document.getElementById('langSelector').value = savedLang;
-            updateLang(savedLang);
+            // 读取其他页面保存的语言，兜底英语
+            const savedLang = localStorage.getItem('moring_lang') || 'en';
+            const finalLang = translations[savedLang] ? savedLang : 'en';
+            
+            const selector = document.getElementById('langSelector');
+            if(selector.querySelector(`option[value="${finalLang}"]`)) {
+                selector.value = finalLang;
+            }
+            
+            updateUI(finalLang);
+            
+            setTimeout(() => document.querySelector('main.animate-fade-in').classList.add('opacity-100'), 100);
         }
     </script>
 </body>
