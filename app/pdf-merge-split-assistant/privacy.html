@@ -16,11 +16,14 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
-        body { 
+        /* 核心修复：锁死视口宽度，防止光晕撑爆手机屏幕 */
+        body, html { 
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
             background-color: #fbfbfd; 
             color: #1d1d1f;
             overflow-x: hidden;
+            width: 100vw;
+            max-width: 100%;
         }
 
         .glass-nav { 
@@ -30,7 +33,6 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* 统一的高级环境光晕风格 */
         .ambient-glow {
             position: absolute; 
             width: 1200px; 
@@ -43,12 +45,10 @@
             pointer-events: none;
         }
 
-        /* Bento 卡片风格 */
         .bento-card {
             background: #ffffff;
             border: 1px solid rgba(0,0,0,0.04);
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
-            border-radius: 2.5rem;
         }
 
         @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
@@ -60,13 +60,13 @@
     <div class="ambient-glow"></div>
 
     <nav class="glass-nav fixed top-0 w-full z-50">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="./" class="text-lg font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2">
-                <i class="fas fa-chevron-left text-sm"></i> <span id="nav-back-text">Back to App</span>
+        <div class="max-w-4xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center gap-2">
+            <a href="./" class="text-base md:text-lg font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2 flex-shrink-0">
+                <i class="fas fa-chevron-left text-xs md:text-sm"></i> <span id="nav-back-text">Back to App</span>
             </a>
             
-            <div class="relative group">
-                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-semibold outline-none cursor-pointer py-2 pl-4 pr-8 rounded-full appearance-none">
+            <div class="relative group flex-shrink-0">
+                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-1.5 md:py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[105px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
                     <option value="en">🇺🇸 English</option>
                     <option value="zh-CN">🇨🇳 简体中文</option>
                     <option value="zh-TW">🇭🇰 繁體中文</option>
@@ -79,35 +79,35 @@
                     <option value="pt">🇧🇷 Português</option>
                     <option value="ru">🇷🇺 Русский</option>
                 </select>
-                <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] pointer-events-none opacity-60"></i>
+                <i class="fas fa-chevron-down absolute right-2.5 md:right-3 top-1/2 -translate-y-1/2 text-[9px] md:text-[10px] pointer-events-none opacity-60"></i>
             </div>
         </div>
     </nav>
 
-    <main class="pt-32 pb-32 px-6 max-w-4xl mx-auto animate-fade-in opacity-0">
-        <header class="mb-12 text-center">
-            <h1 id="mainTitle" class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">Privacy Policy</h1>
-            <p class="text-lg text-gray-500 font-medium">PDF Merge & Split Assistant</p>
+    <main class="pt-24 md:pt-32 pb-24 md:pb-32 px-4 md:px-6 max-w-4xl mx-auto animate-fade-in opacity-0">
+        <header class="mb-8 md:mb-12 text-center">
+            <h1 id="mainTitle" class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-2 md:mb-4">Privacy Policy</h1>
+            <p class="text-base md:text-lg text-gray-500 font-medium">PDF Merge & Split Assistant</p>
         </header>
 
-        <div class="bento-card p-8 md:p-12">
-            <div id="content-container" class="space-y-10"></div>
+        <div class="bento-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12">
+            <div id="content-container" class="space-y-8 md:space-y-10"></div>
 
-            <div class="mt-12 pt-10 border-t border-gray-100">
-                <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+            <div class="mt-10 md:mt-12 pt-8 md:pt-10 border-t border-gray-100">
+                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4 flex items-center">
                     <i class="fas fa-envelope-open-text mr-3 text-blue-500"></i>
                     <span id="contactTitle">Contact Us</span>
                 </h3>
-                <p class="text-gray-500 font-medium text-lg flex flex-wrap items-center gap-2">
+                <p class="text-gray-500 font-medium text-base md:text-lg flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2">
                     <span id="contactText">If you have any questions, please contact:</span> 
-                    <a href="mailto:strivemoring@gmail.com" class="text-blue-500 hover:text-blue-600 font-semibold transition-colors">strivemoring@gmail.com</a>
+                    <a href="mailto:strivemoring@gmail.com" class="text-blue-500 hover:text-blue-600 font-semibold transition-colors break-all">strivemoring@gmail.com</a>
                 </p>
             </div>
         </div>
     </main>
 
-    <footer class="py-12 text-center">
-        <p class="text-sm text-gray-400 font-medium">&copy; 2026 Moring Labs. All rights reserved.</p>
+    <footer class="py-8 md:py-12 text-center">
+        <p class="text-xs md:text-sm text-gray-400 font-medium">&copy; 2026 Moring Labs. All rights reserved.</p>
     </footer>
 
     <script>
@@ -251,9 +251,10 @@
             
             data.sections.forEach(section => {
                 const div = document.createElement('div');
+                // 优化点：在 JS 模板里加入了响应式字号 text-base md:text-lg
                 div.innerHTML = `
-                    <h2 class="text-xl font-bold text-gray-900 mb-3 tracking-tight">${section.h}</h2>
-                    <p class="text-gray-500 font-medium leading-relaxed text-lg">${section.p}</p>
+                    <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 tracking-tight">${section.h}</h2>
+                    <p class="text-gray-500 font-medium leading-relaxed text-base md:text-lg">${section.p}</p>
                 `;
                 container.appendChild(div);
             });
