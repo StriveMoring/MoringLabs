@@ -15,14 +15,18 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
-        /* 核心修复点：将 html 和 body 一起锁死宽度，彻底杜绝 1200px 光晕撑开手机屏幕的问题 */
+      /* 1. 核心修复：单纯锁死视口宽度，绝对不碰颜色 */
         html, body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
-            background-color: #fbfbfd; 
-            color: #1d1d1f;
             overflow-x: hidden;
             width: 100vw;
             max-width: 100%;
+        }
+        
+        /* 2. 视觉渲染：把背景色和字体只交还给 body，恢复透明穿透机制 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
+            background-color: #fbfbfd; 
+            color: #1d1d1f;
         }
 
         .glass-nav { 
