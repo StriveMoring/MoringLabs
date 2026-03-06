@@ -15,14 +15,18 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
-        /* 核心修复：锁死视口宽度，根治光晕撑爆屏幕和放大图片飞出视口的问题 */
+       /* 1. 核心修复：单纯锁死视口宽度，绝对不碰颜色 */
         html, body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
-            background-color: #fbfbfd; 
-            color: #1d1d1f; 
-            overflow-x: hidden; 
+            overflow-x: hidden;
             width: 100vw;
             max-width: 100%;
+        }
+        
+        /* 2. 视觉渲染：把背景色和字体只交还给 body，恢复透明穿透机制 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
+            background-color: #fbfbfd; 
+            color: #1d1d1f;
         }
         
         .glass-nav { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid rgba(0,0,0,0.05); }
