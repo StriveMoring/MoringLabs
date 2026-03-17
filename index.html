@@ -15,7 +15,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
-      /* 1. 核心修复：单纯锁死视口宽度，绝对不碰颜色 */
+        /* 1. 核心修复：单纯锁死视口宽度，绝对不碰颜色 */
         html, body { 
             overflow-x: hidden;
             width: 100vw;
@@ -74,6 +74,10 @@
         
         @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
         .animate-fade-in { animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        .model-card:hover {
+            transform: translateY(-4px);
+        }
     </style>
 </head>
 <body class="relative antialiased">
@@ -99,7 +103,7 @@
             </a>
             
             <div class="relative group flex-shrink-0">
-                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-1.5 md:py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[105px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
+                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-2 md:py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[110px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
                     <option value="en">🇺🇸 English</option>
                     <option value="zh-CN">🇨🇳 简体中文</option>
                     <option value="zh-TW">🇭🇰 繁體中文</option>
@@ -123,9 +127,10 @@
     </header>
 
     <main class="max-w-6xl mx-auto px-4 md:px-6 pb-24 md:pb-32 animate-fade-in" style="animation-delay: 0.1s; opacity: 0;">
+        
         <h2 id="section-title" class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-6 md:mb-8 ml-2"></h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-20">
             
             <a href="app/pdf-merge-split-assistant/" class="app-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 block group">
                 <div class="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
@@ -179,8 +184,21 @@
                 <h3 id="new-proj-title" class="text-lg md:text-xl font-bold text-gray-400 mb-2"></h3>
                 <p id="new-proj-desc" class="text-sm md:text-base text-gray-400 font-medium"></p>
             </div>
-
         </div>
+
+        <div class="flex items-center justify-between mb-6 md:mb-8 ml-2">
+            <h2 id="models-section-title" class="text-xs font-bold tracking-widest text-gray-400 uppercase"></h2>
+            <a href="https://huggingface.co/MoringLabs" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-500 hover:text-blue-600 font-semibold flex items-center transition-colors">
+                <span id="hf-link-text"></span> <i class="fas fa-external-link-alt ml-1.5"></i>
+            </a>
+        </div>
+        
+        <div id="models-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <div class="col-span-full py-8 text-center text-gray-400 text-sm font-medium">
+                <i class="fas fa-circle-notch fa-spin mr-2"></i> Fetching models from Hugging Face...
+            </div>
+        </div>
+
     </main>
 
     <footer class="py-8 md:py-12 border-t border-gray-200/60 bg-white/50 text-center flex flex-col items-center">
@@ -202,6 +220,8 @@
                 btnComing: "In Testing",
                 newProjTitle: "New Project",
                 newProjDesc: "In development...",
+                modelsTitle: "Open Source Models",
+                hfLinkText: "View on Hugging Face",
                 contact: "Contact Us"
             },
             "zh-CN": {
@@ -216,6 +236,8 @@
                 btnComing: "内测中",
                 newProjTitle: "全新项目",
                 newProjDesc: "正在开发中...",
+                modelsTitle: "开源量化模型",
+                hfLinkText: "在 Hugging Face 查看",
                 contact: "联系我们"
             },
             "zh-TW": {
@@ -230,6 +252,8 @@
                 btnComing: "內測中",
                 newProjTitle: "全新項目",
                 newProjDesc: "正在開發中...",
+                modelsTitle: "開源量化模型",
+                hfLinkText: "在 Hugging Face 查看",
                 contact: "聯絡我們"
             },
             "ja": {
@@ -244,6 +268,8 @@
                 btnComing: "テスト中",
                 newProjTitle: "新プロジェクト",
                 newProjDesc: "開発中...",
+                modelsTitle: "オープンソースモデル",
+                hfLinkText: "Hugging Faceで見る",
                 contact: "お問い合わせ"
             },
             "ko": {
@@ -258,6 +284,8 @@
                 btnComing: "테스트 중",
                 newProjTitle: "새 프로젝트",
                 newProjDesc: "개발 중...",
+                modelsTitle: "오픈 소스 모델",
+                hfLinkText: "Hugging Face에서 보기",
                 contact: "문의하기"
             },
             "de": {
@@ -272,6 +300,8 @@
                 btnComing: "Im Test",
                 newProjTitle: "Neues Projekt",
                 newProjDesc: "In Entwicklung...",
+                modelsTitle: "Open-Source-Modelle",
+                hfLinkText: "Auf Hugging Face ansehen",
                 contact: "Kontakt"
             },
             "fr": {
@@ -286,6 +316,8 @@
                 btnComing: "En test",
                 newProjTitle: "Nouveau Projet",
                 newProjDesc: "En développement...",
+                modelsTitle: "Modèles Open Source",
+                hfLinkText: "Voir sur Hugging Face",
                 contact: "Nous contacter"
             },
             "es": {
@@ -300,6 +332,8 @@
                 btnComing: "En pruebas",
                 newProjTitle: "Nuevo Proyecto",
                 newProjDesc: "En desarrollo...",
+                modelsTitle: "Modelos de Código Abierto",
+                hfLinkText: "Ver en Hugging Face",
                 contact: "Contáctenos"
             },
             "it": {
@@ -314,6 +348,8 @@
                 btnComing: "In test",
                 newProjTitle: "Nuovo Progetto",
                 newProjDesc: "In sviluppo...",
+                modelsTitle: "Modelli Open Source",
+                hfLinkText: "Vedi su Hugging Face",
                 contact: "Contattaci"
             },
             "pt": {
@@ -328,6 +364,8 @@
                 btnComing: "Em teste",
                 newProjTitle: "Novo Projeto",
                 newProjDesc: "Em desenvolvimento...",
+                modelsTitle: "Modelos de Código Aberto",
+                hfLinkText: "Ver no Hugging Face",
                 contact: "Contate-nos"
             },
             "ru": {
@@ -342,6 +380,8 @@
                 btnComing: "В тестировании",
                 newProjTitle: "Новый проект",
                 newProjDesc: "В разработке...",
+                modelsTitle: "Модели с открытым исходным кодом",
+                hfLinkText: "Посмотреть на Hugging Face",
                 contact: "Связаться с нами"
             }
         };
@@ -367,6 +407,9 @@
             document.getElementById('new-proj-title').innerText = data.newProjTitle;
             document.getElementById('new-proj-desc').innerText = data.newProjDesc;
             
+            document.getElementById('models-section-title').innerText = data.modelsTitle;
+            document.getElementById('hf-link-text').innerText = data.hfLinkText;
+
             document.getElementById('contact-us').innerText = data.contact;
         }
 
@@ -398,6 +441,89 @@
             return 'en';
         }
 
+       // 动态抓取 Hugging Face 模型
+        async function fetchHFModels() {
+            const container = document.getElementById('models-container');
+            const author = 'MoringLabs';
+            
+            try {
+                const response = await fetch(`https://huggingface.co/api/models?author=${author}&sort=downloads&direction=-1`);
+                if (!response.ok) throw new Error('API fetch failed');
+                
+                const models = await response.json();
+                if (models.length === 0) throw new Error('No models found');
+
+                container.innerHTML = ''; 
+                
+                models.slice(0, 6).forEach(model => {
+                    const modelName = model.id.split('/')[1];
+                    const downloads = model.downloads || 0;
+                    const likes = model.likes || 0;
+                    
+                    // 注意：这里去掉了 block，修改了 p-4 sm:p-5
+                    const cardHTML = `
+                        <a href="https://huggingface.co/${model.id}" target="_blank" class="app-card model-card rounded-[1.5rem] p-4 sm:p-5 md:p-6 group relative overflow-hidden flex flex-col justify-between h-full min-h-[140px]">
+                            <div class="flex items-start gap-3 sm:gap-4 mb-3">
+                                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <span class="text-xl">🤗</span>
+                                </div>
+                                <h3 class="font-bold text-gray-800 text-base md:text-lg leading-tight line-clamp-2 mt-1">${modelName}</h3>
+                            </div>
+                            
+                            <div class="flex items-center gap-3 sm:gap-4 mt-auto pt-4 border-t border-gray-100/80">
+                                <span class="flex items-center text-xs text-gray-500 font-semibold bg-gray-50 px-2 py-1 rounded-md">
+                                    <i class="fas fa-download text-gray-400 mr-1.5"></i> ${downloads.toLocaleString()}
+                                </span>
+                                <span class="flex items-center text-xs text-gray-500 font-semibold bg-gray-50 px-2 py-1 rounded-md">
+                                    <i class="fas fa-heart text-red-400 mr-1.5"></i> ${likes.toLocaleString()}
+                                </span>
+                            </div>
+                        </a>
+                    `;
+                    container.innerHTML += cardHTML;
+                });
+
+            } catch (error) {
+                console.warn("Failed to fetch dynamically, loading fallback models.", error);
+                
+                const fallbackModels = [
+                    { 
+                        name: 'Qwen3.5-122B-A10B-MLX-3.7bit-VL', 
+                        desc: '3.7-bit mixed-precision with vision support. Saves ~13GB to keep long-context inference comfortably within 96GB Apple Silicon.',
+                        url: 'https://huggingface.co/MoringLabs/Qwen3.5-122B-A10B-MLX-3.7bit-VL' 
+                    },
+                    { 
+                        name: 'GPT-OSS-120B-MLX-3.6bit', 
+                        desc: '3.6-bit mixed-precision quantization. Frees ~17GB to prevent swapping on 96GB Macs during heavy contexts.',
+                        url: 'https://huggingface.co/MoringLabs/GPT-OSS-120B-MLX-3.6bit' 
+                    }
+                ];
+                
+                container.innerHTML = '';
+                fallbackModels.forEach(m => {
+                    // 注意：这里也去掉了 block，修改了 p-4 sm:p-5
+                    container.innerHTML += `
+                        <a href="${m.url}" target="_blank" class="app-card model-card rounded-[1.5rem] p-4 sm:p-5 md:p-6 group relative overflow-hidden flex flex-col justify-between h-full min-h-[160px]">
+                            <div>
+                                <div class="flex items-start gap-3 sm:gap-4 mb-3">
+                                    <div class="w-10 h-10 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-microchip text-gray-500 text-lg"></i>
+                                    </div>
+                                    <h3 class="font-bold text-gray-800 text-base md:text-lg leading-tight line-clamp-2 mt-1">${m.name}</h3>
+                                </div>
+                                <p class="text-[11px] sm:text-xs text-gray-500 font-medium line-clamp-3 mb-4 leading-relaxed">${m.desc}</p>
+                            </div>
+                            <div class="flex items-center mt-auto pt-4 border-t border-gray-100/80">
+                                <span class="text-xs text-gray-400 font-bold group-hover:text-blue-500 transition-colors">
+                                    View on Hugging Face &rarr;
+                                </span>
+                            </div>
+                        </a>
+                    `;
+                });
+            }
+        }
+        
         window.onload = () => {
             const initialLang = detectLanguage();
             document.getElementById('langSelector').value = initialLang;
@@ -405,7 +531,11 @@
             
             localStorage.setItem('moring_lang', initialLang);
             
+            // 触发渐入动画
             setTimeout(() => document.querySelector('main.animate-fade-in').classList.add('opacity-100'), 100);
+            
+            // 获取并渲染模型
+            fetchHFModels();
         };
     </script>
 </body>
