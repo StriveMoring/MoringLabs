@@ -15,14 +15,14 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
-        /* 1. 核心修复：单纯锁死视口宽度，绝对不碰颜色 */
+        /* 1. 核心修复：单纯锁死视口宽度 */
         html, body { 
             overflow-x: hidden;
             width: 100vw;
             max-width: 100%;
         }
         
-        /* 2. 视觉渲染：把背景色和字体只交还给 body，恢复透明穿透机制 */
+        /* 2. 视觉渲染：把背景色和字体交还给 body */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
             background-color: #fbfbfd; 
@@ -71,13 +71,14 @@
         
         .icon-shadow { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); }
         .icon-upcoming { filter: saturate(80%) opacity(0.95); }
+        .model-card:hover { transform: translateY(-4px); }
         
+        /* 动画类 */
         @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
         .animate-fade-in { animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-        .model-card:hover {
-            transform: translateY(-4px);
-        }
+        
+        @keyframes tab-fade { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+        .tab-content-active { animation: tab-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; display: block; }
     </style>
 </head>
 <body class="relative antialiased">
@@ -103,7 +104,7 @@
             </a>
             
             <div class="relative group flex-shrink-0">
-                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-2 md:py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[110px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
+                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[110px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
                     <option value="en">🇺🇸 English</option>
                     <option value="zh-CN">🇨🇳 简体中文</option>
                     <option value="zh-TW">🇭🇰 繁體中文</option>
@@ -121,81 +122,94 @@
         </div>
     </nav>
 
-    <header class="pt-32 md:pt-48 pb-16 md:pb-24 px-4 md:px-6 text-center animate-fade-in">
+    <header class="pt-32 md:pt-44 pb-12 md:pb-16 px-4 md:px-6 text-center animate-fade-in">
         <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-br from-black to-gray-600"></h1>
-        <p id="hero-desc" class="text-base sm:text-lg md:text-xl text-gray-500 font-medium max-w-2xl mx-auto"></p>
+        <p id="hero-desc" class="text-base sm:text-lg md:text-xl text-gray-500 font-medium max-w-2xl mx-auto mb-10 md:mb-12"></p>
+        
+        <div class="flex justify-center">
+            <div class="inline-flex bg-gray-200/50 backdrop-blur-xl p-1 md:p-1.5 rounded-full border border-gray-200/60 shadow-inner">
+                <button id="btn-tab-apps" onclick="switchTab('apps')" class="relative px-6 sm:px-8 py-2 md:py-2.5 text-sm md:text-base font-semibold rounded-full transition-all duration-300 text-gray-900 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)]">
+                    <span id="tab-apps-text">Mac Apps</span>
+                </button>
+                <button id="btn-tab-models" onclick="switchTab('models')" class="relative px-6 sm:px-8 py-2 md:py-2.5 text-sm md:text-base font-medium rounded-full transition-all duration-300 text-gray-500 hover:text-gray-800">
+                    <span id="tab-models-text">AI Models</span>
+                </button>
+            </div>
+        </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-4 md:px-6 pb-24 md:pb-32 animate-fade-in" style="animation-delay: 0.1s; opacity: 0;">
         
-        <h2 id="section-title" class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-6 md:mb-8 ml-2"></h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-20">
+        <div id="section-apps" class="tab-content-active">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                
+                <a href="app/pdf-merge-split-assistant/" class="app-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 block group">
+                    <div class="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
+                        <img src="app/pdf-merge-split-assistant/PDF Merge & Split Assistant-AppIcon.webp" 
+                             class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 flex-shrink-0" alt="PDF Assistant">
+                        <div class="min-w-0">
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2 leading-tight break-words">PDF Merge & <br class="hidden sm:block">Split Assistant</h3>
+                            <span class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-gray-100 text-gray-600 text-[10px] md:text-xs font-bold rounded-full">macOS Native</span>
+                        </div>
+                    </div>
+                    <p id="pdf-desc" class="text-gray-500 text-base md:text-lg font-medium mb-6 md:mb-8"></p>
+                    <div class="flex items-center text-black font-bold group-hover:text-blue-600 transition-colors text-sm md:text-base">
+                        <span id="pdf-learn"></span> <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <div class="app-card upcoming rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 block group">
+                    <div class="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
+                        <img src="app/appsubmitter/AppSubmitter-AppIcon.webp" 
+                             class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 icon-upcoming flex-shrink-0" alt="AppSubmitter">
+                        <div class="min-w-0">
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 leading-tight break-words">AppSubmitter</h3>
+                            <span id="tag-coming-1" class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-indigo-50 text-indigo-600 text-[10px] md:text-xs font-bold rounded-full border border-indigo-100"></span>
+                        </div>
+                    </div>
+                    <p id="submitter-desc" class="text-gray-500 text-base md:text-lg font-medium mb-6 md:mb-8"></p>
+                    <div class="flex items-center text-gray-400 font-bold text-sm md:text-base">
+                        <span id="btn-coming-1"></span> <i class="fas fa-flask ml-2"></i>
+                    </div>
+                </div>
+
+                <div class="app-card upcoming rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 block group">
+                    <div class="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
+                        <img src="app/formatrocket/FormatRocket-AppIcon.webp" 
+                             class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 icon-upcoming flex-shrink-0" alt="FormatRocket">
+                        <div class="min-w-0">
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 leading-tight break-words">FormatRocket</h3>
+                            <span id="tag-coming-2" class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-indigo-50 text-indigo-600 text-[10px] md:text-xs font-bold rounded-full border border-indigo-100"></span>
+                        </div>
+                    </div>
+                    <p id="rocket-desc" class="text-gray-500 text-base md:text-lg font-medium mb-6 md:mb-8"></p>
+                    <div class="flex items-center text-gray-400 font-bold text-sm md:text-base">
+                        <span id="btn-coming-2"></span> <i class="fas fa-flask ml-2"></i>
+                    </div>
+                </div>
+
+                <div class="rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center text-center bg-gray-50/50 min-h-[250px] md:min-h-[300px]">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-gray-200 rounded-2xl md:rounded-3xl mb-4 md:mb-6 flex items-center justify-center">
+                        <i class="fas fa-hammer text-xl md:text-2xl text-gray-400"></i>
+                    </div>
+                    <h3 id="new-proj-title" class="text-lg md:text-xl font-bold text-gray-400 mb-2"></h3>
+                    <p id="new-proj-desc" class="text-sm md:text-base text-gray-400 font-medium"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-models" class="hidden">
+            <div class="flex items-center justify-between mb-6 md:mb-8 ml-2">
+                <h2 id="models-section-title" class="text-xs font-bold tracking-widest text-gray-400 uppercase"></h2>
+                <a href="https://huggingface.co/MoringLabs" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-500 hover:text-blue-600 font-semibold flex items-center transition-colors">
+                    <span id="hf-link-text"></span> <i class="fas fa-external-link-alt ml-1.5"></i>
+                </a>
+            </div>
             
-            <a href="app/pdf-merge-split-assistant/" class="app-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 block group">
-                <div class="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
-                    <img src="app/pdf-merge-split-assistant/PDF Merge & Split Assistant-AppIcon.webp" 
-                         class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 flex-shrink-0" alt="PDF Assistant">
-                    <div class="min-w-0">
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2 leading-tight break-words">PDF Merge & <br class="hidden sm:block">Split Assistant</h3>
-                        <span class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-gray-100 text-gray-600 text-[10px] md:text-xs font-bold rounded-full">macOS Native</span>
-                    </div>
+            <div id="models-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <div class="col-span-full py-8 text-center text-gray-400 text-sm font-medium">
+                    <i class="fas fa-circle-notch fa-spin mr-2"></i> Fetching models from Hugging Face...
                 </div>
-                <p id="pdf-desc" class="text-gray-500 text-base md:text-lg font-medium mb-6 md:mb-8"></p>
-                <div class="flex items-center text-black font-bold group-hover:text-blue-600 transition-colors text-sm md:text-base">
-                    <span id="pdf-learn"></span> <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                </div>
-            </a>
-
-            <div class="app-card upcoming rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 block group">
-                <div class="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
-                    <img src="app/appsubmitter/AppSubmitter-AppIcon.webp" 
-                         class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 icon-upcoming flex-shrink-0" alt="AppSubmitter">
-                    <div class="min-w-0">
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 leading-tight break-words">AppSubmitter</h3>
-                        <span id="tag-coming-1" class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-indigo-50 text-indigo-600 text-[10px] md:text-xs font-bold rounded-full border border-indigo-100"></span>
-                    </div>
-                </div>
-                <p id="submitter-desc" class="text-gray-500 text-base md:text-lg font-medium mb-6 md:mb-8"></p>
-                <div class="flex items-center text-gray-400 font-bold text-sm md:text-base">
-                    <span id="btn-coming-1"></span> <i class="fas fa-flask ml-2"></i>
-                </div>
-            </div>
-
-            <div class="app-card upcoming rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 block group">
-                <div class="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
-                    <img src="app/formatrocket/FormatRocket-AppIcon.webp" 
-                         class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 icon-upcoming flex-shrink-0" alt="FormatRocket">
-                    <div class="min-w-0">
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 leading-tight break-words">FormatRocket</h3>
-                        <span id="tag-coming-2" class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-indigo-50 text-indigo-600 text-[10px] md:text-xs font-bold rounded-full border border-indigo-100"></span>
-                    </div>
-                </div>
-                <p id="rocket-desc" class="text-gray-500 text-base md:text-lg font-medium mb-6 md:mb-8"></p>
-                <div class="flex items-center text-gray-400 font-bold text-sm md:text-base">
-                    <span id="btn-coming-2"></span> <i class="fas fa-flask ml-2"></i>
-                </div>
-            </div>
-
-            <div class="rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center text-center bg-gray-50/50 min-h-[250px] md:min-h-[300px]">
-                <div class="w-16 h-16 md:w-20 md:h-20 bg-gray-200 rounded-2xl md:rounded-3xl mb-4 md:mb-6 flex items-center justify-center">
-                    <i class="fas fa-hammer text-xl md:text-2xl text-gray-400"></i>
-                </div>
-                <h3 id="new-proj-title" class="text-lg md:text-xl font-bold text-gray-400 mb-2"></h3>
-                <p id="new-proj-desc" class="text-sm md:text-base text-gray-400 font-medium"></p>
-            </div>
-        </div>
-
-        <div class="flex items-center justify-between mb-6 md:mb-8 ml-2">
-            <h2 id="models-section-title" class="text-xs font-bold tracking-widest text-gray-400 uppercase"></h2>
-            <a href="https://huggingface.co/MoringLabs" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-500 hover:text-blue-600 font-semibold flex items-center transition-colors">
-                <span id="hf-link-text"></span> <i class="fas fa-external-link-alt ml-1.5"></i>
-            </a>
-        </div>
-        
-        <div id="models-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            <div class="col-span-full py-8 text-center text-gray-400 text-sm font-medium">
-                <i class="fas fa-circle-notch fa-spin mr-2"></i> Fetching models from Hugging Face...
             </div>
         </div>
 
@@ -211,7 +225,8 @@
             "en": {
                 heroTitle: "Crafting pure native <br>experiences.",
                 heroDesc: "An independent app studio focused on performance, privacy, and elegant design.",
-                sectionTitle: "Our Products",
+                tabApps: "Mac Apps",
+                tabModels: "AI Models",
                 pdfDesc: "The ultimate privacy-focused PDF tool. 100% offline, blazing fast.",
                 pdfLearn: "Learn More",
                 submitterDesc: "The ultimate App Store Connect manager. Automate localizations with AI, manage assets, and streamline your release workflow.",
@@ -227,7 +242,8 @@
             "zh-CN": {
                 heroTitle: "打造纯粹的<br>原生体验。",
                 heroDesc: "一家专注于性能、隐私和优雅设计的独立应用工作室。",
-                sectionTitle: "我们的产品",
+                tabApps: "Mac 应用",
+                tabModels: "AI 模型",
                 pdfDesc: "终极隐私保护 PDF 工具。100% 离线处理，极致快速。",
                 pdfLearn: "了解更多",
                 submitterDesc: "终极 App Store Connect 管理工具。借助 AI 自动化本地化翻译，高效管理素材与发布流程。",
@@ -243,7 +259,8 @@
             "zh-TW": {
                 heroTitle: "打造純粹的<br>原生體驗。",
                 heroDesc: "一家專注於效能、隱私和優雅設計的獨立應用工作室。",
-                sectionTitle: "我們的產品",
+                tabApps: "Mac 應用",
+                tabModels: "AI 模型",
                 pdfDesc: "終極隱私保護 PDF 工具。100% 離線處理，極致快速。",
                 pdfLearn: "了解更多",
                 submitterDesc: "終極 App Store Connect 管理工具。借助 AI 自動化本地化翻譯，高效管理素材與發布流程。",
@@ -259,7 +276,8 @@
             "ja": {
                 heroTitle: "純粋なネイティブ<br>体験を。",
                 heroDesc: "パフォーマンス、プライバシー、エレガントなデザインに焦点を当てた独立系アプリスタジオ。",
-                sectionTitle: "製品情報",
+                tabApps: "Mac アプリ",
+                tabModels: "AI モデル",
                 pdfDesc: "究極のプライバシー重視PDFツール。100%オフライン、超高速。",
                 pdfLearn: "詳細を見る",
                 submitterDesc: "究極のApp Store Connectマネージャー。AIによる翻訳とアセット管理で、リリース作業を自動化。",
@@ -275,7 +293,8 @@
             "ko": {
                 heroTitle: "순수한 네이티브 <br>경험 제작.",
                 heroDesc: "성능, 개인 정보 보호 및 우아한 디자인에 중점을 둔 독립 앱 스튜디오입니다.",
-                sectionTitle: "우리의 제품",
+                tabApps: "Mac 앱",
+                tabModels: "AI 모델",
                 pdfDesc: "개인 정보 보호에 중점을 고도로 특화된 최고의 PDF 도구. 100% 오프라인, 초고속.",
                 pdfLearn: "더 알아보기",
                 submitterDesc: "최고의 App Store Connect 관리 도구. AI로 현지화를 자동화하고 릴리스 워크플로우를 간소화하세요.",
@@ -291,7 +310,8 @@
             "de": {
                 heroTitle: "Echte native <br>Erlebnisse.",
                 heroDesc: "Ein unabhängiges App-Studio mit Fokus auf Leistung, Datenschutz und elegantes Design.",
-                sectionTitle: "Unsere Produkte",
+                tabApps: "Mac Apps",
+                tabModels: "KI-Modelle",
                 pdfDesc: "Das ultimative datenschutzorientierte PDF-Tool. 100% offline, blitzschnell.",
                 pdfLearn: "Mehr erfahren",
                 submitterDesc: "Der ultimative App Store Connect Manager. Automatisieren Sie Lokalisierungen mit AI und verwalten Sie Assets effizient.",
@@ -307,7 +327,8 @@
             "fr": {
                 heroTitle: "Création d'expériences <br>natives pures.",
                 heroDesc: "Un studio d'applications indépendant axé sur les performances, la confidentialité et le design élégant.",
-                sectionTitle: "Nos produits",
+                tabApps: "Applis Mac",
+                tabModels: "Modèles IA",
                 pdfDesc: "L'outil PDF ultime axé sur la confidentialité. 100% hors ligne, ultra rapide.",
                 pdfLearn: "En savoir plus",
                 submitterDesc: "Le gestionnaire ultime d'App Store Connect. Automatisez la localisation avec l'IA et gérez vos ressources efficacement.",
@@ -323,7 +344,8 @@
             "es": {
                 heroTitle: "Creando experiencias <br>nativas puras.",
                 heroDesc: "Un estudio de aplicaciones independiente centrado en el rendimiento, la privacidad y el diseño elegante.",
-                sectionTitle: "Nuestros productos",
+                tabApps: "Apps para Mac",
+                tabModels: "Modelos de IA",
                 pdfDesc: "La herramienta PDF definitiva centrada en la privacidad. 100% sin conexión, ultrarrápida.",
                 pdfLearn: "Saber más",
                 submitterDesc: "El administrador definitivo de App Store Connect. Automatice traducciones con IA y gestione activos fácilmente.",
@@ -339,7 +361,8 @@
             "it": {
                 heroTitle: "Creiamo esperienze <br>native pure.",
                 heroDesc: "Uno studio di app indipendente focalizzato su prestazioni, privacy e design elegante.",
-                sectionTitle: "I nostri prodotti",
+                tabApps: "App Mac",
+                tabModels: "Modelli IA",
                 pdfDesc: "Lo strumento PDF definitivo incentrato sulla privacy. 100% offline, velocissimo.",
                 pdfLearn: "Scopri di più",
                 submitterDesc: "Il gestore definitivo per App Store Connect. Automatizza le traduzioni con l'IA e gestisci le risorse facilmente.",
@@ -355,7 +378,8 @@
             "pt": {
                 heroTitle: "Criando experiências <br>nativas puras.",
                 heroDesc: "Um estúdio de aplicativos independente focado em desempenho, privacidade e design elegante.",
-                sectionTitle: "Nossos produtos",
+                tabApps: "Apps Mac",
+                tabModels: "Modelos de IA",
                 pdfDesc: "A ferramenta PDF definitiva focada na privacidade. 100% offline, extremamente rápida.",
                 pdfLearn: "Saiba mais",
                 submitterDesc: "O gerenciador definitivo do App Store Connect. Automatize traduções com IA e gerencie ativos facilmente.",
@@ -371,7 +395,8 @@
             "ru": {
                 heroTitle: "Создание чистого <br>нативного опыта.",
                 heroDesc: "Независимая студия разработки приложений, ориентированная на производительность, конфиденциальность и элегантный дизайн.",
-                sectionTitle: "Наши продукты",
+                tabApps: "Mac Приложения",
+                tabModels: "ИИ Модели",
                 pdfDesc: "Идеальный PDF-инструмент с упором на конфиденциальность. 100% оффлайн, молниеносно.",
                 pdfLearn: "Узнать больше",
                 submitterDesc: "Идеальный менеджер App Store Connect. Автоматизируйте переводы с ИИ и легко управляйте ассетами.",
@@ -391,7 +416,9 @@
             
             document.getElementById('hero-title').innerHTML = data.heroTitle;
             document.getElementById('hero-desc').innerText = data.heroDesc;
-            document.getElementById('section-title').innerText = data.sectionTitle;
+            
+            document.getElementById('tab-apps-text').innerText = data.tabApps;
+            document.getElementById('tab-models-text').innerText = data.tabModels;
             
             document.getElementById('pdf-desc').innerText = data.pdfDesc;
             document.getElementById('pdf-learn').innerText = data.pdfLearn;
@@ -420,12 +447,9 @@
 
         function detectLanguage() {
             const savedLang = localStorage.getItem('moring_lang');
-            if (savedLang && TRANSLATIONS[savedLang]) {
-                return savedLang;
-            }
+            if (savedLang && TRANSLATIONS[savedLang]) return savedLang;
 
             const browserLang = navigator.language || navigator.userLanguage;
-            
             if (browserLang.startsWith('zh')) {
                 return (browserLang.includes('CN') || browserLang.includes('Hans')) ? 'zh-CN' : 'zh-TW';
             }
@@ -437,11 +461,44 @@
             if (browserLang.startsWith('it')) return 'it';
             if (browserLang.startsWith('pt')) return 'pt';
             if (browserLang.startsWith('ru')) return 'ru';
-
             return 'en';
         }
 
-       // 动态抓取 Hugging Face 模型
+        // 切换 Tab 逻辑
+        function switchTab(tabId) {
+            const btnApps = document.getElementById('btn-tab-apps');
+            const btnModels = document.getElementById('btn-tab-models');
+            const secApps = document.getElementById('section-apps');
+            const secModels = document.getElementById('section-models');
+
+            const activeClass = "relative px-6 sm:px-8 py-2 md:py-2.5 text-sm md:text-base font-semibold rounded-full transition-all duration-300 text-gray-900 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)]";
+            const inactiveClass = "relative px-6 sm:px-8 py-2 md:py-2.5 text-sm md:text-base font-medium rounded-full transition-all duration-300 text-gray-500 hover:text-gray-800";
+
+            if (tabId === 'apps') {
+                btnApps.className = activeClass;
+                btnModels.className = inactiveClass;
+                
+                secModels.classList.remove('tab-content-active');
+                secModels.classList.add('hidden');
+                
+                secApps.classList.remove('hidden');
+                // 触发重绘以播放动画
+                void secApps.offsetWidth; 
+                secApps.classList.add('tab-content-active');
+            } else {
+                btnApps.className = inactiveClass;
+                btnModels.className = activeClass;
+                
+                secApps.classList.remove('tab-content-active');
+                secApps.classList.add('hidden');
+                
+                secModels.classList.remove('hidden');
+                void secModels.offsetWidth;
+                secModels.classList.add('tab-content-active');
+            }
+        }
+
+        // 动态抓取 Hugging Face 模型与静默回退
         async function fetchHFModels() {
             const container = document.getElementById('models-container');
             const author = 'MoringLabs';
@@ -460,7 +517,6 @@
                     const downloads = model.downloads || 0;
                     const likes = model.likes || 0;
                     
-                    // 注意：这里去掉了 block，修改了 p-4 sm:p-5
                     const cardHTML = `
                         <a href="https://huggingface.co/${model.id}" target="_blank" class="app-card model-card rounded-[1.5rem] p-4 sm:p-5 md:p-6 group relative overflow-hidden flex flex-col justify-between h-full min-h-[140px]">
                             <div class="flex items-start gap-3 sm:gap-4 mb-3">
@@ -501,7 +557,6 @@
                 
                 container.innerHTML = '';
                 fallbackModels.forEach(m => {
-                    // 注意：这里也去掉了 block，修改了 p-4 sm:p-5
                     container.innerHTML += `
                         <a href="${m.url}" target="_blank" class="app-card model-card rounded-[1.5rem] p-4 sm:p-5 md:p-6 group relative overflow-hidden flex flex-col justify-between h-full min-h-[160px]">
                             <div>
@@ -523,7 +578,7 @@
                 });
             }
         }
-        
+
         window.onload = () => {
             const initialLang = detectLanguage();
             document.getElementById('langSelector').value = initialLang;
@@ -531,10 +586,8 @@
             
             localStorage.setItem('moring_lang', initialLang);
             
-            // 触发渐入动画
             setTimeout(() => document.querySelector('main.animate-fade-in').classList.add('opacity-100'), 100);
             
-            // 获取并渲染模型
             fetchHFModels();
         };
     </script>
