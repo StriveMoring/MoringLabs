@@ -160,19 +160,18 @@
         <header class="mb-12 md:mb-16 text-center">
             <h1 id="mainTitle" class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 md:mb-6 tracking-tight">
                 Support & Help Center</h1>
-            <p id="subTitle" class="text-base md:text-xl text-gray-500 font-medium max-w-3xl mx-auto px-2">Master all 53
-                formats, advanced features, and workflow automations in FormatRocket.</p>
+            <p id="subTitle" class="text-base md:text-xl text-gray-500 font-medium max-w-3xl mx-auto px-2">Master all formats, advanced features, and workflow automations in FormatRocket.</p>
         </header>
 
+        <!-- 分类导航卡片（Bento Grid），作为帮助中心的目录 -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20" id="guidesGrid"></div>
 
-        <section class="mb-16 md:mb-20">
-            <h2 id="faqSectionTitle"
-                class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-10 text-gray-900 tracking-tight">Frequently
-                Asked Questions</h2>
-            <div id="faqContainer" class="space-y-3 md:space-y-4 max-w-4xl mx-auto"></div>
+        <!-- 具体的帮助内容区块，按分类循环渲染手风琴列表 -->
+        <section id="helpCategoriesContainer" class="mb-16 md:mb-20 space-y-16">
+            <!-- JS 动态填充内容 -->
         </section>
 
+        <!-- 系统与能力规格面板 -->
         <section
             class="bg-gray-900 text-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 mb-16 md:mb-20 shadow-2xl shadow-gray-900/20 border border-gray-800 transition-transform hover:-translate-y-1 duration-500">
             <h2 id="specsTitle"
@@ -193,236 +192,76 @@
         </section>
     </main>
 
-    <footer class="py-8 md:py-12 text-center">
-        <p class="text-xs md:text-sm text-gray-400 font-medium">&copy; 2026 Moring Labs. All rights reserved.</p>
-    </footer>
-
-    <script>
+    <footer class="py-8 md:py-12 text-cent    <script>
+        // 定义帮助文档的核心数据结构。
+        // 将原有的 Guides（特性列表）和 FAQs（问答列表）合并重组为 Categories（分类） -> Items（具有详细图文或步骤的指南）。
         const translations = {
             "en": {
                 backText: "Back to App",
                 mainTitle: "Support & Help Center",
-                subTitle: "Master all formats, unlimited concurrency, and workflow automations in FormatRocket.",
-                guides: [
-                    { icon: "rocket", color: "blue", title: "Core Conversions", items: ["Drag & drop to convert Video, Audio & Image", "Basic formats available on Free tier", "Extract audio or convert videos to GIF", "Hardware accelerated processing"] },
-                    { icon: "film", color: "indigo", title: "Advanced Media Output", items: ["Unlock up to 8K resolution & 240fps (Ultimate)", "Full access to all encoders and formats", "Customize bitrates and sample rates", "Flexible audio retention settings"] },
-                    { icon: "images", color: "purple", title: "Image & Metadata", items: ["Convert between 19 image formats", "Adjustable image compression quality", "Preserve EXIF metadata natively", "Custom file naming rules (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "Batch & Concurrency", items: ["Batch process up to UNLIMITED files", "Unlock up to UNLIMITED concurrent tasks", "Task priority queuing (Yearly/Ultimate)", "Fully utilize Apple Silicon & multi-core power"] },
-                    { icon: "gift", color: "pink", title: "Free Tier & Upgrades", items: ["Basic conversions (1080p, 30fps) for Free", "Upgrade to lift batch and task limits", "Lifetime ownership available (Lifetime/Ultimate)", "Upgrade to unlock limitless professional capabilities"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate Automation", items: ["CLI tool 'frcli' for terminal workflows", "Full Apple Shortcuts integration", "Background auto-folder monitoring", "Experience the ultimate, uncompromised workflow"] }
-                ],
-                faqSectionTitle: "Frequently Asked Questions",
-                faqs: [
-                    { q: "What are the limits of the Free tier?", a: "The Free tier supports basic formats at a maximum of 1080p and 30fps, with a fixed 85% image quality. Batch processing is disabled, and concurrent tasks are limited to 1. Advanced naming rules and metadata preservation are restricted." },
-                    { q: "How do Batch Processing and Concurrent Tasks work?", a: "Your tier determines your limits. Free has no batch. Pro tiers support batching 20-50 files and running 3-5 concurrent tasks. The Ultimate tier unlocks UNLIMITED batch processing and infinite concurrent tasks, fully utilizing your CPU." },
-                    { q: "Why can't I select custom bitrates or 4K/8K resolution?", a: "Custom bitrates, 240fps support, and resolutions above 1080p (4K, 8K) require a Pro or Ultimate license. Upgrading unlocks these advanced media parameters." },
-                    { q: "Is there a one-time payment / lifetime option?", a: "Yes! Both the 'Pro Lifetime' and 'Ultimate' tiers are one-time purchases that grant you permanent ownership of their respective features without subscriptions." },
-                    { q: "How do I automate conversions?", a: "Automation features like the 'frcli' command-line tool, Apple Shortcuts integration, and automated Folder Monitoring are exclusive to the Ultimate tier, designed for power users." }
+                subTitle: "Find step-by-step guides, manage workflows, and resolve common formatting issues here.",
+                categories: [
+                    {
+                        id: "getting-started",
+                        icon: "rocket", color: "blue", title: "Getting Started",
+                        desc: "Basic usage and starting your first conversion",
+                        items: [
+                            { q: "How do I convert a file quickly?", a: "<p class='mb-2'>It only takes a few steps:</p><ol class='list-decimal pl-5 space-y-1'><li>Drag and drop your file into the FormatRocket window.</li><li>Select the target format from the format list.</li><li>Click the <strong>Start Conversion</strong> button.</li><li>Once finished, click on the output file to locate it in Finder.</li></ol>" },
+                            { q: "Where are my converted files saved?", a: "By default, FormatRocket saves the output file in the <strong>same directory as the source file</strong>. You can change this behavior in <strong>Settings > Conversion > Default Output Directory</strong> to use a custom folder." },
+                            { q: "Why did my conversion fail?", a: "<p class='mb-2'>Conversion can fail for several reasons:</p><ul class='list-disc pl-5 space-y-1'><li><strong>Corrupted Source:</strong> Ensure the original file is not corrupted and can be played naturally.</li><li><strong>Disk Space:</strong> Check if you have enough free space on your drive.</li><li><strong>Permissions:</strong> Ensure you have write permissions for the output folder.</li><li><strong>Hardware Acceleration:</strong> If your video conversion gets stuck, try turning <em>Off</em> Hardware Acceleration in Settings and retry.</li></ul>" }
+                        ]
+                    },
+                    {
+                        id: "video",
+                        icon: "film", color: "indigo", title: "Video Processing",
+                        desc: "Video conversions, compression, and parameters",
+                        items: [
+                            { q: "How do I extract audio from a video?", a: "When adding a video file, look for the 'Audio Extraction' mode toggle. Select this to strip the video track entirely and save just the audio track as an MP3, M4A, or your preferred audio format." },
+                            { q: "Can I compress videos without changing the format?", a: "Yes. Use the 'Compress' option next to your file. FormatRocket will retain the original format container (.mp4, .mov, etc.) but lower the bitrate to significantly reduce the file size." },
+                            { q: "Why are some formats (MKV, WebM) or 4K/8K options missing?", a: "The Free tier uses macOS native engines supporting basic formats (MP4, MOV) up to 1080p. Advanced formats like MKV, WebM, AVI, and higher resolutions (4K, 8K) require the FFmpeg engine, which is exclusively unlocked with a <strong>Pro</strong> or <strong>Ultimate</strong> license." },
+                            { q: "Which video encoders does the app use?", a: "The Free tier uses the default H.264 encoder. Pro and Ultimate users can manually select advanced encoders such as HEVC (H.265), VP8, VP9, and AV1." }
+                        ]
+                    },
+                    {
+                        id: "audio-image",
+                        icon: "images", color: "purple", title: "Audio & Image",
+                        desc: "Managing audio formats, EXIF metadata, and images",
+                        items: [
+                            { q: "What audio formats can I decode?", a: "We support decoding 19 audio formats including MP3, AAC, FLAC, WAV, and more. Note: <em>Speex</em> and <em>AMR</em> are supported for decoding (reading) only, they cannot be selected as an output format for encoding." },
+                            { q: "How do I retain EXIF or GPS data in images?", a: "Preserving sensitive EXIF and GPS metadata is a premium feature. If you have a Pro or Ultimate license, check the <strong>Preserve Metadata</strong> option before converting your images across JPG, PNG, HEIC, WebP, etc." },
+                            { q: "Is the Image Quality export adjustable?", a: "On the Free tier, image quality export is locked at 85%. Users on Pro or above get a fully adjustable quality slider from 1% to 100% (Lossless)." }
+                        ]
+                    },
+                    {
+                        id: "tasks",
+                        icon: "layer-group", color: "emerald", title: "Tasks & Hardware",
+                        desc: "Task queues, concurrency, and hardware limits",
+                        items: [
+                            { q: "How many files can I convert at once (Batch Processing)?", a: "Free tier processes 1 file at a time. The <strong>Pro Quarterly</strong> handles 20 at a time, <strong>Pro Yearly/Lifetime</strong> handles 50, and <strong>Ultimate</strong> handles an <em>unlimited</em> number of files." },
+                            { q: "What are Concurrent Tasks?", a: "Concurrency means converting multiple files <em>simultaneously</em> to utilize all your CPU cores. Free tier handles 1 task. Pro tiers handle 3-5 concurrent tasks. Ultimate unlocks infinite concurrency (based on CPU threads)." },
+                            { q: "What is Hardware Acceleration?", a: "FormatRocket uses Apple's native <em>VideoToolbox</em> and <em>AudioToolbox</em> to drastically speed up processing using your Apple Silicon (M1~M4) media engines or Intel Quick Sync. It operates completely offline." }
+                        ]
+                    },
+                    {
+                        id: "plans",
+                        icon: "gift", color: "pink", title: "Plans & Automation",
+                        desc: "Usage quotas, Lifetime options, and Terminal tools",
+                        items: [
+                            { q: "How does the Free quota work?", a: "Free users get 3 video, 5 audio, and 15 image conversions that automatically refresh every Monday. Quotas sync across your devices via iCloud. You can also invite a friend (+10 uses) or share the app (+2 uses) to get more free quota." },
+                            { q: "Is there a one-time purchase option (Lifetime)?", a: "Yes, you are not forced into a subscription! We proudly offer both <strong>Pro Lifetime</strong> ($39.99) and <strong>Ultimate</strong> ($79.99) as one-time, lifetime purchases." },
+                            { q: "What is the CLI / Terminal tool?", a: "The Ultimate tier includes a powerful command-line interface tool called <code>frcli</code>. You can run commands like <code>frcli convert input.mkv -o output.mp4</code> straight from your Terminal. It also enables integration with Apple Shortcuts and automated Folder Monitoring workflows." }
+                        ]
+                    }
                 ],
                 specsTitle: "System Capabilities",
                 specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", limits: "Tier-based Caps", net: "100% Offline" },
                 contactTitle: "Still need help?",
                 contactText: "Our support team is ready to assist you with any technical issues."
             },
-            "zh-CN": {
-                backText: "返回应用",
-                mainTitle: "支持与帮助中心",
-                subTitle: "掌握 FormatRocket 全格式转换、无上限并发与极致自动化工作流。",
-                guides: [
-                    { icon: "rocket", color: "blue", title: "核心转换基础", items: ["拖拽即可转换视频、音频与图片", "基础版自带常规格式互转", "支持无损提取音频，或视频直接转 GIF", "全系支持 Apple 硬件加速处理"] },
-                    { icon: "film", color: "indigo", title: "高阶视听参数", items: ["最高解锁 8K 极清分辨率与 240fps 极高帧率", "解锁全部编码器与格式限制", "完全自定义视频码率与音频采样率", "视频转换时自由决定是否保留音轨"] },
-                    { icon: "images", color: "purple", title: "图片与元数据", items: ["支持 19 种主流及 RAW 图片无缝互转", "图片压缩质量百分比自由调节", "完整保留图片 EXIF 元数据 (Pro+)", "支持自定义文件命名规则"] },
-                    { icon: "layer-group", color: "emerald", title: "批量与并发性能", items: ["批量处理最高可达“无上限”", "多任务并发最高解锁至“无上限”", "Pro年付与 Ultimate 独享任务优先级队列", "全面释放 Apple Silicon 与多核硬件潜能"] },
-                    { icon: "gift", color: "pink", title: "版本与免费权益", items: ["免费版专享 1080p@30fps 基础转换", "升级版本突破批量与并发限制", "提供 Pro 终身版与 Ultimate 买断选项", "解锁无限制的专业级生产力体验"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate 极客自动化", items: ["内置 frcli 命令行工具，专为终端达人打造", "深度无缝集成 macOS 快捷指令 App", "全自动后台文件夹监控，解放双手", "享受毫不妥协的终极自动化工作流"] }
-                ],
-                faqSectionTitle: "常见问题解答",
-                faqs: [
-                    { q: "免费版 (Free) 的具体限制是什么？", a: "免费版最高支持 1080p、30fps，图片质量固定在 85%。不支持批量处理，并发任务数限制为 1 个。此外，自定义码率、元数据保留和高级文件命名规则均不可用。" },
-                    { q: "批量处理和并发任务数量是怎么计算的？", a: "这完全取决于你的付费版本。免费版不支持批量；Pro 季付/年付/买断分别支持最高 20~50 个文件批量和 3~5 个并发。而 Ultimate 版本彻底无上限，全面释放你的硬件潜能。" },
-                    { q: "为什么我无法选择自定义码率或 4K/8K 分辨率？", a: "高阶媒体参数（自定义码率、240fps 高帧率、4K及8K超高分辨率）属于专业功能。只有升级到 Pro（最高4K）或 Ultimate（最高8K）才能解锁这些参数的设置权限。" },
-                    { q: "我不想订阅，有买断（永久拥有）的选项吗？", a: "有的。我们提供了“Pro 买断”和“Ultimate”两个一次性付费版本，购买后即可永久拥有对应的功能权限，无需持续订阅。" },
-                    { q: "如何实现无人值守的自动化格式转换？", a: "自动化是 Ultimate 版本的专属特权。升级后，你可以使用 `frcli` 命令行工具、接入 Apple 快捷指令，或者直接设置“文件夹监控”，让软件在后台默默处理。" }
-                ],
-                specsTitle: "系统与能力",
-                specs: { os: "macOS 14.0+", chip: "M芯片 & Intel原生", limits: "取决于版本", net: "100% 本地离线" },
-                contactTitle: "仍有疑问或遇到 Bug？",
-                contactText: "欢迎通过邮件联系我们，技术团队会尽快为你解答。"
-            },
-            "zh-TW": {
-                backText: "返回應用",
-                mainTitle: "支援與幫助中心",
-                subTitle: "掌握 FormatRocket 全格式轉換、無上限併發與極致自動化工作流。",
-                guides: [
-                    { icon: "rocket", color: "blue", title: "核心轉換基礎", items: ["拖拽即可轉換影片、音訊與圖片", "基礎版自帶常規格式互轉", "支援無損提取音訊，或影片直接轉 GIF", "全系支援 Apple 硬體加速處理"] },
-                    { icon: "film", color: "indigo", title: "高階視聽參數", items: ["最高解鎖 8K 極清解析度與 240fps 極高幀率", "解鎖全部編碼器與格式限制", "完全自定義影片碼率與音訊採樣率", "影片轉換時自由決定是否保留音軌"] },
-                    { icon: "images", color: "purple", title: "圖片與元數據", items: ["支援 19 種主流及 RAW 圖片無縫互轉", "圖片壓縮品質百分比自由調節", "完整保留圖片 EXIF 元數據 (Pro+)", "支援自定義檔案命名規則"] },
-                    { icon: "layer-group", color: "emerald", title: "批次與併發性能", items: ["批次處理最高可達「無上限」", "多任務併發最高解鎖至「無上限」", "Pro年付與 Ultimate 獨享任務優先級佇列", "全面釋放 Apple Silicon 與多核硬體潛能"] },
-                    { icon: "gift", color: "pink", title: "版本與免費權益", items: ["免費版專享 1080p@30fps 基礎轉換", "升級版本突破批次與併發限制", "提供 Pro 終身版與 Ultimate 買斷選項", "解鎖無限制的專業級生產力體驗"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate 極客自動化", items: ["內建 frcli 命令列工具，專為終端達人打造", "深度無縫整合 macOS 捷徑 App", "全自動後台資料夾監控，解放雙手", "享受毫不妥協的終極自動化工作流"] }
-                ],
-                faqSectionTitle: "常見問題解答",
-                faqs: [
-                    { q: "免費版 (Free) 的具體限制是什麼？", a: "免費版最高支援 1080p、30fps，圖片品質固定在 85%。不支援批次處理，併發任務數限制為 1 個。此外，自定義碼率、元數據保留和高級檔案命名規則均不可用。" },
-                    { q: "批次處理和併發任務數量是怎麼計算的？", a: "這完全取決於你的付費版本。免費版不支援批次；Pro 季付/年付/買斷分別支援最高 20~50 個檔案批次和 3~5 個併發。而 Ultimate 版本徹底無上限，全面釋放你的硬體潛能。" },
-                    { q: "為什麼我無法選擇自定義碼率或 4K/8K 解析度？", a: "高階媒體參數（自定義碼率、240fps 高幀率、4K及8K超高解析度）屬於專業功能。只有升級到 Pro（最高4K）或 Ultimate（最高8K）才能解鎖這些參數的設置權限。" },
-                    { q: "我不想訂閱，有買斷（永久擁有）的選項嗎？", a: "有的。我們提供了「Pro 買斷」和「Ultimate」兩個一次性付費版本，購買後即可永久擁有對應的功能權限，無需持續訂閱。" },
-                    { q: "如何實現無人值守的自動化格式轉換？", a: "自動化是 Ultimate 版本的專屬特權。升級後，你可以使用 `frcli` 命令列工具、接入 Apple 捷徑，或者直接設定「資料夾監控」，讓軟體在後台默默處理。" }
-                ],
-                specsTitle: "系統與能力",
-                specs: { os: "macOS 14.0+", chip: "M晶片 & Intel原生", limits: "取決於版本", net: "100% 本地離線" },
-                contactTitle: "仍有疑問或遇到 Bug？",
-                contactText: "歡迎透過郵件聯繫我們，技術團隊會盡快為你解答。"
-            },
-            "ja": {
-                backText: "アプリに戻る",
-                mainTitle: "サポート＆ヘルプ",
-                subTitle: "全フォーマット、無制限の同時処理、FormatRocketの自動化をマスターしましょう。",
-                guides: [
-                    { icon: "rocket", color: "blue", title: "基本の変換", items: ["動画、音声、画像をドラッグ＆ドロップ", "無料版でも基本的なフォーマットを利用可能", "音声を抽出、または動画をGIFに変換", "ハードウェアアクセラレーション処理"] },
-                    { icon: "film", color: "indigo", title: "高度なメディア出力", items: ["最大8K解像度と240fps（Ultimate）", "全エンコーダとフォーマットにアクセス", "ビットレートとサンプルレートをカスタマイズ", "柔軟な音声保持設定"] },
-                    { icon: "images", color: "purple", title: "画像とメタデータ", items: ["19種類の画像フォーマット間で変換", "画像の圧縮品質を調整可能", "EXIFメタデータを保持", "カスタムファイル命名規則（Pro+）"] },
-                    { icon: "layer-group", color: "emerald", title: "バッチ＆同時処理", items: ["無制限のファイル数をバッチ処理", "無制限の同時タスク処理のロック解除", "タスクの優先順位付け（年額/Ultimate）", "Apple Siliconとマルチコアの性能を最大限に引き出す"] },
-                    { icon: "gift", color: "pink", title: "無料版とアップグレード", items: ["無料版では1080p、30fpsの基本変換", "アップグレードでバッチとタスクの制限を解除", "買い切りオプションあり（買い切り/Ultimate）", "プロフェッショナル向けの無制限機能を解放"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate自動化", items: ["ターミナル用CLIツール「frcli」", "Appleショートカットの完全統合", "バックグラウンドでのフォルダ自動監視", "妥協のない究極の自動化ワークフローを体験"] }
-                ],
-                faqSectionTitle: "よくある質問",
-                faqs: [
-                    { q: "無料版（Free）の制限は何ですか？", a: "無料版は最大1080p、30fpsで、画像品質は85%に固定されています。バッチ処理は不可で、同時タスクは1つに制限されます。高度な命名規則やメタデータの保持も制限されています。" },
-                    { q: "バッチ処理と同時タスクはどのように機能しますか？", a: "プランによって上限が決まります。無料版はバッチ不可。Pro版は20〜50ファイルのバッチと3〜5の同時タスクをサポートします。Ultimate版は無制限のバッチと無制限の同時タスクを解放し、ハードウェア性能を引き出します。" },
-                    { q: "カスタムビットレートや4K/8K解像度を選択できないのはなぜですか？", a: "カスタムビットレート、240fps、1080pを超える解像度（4K、8K）にはProまたはUltimateライセンスが必要です。" },
-                    { q: "買い切り（一括払い）のオプションはありますか？", a: "はい！「Pro 買い切り」および「Ultimate」は一括払いであり、サブスクリプションなしで機能を永久に所有できます。" },
-                    { q: "変換を自動化するにはどうすればよいですか？", a: "「frcli」コマンドラインツール、Appleショートカットの統合、フォルダの自動監視などの自動化機能は、Ultimate版専用の機能です。" }
-                ],
-                specsTitle: "システム機能",
-                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", limits: "プランに基づく", net: "100% オフライン" },
-                contactTitle: "まだ助けが必要ですか？",
-                contactText: "技術的な問題については、サポートチームがお手伝いします。"
-            },
-            "ko": {
-                backText: "앱으로 돌아가기",
-                mainTitle: "지원 및 도움말 센터",
-                subTitle: "FormatRocket의 모든 포맷, 무제한 동시성 및 워크플로우 자동화를 마스터하세요.",
-                guides: [
-                    { icon: "rocket", color: "blue", title: "핵심 변환", items: ["드래그 앤 드롭으로 비디오, 오디오 및 이미지 변환", "무료 등급에서 기본 포맷 사용 가능", "오디오 추출 또는 비디오를 GIF로 변환", "하드웨어 가속 처리"] },
-                    { icon: "film", color: "indigo", title: "고급 미디어 출력", items: ["최대 8K 해상도 및 240fps 잠금 해제(Ultimate)", "모든 인코더 및 포맷에 대한 전체 액세스", "비트레이트 및 샘플 속도 사용자 지정", "유연한 오디오 보존 설정"] },
-                    { icon: "images", color: "purple", title: "이미지 및 메타데이터", items: ["19가지 이미지 포맷 간 변환", "조정 가능한 이미지 압축 품질", "EXIF 메타데이터 보존", "사용자 지정 파일 명명 규칙(Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "일괄 처리 및 동시성", items: ["무제한 파일 일괄 처리", "무제한 동시 작업 잠금 해제", "작업 우선 순위 대기열(연간/Ultimate)", "Apple Silicon 및 멀티 코어 하드웨어 잠재력 극대화"] },
-                    { icon: "gift", color: "pink", title: "무료 등급 및 업그레이드", items: ["무료로 기본 변환(1080p, 30fps) 제공", "업그레이드하여 일괄 처리 및 작업 제한 해제", "평생 소유 가능(평생/Ultimate)", "무제한 전문가급 생산성 기능 잠금 해제"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate 자동화", items: ["터미널 워크플로우를 위한 CLI 도구 'frcli'", "Apple 단축어 완벽 통합", "백그라운드 자동 폴더 모니터링", "타협 없는 궁극의 자동화 워크플로우 경험"] }
-                ],
-                faqSectionTitle: "자주 묻는 질문",
-                faqs: [
-                    { q: "무료 등급의 제한은 무엇인가요?", a: "무료 등급은 최대 1080p 및 30fps의 기본 포맷을 지원하며 이미지 품질은 85%로 고정됩니다. 일괄 처리가 비활성화되고 동시 작업이 1개로 제한됩니다. 고급 명명 규칙 및 메타데이터 보존이 제한됩니다." },
-                    { q: "일괄 처리 및 동시 작업은 어떻게 작동하나요?", a: "등급에 따라 한도가 결정됩니다. 무료 등급은 일괄 처리가 없습니다. Pro 등급은 20~50개 파일 일괄 처리 및 3~5개 동시 작업을 지원합니다. Ultimate 등급은 무제한 일괄 처리 및 무한 동시 작업을 잠금 해제합니다." },
-                    { q: "사용자 지정 비트레이트 또는 4K/8K 해상도를 선택할 수 없는 이유는 무엇인가요?", a: "사용자 지정 비트레이트, 240fps 지원 및 1080p 초과 해상도(4K, 8K)에는 Pro 또는 Ultimate 라이선스가 필요합니다." },
-                    { q: "일회성 지불/평생 옵션이 있나요?", a: "예! 'Pro 평생' 및 'Ultimate' 등급은 구독 없이 해당 기능을 영구적으로 소유할 수 있는 일회성 구매입니다." },
-                    { q: "변환을 어떻게 자동화하나요?", a: "CLI 도구 'frcli', Apple 단축어 통합 및 자동 폴더 모니터링과 같은 자동화 기능은 파워 유저를 위해 설계된 Ultimate 등급 전용입니다." }
-                ],
-                specsTitle: "시스템 기능",
-                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", limits: "등급별 제한", net: "100% 오프라인" },
-                contactTitle: "도움이 더 필요하신가요?",
-                contactText: "기술적인 문제가 있는 경우 지원 팀이 도와드립니다."
-            },
-            "de": {
-                backText: "Zurück zur App",
-                mainTitle: "Support & Hilfe-Center",
-                subTitle: "Meistern Sie alle Formate, unbegrenzte Gleichzeitigkeit und Automatisierung in FormatRocket.",
-                guides: [
-                    { icon: "rocket", color: "blue", title: "Kernkonvertierungen", items: ["Video, Audio & Bild per Drag & Drop konvertieren", "Basisformate im Free-Tarif", "Audio extrahieren oder Videos zu GIF machen", "Hardwarebeschleunigte Verarbeitung"] },
-                    { icon: "film", color: "indigo", title: "Erweiterte Medien", items: ["Bis zu 8K-Auflösung & 240fps (Ultimate)", "Voller Zugriff auf alle Encoder", "Bitraten & Sampleraten anpassen", "Flexible Audio-Beibehaltung"] },
-                    { icon: "images", color: "purple", title: "Bild & Metadaten", items: ["Zwischen 19 Bildformaten konvertieren", "Einstellbare Bildkompression", "EXIF-Metadaten erhalten", "Benutzerdefinierte Dateinamen (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "Stapel & Leistung", items: ["UNBEGRENZTE Dateien als Stapel", "UNBEGRENZTE gleichzeitige Aufgaben", "Aufgabenpriorität (Yearly/Ultimate)", "Nutzen Sie die volle Leistung von Apple Silicon & Multicore"] },
-                    { icon: "gift", color: "pink", title: "Free-Tarif & Upgrades", items: ["Basiskonvertierung (1080p, 30fps) kostenlos", "Upgraden, um Limits aufzuheben", "Lebenslange Lizenzen verfügbar", "Entsperren Sie unbegrenzte professionelle Funktionen"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate Automatisierung", items: ["CLI-Tool 'frcli' für Terminals", "Volle Apple Shortcuts Integration", "Automatische Ordnerüberwachung", "Erleben Sie den ultimativen, kompromisslosen Workflow"] }
-                ],
-                faqSectionTitle: "Häufig gestellte Fragen",
-                faqs: [
-                    { q: "Was sind die Einschränkungen der Free-Version?", a: "Maximal 1080p, 30fps, 85% Bildqualität fest. Kein Stapelbetrieb, nur 1 gleichzeitige Aufgabe. Erweiterte Benennungen und Metadaten sind eingeschränkt." },
-                    { q: "Wie funktionieren Stapel- und gleichzeitige Aufgaben?", a: "Free: Keine Stapel, 1 Aufgabe. Pro: 20-50 Stapel, 3-5 gleichzeitig. Ultimate: UNBEGRENZTE Stapel und gleichzeitige Aufgaben." },
-                    { q: "Warum kann ich 4K/8K oder Bitraten nicht anpassen?", a: "Erweiterte Medienparameter wie benutzerdefinierte Bitraten, 240fps und 4K/8K erfordern eine Pro- oder Ultimate-Lizenz." },
-                    { q: "Gibt es einen lebenslangen Kauf ohne Abo?", a: "Ja! 'Pro Lifetime' und 'Ultimate' sind Einmalkäufe, die Ihnen die Funktionen dauerhaft freischalten." },
-                    { q: "Wie automatisiere ich Konvertierungen?", a: "Automatisierungen wie CLI ('frcli'), Apple Shortcuts und Ordnerüberwachung sind exklusiv in der Ultimate-Version enthalten." }
-                ],
-                specsTitle: "Systemfähigkeiten",
-                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", limits: "Tarifbasiert", net: "100% Offline" },
-                contactTitle: "Noch Fragen?",
-                contactText: "Unser Support-Team hilft Ihnen gerne weiter."
-            },
-            "fr": {
-                backText: "Retour à l'App",
-                mainTitle: "Centre d'Assistance",
-                subTitle: "Maîtrisez tous les formats, la simultanéité illimitée et l'automatisation dans FormatRocket.",
-                guides: [
-                    { icon: "rocket", color: "blue", title: "Conversions de Base", items: ["Glissez-déposez Vidéo, Audio & Image", "Formats basiques en version Gratuite", "Extraire l'audio ou convertir en GIF", "Traitement par accélération matérielle"] },
-                    { icon: "film", color: "indigo", title: "Médias Avancés", items: ["Résolution jusqu'à 8K & 240fps (Ultimate)", "Accès total aux encodeurs et formats", "Personnaliser les débits (bitrates)", "Conservation flexible de l'audio"] },
-                    { icon: "images", color: "purple", title: "Image & Métadonnées", items: ["Convertir parmi 19 formats d'image", "Qualité de compression ajustable", "Préserver les métadonnées EXIF", "Règles de nommage (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "Lot & Concurrence", items: ["Traiter des fichiers en lot ILLIMITÉ", "Tâches simultanées ILLIMITÉES", "Priorité des tâches (Annuel/Ultimate)", "Exploitez toute la puissance d'Apple Silicon et du multi-cœur"] },
-                    { icon: "gift", color: "pink", title: "Version Gratuite & Mises à niveau", items: ["Conversions de base (1080p, 30fps) Gratuites", "Améliorez pour lever les limites", "Licences à vie disponibles", "Débloquez des capacités professionnelles illimitées"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automatisation Ultimate", items: ["Outil CLI 'frcli' pour le terminal", "Intégration Apple Shortcuts", "Surveillance auto des dossiers", "Profitez d'un flux de travail automatisé sans compromis"] }
-                ],
-                faqSectionTitle: "Questions Fréquentes",
-                faqs: [
-                    { q: "Quelles sont les limites de la version Gratuite ?", a: "Max 1080p, 30fps, qualité image fixe à 85%. Pas de traitement par lot, 1 seule tâche simultanée. Nommage et métadonnées limités." },
-                    { q: "Comment fonctionnent le traitement par lot et les tâches simultanées ?", a: "Gratuit : pas de lot, 1 tâche. Pro : lot de 20-50, 3-5 simultanées. Ultimate : Lot ILLIMITÉ et tâches simultanées infinies." },
-                    { q: "Pourquoi ne puis-je pas choisir 4K/8K ou modifier le débit ?", a: "Les débits personnalisés, 240fps, et résolutions > 1080p (4K, 8K) nécessitent une licence Pro ou Ultimate." },
-                    { q: "Existe-t-il une option d'achat à vie ?", a: "Oui ! Les niveaux 'Pro À Vie' et 'Ultimate' sont des paiements uniques sans abonnement." },
-                    { q: "Comment automatiser les conversions ?", a: "L'outil en ligne de commande 'frcli', Apple Shortcuts et la surveillance de dossiers sont des exclusivités de la version Ultimate." }
-                ],
-                specsTitle: "Capacités du Système",
-                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", limits: "Selon le Forfait", net: "100% Hors ligne" },
-                contactTitle: "Besoin d'aide ?",
-                contactText: "Notre équipe est à votre écoute pour tout problème technique."
-            },
-            "es": {
-                backText: "Volver a la App",
-                mainTitle: "Centro de Soporte",
-                subTitle: "Domina todos los formatos, concurrencia ilimitada y automatización en FormatRocket.",
-                guides: [
-                    { icon: "rocket", color: "blue", title: "Conversiones Core", items: ["Arrastra y suelta para convertir", "Formatos básicos en la versión Gratis", "Extraer audio o crear GIFs", "Aceleración por hardware"] },
-                    { icon: "film", color: "indigo", title: "Medios Avanzados", items: ["Resolución hasta 8K y 240fps (Ultimate)", "Acceso total a todos los codificadores", "Personalizar bitrates y sample rates", "Ajustes de conservación de audio"] },
-                    { icon: "images", color: "purple", title: "Imagen y Metadatos", items: ["Convierte entre 19 formatos de imagen", "Compresión de imagen ajustable", "Conservar metadatos EXIF", "Nombramiento de archivos personalizado"] },
-                    { icon: "layer-group", color: "emerald", title: "Lotes y Concurrencia", items: ["Procesamiento por lotes ILIMITADO", "Tareas concurrentes ILIMITADAS", "Prioridad de tareas (Anual/Ultimate)", "Aprovecha al máximo Apple Silicon y el multinúcleo"] },
-                    { icon: "gift", color: "pink", title: "Versión Gratis y Mejoras", items: ["Conversiones base (1080p, 30fps) Gratis", "Actualiza para eliminar límites", "Propiedad de por vida disponible", "Desbloquea capacidades profesionales ilimitadas"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automatización Ultimate", items: ["Herramienta CLI 'frcli' para terminal", "Integración con Atajos de Apple", "Monitorización automática de carpetas", "Disfruta de un flujo de trabajo automatizado sin compromisos"] }
-                ],
-                faqSectionTitle: "Preguntas Frecuentes",
-                faqs: [
-                    { q: "¿Cuáles son los límites del nivel Gratuito?", a: "Máximo 1080p, 30fps y calidad de imagen al 85%. Sin procesamiento por lotes, límite de 1 tarea concurrente. Reglas de nombrado y metadatos restringidos." },
-                    { q: "¿Cómo funcionan los Lotes y las Tareas concurrentes?", a: "La versión gratis no tiene lotes. Pro permite 20-50 archivos y 3-5 tareas simultáneas. Ultimate desbloquea lotes y tareas ILIMITADAS." },
-                    { q: "¿Por qué no puedo elegir 4K/8K o bitrates personalizados?", a: "Los parámetros avanzados (bitrates, 240fps, 4K, 8K) requieren una licencia Pro o Ultimate." },
-                    { q: "¿Hay una opción de pago único / de por vida?", a: "¡Sí! Las opciones 'Pro De Por Vida' y 'Ultimate' son compras únicas que otorgan propiedad permanente sin suscripciones." },
-                    { q: "¿Cómo automatizo las conversiones?", a: "La herramienta CLI 'frcli', la integración con Atajos de Apple y la Monitorización de carpetas son exclusivas del nivel Ultimate." }
-                ],
-                specsTitle: "Capacidades del Sistema",
-                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", limits: "Según la Versión", net: "100% Sin conexión" },
-                contactTitle: "¿Aún necesitas ayuda?",
-                contactText: "Nuestro equipo está listo para asistirte con cualquier problema técnico."
-            },
-            "it": {
-                backText: "Torna all'App",
-                mainTitle: "Centro Assistenza",
-                subTitle: "Padroneggia tutti i formati, la concorrenza illimitata e l'automazione in FormatRocket.",
-                guides: [
-                    { icon: "rocket", color: "blue", title: "Conversioni Base", items: ["Trascina e rilascia Video, Audio e Immagini", "Formati base disponibili nel piano Free", "Estrai audio o converti video in GIF", "Elaborazione con accelerazione hardware"] },
-                    { icon: "film", color: "indigo", title: "Output Multimediale Avanzato", items: ["Fino a 8K di risoluzione e 240fps (Ultimate)", "Accesso completo a tutti gli encoder", "Personalizza bitrate e frequenze di campionamento", "Impostazioni flessibili per l'audio"] },
-                    { icon: "images", color: "purple", title: "Immagini e Metadati", items: ["Converti tra 19 formati immagine", "Qualità di compressione immagine regolabile", "Preserva nativamente i metadati EXIF", "Regole di denominazione personalizzate (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "Batch e Concorrenza", items: ["Elabora file in batch ILLIMITATI", "Sblocca attività simultanee ILLIMITATE", "Coda con priorità delle attività", "Sfrutta tutta la potenza di Apple Silicon e multi-core"] },
-                    { icon: "gift", color: "pink", title: "Piano Free e Upgrade", items: ["Conversioni base (1080p, 30fps) gratis", "Esegui l'upgrade per eliminare i limiti", "Licenze a vita disponibili", "Sblocca capacità professionali illimitate"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automazione Ultimate", items: ["Strumento CLI 'frcli' per il terminale", "Integrazione completa con Apple Shortcuts", "Monitoraggio automatico delle cartelle", "Sperimenta il flusso di lavoro automatizzato definitivo"] }
-                ],
-                faqSectionTitle: "Domande Frequenti",
-                faqs: [
-                    { q: "Quali sono i limiti del piano Free?", a: "Il piano Free supporta formati base a max 1080p e 30fps, con qualità immagine fissa all'85%. L'elaborazione batch è disabilitata (max 1 attività). Denominazione avanzata limitata." },
-                    { q: "Come funzionano le elaborazioni Batch e le attività Concorrenti?", a: "Il piano Free non ha batch. I piani Pro supportano 20-50 file in batch e 3-5 attività simultanee. Il piano Ultimate sblocca l'elaborazione batch ILLIMITATA." },
-                    { q: "Perché non posso selezionare bitrate personalizzati o risoluzione 4K/8K?", a: "Bitrate personalizzati, supporto 240fps e risoluzioni sopra 1080p (4K, 8K) richiedono una licenza Pro o Ultimate." },
-                    { q: "C'è un'opzione di pagamento unico / a vita?", a: "Sì! I piani 'Pro a vita' e 'Ultimate' sono acquisti una tantum che ti garantiscono la proprietà permanente delle funzioni." },
-                    { q: "Come automatizzo le conversioni?", a: "Le funzionalità di automazione come lo strumento da riga di comando 'frcli', l'integrazione con Apple Shortcuts e il Monitoraggio cartelle sono esclusive del piano Ultimate." }
-                ],
-                specsTitle: "Capacità del Sistema",
-                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", limits: "In base al piano", net: "100% Offline" },
-                contactTitle: "Serve ancora aiuto?",
-                contactText: "Il nostro team di supporto è pronto ad assisterti con problemi tecnici."
+            // 保留原有结构位置，待后续补充各语言版本翻译
+            "zh-CN": null, "zh-TW": null, "ja": null, "ko": null,
+            "de": null, "fr": null, "es": null, "it": null, "pt": null, "ru": null
+        };oblemi tecnici."
             },
             "pt": {
                 backText: "Voltar ao App",
