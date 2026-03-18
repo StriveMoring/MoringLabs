@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Not Found - Moring Labs</title>
+    <title>Page Not Found - Moring Labs</title>
     <link href="assets/css/inter.css" rel="stylesheet">
     <meta name="description" content="The page you are looking for does not exist.">
     
@@ -16,36 +16,95 @@
     <link rel="manifest" href="site.webmanifest">
     
     <style>
-        
-        html, body { overflow-x: hidden; width: 100vw; max-width: 100%; }
+        html, body { 
+            overflow: hidden; 
+            width: 100vw; 
+            height: 100vh;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
             background-color: #fbfbfd; 
             color: #1d1d1f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .ambient-glow {
-            position: absolute; 
-            width: 1200px; 
-            height: 1200px;
-            background: radial-gradient(circle, rgba(64,156,255,0.08) 0%, rgba(255,255,255,0) 70%);
-            top: -300px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            z-index: -1; 
-            pointer-events: none;
+        
+        /* 动态发光渐变背景 */
+        .ambient-glow-1 {
+            position: absolute; width: 60vw; height: 60vw; max-width: 800px; max-height: 800px;
+            background: radial-gradient(circle, rgba(64,156,255,0.15) 0%, rgba(255,255,255,0) 60%);
+            top: -20%; left: -10%; border-radius: 50%;
+            animation: float-1 12s ease-in-out infinite alternate; z-index: -1; pointer-events: none;
         }
+        .ambient-glow-2 {
+            position: absolute; width: 50vw; height: 50vw; max-width: 700px; max-height: 700px;
+            background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, rgba(255,255,255,0) 60%);
+            bottom: -20%; right: -10%; border-radius: 50%;
+            animation: float-2 15s ease-in-out infinite alternate; z-index: -1; pointer-events: none;
+        }
+
+        @keyframes float-1 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(10%, 10%) scale(1.1); } }
+        @keyframes float-2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-10%, -10%) scale(1.15); } }
+
+        /* 毛玻璃卡片 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(40px) saturate(200%);
+            -webkit-backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.8);
+        }
+
+        /* 渐变 404 文字 */
+        .gradient-text {
+            background: linear-gradient(135deg, #1d1d1f 0%, #434345 50%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .animated-appear { animation: popIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(40px) scale(0.95); }
+        @keyframes popIn { 100% { opacity: 1; transform: translateY(0) scale(1); } }
     </style>
 </head>
-<body class="relative antialiased h-screen flex flex-col items-center justify-center">
+<body class="relative antialiased">
 
-    <div class="ambient-glow"></div>
+    <!-- 动态氛围光效 -->
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
 
-    <main class="text-center px-6 animate-fade-in z-10">
-        <h1 class="text-7xl font-extrabold text-gray-900 tracking-tighter mb-4">404</h1>
-        <p class="text-xl text-gray-500 font-medium mb-8">Oops! We couldn't find the page you're looking for.</p>
-        <a href="/" class="inline-flex items-center px-6 py-3 text-sm md:text-base font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition duration-300">
-            <i class="fas fa-home mr-2"></i> Return Home
-        </a>
+    <!-- 主容器 -->
+    <main class="w-full max-w-3xl px-6 relative z-10 perspective-1000 animated-appear">
+        <div class="glass-card rounded-[2.5rem] md:rounded-[3.5rem] p-10 md:p-16 flex flex-col items-center text-center">
+            
+            <!-- 大字报 -->
+            <div class="relative mb-6">
+                <h1 class="text-8xl md:text-[10rem] font-extrabold tracking-tighter gradient-text leading-none select-none drop-shadow-sm">404</h1>
+                <div class="absolute -right-6 top-0 text-3xl md:text-5xl opacity-50"><i class="fas fa-ghost"></i></div>
+            </div>
+            
+            <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Lost in the macOS Filesystem</h2>
+            <p class="text-base md:text-lg text-gray-500 font-medium mb-10 md:mb-12 max-w-lg leading-relaxed">
+                The page you are looking for has been moved, deleted, or never existed in our studio.
+            </p>
+            
+            <!-- 导航按钮组 -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto font-semibold">
+                <a href="/" class="group bg-black text-white px-8 py-4 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-black/10 flex items-center justify-center">
+                    <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Return Studio
+                </a>
+                <a href="mailto:strivemoring@gmail.com" class="group bg-white/60 text-gray-900 px-8 py-4 rounded-full border border-gray-200 hover:bg-white hover:border-gray-300 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center shadow-sm">
+                    <i class="fas fa-envelope mr-2 text-gray-400 group-hover:text-amber-500 transition-colors"></i> Report Issue
+                </a>
+            </div>
+
+        </div>
+        
+        <!-- 底部微版权 -->
+        <div class="mt-8 text-center text-gray-400 font-medium text-xs md:text-sm tracking-wide">
+            &copy; 2026 Moring Labs. Pure Native Experience.
+        </div>
     </main>
 
 </body>
