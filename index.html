@@ -545,11 +545,11 @@
                     const cardHTML = `
                         <a href="https://huggingface.co/${model.id}" target="_blank" class="app-card model-card rounded-[1.5rem] p-4 sm:p-5 md:p-6 group relative overflow-hidden flex flex-col justify-between h-full min-h-[160px]">
                             <div>
-                                <div class="flex items-start gap-3 sm:gap-4 mb-3">
+                                <div class="flex items-center gap-3 sm:gap-4 mb-3">
                                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                                         <span class="text-xl">🤗</span>
                                     </div>
-                                    <h3 class="font-bold text-gray-800 text-base md:text-lg leading-tight line-clamp-2 mt-1">${modelName}</h3>
+                                    <h3 class="font-bold text-gray-800 text-base md:text-lg leading-tight line-clamp-2">${modelName}</h3>
                                 </div>
                                 <p class="text-[11px] sm:text-xs text-gray-500 font-medium line-clamp-3 mb-4 leading-relaxed">${desc}</p>
                             </div>
@@ -593,11 +593,11 @@
                     container.innerHTML += `
                         <a href="${m.url}" target="_blank" class="app-card model-card rounded-[1.5rem] p-4 sm:p-5 md:p-6 group relative overflow-hidden flex flex-col justify-between h-full min-h-[160px]">
                             <div>
-                                <div class="flex items-start gap-3 sm:gap-4 mb-3">
+                                <div class="flex items-center gap-3 sm:gap-4 mb-3">
                                     <div class="w-10 h-10 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center flex-shrink-0">
                                         <i class="fas fa-microchip text-gray-500 text-lg"></i>
                                     </div>
-                                    <h3 class="font-bold text-gray-800 text-base md:text-lg leading-tight line-clamp-2 mt-1">${m.name}</h3>
+                                    <h3 class="font-bold text-gray-800 text-base md:text-lg leading-tight line-clamp-2">${m.name}</h3>
                                 </div>
                                 <p class="text-[11px] sm:text-xs text-gray-500 font-medium line-clamp-3 mb-4 leading-relaxed">${m.desc}</p>
                             </div>
