@@ -2,7 +2,7 @@
 
 > **Crafting pure native experiences with craftsmanship.**
 
-Moring Labs 是一家专注于 macOS 平台的独立应用工作室。我们崇尚极致的性能、坚如磐石的隐私保护以及像素级的克制设计。
+Moring Labs 是一家专注于 macOS 平台的独立应用实验室。我们崇尚极致的性能、坚如磐石的隐私保护以及像素级的克制设计。
 
 [🌐 访问官网](https://moringlabs.com)
 
