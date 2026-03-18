@@ -530,18 +530,28 @@
 
                 container.innerHTML = ''; 
                 
+                const descMap = {
+                    'Qwen3.5-122B-A10B-MLX-3.7bit-VL': '3.7-bit mixed-precision with vision support. Saves ~13GB to keep long-context inference comfortably within 96GB Apple Silicon.',
+                    'GPT-OSS-120B-MLX-3.6bit': '3.6-bit mixed-precision quantization. Frees ~17GB to prevent swapping on 96GB Macs during heavy contexts.',
+                    'Nemotron-3-Super-120B-A12B-MLX-3.6bit': '3.6-bit mixed-precision build. Optimized for extreme long context lengths fitting neatly within the 96GB Apple Silicon limits.'
+                };
+
                 models.slice(0, 6).forEach(model => {
                     const modelName = model.id.split('/')[1];
                     const downloads = model.downloads || 0;
                     const likes = model.likes || 0;
+                    const desc = descMap[modelName] || 'Advanced MLX quantized AI model optimized for Apple Silicon.';
                     
                     const cardHTML = `
-                        <a href="https://huggingface.co/${model.id}" target="_blank" class="app-card model-card rounded-[1.5rem] p-4 sm:p-5 md:p-6 group relative overflow-hidden flex flex-col justify-between h-full min-h-[140px]">
-                            <div class="flex items-start gap-3 sm:gap-4 mb-3">
-                                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                    <span class="text-xl">🤗</span>
+                        <a href="https://huggingface.co/${model.id}" target="_blank" class="app-card model-card rounded-[1.5rem] p-4 sm:p-5 md:p-6 group relative overflow-hidden flex flex-col justify-between h-full min-h-[160px]">
+                            <div>
+                                <div class="flex items-start gap-3 sm:gap-4 mb-3">
+                                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                        <span class="text-xl">🤗</span>
+                                    </div>
+                                    <h3 class="font-bold text-gray-800 text-base md:text-lg leading-tight line-clamp-2 mt-1">${modelName}</h3>
                                 </div>
-                                <h3 class="font-bold text-gray-800 text-base md:text-lg leading-tight line-clamp-2 mt-1">${modelName}</h3>
+                                <p class="text-[11px] sm:text-xs text-gray-500 font-medium line-clamp-3 mb-4 leading-relaxed">${desc}</p>
                             </div>
                             
                             <div class="flex items-center gap-3 sm:gap-4 mt-auto pt-4 border-t border-gray-100/80">
