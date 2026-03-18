@@ -166,10 +166,10 @@
         </header>
 
         <!-- 分类导航卡片（Bento Grid），作为帮助中心的目录 -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20" id="guidesGrid"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-10 md:mb-14" id="guidesGrid"></div>
 
         <!-- 具体的帮助内容区块，按分类循环渲染手风琴列表 -->
-        <section id="helpCategoriesContainer" class="mb-16 md:mb-20 space-y-16">
+        <section id="helpCategoriesContainer" class="mb-10 md:mb-14 space-y-8">
             <!-- JS 动态填充内容 -->
         </section>
 
@@ -225,7 +225,15 @@
                             { q: "How do I extract audio from a video?", a: "When adding a video file, look for the 'Audio Extraction' mode toggle. Select this to strip the video track entirely and save just the audio track as an MP3, M4A, or your preferred audio format." },
                             { q: "Can I compress videos without changing the format?", a: "Yes. Use the 'Compress' option next to your file. FormatRocket will retain the original format container (.mp4, .mov, etc.) but lower the bitrate to significantly reduce the file size." },
                             { q: "Why are some formats (MKV, WebM) or 4K/8K options missing?", a: "The Free tier uses macOS native engines supporting basic formats (MP4, MOV) up to 1080p. Advanced formats like MKV, WebM, AVI, and higher resolutions (4K, 8K) require the FFmpeg engine, which is exclusively unlocked with a <strong>Pro</strong> or <strong>Ultimate</strong> license." },
-                            { q: "Which video encoders does the app use?", a: "The Free tier uses the default H.264 encoder. Pro and Ultimate users can manually select advanced encoders such as HEVC (H.265), VP8, VP9, and AV1." }
+                                ]
+                    },
+                    {
+                        id: "formats",
+                        icon: "file-code", color: "orange", title: "Formats & Encoders",
+                        desc: "Details on supported codecs, containers, and encoders",
+                        items: [
+                            { q: "Which video encoders does the app use?", a: "The Free tier uses the default H.264 encoder. Pro and Ultimate users can manually select advanced encoders such as HEVC (H.265), VP8, VP9, and AV1." },
+                            { q: "Why are some files significantly smaller than others?", a: "Different codecs have varying compression efficiencies. For example, HEVC (H.265) can compress video up to 50% more efficiently than H.264 while maintaining the same quality." }
                         ]
                     },
                     {
@@ -287,7 +295,15 @@
                             { q: "如何从视频中提取音频？", a: "在添加视频文件后，点击文件卡片上的“音频提取”模式切换按钮。勾选后，软件会丢弃视频画面，仅将音轨提取并保存为 MP3、M4A 或你指定的任何音频格式。" },
                             { q: "可以在不改变格式的情况下压缩视频吗？", a: "可以。使用文件卡片旁边的“压缩”选项。FormatRocket 将保留原始的格式封装容器（如 .mp4, .mov 等），但会智能降低比特率，从而显著减小文件体积。" },
                             { q: "为什么有些格式（如 MKV, WebM）或 4K/8K 选项无法选择？", a: "免费版使用 macOS 内置原生引擎，最高支持 1080p 的基础格式（MP4, MOV）。诸如 MKV, WebM, AVI 等高阶格式，以及更清晰的 4K、8K 分辨率，均需要调用 FFmpeg 引擎，这是 <strong>Pro</strong> 或 <strong>Ultimate</strong> 付费版本的专属功能。" },
-                            { q: "软件使用了哪些视频编码器？", a: "免费版使用系统默认的 H.264 编码器。Pro 及 Ultimate 用户可以手动选择更先进的编码器，例如 HEVC (H.265)、VP8、VP9 甚至下一代 AV1 编码器。" }
+                                ]
+                    },
+                    {
+                        id: "formats",
+                        icon: "file-code", color: "orange", title: "格式与编码器",
+                        desc: "关于支持的编码格式与封装容器的详细说明",
+                        items: [
+                            { q: "软件使用了哪些视频编码器？", a: "免费版使用系统默认的 H.264 编码器。Pro 及 Ultimate 用户可以手动选择更先进的编码器，例如 HEVC (H.265)、VP8、VP9 甚至下一代 AV1 编码器。" },
+                            { q: "为什么不同编码器导出的文件大小差异很大？", a: "不同的编码器拥有不同的压缩效率。例如，HEVC (H.265) 相比上一代的 H.264，在保持同等画质的前提下，可以额外节省高达 50% 的文件体积。" }
                         ]
                     },
                     {
@@ -349,7 +365,15 @@
                             { q: "如何從影片中提取音訊？", a: "在新增影片文件後，點擊文件卡片上的「音訊提取」模式切換按鈕。勾選後，軟體會丟棄影片畫面，僅將音軌提取並保存為 MP3、M4A 或你指定的任何音訊格式。" },
                             { q: "可以在不改變格式的情況下壓縮影片嗎？", a: "可以。使用文件卡片旁邊的「壓縮」選項。FormatRocket 將保留原始的格式封裝容器（如 .mp4, .mov 等），但會智能降低位元率，從而顯著減小文件體積。" },
                             { q: "為什麼有些格式（如 MKV, WebM）或 4K/8K 選項無法選擇？", a: "免費版使用 macOS 內建原生引擎，最高支援 1080p 的基礎格式（MP4, MOV）。諸如 MKV, WebM, AVI 等高階格式，以及更清晰的 4K、8K 解析度，均需要呼叫 FFmpeg 引擎，這是 <strong>Pro</strong> 或 <strong>Ultimate</strong> 付費版本的專屬功能。" },
-                            { q: "軟體使用了哪些影片編碼器？", a: "免費版使用系統預設的 H.264 編碼器。Pro 及 Ultimate 用戶可以手動選擇更先進的編碼器，例如 HEVC (H.265)、VP8、VP9 甚至下一代 AV1 編碼器。" }
+                                ]
+                    },
+                    {
+                        id: "formats",
+                        icon: "file-code", color: "orange", title: "格式與編碼器",
+                        desc: "關於支援的編碼格式與封裝容器的詳細說明",
+                        items: [
+                            { q: "軟體使用了哪些影片編碼器？", a: "免費版使用系統預設的 H.264 編碼器。Pro 及 Ultimate 用戶可以手動選擇更先進的編碼器，例如 HEVC (H.265)、VP8、VP9 甚至下一代 AV1 編碼器。" },
+                            { q: "為什麼不同編碼器輸出的檔案大小差異很大？", a: "不同的編碼器擁有不同的壓縮效率。例如，HEVC (H.265) 相比上一代的 H.264，在保持同等畫質的前提下，可以額外節省高達 50% 的無損體積。" }
                         ]
                     },
                     {
@@ -411,7 +435,15 @@
                             { q: "ビデオからオーディオを抽出するにはどうすればよいですか？", a: "ビデオファイルを追加するときに、「オーディオ抽出」モードのトグルを探します。これを選択すると、ビデオトラックを完全に削除し、オーディオトラックのみを MP3、M4A などの希望のフォーマットで保存します。" },
                             { q: "フォーマットを変更せずにビデオを圧縮できますか？", a: "はい。ファイルの横にある「圧縮」オプションを使用します。FormatRocket は元のフォーマットコンテナ（.mp4、.mov など）を保持したまま、ビットレートを下げてファイルサイズを大幅に縮小します。" },
                             { q: "MKV や WebM、4K/8K などのオプションがないのはなぜですか？", a: "無料（Free）プランでは、最大 1080p までの基本フォーマット（MP4、MOV）をサポートする macOS ネイティブエンジンを使用します。MKV、WebM、AVI などの高度なフォーマットや、高解像度（4K、8K）は FFmpeg エンジンを必要とし、<strong>Pro</strong> または <strong>Ultimate</strong> ライセンスでのみロック解除されます。" },
-                            { q: "どのビデオエンコーダーを使用していますか？", a: "無料プランではデフォルトの H.264 エンコーダーを使用します。Pro および Ultimate ユーザーは、HEVC (H.265)、VP8、VP9、AV1 などの高度なエンコーダーを手動で選択できます。" }
+                                ]
+                    },
+                    {
+                        id: "formats",
+                        icon: "file-code", color: "orange", title: "形式とエンコーダー",
+                        desc: "サポートされるコーデック、コンテナ、エンコーダーの詳細",
+                        items: [
+                            { q: "どのビデオエンコーダーを使用していますか？", a: "無料プランではデフォルトの H.264 エンコーダーを使用します。Pro および Ultimate ユーザーは、HEVC (H.265)、VP8、VP9、AV1 などの高度なエンコーダーを手動で選択できます。" },
+                            { q: "ファイルサイズが大きく異なるのはなぜですか？", a: "コーデックによって圧縮効率が異なります。たとえば、HEVC (H.265) は同じ品質を維持しながら、H.264 よりも最大 50% 効率的にビデオを圧縮できます。" }
                         ]
                     },
                     {
@@ -473,7 +505,15 @@
                             { q: "비디오에서 오디오를 어떻게 추출하나요?", a: "비디오 파일을 추가할 때 '오디오 추출' 모드 토글을 찾으세요. 이를 선택하면 비디오 트랙이 완전히 제거되고 오디오 트랙만 MP3, M4A 또는 원하는 오디오 형식으로 저장됩니다." },
                             { q: "포맷을 변경하지 않고 비디오를 압축할 수 있나요?", a: "예. 파일 옆의 '압축' 옵션을 사용하세요. FormatRocket은 원본 포맷 컨테이너(.mp4, .mov 등)를 유지하면서 비트레이트를 낮춰 파일 크기를 크게 줄입니다." },
                             { q: "MKV, WebM 포맷이나 4K/8K 옵션이 누락된 이유는 무엇인가요?", a: "무료(Free) 등급은 최대 1080p의 기본 형식(MP4, MOV)을 지원하는 macOS 엔진을 사용합니다. MKV, WebM, AVI 포맷과 해상도(4K, 8K)는 <strong>Pro</strong> 또는 <strong>Ultimate</strong>가 필요합니다." },
-                            { q: "앱에서 어떤 비디오 인코더를 사용하나요?", a: "무료 등급은 기본 H.264 인코더를 사용합니다. Pro 및 Ultimate 사용자는 HEVC(H.265), VP8, VP9 및 AV1과 같은 고급 인코더를 수동으로 선택할 수 있습니다." }
+                                ]
+                    },
+                    {
+                        id: "formats",
+                        icon: "file-code", color: "orange", title: "포맷 및 인코더",
+                        desc: "지원되는 코덱, 컨테이너 및 인코더에 대한 세부 정보",
+                        items: [
+                            { q: "앱에서 어떤 비디오 인코더를 사용하나요?", a: "무료 등급은 기본 H.264 인코더를 사용합니다. Pro 및 Ultimate 사용자는 HEVC(H.265), VP8, VP9 및 AV1과 같은 고급 인코더를 수동으로 선택할 수 있습니다." },
+                            { q: "파일 크기 차이가 크게 나는 이유는 무엇인가요?", a: "코덱마다 압축 효율성이 다릅니다. 예를 들어, HEVC(H.265)는 동일한 품질을 유지하면서 H.264보다 최대 50% 더 효율적으로 비디오를 압축할 수 있습니다." }
                         ]
                     },
                     {
@@ -536,7 +576,15 @@
                             { q: "Wie extrahiere ich Audio aus einem Video?", a: "Aktivieren Sie nach dem Hinzufügen einer Videodatei einfach den Schalter 'Audio-Extraktion'. Dadurch wird das Bildmaterial verworfen und nur die Tonspur als MP3, M4A oder im gewünschten Audioformat gespeichert." },
                             { q: "Kann ich Videos ohne Formatänderung komprimieren?", a: "Ja. Verwenden Sie die Option 'Komprimieren' neben Ihrer Datei. FormatRocket behält das ursprüngliche Format (z. B. .mp4, .mov) bei, reduziert jedoch die Bitrate, um die Dateigröße erheblich zu verringern." },
                             { q: "Warum fehlen Formate wie MKV, WebM oder 4K/8K-Auflösungen?", a: "Die kostenlose Version nutzt die systemeigenen macOS-Engines, die grundlegende Formate (MP4, MOV) bis 1080p unterstützen. Für erweiterte Formate (MKV, WebM, AVI) oder höhere Auflösungen (4K, 8K) wird die FFmpeg-Engine benötigt, die ausschließlich mit einer <strong>Pro</strong>- oder <strong>Ultimate</strong>-Lizenz verfügbar ist." },
-                            { q: "Welche Video-Encoder verwendet die App?", a: "Die kostenlose Version nutzt standardmäßig den H.264-Encoder. Pro- und Ultimate-Nutzer können manuell fortschrittliche Encoder wie HEVC (H.265), VP8, VP9 und AV1 auswählen." }
+                                ]
+                    },
+                    {
+                        id: "formats",
+                        icon: "file-code", color: "orange", title: "Formate & Encoder",
+                        desc: "Details zu unterstützten Codecs, Containern und Encodern",
+                        items: [
+                            { q: "Welche Video-Encoder verwendet die App?", a: "Die kostenlose Version nutzt standardmäßig den H.264-Encoder. Pro- und Ultimate-Nutzer können manuell fortschrittliche Encoder wie HEVC (H.265), VP8, VP9 und AV1 auswählen." },
+                            { q: "Warum sind einige Dateien deutlich kleiner als andere?", a: "Unterschiedliche Codecs haben unterschiedliche Komprimierungseffizienzen. Beispielsweise kann HEVC (H.265) Videos bei gleicher Qualität bis zu 50 % effizienter komprimieren als H.264." }
                         ]
                     },
                     {
@@ -903,15 +951,13 @@
             // 1. 渲染顶部导航网格（Bento 卡片锚点入口）
             const guidesGrid = document.getElementById('guidesGrid');
             guidesGrid.innerHTML = safeData.categories.map((cat) => {
-                const isUlt = cat.id === 'plans';
-                const cardClass = isUlt ? "ultimate-card border-gray-200" : "";
                 const titleColor = "text-gray-900";
                 const descColor = "text-gray-500 text-sm md:text-base leading-relaxed";
-                const iconWrapper = `bg-${cat.color}-50 text-${cat.color}-600 border-${cat.color}-100`;
+                const iconWrapper = `bg-gray-50 text-gray-600 border-gray-100`;
 
                 return `
-                <a href="#${cat.id}" class="bento-card p-6 md:p-8 flex flex-col h-full block group cursor-pointer ${cardClass} no-underline">
-                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 shadow-inner border flex-shrink-0 transition-transform group-hover:scale-110 duration-300 ${iconWrapper}">
+                <a href="#${cat.id}" class="bento-card p-6 md:p-8 flex flex-col h-full block group cursor-pointer bg-white no-underline">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 shadow-sm border border-gray-100 flex-shrink-0 transition-transform group-hover:scale-110 duration-300 ${iconWrapper}">
                         <i class="fas fa-${cat.icon} text-xl md:text-2xl"></i>
                     </div>
                     <h2 class="text-xl md:text-2xl font-bold mb-2 tracking-tight ${titleColor}">${cat.title}</h2>
@@ -923,12 +969,12 @@
             const catsContainer = document.getElementById('helpCategoriesContainer');
             catsContainer.innerHTML = safeData.categories.map((cat) => {
                 const itemsHtml = cat.items.map((item) => `
-                    <div class="faq-item bento-card overflow-hidden cursor-pointer" onclick="this.classList.toggle('active')">
-                        <div class="px-5 md:px-8 py-4 md:py-5 flex justify-between items-center font-bold text-gray-900 text-base md:text-lg">
+                    <div class="faq-item bento-card overflow-hidden cursor-pointer bg-white" onclick="this.classList.toggle('active')">
+                        <div class="px-5 md:px-8 py-3 md:py-4 flex justify-between items-center font-bold text-gray-900 text-base md:text-lg">
                             <span class="pr-4 leading-tight">${item.q}</span> 
                             <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 text-sm md:text-base flex-shrink-0"></i>
                         </div>
-                        <div class="faq-answer px-5 md:px-8 pb-5 md:pb-6 text-gray-700 border-t border-gray-50 pt-3 md:pt-4 text-sm md:text-base leading-relaxed font-normal">
+                        <div class="faq-answer px-5 md:px-8 pb-4 md:pb-5 text-gray-700 border-t border-gray-50 pt-3 text-sm md:text-base leading-normal font-normal">
                             ${item.a}
                         </div>
                     </div>
@@ -936,13 +982,13 @@
 
                 return `
                 <div id="${cat.id}" class="pt-24 -mt-24"> <!-- pt-24 修正锚点滚动被固定导航栏遮挡问题 -->
-                    <div class="flex items-center gap-3 mb-6 md:mb-8 pl-2">
-                         <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-${cat.color}-50 border text-${cat.color}-600">
+                    <div class="flex items-center gap-3 mb-4 md:mb-6 pl-2">
+                         <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-50 border border-gray-100 text-gray-600 shadow-sm">
                              <i class="fas fa-${cat.icon} text-sm"></i>
                          </div>
                          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">${cat.title}</h2>
                     </div>
-                    <div class="space-y-3 md:space-y-4 max-w-4xl mx-auto pl-2 pr-2 md:pl-0 md:pr-0">
+                    <div class="space-y-2 max-w-4xl mx-auto pl-2 pr-2 md:pl-0 md:pr-0">
                         ${itemsHtml}
                     </div>
                 </div>`;
