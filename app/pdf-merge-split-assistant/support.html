@@ -393,15 +393,15 @@
             // Merge List - 优化点：文字大小响应式
             const mList = document.getElementById('mergeList');
             mList.innerHTML = data.mergeList.map(item => `
-                <li class="flex items-start">
-                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 md:mr-3 text-sm md:text-base"></i><span class="text-sm md:text-base leading-snug md:leading-normal">${item}</span>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-blue-500 mr-2 md:mr-3 text-sm md:text-base"></i><span class="text-sm md:text-base leading-snug md:leading-normal">${item}</span>
                 </li>`).join('');
 
             // Split List - 优化点：文字大小响应式
             const sList = document.getElementById('splitList');
             sList.innerHTML = data.splitList.map(item => `
-                <li class="flex items-start">
-                    <i class="fas fa-check-circle text-indigo-500 mt-1 mr-2 md:mr-3 text-sm md:text-base"></i><span class="text-sm md:text-base leading-snug md:leading-normal">${item}</span>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-indigo-500 mr-2 md:mr-3 text-sm md:text-base"></i><span class="text-sm md:text-base leading-snug md:leading-normal">${item}</span>
                 </li>`).join('');
 
             // FAQ 渲染 - 优化点：内边距、字号响应式，让移动端折叠面板更精巧
