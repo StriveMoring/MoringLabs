@@ -258,121 +258,323 @@
                 contactTitle: "Still need help?",
                 contactText: "Our support team is ready to assist you with any technical issues."
             },
-            // 保留原有结构位置，待后续补充各语言版本翻译
-            "zh-CN": null, "zh-TW": null, "ja": null, "ko": null,
+            "zh-CN": {
+                backText: "返回应用",
+                mainTitle: "支持与帮助中心",
+                subTitle: "在此查找功能指南、管理工作流，并解决常见格式转换问题。",
+                categories: [
+                    {
+                        id: "getting-started",
+                        icon: "rocket", color: "blue", title: "快速入门",
+                        desc: "基础使用方法与首次文件转换指南",
+                        items: [
+                            { q: "如何快速转换一个文件？", a: "<p class='mb-2'>只需简单的几个步骤：</p><ol class='list-decimal pl-5 space-y-1'><li>将文件拖拽进入 FormatRocket 窗口（或点击“选择文件”）。</li><li>在格式列表中选择你想要转换的目标格式。</li><li>点击<strong>开始转换</strong>按钮。</li><li>转换完成后，点击输出文件列表项即可在 Finder 中定位该文件。</li></ol>" },
+                            { q: "转换后的文件保存在哪里？", a: "默认情况下，FormatRocket 会将输出文件保存在<strong>与源文件相同的目录下</strong>。你可以在菜单栏的 <strong>偏好设置 > 转换 > 默认输出目录</strong> 中修改此行为，指定一个自定义文件夹。" },
+                            { q: "为什么我的转换任务失败了？", a: "<p class='mb-2'>转换失败通常由以下原因导致：</p><ul class='list-disc pl-5 space-y-1'><li><strong>源文件损坏：</strong>请使用原生播放器检查源文件是否能够正常打开/播放。</li><li><strong>磁盘空间不足：</strong>请确保你的硬盘有足够的剩余空间存放转换后的文件。</li><li><strong>权限问题：</strong>检查软件是否对输出目录有写入权限。</li><li><strong>硬件加速兼容性：</strong>如果是视频转换卡住或直接失败，请尝试在设置中关闭<em>“硬件加速”</em>后重试。</li></ul>" }
+                        ]
+                    },
+                    {
+                        id: "video",
+                        icon: "film", color: "indigo", title: "视频处理",
+                        desc: "视频转换、音轨提取与压缩参数说明",
+                        items: [
+                            { q: "如何从视频中提取音频？", a: "在添加视频文件后，点击文件卡片上的“音频提取”模式切换按钮。勾选后，软件会丢弃视频画面，仅将音轨提取并保存为 MP3、M4A 或你指定的任何音频格式。" },
+                            { q: "可以在不改变格式的情况下压缩视频吗？", a: "可以。使用文件卡片旁边的“压缩”选项。FormatRocket 将保留原始的格式封装容器（如 .mp4, .mov 等），但会智能降低比特率，从而显著减小文件体积。" },
+                            { q: "为什么有些格式（如 MKV, WebM）或 4K/8K 选项无法选择？", a: "免费版使用 macOS 内置原生引擎，最高支持 1080p 的基础格式（MP4, MOV）。诸如 MKV, WebM, AVI 等高阶格式，以及更清晰的 4K、8K 分辨率，均需要调用 FFmpeg 引擎，这是 <strong>Pro</strong> 或 <strong>Ultimate</strong> 付费版本的专属功能。" },
+                            { q: "软件使用了哪些视频编码器？", a: "免费版使用系统默认的 H.264 编码器。Pro 及 Ultimate 用户可以手动选择更先进的编码器，例如 HEVC (H.265)、VP8、VP9 甚至下一代 AV1 编码器。" }
+                        ]
+                    },
+                    {
+                        id: "audio-image",
+                        icon: "images", color: "purple", title: "音频与图片",
+                        desc: "音频格式支持、图片压缩与 EXIF 元数据保留",
+                        items: [
+                            { q: "支持解码哪些音频格式？", a: "我们支持解码包含 MP3, AAC, FLAC, WAV 在内的 19 种主流音频格式。注意：<em>Speex</em> 和 <em>AMR</em> 格式仅支持解码（即可以读取转换成别的格式），但不能作为输出编码格式选择。" },
+                            { q: "图片转换时如何保留 EXIF/GPS 等元数据？", a: "保留敏感的 EXIF、曝光参数及地理位置元数据是一项高级特性。如果你拥有 Pro 或 Ultimate 许可证，在转换 JPG、PNG、HEIC、WebP 等格式前，请勾选界面上的<strong>“保留元数据”</strong>选项即可。" },
+                            { q: "输出图片的画质可以调整吗？", a: "在免费版中，由于采用快速压缩策略，图片输出质量固定为 85%。Pro 及以上版本的用户将解锁完整的质量调节滑块，支持从 1% 到 100%（无损）的自由调节。" }
+                        ]
+                    },
+                    {
+                        id: "tasks",
+                        icon: "layer-group", color: "emerald", title: "任务与系统性能",
+                        desc: "队列管理、并发多任务与硬件加速上限",
+                        items: [
+                            { q: "我可以同时批量处理多少个文件？", a: "免费版不支持批量，每次处理 1 个。<strong>Pro 季付版</strong>一次最高处理 20 个文件，<strong>Pro 年付/终身版</strong>最高处理 50 个文件，而 <strong>Ultimate 极客版</strong>解锁了<em>无限量</em>的超大批量处理能力。" },
+                            { q: "什么是“并发任务”？", a: "“并发”指的是<em>同时</em>对多个文件进行编码转换，从而榨干 CPU 所有核心的性能。免费版一次仅执行 1 个任务。Pro 系列版本可并行执行 3-5 个任务。Ultimate 版本则提供无限并发模式（根据你的 CPU 线程数智能调度）。" },
+                            { q: "“硬件加速”是什么原理？", a: "FormatRocket 独家接入了 Apple 原生的 <em>VideoToolbox</em> 和 <em>AudioToolbox</em> 框架。在转换时会将底层的计算工作交给 Apple Silicon (M1~M4) 的媒体引擎或 Intel Quick Sync 处理，速度飙升且极度省电，并且全过程 100% 本地离线运行。" }
+                        ]
+                    },
+                    {
+                        id: "plans",
+                        icon: "gift", color: "pink", title: "版本与高级自动化",
+                        desc: "额度说明、买断制与终端命令行工具",
+                        items: [
+                            { q: "免费额度是如何计算的？", a: "免费用户享有：每周 3 次视频、5 次音频、15 次图片转换额度。额度将在每星期一自动重置刷新。系统会通过 iCloud 在你的多台设备间同步剩余额度。你可以通过“邀请好友”（双方各得 +10 次）或“分享应用”（每次 +2 次）获取更多永久可用额度。" },
+                            { q: "我不喜欢订阅，有一次性付费（买断版）选项吗？", a: "当然有！我们非常自豪地提供不含任何订阅费的选项：<strong>Pro 终身版</strong>（$39.99）和 <strong>Ultimate 极客版</strong>（$79.99）均为一次性付费，终身拥有且可享受后续升级。" },
+                            { q: "什么是 CLI / Terminal 工具？", a: "Ultimate 版本内置了强大的命令行工具 <code>frcli</code>。你可以在终端里直接敲入 <code>frcli convert input.mkv -o output.mp4</code> 搞定一切。这也意味着你可以将其与 Apple 系统的“快捷指令 (Shortcuts)”结合，或打造自己的文件夹自动监控脚本工作流。" }
+                        ]
+                    }
+                ],
+                specsTitle: "系统与能力",
+                specs: { os: "macOS 14.0+", chip: "M芯片 & Intel原生", limits: "取决于版本", net: "100% 本地离线" },
+                contactTitle: "仍有疑问或遇到 Bug？",
+                contactText: "欢迎通过邮件联系我们，技术开发团队会尽快为你解答。"
+            },
+            "zh-TW": {
+                backText: "返回應用",
+                mainTitle: "支援與幫助中心",
+                subTitle: "在此查找功能指南、管理工作流，並解決常見格式轉換問題。",
+                categories: [
+                    {
+                        id: "getting-started",
+                        icon: "rocket", color: "blue", title: "快速入門",
+                        desc: "基礎使用方法與首次文件轉換指南",
+                        items: [
+                            { q: "如何快速轉換一個文件？", a: "<p class='mb-2'>只需簡單的幾個步驟：</p><ol class='list-decimal pl-5 space-y-1'><li>將文件拖曳進入 FormatRocket 視窗（或點擊「選擇文件」）。</li><li>在格式列表中選擇你想要轉換的目標格式。</li><li>點擊<strong>開始轉換</strong>按鈕。</li><li>轉換完成後，點擊輸出文件列表項即可在 Finder 中定位該文件。</li></ol>" },
+                            { q: "轉換後的文件保存在哪裡？", a: "預設情況下，FormatRocket 會將輸出文件保存在<strong>與原始文件相同的目錄下</strong>。你可以在選單列的 <strong>偏好設定 > 轉換 > 預設輸出目錄</strong> 中修改此行為，指定一個自訂資料夾。" },
+                            { q: "為什麼我的轉換任務失敗了？", a: "<p class='mb-2'>轉換失敗通常由以下原因導致：</p><ul class='list-disc pl-5 space-y-1'><li><strong>原始文件損壞：</strong>請使用原生播放器檢查原始文件是否能夠正常打開/播放。</li><li><strong>磁碟空間不足：</strong>請確保你的硬碟有足夠的剩餘空間存放轉換後的文件。</li><li><strong>權限問題：</strong>檢查軟體是否對輸出目錄有寫入權限。</li><li><strong>硬體加速相容性：</strong>如果是影片轉換卡住或直接失敗，請嘗試在設定中關閉<em>「硬體加速」</em>後重試。</li></ul>" }
+                        ]
+                    },
+                    {
+                        id: "video",
+                        icon: "film", color: "indigo", title: "影片處理",
+                        desc: "影片轉換、音軌提取與壓縮參數說明",
+                        items: [
+                            { q: "如何從影片中提取音訊？", a: "在新增影片文件後，點擊文件卡片上的「音訊提取」模式切換按鈕。勾選後，軟體會丟棄影片畫面，僅將音軌提取並保存為 MP3、M4A 或你指定的任何音訊格式。" },
+                            { q: "可以在不改變格式的情況下壓縮影片嗎？", a: "可以。使用文件卡片旁邊的「壓縮」選項。FormatRocket 將保留原始的格式封裝容器（如 .mp4, .mov 等），但會智能降低位元率，從而顯著減小文件體積。" },
+                            { q: "為什麼有些格式（如 MKV, WebM）或 4K/8K 選項無法選擇？", a: "免費版使用 macOS 內建原生引擎，最高支援 1080p 的基礎格式（MP4, MOV）。諸如 MKV, WebM, AVI 等高階格式，以及更清晰的 4K、8K 解析度，均需要呼叫 FFmpeg 引擎，這是 <strong>Pro</strong> 或 <strong>Ultimate</strong> 付費版本的專屬功能。" },
+                            { q: "軟體使用了哪些影片編碼器？", a: "免費版使用系統預設的 H.264 編碼器。Pro 及 Ultimate 用戶可以手動選擇更先進的編碼器，例如 HEVC (H.265)、VP8、VP9 甚至下一代 AV1 編碼器。" }
+                        ]
+                    },
+                    {
+                        id: "audio-image",
+                        icon: "images", color: "purple", title: "音訊與圖片",
+                        desc: "音訊格式支援、圖片壓縮與 EXIF 元數據保留",
+                        items: [
+                            { q: "支援解碼哪些音訊格式？", a: "我們支援解碼包含 MP3, AAC, FLAC, WAV 在內的 19 種主流音訊格式。注意：<em>Speex</em> 和 <em>AMR</em> 格式僅支援解碼（即可以讀取轉換成別的格式），但不能作為輸出編碼格式選擇。" },
+                            { q: "圖片轉換時如何保留 EXIF/GPS 等元數據？", a: "保留敏感的 EXIF、曝光參數及地理位置元數據是一項高級特性。如果你擁有 Pro 或 Ultimate 授權，在轉換 JPG、PNG、HEIC、WebP 等格式前，請勾選介面上的<strong>「保留元數據」</strong>選項即可。" },
+                            { q: "輸出圖片的畫質可以調整嗎？", a: "在免費版中，由於採用快速壓縮策略，圖片輸出品質固定為 85%。Pro 及以上版本的用戶將解鎖完整的品質調節滑桿，支援從 1% 到 100%（無損）的自由調節。" }
+                        ]
+                    },
+                    {
+                        id: "tasks",
+                        icon: "layer-group", color: "emerald", title: "任務與系統性能",
+                        desc: "佇列管理、併發多任務與硬體加上限",
+                        items: [
+                            { q: "我可以同時批次處理多少個文件？", a: "免費版不支援批次，每次處理 1 個。<strong>Pro 季付版</strong>一次最高處理 20 個文件，<strong>Pro 年付/終身版</strong>最高處理 50 個文件，而 <strong>Ultimate 極客版</strong>解鎖了<em>無限量</em>的超大批次處理能力。" },
+                            { q: "什麼是「併發任務」？", a: "「併發」指的是<em>同時</em>對多個文件進行編碼轉換，從而榨乾 CPU 所有核心的性能。免費版一次僅執行 1 個任務。Pro 系列版本可並行執行 3-5 個任務。Ultimate 版本則提供無限併發模式（根據你的 CPU 執行緒數智能調度）。" },
+                            { q: "「硬體加速」是什麼原理？", a: "FormatRocket 獨家接入了 Apple 原生的 <em>VideoToolbox</em> 和 <em>AudioToolbox</em> 框架。在轉換時會將底層的計算工作交給 Apple Silicon (M1~M4) 的媒體引擎或 Intel Quick Sync 處理，速度飆升且極度省電，並且全過程 100% 本地離線運行。" }
+                        ]
+                    },
+                    {
+                        id: "plans",
+                        icon: "gift", color: "pink", title: "版本與高級自動化",
+                        desc: "額度說明、買斷制與終端機命令列工具",
+                        items: [
+                            { q: "免費額度是如何計算的？", a: "免費使用者享有：每週 3 次影片、5 次音訊、15 次圖片轉換額度。額度將在每星期一自動重置刷新。系統會透過 iCloud 在你的多台設備間同步剩餘額度。你可以透過「邀請好友」（雙方各得 +10 次）或「分享應用」（每次 +2 次）獲取更多永久可用額度。" },
+                            { q: "我不喜歡訂閱，有一次性付費（買斷版）選項嗎？", a: "當然有！我們非常自豪地提供不含任何訂閱費的選項：<strong>Pro 終身版</strong>（$39.99）和 <strong>Ultimate 極客版</strong>（$79.99）均為一次性付費，終身擁有且可享受後續升級。" },
+                            { q: "什麼是 CLI / Terminal 工具？", a: "Ultimate 版本內建了強大的命令列工具 <code>frcli</code>。你可以在終端機裡直接敲入 <code>frcli convert input.mkv -o output.mp4</code> 搞定一切。這也意味著你可以將其與 Apple 系統的「捷徑 (Shortcuts)」結合，或打造自己的資料夾自動監控腳本工作流。" }
+                        ]
+                    }
+                ],
+                specsTitle: "系統與能力",
+                specs: { os: "macOS 14.0+", chip: "M晶片 & Intel原生", limits: "取決於版本", net: "100% 本地離線" },
+                contactTitle: "仍有疑问或遇到 Bug？",
+                contactText: "歡迎透過郵件聯繫我們，技術開發團隊會盡快為你解答。"
+            },
+            "ja": {
+                backText: "アプリに戻る",
+                mainTitle: "サポート＆ヘルプ",
+                subTitle: "ステップバイステップのガイドを見つけ、ワークフローを管理し、よくある質問を解決します。",
+                categories: [
+                    {
+                        id: "getting-started",
+                        icon: "rocket", color: "blue", title: "はじめに",
+                        desc: "基本的な使い方と最初の変換の開始",
+                        items: [
+                            { q: "ファイルを素早く変換するにはどうすればよいですか？", a: "<p class='mb-2'>数ステップで完了します：</p><ol class='list-decimal pl-5 space-y-1'><li>ファイルを FormatRocket ウィンドウにドラッグアンドドロップします。</li><li>フォーマットリストからターゲットフォーマットを選択します。</li><li><strong>変換開始</strong>ボタンをクリックします。</li><li>完了したら、出力ファイルをクリックして Finder で見つけます。</li></ol>" },
+                            { q: "変換されたファイルはどこに保存されますか？", a: "デフォルトでは、FormatRocket は出力ファイルを<strong>ソースファイルと同じディレクトリ</strong>に保存します。この動作は、<strong>設定 > 変換 > デフォルトの出力ディレクトリ</strong>で変更し、カスタムフォルダを使用できます。" },
+                            { q: "変換が失敗したのはなぜですか？", a: "<p class='mb-2'>変換が失敗する理由にはいくつかあります：</p><ul class='list-disc pl-5 space-y-1'><li><strong>ソースの破損：</strong>元のファイルが破損しておらず、再生できることを確認してください。</li><li><strong>ディスク容量：</strong>ドライブに十分な空き容量があるか確認してください。</li><li><strong>権限：</strong>出力フォルダへの書き込み権限があることを確認してください。</li><li><strong>ハードウェアアクセラレーション：</strong>ビデオ変換が途中で止まる場合は、設定でハードウェアアクセラレーションを<em>オフ</em>にして再試行してください。</li></ul>" }
+                        ]
+                    },
+                    {
+                        id: "video",
+                        icon: "film", color: "indigo", title: "ビデオ処理",
+                        desc: "ビデオ変換、圧縮、パラメータ",
+                        items: [
+                            { q: "ビデオからオーディオを抽出するにはどうすればよいですか？", a: "ビデオファイルを追加するときに、「オーディオ抽出」モードのトグルを探します。これを選択すると、ビデオトラックを完全に削除し、オーディオトラックのみを MP3、M4A などの希望のフォーマットで保存します。" },
+                            { q: "フォーマットを変更せずにビデオを圧縮できますか？", a: "はい。ファイルの横にある「圧縮」オプションを使用します。FormatRocket は元のフォーマットコンテナ（.mp4、.mov など）を保持したまま、ビットレートを下げてファイルサイズを大幅に縮小します。" },
+                            { q: "MKV や WebM、4K/8K などのオプションがないのはなぜですか？", a: "無料（Free）プランでは、最大 1080p までの基本フォーマット（MP4、MOV）をサポートする macOS ネイティブエンジンを使用します。MKV、WebM、AVI などの高度なフォーマットや、高解像度（4K、8K）は FFmpeg エンジンを必要とし、<strong>Pro</strong> または <strong>Ultimate</strong> ライセンスでのみロック解除されます。" },
+                            { q: "どのビデオエンコーダーを使用していますか？", a: "無料プランではデフォルトの H.264 エンコーダーを使用します。Pro および Ultimate ユーザーは、HEVC (H.265)、VP8、VP9、AV1 などの高度なエンコーダーを手動で選択できます。" }
+                        ]
+                    },
+                    {
+                        id: "audio-image",
+                        icon: "images", color: "purple", title: "オーディオと画像",
+                        desc: "オーディオフォーマットの管理、EXIF、画像",
+                        items: [
+                            { q: "どのオーディオフォーマットをデコードできますか？", a: "MP3、AAC、FLAC、WAV など、19種類のオーディオフォーマットのデコードをサポートしています。注：<em>Speex</em> と <em>AMR</em> はデコード（読み取り）のみサポートされており、エンコーディング用の出力フォーマットとしては選択できません。" },
+                            { q: "画像の EXIF や GPS データを保持するには？", a: "EXIF および GPS メタデータの保持はプレミアム機能です。Pro または Ultimate ライセンスをお持ちの場合は、JPG、PNG、HEIC、WebP などに変換する前に<strong>メタデータを保持</strong>オプションにチェックを入れてください。" },
+                            { q: "画像エクスポートの品質は調整可能ですか？", a: "無料プランでは、画像エクスポートの品質は 85% に固定されています。Pro 以上のユーザーは、1% から 100%（ロスレス）まで調整可能な品質スライダーを利用できます。" }
+                        ]
+                    },
+                    {
+                        id: "tasks",
+                        icon: "layer-group", color: "emerald", title: "タスクとハードウェア",
+                        desc: "タスクキュー、同時処理、ハードウェア制限",
+                        items: [
+                            { q: "一度にいくつのファイルを変換できますか（バッチ処理）？", a: "無料プランは 1 度に 1 ファイルを処理します。<strong>Pro 四半期</strong>は 20 個、<strong>Pro 年間/無期限</strong>は 50 個、<strong>Ultimate</strong> は<em>無制限</em>の数のファイルを処理します。" },
+                            { q: "同時タスクとは何ですか？", a: "同時処理とは、すべての CPU コアを利用して複数のファイルを<em>同時に</em>変換することを意味します。無料プランは 1 つのタスクを処理します。Pro プランは 3〜5 つのタスク。Ultimate は無制限の同時処理（CPU スレッドに基づく）をロック解除します。" },
+                            { q: "ハードウェアアクセラレーションとは何ですか？", a: "FormatRocket は Apple のネイティブな <em>VideoToolbox</em> と <em>AudioToolbox</em> を使用し、Apple Silicon (M1〜M4) または Intel Quick Sync を活用して処理速度を劇的に向上させます。完全にオフラインで動作します。" }
+                        ]
+                    },
+                    {
+                        id: "plans",
+                        icon: "gift", color: "pink", title: "プランと自動化",
+                        desc: "使用クォータ、無期限オプション、ターミナルツール",
+                        items: [
+                            { q: "無料クォータはどのように機能しますか？", a: "無料ユーザーは毎週月曜日に、ビデオ 3 回、オーディオ 5 回、画像 15 回の変換クォータを自動的に受け取ります。クォータは iCloud 経由でデバイス間で同期されます。また、友人を招待（+10 回）またはアプリを共有（+2 回）してクォータを増やせます。" },
+                            { q: "1回限りの購入オプション（無期限）はありますか？", a: "はい、サブスクリプションを強制されることはありません！<strong>Pro 無期限</strong>（$39.99）および <strong>Ultimate</strong>（$79.99）の買い切りオプションを提供しています。" },
+                            { q: "CLI / ターミナルツールとは何ですか？", a: "Ultimate プランには <code>frcli</code> という強力なコマンドラインツールが含まれています。ターミナルから直接 <code>frcli convert input.mkv -o output.mp4</code> のようなコマンドを実行できます。Apple ショートカットとの統合や自動フォルダ監視も可能です。" }
+                        ]
+                    }
+                ],
+                specsTitle: "システム構成能力",
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", limits: "プランに基づく", net: "100% オフライン" },
+                contactTitle: "さらにサポートが必要ですか？",
+                contactText: "技術的な問題については、サポートチームがお手伝いします。"
+            },
+            "ko": {
+                backText: "앱으로 돌아가기",
+                mainTitle: "지원 및 도움말 센터",
+                subTitle: "단계별 가이드를 확인하고 워크플로우를 관리하며 포맷 변환 문제를 해결하세요.",
+                categories: [
+                    {
+                        id: "getting-started",
+                        icon: "rocket", color: "blue", title: "시작하기",
+                        desc: "기본 사용법 및 첫 변환 시작",
+                        items: [
+                            { q: "파일을 빠르게 변환하려면 어떻게 하나요?", a: "<p class='mb-2'>몇 가지 단계만 거치면 됩니다:</p><ol class='list-decimal pl-5 space-y-1'><li>파일을 FormatRocket 창으로 드래그 앤 드롭합니다.</li><li>포맷 목록에서 대상 포맷을 선택합니다.</li><li><strong>변환 시작</strong> 버튼을 클릭합니다.</li><li>완료되면 출력 파일을 클릭하여 Finder에서 확인합니다.</li></ol>" },
+                            { q: "변환된 파일은 어디에 저장되나요?", a: "기본적으로 FormatRocket은 출력 파일을 <strong>원본 파일과 같은 디렉토리</strong>에 저장합니다. 사용자 지정 폴더를 사용하려면 <strong>설정 > 변환 > 기본 출력 디렉토리</strong>에서 이 동작을 변경할 수 있습니다." },
+                            { q: "변환이 실패한 이유는 무엇인가요?", a: "<p class='mb-2'>변환 실패에는 여러 가지 원인이 있을 수 있습니다:</p><ul class='list-disc pl-5 space-y-1'><li><strong>원본 손상:</strong> 원본 파일이 손상되지 않았고 정상적으로 재생되는지 확인하세요.</li><li><strong>디스크 공간:</strong> 드라이브에 여유 공간이 충분한지 확인하세요.</li><li><strong>권한:</strong> 출력 폴더에 대한 쓰기 권한이 있는지 확인하세요.</li><li><strong>하드웨어 가속:</strong> 비디오 변환이 멈춘 경우 설정에서 하드웨어 가속을 <em>끄고</em> 다시 시도하세요.</li></ul>" }
+                        ]
+                    },
+                    {
+                        id: "video",
+                        icon: "film", color: "indigo", title: "비디오 처리",
+                        desc: "비디오 변환, 압축 및 매개변수",
+                        items: [
+                            { q: "비디오에서 오디오를 어떻게 추출하나요?", a: "비디오 파일을 추가할 때 '오디오 추출' 모드 토글을 찾으세요. 이를 선택하면 비디오 트랙이 완전히 제거되고 오디오 트랙만 MP3, M4A 또는 원하는 오디오 형식으로 저장됩니다." },
+                            { q: "포맷을 변경하지 않고 비디오를 압축할 수 있나요?", a: "예. 파일 옆의 '압축' 옵션을 사용하세요. FormatRocket은 원본 포맷 컨테이너(.mp4, .mov 등)를 유지하면서 비트레이트를 낮춰 파일 크기를 크게 줄입니다." },
+                            { q: "MKV, WebM 포맷이나 4K/8K 옵션이 누락된 이유는 무엇인가요?", a: "무료(Free) 등급은 최대 1080p의 기본 형식(MP4, MOV)을 지원하는 macOS 엔진을 사용합니다. MKV, WebM, AVI 포맷과 해상도(4K, 8K)는 <strong>Pro</strong> 또는 <strong>Ultimate</strong>가 필요합니다." },
+                            { q: "앱에서 어떤 비디오 인코더를 사용하나요?", a: "무료 등급은 기본 H.264 인코더를 사용합니다. Pro 및 Ultimate 사용자는 HEVC(H.265), VP8, VP9 및 AV1과 같은 고급 인코더를 수동으로 선택할 수 있습니다." }
+                        ]
+                    },
+                    {
+                        id: "audio-image",
+                        icon: "images", color: "purple", title: "오디오 및 이미지",
+                        desc: "오디오 형식 관리, EXIF 메타데이터 및 이미지",
+                        items: [
+                            { q: "어떤 오디오 형식을 디코딩할 수 있나요?", a: "MP3, AAC, FLAC, WAV 등을 포함한 19가지 오디오 형식 디코딩을 지원합니다. 참고: <em>Speex</em> 및 <em>AMR</em>은 디코딩(읽기)용으로만 지원되며 인코딩 출력 형식으로 선택할 수 없습니다." },
+                            { q: "이미지에 EXIF 또는 GPS 데이터를 유지하려면 어떻게 하나요?", a: "민감한 EXIF 및 GPS 메타데이터 보존은 프리미엄 기능입니다. Pro 또는 Ultimate 라이선스가 있는 경우 JPG, PNG, HEIC, WebP 등으로 변환하기 전에 <strong>메타데이터 유지</strong> 옵션을 선택하세요." },
+                            { q: "이미지 출력 품질을 조정할 수 있나요?", a: "무료 등급에서는 이미지 출력 품질이 85%로 고정됩니다. Pro 이상 사용자는 1%에서 100%(무손실)까지 조정 가능한 품질 슬라이더를 사용할 수 있습니다." }
+                        ]
+                    },
+                    {
+                        id: "tasks",
+                        icon: "layer-group", color: "emerald", title: "작업 및 하드웨어",
+                        desc: "작업 대기열, 동시성 및 하드웨어 제한",
+                        items: [
+                            { q: "한 번에 몇 개의 파일을 변환할 수 있나요(일괄 처리)?", a: "무료 등급은 한 번에 1개의 파일을 처리합니다. <strong>Pro 분기별</strong>은 20개, <strong>Pro 연간</strong>은 50개, <strong>Ultimate</strong>는 <em>무제한</em> 개수의 파일을 처리합니다." },
+                            { q: "동시 작업이란 무엇인가요?", a: "동시성은 모든 CPU 코어를 활용하기 위해 여러 파일을 <em>동시에</em> 변환하는 것을 의미합니다. 무료 등급은 1개의 작업을 처리합니다. Pro 등급은 3~5개의 동시 작업을 처리합니다. Ultimate는 무제한 동시성을 잠금 해제합니다." },
+                            { q: "하드웨어 가속이란 무엇인가요?", a: "FormatRocket은 Apple 원시 <em>VideoToolbox</em> 및 <em>AudioToolbox</em>를 사용하여 Apple Silicon(M1~M4) 또는 Intel Quick Sync를 통해 처리 속도를 획기적으로 높입니다. 완전히 오프라인으로 작동합니다." }
+                        ]
+                    },
+                    {
+                        id: "plans",
+                        icon: "gift", color: "pink", title: "플랜 및 자동화",
+                        desc: "사용 할당량, 평생 옵션 및 CLI 도구",
+                        items: [
+                            { q: "무료 할당량은 어떻게 작동하나요?", a: "무료 사용자는 매주 월요일에 갱신되는 3개의 비디오, 5개의 오디오, 15개의 이미지 변환 할당량을 얻습니다. 친구를 초대하거나 앱을 공유하면 할당량을 늘릴 수 있습니다." },
+                            { q: "1회 구매 옵션(평생)이 있나요?", a: "예, 구독을 강요하지 않습니다! <strong>Pro 평생</strong>($39.99) 및 <strong>Ultimate</strong>($79.99) 플랜을 한 번만 지불하면 평생 소유할 수 있습니다." },
+                            { q: "CLI/터미널 도구란 무엇인가요?", a: "Ultimate 등급에는 <code>frcli</code>라는 강력한 명령줄 인터페이스 도구가 포함되어 있습니다. Apple 단축어 연동 및 자동 폴더 모니터링도 지원합니다." }
+                        ]
+                    }
+                ],
+                specsTitle: "시스템 기능 성능",
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", limits: "등급별 제한", net: "100% 오프라인" },
+                contactTitle: "도움이 더 필요하신가요?",
+                contactText: "기술적인 문제가 있는 경우 지원 팀이 도와드립니다."
+            },
+            // 其他语言将默认回退至英语。
             "de": null, "fr": null, "es": null, "it": null, "pt": null, "ru": null
-        };oblemi tecnici."
-            },
-            "pt": {
-                backText: "Voltar ao App",
-                mainTitle: "Centro de Suporte",
-                subTitle: "Domine todos os formatos, concorrência ilimitada e automação no FormatRocket.",
-                guides: [
-                    { icon: "rocket", color: "blue", title: "Conversões Essenciais", items: ["Arraste e solte Vídeo, Áudio e Imagem", "Formatos básicos disponíveis no plano Free", "Extraia áudio ou converta vídeos para GIF", "Processamento acelerado por hardware"] },
-                    { icon: "film", color: "indigo", title: "Mídia Avançada", items: ["Resolução até 8K e 240fps (Ultimate)", "Acesso total a todos os codificadores", "Personalize bitrates e taxas de amostragem", "Configurações flexíveis de retenção de áudio"] },
-                    { icon: "images", color: "purple", title: "Imagem e Metadados", items: ["Converta entre 19 formatos de imagem", "Qualidade de compressão ajustável", "Preserve metadados EXIF", "Regras de nomenclatura personalizadas"] },
-                    { icon: "layer-group", color: "emerald", title: "Lote e Concorrência", items: ["Processe arquivos em lote ILIMITADOS", "Desbloqueie tarefas simultâneas ILIMITADAS", "Fila de prioridade de tarefas (Anual/Ultimate)", "Aproveite ao máximo o Apple Silicon e hardware multinúcleo"] },
-                    { icon: "gift", color: "pink", title: "Plano Free e Upgrades", items: ["Conversões básicas (1080p, 30fps) Grátis", "Faça upgrade para remover limites", "Licenças vitalícias disponíveis", "Desbloqueie capacidades profissionais ilimitadas"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automação Ultimate", items: ["Ferramenta CLI 'frcli' para terminal", "Integração total com Atalhos da Apple", "Monitoramento automático de pastas", "Experimente o fluxo de trabalho automatizado definitivo"] }
-                ],
-                faqSectionTitle: "Perguntas Frequentes",
-                faqs: [
-                    { q: "Quais são os limites do plano Free?", a: "Máximo de 1080p e 30fps, com qualidade de imagem fixa em 85%. O processamento em lote é desativado (limite de 1 tarefa). Regras de nomenclatura e metadados são restritos." },
-                    { q: "Como funcionam o Processamento em Lote e Tarefas Simultâneas?", a: "O plano Free não tem lote. Os planos Pro suportam 20-50 arquivos em lote e 3-5 tarefas simultâneas. O plano Ultimate libera lote e tarefas ILIMITADAS." },
-                    { q: "Por que não posso selecionar bitrates personalizados ou resolução 4K/8K?", a: "Parâmetros avançados (bitrates personalizados, 240fps, 4K, 8K) requerem uma licença Pro ou Ultimate." },
-                    { q: "Existe uma opção de pagamento único / vitalício?", a: "Sim! Os planos 'Pro Vitalício' e 'Ultimate' são compras únicas que concedem propriedade permanente sem assinaturas." },
-                    { q: "Como automatizo conversões?", a: "Os recursos de automação (CLI 'frcli', integração com Atalhos da Apple e Monitoramento de Pastas) são exclusivos do plano Ultimate." }
-                ],
-                specsTitle: "Capacidades do Sistema",
-                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", limits: "Baseado no Plano", net: "100% Offline" },
-                contactTitle: "Ainda precisa de ajuda?",
-                contactText: "Nossa equipe de suporte está pronta para ajudar com problemas técnicos."
-            },
-            "ru": {
-                backText: "Назад к приложению",
-                mainTitle: "Центр поддержки",
-                subTitle: "Освойте все форматы, неограниченную многозадачность и автоматизацию в FormatRocket.",
-                guides: [
-                    { icon: "rocket", color: "blue", title: "Базовые конвертации", items: ["Перетаскивайте видео, аудио и изображения", "Базовые форматы доступны в бесплатной версии", "Извлекайте аудио или создавайте GIF", "Аппаратное ускорение"] },
-                    { icon: "film", color: "indigo", title: "Продвинутые настройки медиа", items: ["Разрешение до 8K и 240fps (Ultimate)", "Полный доступ ко всем кодекам", "Настройка битрейта и частоты дискретизации", "Гибкие настройки сохранения звука"] },
-                    { icon: "images", color: "purple", title: "Изображения и Метаданные", items: ["Конвертация между 19 форматами изображений", "Регулируемое качество сжатия", "Сохранение метаданных EXIF", "Настраиваемые правила именования файлов"] },
-                    { icon: "layer-group", color: "emerald", title: "Пакеты и многозадачность", items: ["НЕОГРАНИЧЕННАЯ пакетная обработка файлов", "НЕОГРАНИЧЕННЫЕ параллельные задачи", "Приоритет задач (Годовая/Ultimate)", "Раскройте весь потенциал Apple Silicon и многоядерных процессоров"] },
-                    { icon: "gift", color: "pink", title: "Бесплатная версия и улучшения", items: ["Базовые конвертации (1080p, 30fps) бесплатно", "Обновитесь, чтобы снять ограничения", "Доступны пожизненные лицензии", "Разблокируйте неограниченные профессиональные возможности"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Автоматизация Ultimate", items: ["Инструмент CLI 'frcli' для терминала", "Интеграция с Apple Shortcuts", "Авто-мониторинг папок в фоне", "Испытайте бескомпромиссный автоматизированный рабочий процесс"] }
-                ],
-                faqSectionTitle: "Часто задаваемые вопросы",
-                faqs: [
-                    { q: "Каковы ограничения бесплатной версии (Free)?", a: "Максимум 1080p, 30fps, фиксированное качество 85%. Пакетная обработка отключена, только 1 параллельная задача. Продвинутое именование и метаданные ограничены." },
-                    { q: "Как работает пакетная обработка и параллельные задачи?", a: "Бесплатная версия не поддерживает пакеты. Версии Pro поддерживают 20-50 файлов в пакете и 3-5 задач одновременно. Ultimate снимает все ограничения на пакеты и задачи." },
-                    { q: "Почему я не могу выбрать настраиваемый битрейт или разрешение 4K/8K?", a: "Настраиваемый битрейт, 240fps и разрешения выше 1080p (4K, 8K) требуют лицензию Pro или Ultimate." },
-                    { q: "Есть ли вариант единоразовой оплаты / пожизненная лицензия?", a: "Да! Лицензии «Pro Пожизненная» и «Ultimate» — это единоразовые покупки, предоставляющие постоянный доступ без подписок." },
-                    { q: "Как автоматизировать конвертации?", a: "Инструмент CLI 'frcli', интеграция с Apple Shortcuts и мониторинг папок являются эксклюзивными функциями версии Ultimate." }
-                ],
-                specsTitle: "Возможности системы",
-                specs: { os: "macOS 14.0+", chip: "Apple Silicon и Intel", limits: "Зависит от уровня", net: "100% Оффлайн" },
-                contactTitle: "Нужна помощь?",
-                contactText: "Наша служба поддержки готова помочь с техническими проблемами."
-            }
         };
 
+        // 渲染核心逻辑 updateUI
         function updateUI(langCode) {
-            const data = translations[langCode] || translations['en'];
+            // 回退逻辑：如果某语言数据为 null 或者 undefined，则自动转为英文。
+            const safeData = translations[langCode] || translations['en'];
 
-            document.getElementById('nav-back-text').innerText = data.backText;
-            document.getElementById('mainTitle').innerText = data.mainTitle;
-            document.getElementById('subTitle').innerText = data.subTitle;
-            document.getElementById('faqSectionTitle').innerText = data.faqSectionTitle;
-            document.getElementById('specsTitle').innerText = data.specsTitle;
-            document.getElementById('contactTitle').innerText = data.contactTitle;
-            document.getElementById('contactText').innerText = data.contactText;
+            // 更新静态主文本
+            document.getElementById('nav-back-text').innerText = safeData.backText;
+            document.getElementById('mainTitle').innerText = safeData.mainTitle;
+            document.getElementById('subTitle').innerText = safeData.subTitle;
+            document.getElementById('specsTitle').innerText = safeData.specsTitle;
+            document.getElementById('contactTitle').innerText = safeData.contactTitle;
+            document.getElementById('contactText').innerText = safeData.contactText;
 
-            // 动态生成 6 大模块卡片，针对 Ultimate 独立处理样式
+            // 1. 渲染顶部导航网格（Bento 卡片锚点入口）
             const guidesGrid = document.getElementById('guidesGrid');
-            guidesGrid.innerHTML = data.guides.map((guide, index) => {
-                const isUlt = guide.isUltimate;
-                const cardClass = isUlt ? "ultimate-card" : "";
-                const titleColor = isUlt ? "text-white" : "text-gray-900";
-                const textColor = isUlt ? "text-gray-400" : "text-gray-600";
-                const iconWrapper = isUlt ? "bg-gray-800 text-gray-200 border-gray-700" : `bg-${guide.color}-50 text-${guide.color}-600 border-${guide.color}-100`;
-                const checkColor = isUlt ? "text-gray-500" : `text-${guide.color}-500`;
+            guidesGrid.innerHTML = safeData.categories.map((cat) => {
+                const isUlt = cat.id === 'plans';
+                const cardClass = isUlt ? "ultimate-card border-gray-200" : "";
+                const titleColor = "text-gray-900";
+                const descColor = "text-gray-500 text-sm md:text-base leading-relaxed";
+                const iconWrapper = `bg-${cat.color}-50 text-${cat.color}-600 border-${cat.color}-100`;
 
-                // 优化打钩图标的对齐 (使用 gap-2.5 和微调 translate-y)
-                const listHtml = guide.items.map(item => `
-                    <li class="flex items-start gap-2.5">
-                        <i class="fas fa-check-circle ${checkColor} text-[0.9rem] flex-shrink-0 translate-y-[0.2rem]"></i>
-                        <span class="text-sm md:text-base leading-relaxed ${textColor}">${item}</span>
-                    </li>
+                return `
+                <a href="#${cat.id}" class="bento-card p-6 md:p-8 flex flex-col h-full block group cursor-pointer ${cardClass} no-underline">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 shadow-inner border flex-shrink-0 transition-transform group-hover:scale-110 duration-300 ${iconWrapper}">
+                        <i class="fas fa-${cat.icon} text-xl md:text-2xl"></i>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold mb-2 tracking-tight ${titleColor}">${cat.title}</h2>
+                    <p class="${descColor} mt-auto">${cat.desc}</p>
+                </a>`;
+            }).join('');
+
+            // 2. 渲染下方具体的帮助分类详情区块 +手风琴互动
+            const catsContainer = document.getElementById('helpCategoriesContainer');
+            catsContainer.innerHTML = safeData.categories.map((cat) => {
+                const itemsHtml = cat.items.map((item) => `
+                    <div class="faq-item bento-card overflow-hidden cursor-pointer" onclick="this.classList.toggle('active')">
+                        <div class="px-5 md:px-8 py-4 md:py-5 flex justify-between items-center font-bold text-gray-900 text-base md:text-lg">
+                            <span class="pr-4 leading-tight">${item.q}</span> 
+                            <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 text-sm md:text-base flex-shrink-0"></i>
+                        </div>
+                        <div class="faq-answer px-5 md:px-8 pb-5 md:pb-6 text-gray-700 border-t border-gray-50 pt-3 md:pt-4 text-sm md:text-base leading-relaxed font-normal">
+                            ${item.a}
+                        </div>
+                    </div>
                 `).join('');
 
                 return `
-                <div class="bento-card p-6 md:p-8 flex flex-col h-full ${cardClass}">
-                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 shadow-inner border flex-shrink-0 ${iconWrapper}">
-                        <i class="fas fa-${guide.icon} text-xl md:text-2xl"></i>
+                <div id="${cat.id}" class="pt-24 -mt-24"> <!-- pt-24 修正锚点滚动被固定导航栏遮挡问题 -->
+                    <div class="flex items-center gap-3 mb-6 md:mb-8 pl-2">
+                         <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-${cat.color}-50 border text-${cat.color}-600">
+                             <i class="fas fa-${cat.icon} text-sm"></i>
+                         </div>
+                         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">${cat.title}</h2>
                     </div>
-                    <h2 class="text-xl md:text-2xl font-bold mb-4 md:mb-5 tracking-tight ${titleColor}">${guide.title}</h2>
-                    <ul class="space-y-3 md:space-y-4 font-medium mt-auto">
-                        ${listHtml}
-                    </ul>
+                    <div class="space-y-3 md:space-y-4 max-w-4xl mx-auto pl-2 pr-2 md:pl-0 md:pr-0">
+                        ${itemsHtml}
+                    </div>
                 </div>`;
             }).join('');
 
-            // FAQ 渲染
-            const faqBox = document.getElementById('faqContainer');
-            faqBox.innerHTML = data.faqs.map((f) => `
-                <div class="faq-item bento-card overflow-hidden cursor-pointer" onclick="this.classList.toggle('active')">
-                    <div class="px-5 md:px-8 py-4 md:py-5 flex justify-between items-center font-bold text-gray-900 text-base md:text-lg">
-                        <span class="pr-4 leading-tight">${f.q}</span> <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 text-sm md:text-base flex-shrink-0"></i>
-                    </div>
-                    <div class="faq-answer px-5 md:px-8 pb-5 md:pb-6 text-gray-600 font-medium border-t border-gray-50 pt-3 md:pt-4 text-sm md:text-base leading-relaxed">
-                        ${f.a}
-                    </div>
-                </div>
-            `).join('');
-
-            // Specs 渲染 (os, chip, limits, net)
+            // 3. 渲染底部的系统规格卡片 (Specs Grid)
             const specGrid = document.getElementById('specsGrid');
             const icons = { os: 'desktop', chip: 'microchip', limits: 'tachometer-alt', net: 'shield-alt' };
-            specGrid.innerHTML = Object.entries(data.specs).map(([key, val]) => `
+            specGrid.innerHTML = Object.entries(safeData.specs).map(([key, val]) => `
                 <div class="text-center md:text-left">
                     <div class="text-gray-400 mb-1 md:mb-2 flex items-center justify-center md:justify-start text-xs md:text-sm tracking-wider font-semibold">
                         <i class="fas fa-${icons[key]} mr-1 md:mr-2 text-gray-500"></i> ${key.toUpperCase()}
@@ -382,22 +584,27 @@
             `).join('');
         }
 
+        // 语言切换与存储功能
         function switchLang(langCode) {
             localStorage.setItem('formatrocket_lang', langCode);
             updateUI(langCode);
         }
 
+        // 页面初始化逻辑
         window.onload = function () {
             const savedLang = localStorage.getItem('formatrocket_lang') || 'en';
-            const finalLang = translations[savedLang] ? savedLang : 'en';
+            // 验证语言是否有效，处理未完全翻译退回英语
+            const finalLang = (translations[savedLang] && translations[savedLang] !== null) ? savedLang : 'en';
 
             const selector = document.getElementById('langSelector');
             if (selector.querySelector(`option[value="${finalLang}"]`)) {
                 selector.value = finalLang;
             }
 
+            // 初始化渲染界面
             updateUI(finalLang);
-            setTimeout(() => document.querySelector('main.animate-fade-in').classList.add('opacity-100'), 100);
+            // 延时加载平滑呈现动画
+            setTimeout(() => document.querySelector('main.animate-fade-in').classList.add('opacity-100'), 50);
         }
     </script>
 </body>
