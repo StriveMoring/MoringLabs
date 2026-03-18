@@ -514,7 +514,15 @@
             const author = 'MoringLabs';
             
             try {
-                const response = await fetch(`https://huggingface.co/api/models?author=${author}&sort=downloads&direction=-1`);
+                // 增加超时控制：如果 3.5 秒内由于网络原因（如国内访问 HuggingFace 受阻）没有响应，则主动中止请求并进入 fallback
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 3500);
+
+                const response = await fetch(`https://huggingface.co/api/models?author=${author}&sort=downloads&direction=-1`, {
+                    signal: controller.signal
+                });
+                clearTimeout(timeoutId);
+
                 if (!response.ok) throw new Error('API fetch failed');
                 
                 const models = await response.json();
