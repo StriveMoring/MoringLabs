@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found - Moring Labs</title>
+    <meta name="description" content="The page you are looking for does not exist.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        html, body { overflow-x: hidden; width: 100vw; max-width: 100%; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
+            background-color: #fbfbfd; 
+            color: #1d1d1f;
+        }
+        .ambient-glow {
+            position: absolute; 
+            width: 1200px; 
+            height: 1200px;
+            background: radial-gradient(circle, rgba(64,156,255,0.08) 0%, rgba(255,255,255,0) 70%);
+            top: -300px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            z-index: -1; 
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="relative antialiased h-screen flex flex-col items-center justify-center">
+
+    <div class="ambient-glow"></div>
+
+    <main class="text-center px-6 animate-fade-in z-10">
+        <h1 class="text-7xl font-extrabold text-gray-900 tracking-tighter mb-4">404</h1>
+        <p class="text-xl text-gray-500 font-medium mb-8">Oops! We couldn't find the page you're looking for.</p>
+        <a href="/" class="inline-flex items-center px-6 py-3 text-sm md:text-base font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition duration-300">
+            <i class="fas fa-home mr-2"></i> Return Home
+        </a>
+    </main>
+
+</body>
+</html>
