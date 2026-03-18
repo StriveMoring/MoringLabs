@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support | FormatRocket</title>
+    <title>Support & Help | FormatRocket</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
@@ -15,14 +15,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
-        /* 1. 核心修复：单纯锁死视口宽度，绝对不碰颜色 */
         html, body { 
             overflow-x: hidden;
             width: 100vw;
             max-width: 100%;
         }
         
-        /* 2. 视觉渲染：把背景色和字体只交还给 body，恢复透明穿透机制 */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
             background-color: #fbfbfd; 
@@ -80,7 +78,7 @@
     <div class="ambient-glow"></div>
 
     <nav class="glass-nav fixed top-0 w-full z-50">
-        <div class="max-w-5xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center gap-2">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center gap-2">
             <a href="./" class="text-base md:text-lg font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2 flex-shrink-0">
                 <i class="fas fa-chevron-left text-xs md:text-sm"></i> <span id="nav-back-text">Back to App</span>
             </a>
@@ -104,43 +102,30 @@
         </div>
     </nav>
 
-    <main class="pt-24 md:pt-32 pb-24 md:pb-32 px-4 md:px-6 max-w-5xl mx-auto animate-fade-in opacity-0">
+    <main class="pt-24 md:pt-32 pb-24 md:pb-32 px-4 md:px-6 max-w-6xl mx-auto animate-fade-in opacity-0">
         <header class="mb-12 md:mb-16 text-center">
             <h1 id="mainTitle" class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 md:mb-6 tracking-tight">Support & Help Center</h1>
-            <p id="subTitle" class="text-base md:text-xl text-gray-500 font-medium max-w-2xl mx-auto px-2">Everything you need to know about using FormatRocket.</p>
+            <p id="subTitle" class="text-base md:text-xl text-gray-500 font-medium max-w-3xl mx-auto px-2">Master all 53 formats, advanced features, and workflow automations in FormatRocket.</p>
         </header>
 
-        <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-16 md:mb-20">
-            <div class="bento-card p-6 md:p-10">
-                <div class="w-12 h-12 md:w-14 md:h-14 bg-blue-50 text-blue-600 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 shadow-inner border border-blue-100">
-                    <i class="fas fa-film text-xl md:text-2xl"></i>
-                </div>
-                <h2 id="card1Title" class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900 tracking-tight">Video & Audio</h2>
-                <ul id="card1List" class="space-y-3 md:space-y-4 text-gray-600 font-medium text-base md:text-lg"></ul>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20" id="guidesGrid">
             </div>
-            
-            <div class="bento-card p-6 md:p-10">
-                <div class="w-12 h-12 md:w-14 md:h-14 bg-indigo-50 text-indigo-600 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 shadow-inner border border-indigo-100">
-                    <i class="fas fa-images text-xl md:text-2xl"></i>
-                </div>
-                <h2 id="card2Title" class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900 tracking-tight">Image & Batch</h2>
-                <ul id="card2List" class="space-y-3 md:space-y-4 text-gray-600 font-medium text-base md:text-lg"></ul>
-            </div>
-        </div>
 
         <section class="mb-16 md:mb-20">
             <h2 id="faqSectionTitle" class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-10 text-gray-900 tracking-tight">Frequently Asked Questions</h2>
-            <div id="faqContainer" class="space-y-3 md:space-y-4 max-w-3xl mx-auto"></div>
+            <div id="faqContainer" class="space-y-3 md:space-y-4 max-w-4xl mx-auto">
+                </div>
         </section>
 
         <section class="bg-gray-900 text-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 mb-16 md:mb-20 shadow-2xl shadow-gray-900/20 border border-gray-800 transition-transform hover:-translate-y-1 duration-500">
-            <h2 id="specsTitle" class="text-xl md:text-2xl font-bold mb-6 md:mb-10 tracking-tight text-center md:text-left">System Requirements</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8" id="specsGrid"></div>
+            <h2 id="specsTitle" class="text-xl md:text-2xl font-bold mb-6 md:mb-10 tracking-tight text-center md:text-left">System Capabilities</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8" id="specsGrid">
+                </div>
         </section>
 
         <section class="text-center py-10 md:py-12 border-t border-gray-200/60">
             <h2 id="contactTitle" class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900 tracking-tight">Still need help?</h2>
-            <p id="contactText" class="text-gray-500 font-medium mb-6 md:mb-8 text-base md:text-lg">Our support team is ready to assist you.</p>
+            <p id="contactText" class="text-gray-500 font-medium mb-6 md:mb-8 text-base md:text-lg">Our support team is ready to assist you with any technical issues.</p>
             <a href="mailto:strivemoring@gmail.com" class="inline-flex items-center px-6 md:px-10 py-3 md:py-4 bg-black text-white text-sm md:text-base font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-xl shadow-black/10 break-all w-full sm:w-auto justify-center">
                 <i class="fas fa-envelope mr-2"></i> strivemoring@gmail.com
             </a>
@@ -152,226 +137,271 @@
     </footer>
 
     <script>
+        // 11 国语言满血全量翻译字典
         const translations = {
             "en": {
                 backText: "Back to App",
                 mainTitle: "Support & Help Center",
-                subTitle: "Everything you need to know about using FormatRocket.",
-                card1Title: "Video & Audio Conversion",
-                card1List: ["Drag & drop media files into the window", "Choose from 34 video/audio formats", "Adjust resolution, quality, and encoders", "Extract audio or compress video size"],
-                card2Title: "Image & Batch Processing",
-                card2List: ["Convert between 19 image formats", "Adjust quality and preserve EXIF data", "Process multiple files simultaneously", "Track live progress in the task queue"],
-                faqSectionTitle: "Common Questions",
-                faqs: [
-                    { q: "Why do some formats require a Pro license?", a: "The Free version uses macOS's built-in AVFoundation. Advanced formats like MKV, WebM, and AVI rely on the FFmpeg engine, which is a Pro feature." },
-                    { q: "What should I do if a conversion fails?", a: "Ensure the source file isn't corrupted. If the issue persists, try disabling 'Hardware Acceleration' in Settings, and check if you have enough disk space." },
-                    { q: "What happens if my Free quota runs out?", a: "Quotas refresh every Monday. You can also invite friends (+10 conversions), share the app (+2 conversions), or upgrade for unlimited access." },
-                    { q: "Are my files uploaded to any servers?", a: "No. All 53 format conversions happen 100% locally on your Mac. Your files are never uploaded or analyzed." }
+                subTitle: "Master all 53 formats, advanced features, and workflow automations in FormatRocket.",
+                guides: [
+                    { icon: "rocket", color: "blue", title: "Quick Start", items: ["Drag & drop files or click 'Select'", "Choose output format & parameters", "Click 'Convert' to process locally", "Locate files directly in Finder"] },
+                    { icon: "film", color: "indigo", title: "Video & Audio Settings", items: ["Extract audio tracks from video", "Resolutions up to 8K (Ultimate)", "Support for H.264, VP9, AV1 encoders", "Hardware accelerated processing"] },
+                    { icon: "images", color: "purple", title: "Image & Batch Process", items: ["Convert between 19 image formats", "Read DNG, CR2, NEF RAW formats", "Preserve EXIF metadata (Pro+)", "Batch process up to 50 files concurrently"] },
+                    { icon: "gift", color: "pink", title: "Quotas & Rewards", items: ["Free tier resets every Monday", "Invite friends: +10 conversions each", "Share app: +2 extra conversions", "Quotas sync across devices via iCloud"] },
+                    { icon: "terminal", color: "gray", title: "Ultimate Features", items: ["Use 'frcli' in Terminal for automations", "Full Apple Shortcuts integration", "Auto-monitor folders for conversion", "Unlimited concurrent background tasks"] }
                 ],
-                specsTitle: "System Requirements",
-                specs: { os: "macOS 14.0+", chip: "Apple & Intel", formats: "53 Formats", net: "100% Offline" },
+                faqSectionTitle: "Frequently Asked Questions",
+                faqs: [
+                    { q: "Why do some formats (MKV, WebM) require Pro?", a: "The Free version uses macOS built-in AVFoundation/ImageIO engines (MP4, MOV, JPG). Advanced formats require our bundled FFmpeg engine, which is a Pro/Ultimate feature." },
+                    { q: "What should I do if a conversion fails?", a: "First, ensure the source file is not corrupted. If it still fails, try disabling 'Hardware Acceleration' in Settings (VideoToolbox) to rule out compatibility issues. Also, check your disk space." },
+                    { q: "How do Free Tier quotas work?", a: "Free users get 3 video, 5 audio, and 15 image conversions per week. This resets automatically every Monday. You can earn more by sharing the app or inviting friends." },
+                    { q: "Does FormatRocket support Apple Silicon?", a: "Yes! FormatRocket runs natively on Apple Silicon (M1/M2/M3/M4) and Intel Macs. No Rosetta required. Hardware acceleration is fully supported." },
+                    { q: "Are my files uploaded to any servers?", a: "No. All conversions happen 100% locally on your Mac. We never upload, view, or analyze your files. Only your usage quota syncs via Apple's secure CloudKit." }
+                ],
+                specsTitle: "System Capabilities",
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", formats: "53 Formats", net: "100% Offline" },
                 contactTitle: "Still need help?",
-                contactText: "Our support team is ready to assist you."
+                contactText: "Our support team is ready to assist you with any technical issues."
             },
             "zh-CN": {
                 backText: "返回应用",
                 mainTitle: "支持与帮助中心",
-                subTitle: "关于使用 FormatRocket 的一切指南。",
-                card1Title: "视频与音频转换",
-                card1List: ["将媒体文件拖入应用窗口", "支持 34 种视频/音频格式", "自由调整分辨率、质量与编码器", "支持提取音频或无损压缩视频体积"],
-                card2Title: "图片与批量处理",
-                card2List: ["支持 19 种主流及 RAW 图片格式互转", "可调节图片质量并保留 EXIF 信息", "支持批量添加，最高 50 个文件并发处理", "在任务队列中实时查看转换进度"],
-                faqSectionTitle: "常见问题",
-                faqs: [
-                    { q: "为什么有些格式需要 Pro 版本？", a: "Free 版使用 macOS 内置引擎，仅支持 Apple 原生格式。MKV、WebM、AVI 等格式需要调用内置的 FFmpeg 引擎，属于 Pro 及以上专属功能。" },
-                    { q: "转换失败了怎么办？", a: "首先确认源文件未损坏。如果是兼容性问题，尝试在设置中关闭“硬件加速”后重试。同时请检查磁盘剩余空间是否充足。" },
-                    { q: "免费额度用完了怎么办？", a: "免费额度每周一自动刷新。你可以通过邀请好友（双方各+10次）、分享应用（+2次）获取额外额度，或升级为 Pro 享受无限转换。" },
-                    { q: "我的文件会被上传到服务器吗？", a: "绝对不会。FormatRocket 的所有转换都在你 Mac 的本地沙盒中完成，文件绝不会离开你的设备。" }
+                subTitle: "全面掌握 FormatRocket 的 53 种格式互转、进阶参数与自动化工作流。",
+                guides: [
+                    { icon: "rocket", color: "blue", title: "快速开始", items: ["拖入文件或点击“选择文件”", "选择目标格式并调整参数", "点击“开始转换”进行本地处理", "转换完成后一键在 Finder 中定位"] },
+                    { icon: "film", color: "indigo", title: "视频与音频进阶", items: ["支持从视频中提取独立音频轨", "支持最高 8K 极清分辨率输出", "可选 H.264, VP8/9, AV1 等多种编码器", "支持 Apple VideoToolbox 硬件加速"] },
+                    { icon: "images", color: "purple", title: "图片与批量处理", items: ["支持 19 种主流及 RAW 图片读取", "可调节输出质量并保留 EXIF 信息", "支持批量添加，最高 50 个文件", "多核心智能并发处理任务队列"] },
+                    { icon: "gift", color: "pink", title: "免费额度与奖励", items: ["免费转换额度每周一自动刷新", "邀请好友注册，双方各获赠 10 次额度", "分享应用至社交平台再获 2 次额外额度", "额度及数据通过 iCloud 多端同步"] },
+                    { icon: "terminal", color: "gray", title: "Ultimate 极客专属", items: ["内置 frcli 终端命令行转换工具", "深度集成 macOS 快捷指令 App", "设置文件夹后台自动监控与转换", "解锁无限任务并发与处理数量"] }
                 ],
-                specsTitle: "系统要求",
-                specs: { os: "macOS 14.0+", chip: "M芯片 & Intel", formats: "53 种格式", net: "100% 离线" },
-                contactTitle: "仍有疑问？",
-                contactText: "我们的支持团队随时准备为您提供帮助。"
+                faqSectionTitle: "常见问题解答",
+                faqs: [
+                    { q: "为什么 MKV、WebM 等格式需要升级 Pro？", a: "Free 版调用 macOS 内置引擎，仅支持苹果原生格式（如 MP4/MOV）。MKV、WebM、AVI 等扩展格式需要调用内置的 FFmpeg 引擎，这属于 Pro 及以上的专属功能。" },
+                    { q: "转换失败报错了怎么办？", a: "首先请确认源文件未损坏且能正常播放。如果仍然失败，请尝试在“设置”中关闭“硬件加速”以排除系统兼容性问题。同时请检查 Mac 磁盘剩余空间是否充足。" },
+                    { q: "免费版的每周额度是怎么计算的？", a: "免费版每周拥有 3次视频、5次音频、15次图片转换额度，每周一自动重置。如果不够用，你可以通过 App 内的分享或邀请码机制白嫖更多额度。" },
+                    { q: "完美支持 Apple Silicon (M系列芯片) 吗？", a: "完美支持。FormatRocket 是原生应用，完美适配 M1/M2/M3/M4 及 Intel 机型，无需通过 Rosetta 转译，且全面支持硬件编解码加速。" },
+                    { q: "我的文件会被偷偷上传到服务器吗？", a: "绝对不会。FormatRocket 所有的文件处理都在你的 Mac 本地离线完成。我们没有服务器，只有你的使用额度会通过 Apple 安全的 CloudKit 进行同步。" }
+                ],
+                specsTitle: "系统与能力",
+                specs: { os: "macOS 14.0+", chip: "M芯片 & Intel原生", formats: "53 种格式", net: "100% 本地离线" },
+                contactTitle: "仍有疑问或遇到 Bug？",
+                contactText: "欢迎通过邮件联系我们，技术团队会尽快为你解答。"
             },
             "zh-TW": {
                 backText: "返回應用",
                 mainTitle: "支援與幫助中心",
-                subTitle: "關於使用 FormatRocket 的完整指南。",
-                card1Title: "影片與音訊轉換",
-                card1List: ["將媒體檔案拖入應用視窗", "支援 34 種影片/音訊格式", "自由調整解析度、品質與編碼器", "支援提取音訊或無損壓縮影片體積"],
-                card2Title: "圖片與批量處理",
-                card2List: ["支援 19 種主流及 RAW 圖片格式互轉", "可調節圖片品質並保留 EXIF 資訊", "支援批量添加，最高 50 個檔案併發處理", "在任務佇列中即時查看轉換進度"],
-                faqSectionTitle: "常見問題",
-                faqs: [
-                    { q: "為什麼有些格式需要 Pro 版本？", a: "Free 版使用 macOS 內建引擎，僅支援 Apple 原生格式。MKV、WebM、AVI 等格式需要調用內建的 FFmpeg 引擎，屬於 Pro 及以上專屬功能。" },
-                    { q: "轉換失敗了怎麼辦？", a: "首先確認來源檔案未損壞。如果是相容性問題，嘗試在設定中關閉「硬體加速」後重試。同時請檢查磁碟剩餘空間是否充足。" },
-                    { q: "免費額度用完了怎麼辦？", a: "免費額度每週一自動刷新。你可以透過邀請好友（雙方各+10次）、分享應用（+2次）獲取額外額度，或升級為 Pro 享受無限轉換。" },
-                    { q: "我的檔案會被上傳到伺服器嗎？", a: "絕對不會。FormatRocket 的所有轉換都在你 Mac 的本地沙盒中完成，檔案絕不會離開你的設備。" }
+                subTitle: "全面掌握 FormatRocket 的 53 種格式互轉、進階參數與自動化工作流。",
+                guides: [
+                    { icon: "rocket", color: "blue", title: "快速開始", items: ["拖入檔案或點擊「選擇檔案」", "選擇目標格式並調整參數", "點擊「開始轉換」進行本地處理", "轉換完成後一鍵在 Finder 中定位"] },
+                    { icon: "film", color: "indigo", title: "影片與音訊進階", items: ["支援從影片中提取獨立音訊軌", "支援最高 8K 極清解析度輸出", "可選 H.264, VP8/9, AV1 等多種編碼器", "支援 Apple VideoToolbox 硬體加速"] },
+                    { icon: "images", color: "purple", title: "圖片與批次處理", items: ["支援 19 種主流及 RAW 圖片讀取", "可調節輸出品質並保留 EXIF 資訊", "支援批次添加，最高 50 個檔案", "多核心智能併發處理任務佇列"] },
+                    { icon: "gift", color: "pink", title: "免費額度與獎勵", items: ["免費轉換額度每週一自動刷新", "邀請好友註冊，雙方各獲贈 10 次額度", "分享應用至社群平台再獲 2 次額外額度", "額度及數據透過 iCloud 多端同步"] },
+                    { icon: "terminal", color: "gray", title: "Ultimate 極客專屬", items: ["內建 frcli 終端命令列轉換工具", "深度整合 macOS 捷徑 App", "設定資料夾後台自動監控與轉換", "解鎖無限任務併發與處理數量"] }
                 ],
-                specsTitle: "系統要求",
-                specs: { os: "macOS 14.0+", chip: "M晶片 & Intel", formats: "53 種格式", net: "100% 離線" },
-                contactTitle: "仍有疑問？",
-                contactText: "我們的支持團隊隨時準備為您提供幫助。"
+                faqSectionTitle: "常見問題解答",
+                faqs: [
+                    { q: "為什麼 MKV、WebM 等格式需要升級 Pro？", a: "Free 版調用 macOS 內建引擎，僅支援蘋果原生格式（如 MP4/MOV）。MKV、WebM、AVI 等擴展格式需要調用內建的 FFmpeg 引擎，這屬於 Pro 及以上的專屬功能。" },
+                    { q: "轉換失敗報錯了怎麼辦？", a: "首先請確認來源檔案未損壞且能正常播放。如果仍然失敗，請嘗試在「設定」中關閉「硬體加速」以排除系統相容性問題。同時請檢查 Mac 磁碟剩餘空間是否充足。" },
+                    { q: "免費版的每週額度是怎麼計算的？", a: "免費版每週擁有 3次影片、5次音訊、15次圖片轉換額度，每週一自動重置。如果不夠用，你可以透過 App 內的分享或邀請碼機制獲取更多額度。" },
+                    { q: "完美支援 Apple Silicon (M系列晶片) 嗎？", a: "完美支援。FormatRocket 是原生應用，完美適配 M1/M2/M3/M4 及 Intel 機型，無需透過 Rosetta 轉譯，且全面支援硬體編解碼加速。" },
+                    { q: "我的檔案會被偷偷上傳到伺服器嗎？", a: "絕對不會。FormatRocket 所有的檔案處理都在你的 Mac 本地離線完成。我們沒有伺服器，只有你的使用額度會透過 Apple 安全的 CloudKit 進行同步。" }
+                ],
+                specsTitle: "系統與能力",
+                specs: { os: "macOS 14.0+", chip: "M晶片 & Intel原生", formats: "53 種格式", net: "100% 本地離線" },
+                contactTitle: "仍有疑問或遇到 Bug？",
+                contactText: "歡迎透過郵件聯繫我們，技術團隊會盡快為你解答。"
             },
             "ja": {
                 backText: "アプリに戻る",
-                mainTitle: "サポート＆ヘルプセンター",
-                subTitle: "FormatRocketの使用に関するすべてのガイド。",
-                card1Title: "ビデオとオーディオの変換",
-                card1List: ["メディアファイルをウィンドウにドラッグ", "34種類のビデオ/オーディオフォーマットに対応", "解像度、品質、エンコーダを調整", "オーディオの抽出やビデオの圧縮が可能"],
-                card2Title: "画像とバッチ処理",
-                card2List: ["19種類の画像フォーマット間で変換", "品質を調整しEXIFデータを保持", "複数のファイルを同時に処理", "タスクキューでリアルタイムの進捗を確認"],
+                mainTitle: "サポート＆ヘルプ",
+                subTitle: "FormatRocketの53のフォーマット、高度な機能、ワークフロー自動化をマスターしましょう。",
+                guides: [
+                    { icon: "rocket", color: "blue", title: "クイックスタート", items: ["ファイルをドラッグするか「選択」をクリック", "出力形式とパラメータを選択", "「変換」をクリックしてローカルで処理", "Finderで直接ファイルを特定"] },
+                    { icon: "film", color: "indigo", title: "動画＆音声設定", items: ["動画から音声トラックを抽出", "最大8Kの解像度（Ultimate）", "H.264、VP9、AV1エンコーダをサポート", "ハードウェアアクセラレーション処理"] },
+                    { icon: "images", color: "purple", title: "画像＆バッチ処理", items: ["19種類の画像フォーマットを変換", "DNG、CR2、NEFのRAW形式を読み込み", "EXIFメタデータを保持（Pro+）", "最大50ファイルを同時にバッチ処理"] },
+                    { icon: "gift", color: "pink", title: "無料枠＆リワード", items: ["無料枠は毎週月曜日にリセット", "友達を招待：各+10回の変換枠", "アプリを共有：+2回の追加変換枠", "iCloud経由でデバイス間で同期"] },
+                    { icon: "terminal", color: "gray", title: "Ultimate機能", items: ["ターミナルで「frcli」を使用", "Appleショートカットの完全統合", "フォルダの自動監視と変換", "無制限の同時バックグラウンドタスク"] }
+                ],
                 faqSectionTitle: "よくある質問",
                 faqs: [
-                    { q: "一部のフォーマットでPro版が必要なのはなぜですか？", a: "無料版はmacOS内蔵のエンジンを使用します。MKV、WebM、AVIなどの高度なフォーマットはFFmpegエンジンを使用するため、Proの機能となります。" },
-                    { q: "変換に失敗した場合はどうすればよいですか？", a: "元のファイルが破損していないか確認してください。設定で「ハードウェアアクセラレーション」を無効にして再試行し、ディスク容量が十分にあるか確認してください。" },
-                    { q: "無料枠を使い切った場合はどうなりますか？", a: "枠は毎週月曜日にリセットされます。友達を招待（+10回）、アプリを共有（+2回）するか、Proにアップグレードして無制限に利用できます。" },
-                    { q: "ファイルはサーバーにアップロードされますか？", a: "いいえ。すべての変換はMac上で完全にローカルに行われます。ファイルがアップロードされることは決してありません。" }
+                    { q: "なぜ一部の形式（MKV、WebM）にはProが必要なのですか？", a: "無料版はmacOS内蔵のエンジンを使用します。高度なフォーマットには同梱のFFmpegエンジンが必要であり、これはPro/Ultimateの機能です。" },
+                    { q: "変換に失敗した場合はどうすればよいですか？", a: "まず、元のファイルが破損していないか確認してください。それでも失敗する場合は、互換性の問題を排除するために設定で「ハードウェアアクセラレーション」を無効にしてみてください。" },
+                    { q: "無料枠はどのように機能しますか？", a: "無料ユーザーは毎週、動画3回、音声5回、画像15回の変換が可能です。これは毎週月曜日にリセットされます。アプリを共有したり友達を招待したりすることで枠を増やせます。" },
+                    { q: "Apple Siliconをサポートしていますか？", a: "はい！Apple Silicon（M1/M2/M3/M4）およびIntel Macでネイティブに動作します。Rosettaは必要ありません。" },
+                    { q: "ファイルはサーバーにアップロードされますか？", a: "いいえ。すべての変換はMac上で100%ローカルに行われます。ファイルをアップロードしたり閲覧したりすることはありません。" }
                 ],
                 specsTitle: "システム要件",
-                specs: { os: "macOS 14.0+", chip: "Apple & Intel", formats: "53フォーマット", net: "100% オフライン" },
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", formats: "53フォーマット", net: "100% オフライン" },
                 contactTitle: "まだ助けが必要ですか？",
-                contactText: "サポートチームがお手伝いします。"
+                contactText: "技術的な問題については、サポートチームがお手伝いします。"
             },
             "ko": {
                 backText: "앱으로 돌아가기",
                 mainTitle: "지원 및 도움말 센터",
-                subTitle: "FormatRocket 사용에 관한 모든 안내.",
-                card1Title: "비디오 및 오디오 변환",
-                card1List: ["미디어 파일을 창으로 드래그 앤 드롭", "34가지 비디오/오디오 포맷 지원", "해상도, 품질 및 인코더 조정", "오디오 추출 또는 비디오 크기 압축"],
-                card2Title: "이미지 및 일괄 처리",
-                card2List: ["19가지 이미지 포맷 간 변환", "품질 조정 및 EXIF 데이터 보존", "여러 파일을 동시에 처리", "작업 대기열에서 실시간 진행 상황 확인"],
+                subTitle: "FormatRocket의 53가지 포맷, 고급 기능 및 워크플로우 자동화를 마스터하세요.",
+                guides: [
+                    { icon: "rocket", color: "blue", title: "빠른 시작", 단: ["파일을 드래그하거나 '선택' 클릭", "출력 포맷 및 매개변수 선택", "'변환'을 클릭하여 로컬에서 처리", "Finder에서 직접 파일 찾기"] },
+                    { icon: "film", color: "indigo", title: "비디오 및 오디오 설정", items: ["비디오에서 오디오 트랙 추출", "최대 8K 해상도(Ultimate)", "H.264, VP9, AV1 인코더 지원", "하드웨어 가속 처리"] },
+                    { icon: "images", color: "purple", title: "이미지 및 일괄 처리", items: ["19가지 이미지 포맷 간 변환", "DNG, CR2, NEF RAW 포맷 읽기", "EXIF 메타데이터 보존(Pro+)", "최대 50개 파일 동시 일괄 처리"] },
+                    { icon: "gift", color: "pink", title: "할당량 및 보상", items: ["무료 등급은 매주 월요일에 초기화", "친구 초대: 각각 변환 10회 추가", "앱 공유: 변환 2회 추가", "iCloud를 통해 기기 간 할당량 동기화"] },
+                    { icon: "terminal", color: "gray", title: "Ultimate 기능", items: ["자동화를 위해 터미널에서 'frcli' 사용", "Apple 단축어 완벽 통합", "변환을 위한 폴더 자동 모니터링", "무제한 동시 백그라운드 작업"] }
+                ],
                 faqSectionTitle: "자주 묻는 질문",
                 faqs: [
-                    { q: "일부 포맷에 Pro 버전이 필요한 이유는 무엇인가요?", a: "무료 버전은 macOS 내장 엔진을 사용합니다. MKV, WebM, AVI와 같은 고급 포맷은 FFmpeg 엔진을 사용하므로 Pro 기능입니다." },
-                    { q: "변환에 실패하면 어떻게 해야 하나요?", a: "원본 파일이 손상되지 않았는지 확인하세요. 설정에서 '하드웨어 가속'을 비활성화하고 다시 시도해 보며, 디스크 여유 공간이 충분한지 확인하세요." },
-                    { 단: "무료 할당량을 모두 사용하면 어떻게 되나요?", a: "할당량은 매주 월요일에 갱신됩니다. 친구 초대(+10회), 앱 공유(+2회)를 하거나 무제한 변환을 위해 Pro로 업그레이드할 수 있습니다." },
-                    { q: "내 파일이 서버에 업로드되나요?", a: "아닙니다. 모든 변환은 Mac에서 100% 로컬로 진행됩니다. 파일은 절대 외부로 전송되지 않습니다." }
+                    { q: "일부 포맷(MKV, WebM)에 Pro가 필요한 이유는 무엇인가요?", a: "무료 버전은 macOS 내장 엔진을 사용합니다. 고급 포맷은 번들로 제공되는 FFmpeg 엔진이 필요하며, 이는 Pro/Ultimate 기능입니다." },
+                    { q: "변환에 실패하면 어떻게 해야 하나요?", a: "먼저 원본 파일이 손상되지 않았는지 확인하세요. 그래도 실패하면 호환성 문제를 배제하기 위해 설정에서 '하드웨어 가속'을 비활성화해 보세요." },
+                    { q: "무료 할당량은 어떻게 작동하나요?", a: "무료 사용자는 매주 비디오 3회, 오디오 5회, 이미지 15회 변환을 받을 수 있으며 매주 월요일에 초기화됩니다." },
+                    { q: "Apple Silicon을 지원하나요?", a: "예! FormatRocket은 Apple Silicon 및 Intel Mac에서 기본적으로 실행됩니다. Rosetta가 필요하지 않습니다." },
+                    { q: "내 파일이 서버에 업로드되나요?", a: "아닙니다. 모든 변환은 Mac에서 100% 로컬로 이루어집니다." }
                 ],
                 specsTitle: "시스템 요구 사양",
-                specs: { os: "macOS 14.0+", chip: "Apple & Intel", formats: "53가지 포맷", net: "100% 오프라인" },
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", formats: "53가지 포맷", net: "100% 오프라인" },
                 contactTitle: "도움이 더 필요하신가요?",
-                contactText: "지원 팀이 도와드릴 준비가 되어 있습니다."
+                contactText: "기술적인 문제가 있는 경우 지원 팀이 도와드립니다."
             },
             "de": {
                 backText: "Zurück zur App",
-                mainTitle: "Support-Center",
-                subTitle: "Alles, was Sie über die Nutzung von FormatRocket wissen müssen.",
-                card1Title: "Video- & Audiokonvertierung",
-                card1List: ["Mediendateien in das Fenster ziehen", "Wählen Sie aus 34 Video-/Audioformaten", "Auflösung, Qualität und Encoder anpassen", "Audio extrahieren oder Video komprimieren"],
-                card2Title: "Bild- & Stapelverarbeitung",
-                card2List: ["Konvertieren zwischen 19 Bildformaten", "Qualität anpassen und EXIF-Daten erhalten", "Mehrere Dateien gleichzeitig verarbeiten", "Echtzeit-Fortschritt in der Warteschlange verfolgen"],
-                faqSectionTitle: "Häufige Fragen",
-                faqs: [
-                    { q: "Warum erfordern einige Formate Pro?", a: "Die kostenlose Version nutzt die native macOS-Engine. Formate wie MKV, WebM und AVI benötigen die FFmpeg-Engine, eine Pro-Funktion." },
-                    { q: "Was tun, wenn eine Konvertierung fehlschlägt?", a: "Stellen Sie sicher, dass die Quelldatei nicht beschädigt ist. Deaktivieren Sie ggf. 'Hardwarebeschleunigung' in den Einstellungen." },
-                    { q: "Was passiert, wenn mein Freikontingent aufgebraucht ist?", a: "Kontingente werden montags aktualisiert. Sie können Freunde einladen, die App teilen oder auf Pro upgraden." },
-                    { q: "Werden meine Dateien hochgeladen?", a: "Nein. Alle 53 Formatkonvertierungen erfolgen zu 100% lokal auf Ihrem Mac." }
+                mainTitle: "Support & Hilfe-Center",
+                subTitle: "Meistern Sie alle 53 Formate, erweiterten Funktionen und Automatisierungen in FormatRocket.",
+                guides: [
+                    { icon: "rocket", color: "blue", title: "Schnellstart", items: ["Dateien reinziehen oder auf 'Auswählen' klicken", "Ausgabeformat & Parameter wählen", "Auf 'Konvertieren' klicken", "Dateien direkt im Finder anzeigen"] },
+                    { icon: "film", color: "indigo", title: "Video & Audio", items: ["Audiospuren aus Videos extrahieren", "Auflösungen bis zu 8K (Ultimate)", "Unterstützung für H.264, VP9, AV1", "Hardwarebeschleunigte Verarbeitung"] },
+                    { icon: "images", color: "purple", title: "Bild & Stapelverarbeitung", items: ["Zwischen 19 Bildformaten konvertieren", "RAW-Formate lesen (DNG, CR2, NEF)", "EXIF-Metadaten erhalten (Pro+)", "Bis zu 50 Dateien gleichzeitig verarbeiten"] },
+                    { icon: "gift", color: "pink", title: "Quoten & Belohnungen", items: ["Gratis-Kontingent wird montags zurückgesetzt", "Freunde einladen: +10 Konvertierungen", "App teilen: +2 extra Konvertierungen", "Quoten synchronisieren via iCloud"] },
+                    { icon: "terminal", color: "gray", title: "Ultimate-Funktionen", items: ["Nutzen Sie 'frcli' im Terminal", "Vollständige Apple Shortcuts Integration", "Ordner automatisch überwachen", "Unbegrenzte Hintergrundaufgaben"] }
                 ],
-                specsTitle: "Systemanforderungen",
-                specs: { os: "macOS 14.0+", chip: "Apple & Intel", formats: "53 Formate", net: "100% Offline" },
-                contactTitle: "Brauchen Sie Hilfe?",
-                contactText: "Unser Support-Team ist für Sie da."
+                faqSectionTitle: "Häufig gestellte Fragen",
+                faqs: [
+                    { q: "Warum erfordern einige Formate (MKV, WebM) Pro?", a: "Die Gratisversion nutzt macOS-interne Engines. Erweiterte Formate benötigen unsere FFmpeg-Engine (Pro/Ultimate)." },
+                    { q: "Was tun, wenn eine Konvertierung fehlschlägt?", a: "Prüfen Sie, ob die Datei beschädigt ist. Deaktivieren Sie ggf. die 'Hardwarebeschleunigung' in den Einstellungen." },
+                    { q: "Wie funktionieren die Gratis-Quoten?", a: "Gratis-Nutzer haben wöchentlich 3 Video-, 5 Audio- und 15 Bildkonvertierungen (Reset am Montag)." },
+                    { q: "Wird Apple Silicon unterstützt?", a: "Ja! Die App läuft nativ auf Apple Silicon (M1-M4) und Intel Macs." },
+                    { q: "Werden meine Dateien hochgeladen?", a: "Nein. Alles passiert zu 100% lokal auf Ihrem Mac." }
+                ],
+                specsTitle: "Systemfähigkeiten",
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", formats: "53 Formate", net: "100% Offline" },
+                contactTitle: "Brauchen Sie noch Hilfe?",
+                contactText: "Unser Support-Team hilft Ihnen gerne weiter."
             },
             "fr": {
                 backText: "Retour à l'App",
                 mainTitle: "Centre d'Assistance",
-                subTitle: "Tout ce qu'il faut savoir sur l'utilisation de FormatRocket.",
-                card1Title: "Conversion Vidéo & Audio",
-                card1List: ["Glissez les fichiers médias dans la fenêtre", "Choisissez parmi 34 formats vidéo/audio", "Ajustez la résolution, la qualité et les encodeurs", "Extrayez l'audio ou compressez la vidéo"],
-                card2Title: "Image & Traitement par Lot",
-                card2List: ["Convertissez entre 19 formats d'image", "Ajustez la qualité et préservez les données EXIF", "Traitez plusieurs fichiers simultanément", "Suivez la progression en temps réel"],
+                subTitle: "Maîtrisez les 53 formats, les fonctions avancées et l'automatisation dans FormatRocket.",
+                guides: [
+                    { icon: "rocket", color: "blue", title: "Démarrage Rapide", items: ["Glissez-déposez des fichiers ou cliquez sur 'Sélectionner'", "Choisissez le format et les paramètres", "Cliquez sur 'Convertir' (traitement local)", "Localisez les fichiers dans le Finder"] },
+                    { icon: "film", color: "indigo", title: "Paramètres Vidéo & Audio", items: ["Extraire l'audio des vidéos", "Résolutions jusqu'à 8K (Ultimate)", "Support des encodeurs H.264, VP9, AV1", "Accélération matérielle"] },
+                    { icon: "images", color: "purple", title: "Image & Traitement par Lot", items: ["19 formats d'image pris en charge", "Lecture des formats RAW (DNG, CR2, NEF)", "Préservation des données EXIF (Pro+)", "Traitement jusqu'à 50 fichiers"] },
+                    { icon: "gift", color: "pink", title: "Quotas & Récompenses", items: ["Les quotas gratuits se réinitialisent le lundi", "Invitez des amis : +10 conversions", "Partagez l'app : +2 conversions", "Synchronisation via iCloud"] },
+                    { icon: "terminal", color: "gray", title: "Fonctions Ultimate", items: ["Utilisez 'frcli' dans le Terminal", "Intégration Apple Shortcuts", "Surveillance automatique des dossiers", "Tâches en arrière-plan illimitées"] }
+                ],
                 faqSectionTitle: "Questions Fréquentes",
                 faqs: [
-                    { q: "Pourquoi certains formats nécessitent-ils Pro ?", a: "La version gratuite utilise le moteur natif de macOS. Les formats comme MKV, WebM et AVI dépendent du moteur FFmpeg (fonction Pro)." },
-                    { q: "Que faire si une conversion échoue ?", a: "Vérifiez que le fichier source n'est pas corrompu. Essayez de désactiver l'accélération matérielle dans les paramètres." },
-                    { q: "Que faire si mon quota gratuit est épuisé ?", a: "Les quotas sont actualisés le lundi. Vous pouvez inviter des amis, partager l'application ou passer à Pro." },
-                    { q: "Mes fichiers sont-ils téléchargés sur un serveur ?", a: "Non. Toutes les conversions s'effectuent à 100% localement sur votre Mac." }
+                    { q: "Pourquoi certains formats nécessitent-ils Pro ?", a: "La version gratuite utilise les moteurs macOS intégrés. Les formats avancés utilisent notre moteur FFmpeg (fonction Pro/Ultimate)." },
+                    { q: "Que faire si une conversion échoue ?", a: "Vérifiez que le fichier n'est pas corrompu. Si le problème persiste, désactivez 'Accélération matérielle' dans les paramètres." },
+                    { q: "Comment fonctionnent les quotas gratuits ?", a: "3 vidéos, 5 audios, 15 images par semaine (réinitialisation le lundi)." },
+                    { q: "FormatRocket supporte-t-il Apple Silicon ?", a: "Oui, nativement sur puce M1/M2/M3/M4 et Intel." },
+                    { q: "Mes fichiers sont-ils envoyés sur un serveur ?", a: "Non, toutes les conversions sont 100% locales." }
                 ],
-                specsTitle: "Configuration",
-                specs: { os: "macOS 14.0+", chip: "Apple & Intel", formats: "53 Formats", net: "100% Hors ligne" },
+                specsTitle: "Capacités du Système",
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", formats: "53 Formats", net: "100% Hors ligne" },
                 contactTitle: "Besoin d'aide ?",
-                contactText: "Notre équipe est à votre écoute."
+                contactText: "Notre équipe est à votre écoute pour tout problème technique."
             },
             "es": {
                 backText: "Volver a la App",
                 mainTitle: "Centro de Soporte",
-                subTitle: "Todo lo que necesitas saber sobre el uso de FormatRocket.",
-                card1Title: "Conversión de Video y Audio",
-                card1List: ["Arrastra archivos multimedia a la ventana", "Elige entre 34 formatos de video/audio", "Ajusta resolución, calidad y codificadores", "Extrae audio o comprime video"],
-                card2Title: "Imagen y Procesamiento por Lotes",
-                card2List: ["Convierte entre 19 formatos de imagen", "Ajusta la calidad y conserva datos EXIF", "Procesa múltiples archivos a la vez", "Sigue el progreso en tiempo real"],
-                faqSectionTitle: "Preguntas Comunes",
-                faqs: [
-                    { q: "¿Por qué algunos formatos requieren Pro?", a: "La versión gratuita usa el motor nativo de macOS. Formatos como MKV, WebM y AVI usan el motor FFmpeg, una función Pro." },
-                    { q: "¿Qué hago si falla una conversión?", a: "Asegúrate de que el archivo original no esté dañado. Prueba desactivando la 'Aceleración de hardware' en Ajustes." },
-                    { q: "¿Qué pasa si se acaba mi cuota gratuita?", a: "Las cuotas se renuevan los lunes. Puedes invitar amigos, compartir la app o actualizar a Pro." },
-                    { q: "¿Mis archivos se suben a algún servidor?", a: "No. Todas las conversiones son 100% locales en tu Mac." }
+                subTitle: "Domina los 53 formatos, funciones avanzadas y automatización en FormatRocket.",
+                guides: [
+                    { icon: "rocket", color: "blue", title: "Inicio Rápido", items: ["Arrastra archivos o pulsa 'Seleccionar'", "Elige formato y parámetros", "Pulsa 'Convertir' (proceso local)", "Localiza archivos en el Finder"] },
+                    { icon: "film", color: "indigo", title: "Ajustes de Video y Audio", items: ["Extraer audio de videos", "Resoluciones hasta 8K (Ultimate)", "Soporte para H.264, VP9, AV1", "Aceleración por hardware"] },
+                    { icon: "images", color: "purple", title: "Imagen y Lotes", items: ["Conversión entre 19 formatos de imagen", "Lectura de formatos RAW", "Conservar metadatos EXIF (Pro+)", "Procesar hasta 50 archivos a la vez"] },
+                    { icon: "gift", color: "pink", title: "Cuotas y Recompensas", items: ["El nivel gratuito se reinicia el lunes", "Invitar amigos: +10 conversiones", "Compartir app: +2 conversiones", "Sincronización mediante iCloud"] },
+                    { icon: "terminal", color: "gray", title: "Funciones Ultimate", items: ["Uso de 'frcli' en la Terminal", "Integración con Atajos de Apple", "Monitorización de carpetas", "Tareas concurrentes ilimitadas"] }
                 ],
-                specsTitle: "Requisitos",
-                specs: { os: "macOS 14.0+", chip: "Apple & Intel", formats: "53 Formatos", net: "100% Sin conexión" },
+                faqSectionTitle: "Preguntas Frecuentes",
+                faqs: [
+                    { q: "¿Por qué algunos formatos requieren Pro?", a: "La versión gratuita usa motores de macOS. Formatos como MKV requieren FFmpeg, que es una función Pro." },
+                    { q: "¿Qué hago si falla una conversión?", a: "Comprueba que el archivo no esté dañado. Intenta desactivar la 'Aceleración de Hardware' en Ajustes." },
+                    { q: "¿Cómo funciona la cuota gratuita?", a: "Tienes 3 videos, 5 audios y 15 imágenes por semana. Se reinicia cada lunes." },
+                    { q: "¿Soporta Apple Silicon?", a: "Sí, funciona de forma nativa en Apple Silicon (M1-M4) e Intel." },
+                    { q: "¿Mis archivos se suben a la nube?", a: "No. Todo el proceso es 100% local en tu Mac." }
+                ],
+                specsTitle: "Capacidades del Sistema",
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", formats: "53 Formatos", net: "100% Sin conexión" },
                 contactTitle: "¿Aún necesitas ayuda?",
-                contactText: "Nuestro equipo está listo para ayudarte."
+                contactText: "Nuestro equipo está listo para asistirte con problemas técnicos."
             },
             "it": {
                 backText: "Torna all'App",
                 mainTitle: "Centro Assistenza",
-                subTitle: "Tutto ciò che devi sapere sull'utilizzo di FormatRocket.",
-                card1Title: "Conversione Video e Audio",
-                card1List: ["Trascina i file multimediali nella finestra", "Scegli tra 34 formati video/audio", "Regola risoluzione, qualità ed encoder", "Estrai l'audio o comprimi il video"],
-                card2Title: "Immagini ed Elaborazione Batch",
-                card2List: ["Converti tra 19 formati immagine", "Regola la qualità e preserva i dati EXIF", "Elabora più file contemporaneamente", "Segui i progressi in tempo reale"],
+                subTitle: "Padroneggia i 53 formati, le funzioni avanzate e l'automazione in FormatRocket.",
+                guides: [
+                    { icon: "rocket", color: "blue", title: "Avvio Rapido", items: ["Trascina i file o clicca su 'Seleziona'", "Scegli formato e parametri", "Clicca su 'Converti' (processo locale)", "Trova i file nel Finder"] },
+                    { icon: "film", color: "indigo", title: "Impostazioni Video e Audio", items: ["Estrai l'audio dai video", "Risoluzioni fino a 8K (Ultimate)", "Supporto per encoder H.264, VP9, AV1", "Accelerazione hardware"] },
+                    { icon: "images", color: "purple", title: "Immagini e Batch", items: ["Converti tra 19 formati immagine", "Leggi formati RAW (DNG, CR2)", "Preserva metadati EXIF (Pro+)", "Elabora fino a 50 file in batch"] },
+                    { icon: "gift", color: "pink", title: "Quote e Premi", items: ["Il piano gratuito si azzera il lunedì", "Invita amici: +10 conversioni", "Condividi l'app: +2 conversioni", "Sincronizzazione tramite iCloud"] },
+                    { icon: "terminal", color: "gray", title: "Funzioni Ultimate", items: ["Usa 'frcli' nel Terminale", "Integrazione Apple Shortcuts", "Monitoraggio automatico cartelle", "Task simultanei illimitati"] }
+                ],
                 faqSectionTitle: "Domande Frequenti",
                 faqs: [
-                    { q: "Perché alcuni formati richiedono Pro?", a: "La versione Free usa il motore nativo di macOS. Formati come MKV, WebM e AVI usano il motore FFmpeg (funzione Pro)." },
-                    { q: "Cosa fare se una conversione fallisce?", a: "Assicurati che il file originale non sia danneggiato. Prova a disabilitare l'accelerazione hardware nelle impostazioni." },
-                    { q: "Cosa succede se la quota gratuita si esaurisce?", a: "Le quote si azzerano ogni lunedì. Puoi invitare amici, condividere l'app o passare a Pro." },
-                    { q: "I miei file vengono caricati su un server?", a: "No. Tutte le conversioni avvengono al 100% localmente sul tuo Mac." }
+                    { q: "Perché alcuni formati richiedono Pro?", a: "La versione gratuita usa i motori macOS. Formati come MKV richiedono FFmpeg (funzione Pro/Ultimate)." },
+                    { q: "Cosa fare se una conversione fallisce?", a: "Assicurati che il file non sia corrotto. Prova a disabilitare 'Accelerazione Hardware' nelle impostazioni." },
+                    { q: "Come funzionano le quote gratuite?", a: "Hai 3 video, 5 audio e 15 immagini a settimana. Si azzerano ogni lunedì." },
+                    { q: "Supporta Apple Silicon?", a: "Sì, funziona nativamente su Apple Silicon (M1-M4) e Intel." },
+                    { q: "I miei file vengono caricati online?", a: "No. Tutte le conversioni avvengono al 100% in locale." }
                 ],
-                specsTitle: "Requisiti",
-                specs: { os: "macOS 14.0+", chip: "Apple & Intel", formats: "53 Formati", net: "100% Offline" },
-                contactTitle: "Serve aiuto?",
-                contactText: "Il nostro team è a disposizione."
+                specsTitle: "Capacità di Sistema",
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", formats: "53 Formati", net: "100% Offline" },
+                contactTitle: "Serve ancora aiuto?",
+                contactText: "Il nostro team di supporto è pronto ad assisterti."
             },
             "pt": {
                 backText: "Voltar ao App",
                 mainTitle: "Centro de Suporte",
-                subTitle: "Tudo o que você precisa saber sobre como usar o FormatRocket.",
-                card1Title: "Conversão de Vídeo e Áudio",
-                card1List: ["Arraste arquivos de mídia para a janela", "Escolha entre 34 formatos de vídeo/áudio", "Ajuste resolução, qualidade e codificadores", "Extraia áudio ou comprima o vídeo"],
-                card2Title: "Imagem e Processamento em Lote",
-                card2List: ["Converta entre 19 formatos de imagem", "Ajuste a qualidade e preserve os dados EXIF", "Processe vários arquivos simultaneamente", "Acompanhe o progresso em tempo real"],
-                faqSectionTitle: "Dúvidas Frequentes",
-                faqs: [
-                    { q: "Por que alguns formatos exigem a versão Pro?", a: "A versão Free usa o mecanismo nativo do macOS. Formatos como MKV, WebM e AVI usam o mecanismo FFmpeg (recurso Pro)." },
-                    { q: "O que fazer se uma conversão falhar?", a: "Certifique-se de que o arquivo de origem não está corrompido. Tente desativar a 'Aceleração de Hardware' nas configurações." },
-                    { q: "O que acontece se minha cota gratuita acabar?", a: "As cotas são renovadas às segundas-feiras. Você pode convidar amigos, compartilhar o app ou assinar a versão Pro." },
-                    { q: "Meus arquivos são enviados para algum servidor?", a: "Não. Todas as conversões ocorrem 100% localmente no seu Mac." }
+                subTitle: "Domine os 53 formatos, recursos avançados e automação de fluxo de trabalho no FormatRocket.",
+                guides: [
+                    { icon: "rocket", color: "blue", title: "Início Rápido", items: ["Arraste arquivos ou clique em 'Selecionar'", "Escolha o formato e os parâmetros", "Clique em 'Converter' (processamento local)", "Localize os arquivos no Finder"] },
+                    { icon: "film", color: "indigo", title: "Configurações de Vídeo e Áudio", items: ["Extraia áudio de vídeos", "Resoluções até 8K (Ultimate)", "Suporte para H.264, VP9, AV1", "Aceleração de hardware"] },
+                    { icon: "images", color: "purple", title: "Imagem e Processamento em Lote", items: ["Converta entre 19 formatos de imagem", "Leia formatos RAW (DNG, CR2)", "Preservar metadados EXIF (Pro+)", "Processe até 50 arquivos em lote"] },
+                    { icon: "gift", color: "pink", title: "Cotas e Recompensas", items: ["A versão grátis reseta toda segunda-feira", "Convide amigos: +10 conversões", "Compartilhe o app: +2 conversões", "Sincronização via iCloud"] },
+                    { icon: "terminal", color: "gray", title: "Recursos Ultimate", items: ["Use 'frcli' no Terminal", "Integração com Atalhos da Apple", "Monitoramento automático de pastas", "Tarefas simultâneas ilimitadas"] }
                 ],
-                specsTitle: "Requisitos",
-                specs: { os: "macOS 14.0+", chip: "Apple & Intel", formats: "53 Formatos", net: "100% Offline" },
-                contactTitle: "Precisa de ajuda?",
-                contactText: "Nossa equipe está pronta para ajudar."
+                faqSectionTitle: "Perguntas Frequentes",
+                faqs: [
+                    { q: "Por que alguns formatos exigem a versão Pro?", a: "A versão gratuita usa motores do macOS. Formatos avançados requerem o FFmpeg (recurso Pro)." },
+                    { q: "O que fazer se uma conversão falhar?", a: "Verifique se o arquivo não está corrompido. Tente desativar a 'Aceleração de Hardware' nas configurações." },
+                    { q: "Como funcionam as cotas gratuitas?", a: "Você tem 3 vídeos, 5 áudios e 15 imagens por semana. Reseta às segundas-feiras." },
+                    { q: "Suporta Apple Silicon?", a: "Sim, funciona nativamente no Apple Silicon (M1-M4) e Intel." },
+                    { q: "Meus arquivos são enviados para servidores?", a: "Não. Todas as conversões são 100% locais no seu Mac." }
+                ],
+                specsTitle: "Capacidades do Sistema",
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", formats: "53 Formatos", net: "100% Offline" },
+                contactTitle: "Ainda precisa de ajuda?",
+                contactText: "Nossa equipe de suporte está pronta para ajudá-lo com qualquer problema."
             },
             "ru": {
-                backText: "Назад к приложению",
+                backText: "Назад",
                 mainTitle: "Центр поддержки",
-                subTitle: "Все, что вам нужно знать об использовании FormatRocket.",
-                card1Title: "Конвертация видео и аудио",
-                card1List: ["Перетащите медиафайлы в окно", "Выбирайте из 34 видео/аудио форматов", "Настраивайте разрешение, качество и кодеки", "Извлекайте аудио или сжимайте видео"],
-                card2Title: "Изображения и пакетная обработка",
-                card2List: ["Конвертируйте между 19 форматами изображений", "Настраивайте качество и сохраняйте EXIF", "Обрабатывайте несколько файлов одновременно", "Следите за прогрессом в реальном времени"],
-                faqSectionTitle: "Частые вопросы",
-                faqs: [
-                    { q: "Почему некоторые форматы требуют версию Pro?", a: "Бесплатная версия использует встроенный движок macOS. Такие форматы, как MKV, WebM и AVI, используют движок FFmpeg (функция Pro)." },
-                    { q: "Что делать, если конвертация не удалась?", a: "Убедитесь, что исходный файл не поврежден. Попробуйте отключить «Аппаратное ускорение» в настройках." },
-                    { q: "Что делать, если закончилась бесплатная квота?", a: "Квоты обновляются по понедельникам. Вы можете пригласить друзей, поделиться приложением или перейти на Pro." },
-                    { q: "Загружаются ли мои файлы на сервер?", a: "Нет. Все конвертации происходят на 100% локально на вашем Mac." }
+                subTitle: "Освойте все 53 формата, расширенные функции и автоматизацию в FormatRocket.",
+                guides: [
+                    { icon: "rocket", color: "blue", title: "Быстрый старт", items: ["Перетащите файлы или нажмите «Выбрать»", "Выберите формат и параметры", "Нажмите «Конвертировать»", "Найдите файлы в Finder"] },
+                    { icon: "film", color: "indigo", title: "Настройки Видео и Аудио", items: ["Извлечение звука из видео", "Разрешение до 8K (Ultimate)", "Поддержка кодеков H.264, VP9, AV1", "Аппаратное ускорение"] },
+                    { icon: "images", color: "purple", title: "Изображения и пакетная обработка", items: ["19 форматов изображений", "Чтение RAW форматов (DNG, CR2)", "Сохранение метаданных EXIF (Pro+)", "Пакетная обработка до 50 файлов"] },
+                    { icon: "gift", color: "pink", title: "Квоты и Награды", items: ["Сброс бесплатных квот по понедельникам", "Пригласить друзей: +10 конвертаций", "Поделиться приложением: +2 конвертации", "Синхронизация через iCloud"] },
+                    { icon: "terminal", color: "gray", title: "Функции Ultimate", items: ["Использование 'frcli' в Терминале", "Интеграция с Быстрыми командами", "Автоматический мониторинг папок", "Неограниченное число задач"] }
                 ],
-                specsTitle: "Требования",
-                specs: { os: "macOS 14.0+", chip: "Apple и Intel", formats: "53 формата", net: "100% Оффлайн" },
+                faqSectionTitle: "Часто задаваемые вопросы",
+                faqs: [
+                    { q: "Почему для некоторых форматов нужна версия Pro?", a: "Бесплатная версия использует движки macOS. Продвинутые форматы требуют FFmpeg (функция Pro/Ultimate)." },
+                    { q: "Что делать, если конвертация не удалась?", a: "Убедитесь, что исходный файл не поврежден. Отключите «Аппаратное ускорение» в настройках." },
+                    { q: "Как работают бесплатные квоты?", a: "3 видео, 5 аудио и 15 изображений в неделю. Сброс каждый понедельник." },
+                    { q: "Поддерживается ли Apple Silicon?", a: "Да! Работает нативно на чипах M1-M4 и Intel." },
+                    { q: "Мои файлы загружаются на сервер?", a: "Нет. Все конвертации происходят локально на вашем Mac." }
+                ],
+                specsTitle: "Возможности системы",
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon и Intel", formats: "53 Формата", net: "100% Оффлайн" },
                 contactTitle: "Нужна помощь?",
-                contactText: "Наша команда готова помочь."
+                contactText: "Наша служба поддержки готова помочь с техническими вопросами."
             }
         };
 
@@ -381,26 +411,34 @@
             document.getElementById('nav-back-text').innerText = data.backText;
             document.getElementById('mainTitle').innerText = data.mainTitle;
             document.getElementById('subTitle').innerText = data.subTitle;
-            document.getElementById('card1Title').innerText = data.card1Title;
-            document.getElementById('card2Title').innerText = data.card2Title;
             document.getElementById('faqSectionTitle').innerText = data.faqSectionTitle;
             document.getElementById('specsTitle').innerText = data.specsTitle;
             document.getElementById('contactTitle').innerText = data.contactTitle;
             document.getElementById('contactText').innerText = data.contactText;
 
-            // Card 1 List
-            const c1List = document.getElementById('card1List');
-            c1List.innerHTML = data.card1List.map(item => `
-                <li class="flex items-start">
-                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 md:mr-3 text-sm md:text-base"></i><span class="text-sm md:text-base leading-snug md:leading-normal">${item}</span>
-                </li>`).join('');
+            // 动态生成五大指南卡片 (使用 Tailwind Grid 布局)
+            const guidesGrid = document.getElementById('guidesGrid');
+            guidesGrid.innerHTML = data.guides.map((guide, index) => {
+                // 让第一个“快速开始”卡片在平板端占据两列以打破死板的对称
+                const spanClass = index === 0 ? "md:col-span-2 lg:col-span-1" : "";
+                const listHtml = guide.items.map(item => `
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-${guide.color}-500 mt-1 mr-2 md:mr-3 text-sm md:text-base flex-shrink-0"></i>
+                        <span class="text-sm md:text-base leading-snug md:leading-normal">${item}</span>
+                    </li>
+                `).join('');
 
-            // Card 2 List
-            const c2List = document.getElementById('card2List');
-            c2List.innerHTML = data.card2List.map(item => `
-                <li class="flex items-start">
-                    <i class="fas fa-check-circle text-indigo-500 mt-1 mr-2 md:mr-3 text-sm md:text-base"></i><span class="text-sm md:text-base leading-snug md:leading-normal">${item}</span>
-                </li>`).join('');
+                return `
+                <div class="bento-card p-6 md:p-8 flex flex-col h-full ${spanClass}">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-${guide.color}-50 text-${guide.color}-600 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 shadow-inner border border-${guide.color}-100 flex-shrink-0">
+                        <i class="fas fa-${guide.icon} text-xl md:text-2xl"></i>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold mb-4 md:mb-5 text-gray-900 tracking-tight">${guide.title}</h2>
+                    <ul class="space-y-3 md:space-y-4 text-gray-600 font-medium mt-auto">
+                        ${listHtml}
+                    </ul>
+                </div>`;
+            }).join('');
 
             // FAQ 渲染
             const faqBox = document.getElementById('faqContainer');
@@ -415,7 +453,7 @@
                 </div>
             `).join('');
 
-            // Specs 渲染 (修改了对应的 icon: os->desktop, chip->microchip, formats->cubes, net->shield-alt)
+            // Specs 渲染 
             const specGrid = document.getElementById('specsGrid');
             const icons = { os: 'desktop', chip: 'microchip', formats: 'cubes', net: 'shield-alt' };
             specGrid.innerHTML = Object.entries(data.specs).map(([key, val]) => `
@@ -428,7 +466,6 @@
             `).join('');
         }
 
-        // 绑定给下拉菜单的函数：存缓存 + 调更新
         function switchLang(langCode) {
             localStorage.setItem('formatrocket_lang', langCode);
             updateUI(langCode);
@@ -444,7 +481,6 @@
             }
             
             updateUI(finalLang);
-            
             setTimeout(() => document.querySelector('main.animate-fade-in').classList.add('opacity-100'), 100);
         }
     </script>
