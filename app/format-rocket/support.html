@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support & Help | FormatRocket</title>
+    <meta name="description" content="Moring Labs - Independent App Studio focusing on performance, privacy, and elegant design.">
+    <meta property="og:title" content="Moring Labs | Independent App Studio">
+    <meta property="og:description" content="Independent App Studio focusing on performance, privacy, and elegant design.">
+    <meta property="og:image" content="https://moringlabs.github.io/apple-touch-icon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Moring Labs | Independent App Studio">
+    <meta name="twitter:description" content="Independent App Studio focusing on performance, privacy, and elegant design.">
+    <meta name="twitter:image" content="https://moringlabs.github.io/apple-touch-icon.png">
+
     <!-- 引入公共本地 Tailwind CSS 和 FontAwesome 框架，零外部依赖加载 -->
     <script src="../../assets/js/tailwindcss.min.js"></script>
     <link href="../../assets/css/fontawesome.min.css" rel="stylesheet">
@@ -136,7 +145,7 @@
             </a>
 
             <div class="relative group flex-shrink-0">
-                <select id="langSelector" onchange="switchLang(this.value)"
+                <select id="langSelector" aria-label="Language Selector" onchange="switchLang(this.value)"
                     class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-1.5 md:py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[105px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
                     <option value="en">🇺🇸 English</option>
                     <option value="zh-CN">🇨🇳 简体中文</option>

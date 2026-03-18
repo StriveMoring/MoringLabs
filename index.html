@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moring Labs | Independent App Studio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta name="description" content="Moring Labs - Independent App Studio focusing on performance, privacy, and elegant design.">
+    <meta property="og:title" content="Moring Labs | Independent App Studio">
+    <meta property="og:description" content="Independent App Studio focusing on performance, privacy, and elegant design.">
+    <meta property="og:image" content="https://moringlabs.github.io/apple-touch-icon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Moring Labs | Independent App Studio">
+    <meta name="twitter:description" content="Independent App Studio focusing on performance, privacy, and elegant design.">
+    <meta name="twitter:image" content="https://moringlabs.github.io/apple-touch-icon.png">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <script src="assets/js/tailwindcss.min.js"></script>
+    <link href="assets/css/fontawesome.min.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -104,7 +113,7 @@
             </a>
             
             <div class="relative group flex-shrink-0">
-                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[110px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
+                <select id="langSelector" aria-label="Language Selector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[110px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
                     <option value="en">🇺🇸 English</option>
                     <option value="zh-CN">🇨🇳 简体中文</option>
                     <option value="zh-TW">🇭🇰 繁體中文</option>
@@ -145,8 +154,8 @@
                 
                 <a href="app/pdf-merge-split-assistant/" class="app-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 block group">
                     <div class="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
-                        <img src="app/pdf-merge-split-assistant/PDF Merge & Split Assistant-AppIcon.webp" 
-                             class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 flex-shrink-0" alt="PDF Assistant">
+                        <img src="app/pdf-merge-split-assistant/pdf-merge-split-assistant-appicon.webp" 
+                             class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 flex-shrink-0" alt="PDF Merge and Split Assistant Mac App Icon">
                         <div class="min-w-0">
                             <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2 leading-tight break-words">PDF Merge & <br class="hidden sm:block">Split Assistant</h3>
                             <span class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-gray-100 text-gray-600 text-[10px] md:text-xs font-bold rounded-full">macOS Native</span>
@@ -160,8 +169,8 @@
 
                 <div class="app-card upcoming rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 block group">
                     <div class="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
-                        <img src="app/appsubmitter/AppSubmitter-AppIcon.webp" 
-                             class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 icon-upcoming flex-shrink-0" alt="AppSubmitter">
+                        <img src="app/app-submitter/AppSubmitter-AppIcon.webp" 
+                             class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 icon-upcoming flex-shrink-0" alt="AppSubmitter Mac App Icon">
                         <div class="min-w-0">
                             <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 leading-tight break-words">AppSubmitter</h3>
                             <span id="tag-coming-1" class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-indigo-50 text-indigo-600 text-[10px] md:text-xs font-bold rounded-full border border-indigo-100"></span>
@@ -175,8 +184,8 @@
 
                 <div class="app-card upcoming rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 block group">
                     <div class="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
-                        <img src="app/formatrocket/FormatRocket-AppIcon.webp" 
-                             class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 icon-upcoming flex-shrink-0" alt="FormatRocket">
+                        <img src="app/format-rocket/FormatRocket-AppIcon.webp" 
+                             class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl icon-shadow border border-gray-100 group-hover:scale-105 transition-transform duration-500 icon-upcoming flex-shrink-0" alt="FormatRocket Mac App Icon">
                         <div class="min-w-0">
                             <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 leading-tight break-words">FormatRocket</h3>
                             <span id="tag-coming-2" class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-indigo-50 text-indigo-600 text-[10px] md:text-xs font-bold rounded-full border border-indigo-100"></span>
