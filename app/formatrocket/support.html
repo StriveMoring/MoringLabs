@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support & Help | FormatRocket</title>
-    <!-- 引入本地 Tailwind CSS 和 FontAwesome，优化移动端和本地加载速度 -->
-    <script src="assets/js/tailwindcss.min.js"></script>
-    <link href="assets/css/fontawesome.min.css" rel="stylesheet">
+    <!-- 引入公共本地 Tailwind CSS 和 FontAwesome 框架，零外部依赖加载 -->
+    <script src="/assets/js/tailwindcss.min.js"></script>
+    <link href="/assets/css/fontawesome.min.css" rel="stylesheet">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -15,7 +15,8 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        /* 引入彻底本地化的 Inter 字体，确保从根目录加载所有 woff2 文件 */
+        @import url('/assets/css/inter.css');
 
         html,
         body {
