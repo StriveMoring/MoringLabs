@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support & Help | FormatRocket</title>
     <!-- 引入公共本地 Tailwind CSS 和 FontAwesome 框架，零外部依赖加载 -->
-    <script src="/assets/js/tailwindcss.min.js"></script>
-    <link href="/assets/css/fontawesome.min.css" rel="stylesheet">
+    <script src="../../assets/js/tailwindcss.min.js"></script>
+    <link href="../../assets/css/fontawesome.min.css" rel="stylesheet">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
 
     <style>
         /* 引入彻底本地化的 Inter 字体，确保从根目录加载所有 woff2 文件 */
-        @import url('/assets/css/inter.css');
+        @import url('../../assets/css/inter.css');
 
         html,
         body {
@@ -132,7 +132,7 @@
 
     <nav class="glass-nav fixed top-0 w-full z-50">
         <div class="max-w-6xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center gap-2">
-            <a href="./"
+            <a href="../../index.html"
                 class="text-base md:text-lg font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2 flex-shrink-0">
                 <i class="fas fa-chevron-left text-xs md:text-sm"></i> <span id="nav-back-text">Back to App</span>
             </a>
@@ -237,14 +237,6 @@
                     },
                     {
                         id: "formats",
-                        icon: "file-code", color: "orange", title: "Formats & Encoders",
-                        desc: "Details on supported codecs, containers, and encoders",
-                        items: [
-                            { q: "Why are some files significantly smaller than others?", a: "Different codecs have varying compression efficiencies. For example, HEVC (H.265) can compress video up to 50% more efficiently than H.264 while maintaining the same quality." }
-                        ]
-                    },
-                    {
-                        id: "formats",
                         icon: "file-code", color: "orange", title: "Formats et Encodeurs",
                         desc: "Détails sur les codecs, conteneurs et encodeurs pris en charge",
                         items: [
@@ -311,14 +303,6 @@
                             { q: "可以在不改变格式的情况下压缩视频吗？", a: "可以。使用文件卡片旁边的“压缩”选项。FormatRocket 将保留原始的格式封装容器（如 .mp4, .mov 等），但会智能降低比特率，从而显著减小文件体积。" },
                             { q: "为什么有些格式（如 MKV, WebM）或 4K/8K 选项无法选择？", a: "免费版使用 macOS 内置原生引擎，最高支持 1080p 的基础格式（MP4, MOV）。诸如 MKV, WebM, AVI 等高阶格式，以及更清晰的 4K、8K 分辨率，均需要调用 FFmpeg 引擎，这是 <strong>Pro</strong> 或 <strong>Ultimate</strong> 付费版本的专属功能。" },
                                 ]
-                    },
-                    {
-                        id: "formats",
-                        icon: "file-code", color: "orange", title: "格式与编码器",
-                        desc: "关于支持的编码格式与封装容器的详细说明",
-                        items: [
-                            { q: "为什么不同编码器导出的文件大小差异很大？", a: "不同的编码器拥有不同的压缩效率。例如，HEVC (H.265) 相比上一代的 H.264，在保持同等画质的前提下，可以额外节省高达 50% 的文件体积。" }
-                        ]
                     },
                     {
                         id: "formats",
@@ -398,14 +382,6 @@
                         ]
                     },
                     {
-                        id: "formats",
-                        icon: "file-code", color: "orange", title: "格式與編碼器",
-                        desc: "關於支援的編碼格式與封裝容器的詳細說明",
-                        items: [
-                            { q: "為什麼不同編碼器輸出的檔案大小差異很大？", a: "不同的編碼器擁有不同的壓縮效率。例如，HEVC (H.265) 相比上一代的 H.264，在保持同等畫質的前提下，可以額外節省高達 50% 的無損體積。" }
-                        ]
-                    },
-                    {
                         id: "audio-image",
                         icon: "images", color: "purple", title: "音訊與圖片",
                         desc: "音訊格式支援、圖片壓縮與 EXIF 元數據保留",
@@ -465,14 +441,6 @@
                             { q: "フォーマットを変更せずにビデオを圧縮できますか？", a: "はい。ファイルの横にある「圧縮」オプションを使用します。FormatRocket は元のフォーマットコンテナ（.mp4、.mov など）を保持したまま、ビットレートを下げてファイルサイズを大幅に縮小します。" },
                             { q: "MKV や WebM、4K/8K などのオプションがないのはなぜですか？", a: "無料（Free）プランでは、最大 1080p までの基本フォーマット（MP4、MOV）をサポートする macOS ネイティブエンジンを使用します。MKV、WebM、AVI などの高度なフォーマットや、高解像度（4K、8K）は FFmpeg エンジンを必要とし、<strong>Pro</strong> または <strong>Ultimate</strong> ライセンスでのみロック解除されます。" },
                                 ]
-                    },
-                    {
-                        id: "formats",
-                        icon: "file-code", color: "orange", title: "形式とエンコーダー",
-                        desc: "サポートされるコーデック、コンテナ、エンコーダーの詳細",
-                        items: [
-                            { q: "ファイルサイズが大きく異なるのはなぜですか？", a: "コーデックによって圧縮効率が異なります。たとえば、HEVC (H.265) は同じ品質を維持しながら、H.264 よりも最大 50% 効率的にビデオを圧縮できます。" }
-                        ]
                     },
                     {
                         id: "formats",
@@ -552,14 +520,6 @@
                         ]
                     },
                     {
-                        id: "formats",
-                        icon: "file-code", color: "orange", title: "포맷 및 인코더",
-                        desc: "지원되는 코덱, 컨테이너 및 인코더에 대한 세부 정보",
-                        items: [
-                            { q: "파일 크기 차이가 크게 나는 이유는 무엇인가요?", a: "코덱마다 압축 효율성이 다릅니다. 예를 들어, HEVC(H.265)는 동일한 품질을 유지하면서 H.264보다 최대 50% 더 효율적으로 비디오를 압축할 수 있습니다." }
-                        ]
-                    },
-                    {
                         id: "audio-image",
                         icon: "images", color: "purple", title: "오디오 및 이미지",
                         desc: "오디오 형식 관리, EXIF 메타데이터 및 이미지",
@@ -620,14 +580,6 @@
                             { q: "Kann ich Videos ohne Formatänderung komprimieren?", a: "Ja. Verwenden Sie die Option 'Komprimieren' neben Ihrer Datei. FormatRocket behält das ursprüngliche Format (z. B. .mp4, .mov) bei, reduziert jedoch die Bitrate, um die Dateigröße erheblich zu verringern." },
                             { q: "Warum fehlen Formate wie MKV, WebM oder 4K/8K-Auflösungen?", a: "Die kostenlose Version nutzt die systemeigenen macOS-Engines, die grundlegende Formate (MP4, MOV) bis 1080p unterstützen. Für erweiterte Formate (MKV, WebM, AVI) oder höhere Auflösungen (4K, 8K) wird die FFmpeg-Engine benötigt, die ausschließlich mit einer <strong>Pro</strong>- oder <strong>Ultimate</strong>-Lizenz verfügbar ist." },
                                 ]
-                    },
-                    {
-                        id: "formats",
-                        icon: "file-code", color: "orange", title: "Formate & Encoder",
-                        desc: "Details zu unterstützten Codecs, Containern und Encodern",
-                        items: [
-                            { q: "Warum sind einige Dateien deutlich kleiner als andere?", a: "Unterschiedliche Codecs haben unterschiedliche Komprimierungseffizienzen. Beispielsweise kann HEVC (H.265) Videos bei gleicher Qualität bis zu 50 % effizienter komprimieren als H.264." }
-                        ]
                     },
                     {
                         id: "formats",
@@ -1025,15 +977,29 @@
             guidesGrid.innerHTML = safeData.categories.map((cat) => {
                 const titleColor = "text-gray-900";
                 const descColor = "text-gray-500 text-sm md:text-base leading-relaxed";
-                const iconWrapper = `bg-gray-50 text-gray-600 border-gray-100`;
+                
+                // 动态配置 Ultimate 卡片的高级白底设计与皇冠图标
+                const isUlt = cat.id === 'plans';
+                const finalIcon = isUlt ? 'crown' : cat.icon;
+                const finalColor = isUlt ? 'purple' : cat.color;
+                const iconWrapper = `bg-${finalColor}-50 text-${finalColor}-600 border-${finalColor}-100`;
+
+                // 为高级版专门增加的白底 Premium 视觉元素
+                const premiumBadge = isUlt ? `<span class="ml-auto text-[10px] md:text-xs font-bold px-2.5 py-1 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-sm uppercase tracking-wider">Premium</span>` : '';
+                const cardStyles = isUlt ? 'border border-purple-200/60 shadow-[0_8px_30px_rgb(168,85,247,0.08)] hover:border-purple-300 relative overflow-hidden' : 'border border-gray-100 relative';
+                const subtleBg = isUlt ? `<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-bl-[100px] pointer-events-none transition-transform group-hover:scale-110 duration-500"></div>` : '';
 
                 return `
-                <a href="#${cat.id}" class="bento-card p-6 md:p-8 flex flex-col h-full block group cursor-pointer bg-white no-underline">
-                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 shadow-sm border border-gray-100 flex-shrink-0 transition-transform group-hover:scale-110 duration-300 ${iconWrapper}">
-                        <i class="fas fa-${cat.icon} text-xl md:text-2xl"></i>
+                <a href="#${cat.id}" class="bento-card p-6 md:p-8 flex flex-col h-full block group cursor-pointer bg-white no-underline ${cardStyles}">
+                    ${subtleBg}
+                    <div class="flex items-center w-full mb-5 md:mb-6">
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center shadow-sm border flex-shrink-0 transition-transform group-hover:scale-110 duration-300 ${iconWrapper}">
+                            <i class="fas fa-${finalIcon} text-xl md:text-2xl"></i>
+                        </div>
+                        ${premiumBadge}
                     </div>
-                    <h2 class="text-xl md:text-2xl font-bold mb-2 tracking-tight ${titleColor}">${cat.title}</h2>
-                    <p class="${descColor} mt-auto">${cat.desc}</p>
+                    <h2 class="text-xl md:text-2xl font-bold mb-2 tracking-tight ${titleColor} relative z-10">${cat.title}</h2>
+                    <p class="${descColor} mt-auto relative z-10">${cat.desc}</p>
                 </a>`;
             }).join('');
 
@@ -1052,11 +1018,15 @@
                     </div>
                 `).join('');
 
+                const isUlt = cat.id === 'plans';
+                const finalIcon = isUlt ? 'crown' : cat.icon;
+                const finalColor = isUlt ? 'purple' : cat.color;
+
                 return `
                 <div id="${cat.id}" class="pt-24 -mt-24"> <!-- pt-24 修正锚点滚动被固定导航栏遮挡问题 -->
                     <div class="flex items-center gap-3 mb-4 md:mb-6 pl-2">
-                         <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-50 border border-gray-100 text-gray-600 shadow-sm">
-                             <i class="fas fa-${cat.icon} text-sm"></i>
+                         <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-${finalColor}-50 border border-${finalColor}-100 text-${finalColor}-600 shadow-sm">
+                             <i class="fas fa-${finalIcon} text-sm"></i>
                          </div>
                          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">${cat.title}</h2>
                     </div>
