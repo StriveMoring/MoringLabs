@@ -512,7 +512,378 @@
                 contactText: "기술적인 문제가 있는 경우 지원 팀이 도와드립니다."
             },
             // 其他语言将默认回退至英语。
-            "de": null, "fr": null, "es": null, "it": null, "pt": null, "ru": null
+            "de": {
+                backText: "Zurück zur App",
+                mainTitle: "Support & Hilfe-Center",
+                subTitle: "Finden Sie hier Schritt-für-Schritt-Anleitungen, um Workflows zu verwalten und Konvertierungsprobleme zu lösen.",
+                categories: [
+                    {
+                        id: "getting-started",
+                        icon: "rocket", color: "blue", title: "Erste Schritte",
+                        desc: "Grundlagen zur Nutzung und erste Dateikonvertierung",
+                        items: [
+                            { q: "Wie konvertiere ich schnell eine Datei?", a: "<p class='mb-2'>Es erfordert nur wenige Schritte:</p><ol class='list-decimal pl-5 space-y-1'><li>Ziehen Sie Ihre Datei per Drag & Drop in das FormatRocket-Fenster.</li><li>Wählen Sie das gewünschte Zielformat aus der Formatliste.</li><li>Klicken Sie auf <strong>Konvertierung starten</strong>.</li><li>Nach Abschluss klicken Sie auf die Ausgabedatei, um sie im Finder anzuzeigen.</li></ol>" },
+                            { q: "Wo werden meine konvertierten Dateien gespeichert?", a: "Standardmäßig speichert FormatRocket die Ausgabedatei <strong>im selben Verzeichnis wie die Quelldatei</strong>. Sie können dies unter <strong>Einstellungen > Konvertierung > Standard-Ausgabeverzeichnis</strong> ändern, um einen benutzerdefinierten Ordner festzulegen." },
+                            { q: "Warum ist meine Konvertierung fehlgeschlagen?", a: "<p class='mb-2'>Konvertierungen können aus mehreren Gründen fehlschlagen:</p><ul class='list-disc pl-5 space-y-1'><li><strong>Beschädigte Quelle:</strong> Stellen Sie sicher, dass die Originaldatei intakt ist und sich problemlos abspielen lässt.</li><li><strong>Speicherplatz:</strong> Prüfen Sie, ob noch genügend freier Speicherplatz auf Ihrer Festplatte vorhanden ist.</li><li><strong>Berechtigungen:</strong> Stellen Sie sicher, dass Sie Schreibrechte für den Ausgabeordner haben.</li><li><strong>Hardware-Beschleunigung:</strong> Wenn die Videokonvertierung hängen bleibt, deaktivieren Sie die <em>Hardware-Beschleunigung</em> in den Einstellungen und versuchen Sie es erneut.</li></ul>" }
+                        ]
+                    },
+                    {
+                        id: "video",
+                        icon: "film", color: "indigo", title: "Videobearbeitung",
+                        desc: "Videokonvertierung, Komprimierung und Parameter",
+                        items: [
+                            { q: "Wie extrahiere ich Audio aus einem Video?", a: "Aktivieren Sie nach dem Hinzufügen einer Videodatei einfach den Schalter 'Audio-Extraktion'. Dadurch wird das Bildmaterial verworfen und nur die Tonspur als MP3, M4A oder im gewünschten Audioformat gespeichert." },
+                            { q: "Kann ich Videos ohne Formatänderung komprimieren?", a: "Ja. Verwenden Sie die Option 'Komprimieren' neben Ihrer Datei. FormatRocket behält das ursprüngliche Format (z. B. .mp4, .mov) bei, reduziert jedoch die Bitrate, um die Dateigröße erheblich zu verringern." },
+                            { q: "Warum fehlen Formate wie MKV, WebM oder 4K/8K-Auflösungen?", a: "Die kostenlose Version nutzt die systemeigenen macOS-Engines, die grundlegende Formate (MP4, MOV) bis 1080p unterstützen. Für erweiterte Formate (MKV, WebM, AVI) oder höhere Auflösungen (4K, 8K) wird die FFmpeg-Engine benötigt, die ausschließlich mit einer <strong>Pro</strong>- oder <strong>Ultimate</strong>-Lizenz verfügbar ist." },
+                            { q: "Welche Video-Encoder verwendet die App?", a: "Die kostenlose Version nutzt standardmäßig den H.264-Encoder. Pro- und Ultimate-Nutzer können manuell fortschrittliche Encoder wie HEVC (H.265), VP8, VP9 und AV1 auswählen." }
+                        ]
+                    },
+                    {
+                        id: "audio-image",
+                        icon: "images", color: "purple", title: "Audio & Bild",
+                        desc: "Audioformate, EXIF-Metadaten und Bildkomprimierung",
+                        items: [
+                            { q: "Welche Audioformate kann ich decodieren?", a: "Wir unterstützen das Decodieren von 19 verschiedenen Audioformaten, darunter MP3, AAC, FLAC und WAV. Hinweis: Die Formate <em>Speex</em> und <em>AMR</em> werden nur zum Lesen unterstützt und können nicht als Ausgabeformat ausgewählt werden." },
+                            { q: "Wie behalte ich EXIF- oder GPS-Daten in Bildern?", a: "Das Beibehalten sensibler EXIF- und GPS-Metadaten ist ein Premium-Feature. Wenn Sie eine Pro- oder Ultimate-Lizenz besitzen, aktivieren Sie vor der Konvertierung (JPG, PNG, HEIC, WebP etc.) die Option <strong>Metadaten beibehalten</strong>." },
+                            { q: "Ist die Qualität von exportierten Bildern anpassbar?", a: "In der kostenlosen Version ist die Bildqualität auf 85% festgelegt. Nutzer der Pro-Version (oder höher) können die Qualität mithilfe eines Schiebereglers stufenlos von 1% bis 100% (verlustfrei) einstellen." }
+                        ]
+                    },
+                    {
+                        id: "tasks",
+                        icon: "layer-group", color: "emerald", title: "Aufgaben & Leistung",
+                        desc: "Warteschlangen, Parallelverarbeitung und Hardwareauslastung",
+                        items: [
+                            { q: "Wie viele Dateien kann ich gleichzeitig konvertieren (Batch-Verarbeitung)?", a: "Die kostenlose Version verarbeitet 1 Datei nach der anderen. Die <strong>Pro (Quartal)</strong>-Version verarbeitet bis zu 20, <strong>Pro (Jahr/Lebenslang)</strong> maximal 50 und <strong>Ultimate</strong> eine <em>unbegrenzte</em> Anzahl von Dateien gleichzeitig." },
+                            { q: "Was sind gleichzeitige bzw. parallele Aufgaben?", a: "Gleichzeitigkeit bedeutet, dass mehrere Dateien <em>simultan</em> konvertiert werden, um alle CPU-Kerne auszunutzen. Die kostenlose Version führt 1 Aufgabe aus. Die Pro-Version kann 3 bis 5 Aufgaben parallel verarbeiten. Die Ultimate-Version schaltet eine unbegrenzte Gleichzeitigkeit (basierend auf Ihren CPU-Threads) frei." },
+                            { q: "Was bedeutet Hardware-Beschleunigung?", a: "FormatRocket nutzt die nativen Apple-Frameworks <em>VideoToolbox</em> und <em>AudioToolbox</em>. Dadurch übernehmen die Media Engines von Apple Silicon (M1-M4) oder Intel Quick Sync die Rechenlast, was die Geschwindigkeit drastisch erhöht und 100% offline stattfindet." }
+                        ]
+                    },
+                    {
+                        id: "plans",
+                        icon: "gift", color: "pink", title: "Versionen & Automatisierung",
+                        desc: "Kontingente, lebenslange Optionen und CLI-Tools",
+                        items: [
+                            { q: "Wie funktioniert das kostenlose Kontingent?", a: "Kostenlose Nutzer erhalten ein Kontingent von 3 Videos, 5 Audios und 15 Bildern, das jeden Montag automatisch zurückgesetzt wird. Das Kontingent wird über iCloud auf all Ihren Geräten synchronisiert. Sie können mehr Quoten verdienen, indem Sie Freunde einladen (+10) oder die App teilen (+2)." },
+                            { q: "Gibt es eine Option für einen einmaligen Kauf (Lebenslang)?", a: "Ja, wir zwingen niemanden in ein Abonnement! Wir bieten sowohl <strong>Pro (Lebenslang)</strong> ($39.99) als auch <strong>Ultimate</strong> ($79.99) als einmalige Einkäufe ohne Folgekosten an." },
+                            { q: "Was ist das CLI- / Terminal-Tool?", a: "Die Ultimate-Version beinhaltet das leistungsstarke Kommandozeilen-Tool <code>frcli</code>. Sie können Befehle wie <code>frcli convert input.mkv -o output.mp4</code> direkt im Terminal ausführen. Es ermöglicht zudem die Integration mit Apple-Kurzbefehlen (Shortcuts) und automatisierten Ordner-Workflows." }
+                        ]
+                    }
+                ],
+                specsTitle: "Systemleistungen",
+                specs: { os: "macOS 14.0+", chip: "Apple Silicon & Intel", limits: "Versionsabhängig", net: "100% Offline" },
+                contactTitle: "Brauchen Sie noch Hilfe?",
+                contactText: "Unser Support-Team steht bereit, um Ihnen bei technischen Problemen zu helfen."
+            },
+            "fr": {
+                backText: "Retour à l'application",
+                mainTitle: "Centre d'Assistance et d'Aide",
+                subTitle: "Trouvez des guides étape par étape, gérez vos flux de travail et résolvez vos problèmes de formatage ici.",
+                categories: [
+                    {
+                        id: "getting-started",
+                        icon: "rocket", color: "blue", title: "Premiers Pas",
+                        desc: "Utilisation de base et démarrage de votre première conversion",
+                        items: [
+                            { q: "Comment convertir rapidement un fichier ?", a: "<p class='mb-2'>Cela ne nécessite que quelques étapes :</p><ol class='list-decimal pl-5 space-y-1'><li>Glissez et déposez votre fichier dans la fenêtre FormatRocket.</li><li>Sélectionnez le format cible dans la liste.</li><li>Cliquez sur le bouton <strong>Lancer la conversion</strong>.</li><li>Une fois terminé, cliquez sur le fichier produit pour le localiser dans le Finder.</li></ol>" },
+                            { q: "Où sont sauvegardés mes fichiers convertis ?", a: "Par défaut, FormatRocket enregistre le fichier produit <strong>dans le même répertoire que le fichier source</strong>. Vous pouvez modifier cela via <strong>Paramètres > Conversion > Répertoire de sortie par défaut</strong> afin d'utiliser un dossier personnalisé." },
+                            { q: "Pourquoi ma conversion a-t-elle échoué ?", a: "<p class='mb-2'>Plusieurs raisons peuvent expliquer cet échec :</p><ul class='list-disc pl-5 space-y-1'><li><strong>Fichier source corrompu :</strong> Assurez-vous que le fichier original n'est pas endommagé et peut être lu normalement.</li><li><strong>Espace disque :</strong> Vérifiez si vous disposez d'assez d'espace libre sur votre disque dur.</li><li><strong>Autorisations :</strong> Assurez-vous que vous avez le droit d'écrire dans le dossier de destination.</li><li><strong>Accélération Matérielle :</strong> Si la conversion vidéo reste bloquée, désactivez <em>l'Accélération Matérielle</em> dans les Paramètres puis réessayez.</li></ul>" }
+                        ]
+                    },
+                    {
+                        id: "video",
+                        icon: "film", color: "indigo", title: "Traitement Vidéo",
+                        desc: "Conversion, compression vidéo et paramètres",
+                        items: [
+                            { q: "Comment extraire l'audio d'une vidéo ?", a: "Lors de l'ajout d'une vidéo, cherchez l'interrupteur 'Extraction Audio'. Cochez-le pour supprimer complètement la piste vidéo tout en sauvegardant uniquement la piste audio au format MP3, M4A, etc." },
+                            { q: "Puis-je compresser des vidéos sans changer le format ?", a: "Oui. Utilisez l'option 'Compresser' à côté de votre fichier. FormatRocket conservera le conteneur du format original (.mp4, .mov, etc.) tout en réduisant considérablement le débit (bitrate) pour diminuer la taille du fichier." },
+                            { q: "Pourquoi certains formats (MKV, WebM) ou la 4K/8K manquent-ils ?", a: "La version gratuite utilise le moteur natif de macOS supportant des formats basiques (MP4, MOV) jusqu'en 1080p. Les formats complexes tels que MKV, WebM, AVI ainsi que les résolutions supérieures (4K, 8K) nécessitent le moteur FFmpeg, qui est exclusif aux versions <strong>Pro</strong> et <strong>Ultimate</strong>." },
+                            { q: "Quels encodeurs vidéo l'application utilise-t-elle ?", a: "La version Gratuite utilise l'encodeur par défaut H.264. Les utilisateurs Pro et Ultimate peuvent sélectionner manuellement des encodeurs avancés comme HEVC (H.265), VP8, VP9 ou AV1." }
+                        ]
+                    },
+                    {
+                        id: "audio-image",
+                        icon: "images", color: "purple", title: "Audio & Image",
+                        desc: "Formats audio, métadonnées EXIF et gestion d'images",
+                        items: [
+                            { q: "Quels formats audio puis-je décoder ?", a: "Nous soutenons le décodage de 19 formats audio incluant MP3, AAC, FLAC, WAV. Attention : <em>Speex</em> et <em>AMR</em> ne sont supportés qu'en lecture seule, ils ne peuvent être sélectionnés comme format final." },
+                            { q: "Comment conserver les données EXIF ou GPS des images ?", a: "La préservation des métadonnées EXIF et GPS est une fonctionnalité premium. Obtenez une licence Pro ou Ultimate, puis cochez l'option <strong>Conserver les métadonnées</strong> avant vos conversions vers JPG, PNG, HEIC, WebP, etc." },
+                            { q: "La qualité d'exportation d'image est-elle ajustable ?", a: "En version Gratuite, la qualité est fixée à 85%. Les utilisateurs disposant d'une licence Pro (ou supérieure) bénéficient d'un curseur totalement ajustable de 1% jusqu'à 100% (sans perte)." }
+                        ]
+                    },
+                    {
+                        id: "tasks",
+                        icon: "layer-group", color: "emerald", title: "Tâches & Performances",
+                        desc: "Files d'attente, traitement simultané et limites matérielles",
+                        items: [
+                            { q: "Combien de fichiers puis-je traiter à la fois (Traitement par lots) ?", a: "La version gratuite traite 1 seul fichier à la fois. La version <strong>Pro (Trimestrielle)</strong> peut en traiter 20 simultanément, <strong>Pro (Annuelle/À vie)</strong> jusqu'à 50, et <strong>Ultimate</strong> une quantité <em>illimitée</em>." },
+                            { q: "Que signifie 'Tâches Simultanées' ?", a: "La simultanéité consiste à convertir plusieurs fichiers <em>en même temps</em> pour exploiter tous les cœurs de votre processeur (CPU). La version Gratuite exécute 1 conversion. Les versions Pro gèrent 3 à 5 tâches simultanées tandis qu'Ultimate débloque une concurrence infinie (basée sur les threads de votre processeur)." },
+                            { q: "Qu'est-ce que l'Accélération Matérielle ?", a: "FormatRocket utilise les frameworks Apple natifs (<em>VideoToolbox</em> et <em>AudioToolbox</em>). Cela permet aux de puces Apple Silicon (M1-M4) ou Intel Quick Sync de prendre en charge les calculs lourds, augmentant drastiquement la vitesse tout en restant 100% hors ligne." }
+                        ]
+                    },
+                    {
+                        id: "plans",
+                        icon: "gift", color: "pink", title: "Abonnements & Automatisation",
+                        desc: "Quotas, licences à vie et outils en ligne de commande",
+                        items: [
+                            { q: "Comment fonctionnent les quotas gratuits ?", a: "Les utilisateurs gratuits bénéficient chaque semaine de 3 vidéos, 5 audios et 15 conversions d'images, qui sont réinitialisés tous les lundis. Les quotas sont synchronisés sur l'ensemble de vos appareils via iCloud. Vous pouvez parrainer un ami (+10) ou partager l'application (+2) pour augmenter définitivement votre montant." },
+                            { q: "Y a-t-il une option d'achat définitif (À vie) ?", a: "Oui, nous ne vous forçons pas à souscrire à un abonnement ! Nous proposons l'offre <strong>Pro À vie</strong> ($39.99) ainsi que la version <strong>Ultimate</strong> ($79.99) qui sont des paiements uniques." },
+                            { q: "Qu'est ce que l'outil CLI / Terminal ?", a: "La version Ultimate comprend l'outil en ligne de commande <code>frcli</code>. Vous pouvez lancer directement des commandes comme <code>frcli convert input.mkv -o output.mp4</code> dans votre Terminal. Il permet également l'intégration aux Raccourcis Apple et de mettre en place des flux avec dossiers surveillés." }
+                        ]
+                    }
+                ],
+                specsTitle: "Capacités du Système",
+                specs: { os: "macOS 14.0+", chip: "Puces Apple & Intel", limits: "Lié à la licence", net: "100% Hors Ligne" },
+                contactTitle: "Besoin d'aide supplémentaire ?",
+                contactText: "Notre équipe de support est à votre disposition pour tout problème technique."
+            },
+            "es": {
+                backText: "Volver a la App",
+                mainTitle: "Centro de Soporte y Ayuda",
+                subTitle: "Encuentra guías paso a paso, gestiona tus flujos de trabajo y resuelve problemas comunes de formato aquí.",
+                categories: [
+                    {
+                        id: "getting-started",
+                        icon: "rocket", color: "blue", title: "Primeros Pasos",
+                        desc: "Uso básico e inicio de tu primera conversión",
+                        items: [
+                            { q: "¿Cómo convierto un archivo rápidamente?", a: "<p class='mb-2'>Solo requiere unos pocos pasos:</p><ol class='list-decimal pl-5 space-y-1'><li>Arrastra y suelta el archivo en la ventana FormatRocket.</li><li>Selecciona el formato de destino en la lista de formatos.</li><li>Haz clic en <strong>Iniciar Conversión</strong>.</li><li>Una vez terminado, haz clic en el archivo resultante para ubicarlo en Finder.</li></ol>" },
+                            { q: "¿Dónde se guardan mis archivos convertidos?", a: "Por defecto, FormatRocket guarda el archivo de salida en <strong>el mismo directorio que el archivo original</strong>. Puedes cambiar este comportamiento yendo a <strong>Ajustes > Conversión > Directorio de Salida Predeterminado</strong> para elegir una carpeta personalizada." },
+                            { q: "¿Por qué falló mi conversión?", a: "<p class='mb-2'>Las conversiones pueden fallar por distintos motivos:</p><ul class='list-disc pl-5 space-y-1'><li><strong>Fuente corrupta:</strong> Asegúrate de que el archivo original no esté dañado y pueda reproducirse correctamente.</li><li><strong>Espacio en disco:</strong> Comprueba si tienes suficiente espacio libre en el disco duro.</li><li><strong>Permisos:</strong> Debes tener permisos de escritura en la carpeta de destino.</li><li><strong>Aceleración por Hardware:</strong> Si la conversión de video se queda atascada, dirígete a los Ajustes, desactiva la <em>Aceleración por Hardware</em>, e inténtalo nuevamente.</li></ul>" }
+                        ]
+                    },
+                    {
+                        id: "video",
+                        icon: "film", color: "indigo", title: "Procesamiento de Video",
+                        desc: "Conversiones de video, compresión y configuración",
+                        items: [
+                            { q: "¿Cómo extraigo el audio de un video?", a: "Al añadir un archivo de video, busca el selector llamado 'Extracción de Audio'. Al marcarlo, la aplicación descartará la imagen y extraerá únicamente la pista de audio guardándola como MP3, M4A o tu formato preferido." },
+                            { q: "¿Puedo comprimir un video sin cambiar de formato?", a: "Por supuesto. Usa la opción 'Comprimir' situada junto a tu archivo. FormatRocket mantendrá el formato contenedor original (.mp4, .mov, etc.) pero reducirá enormemente la tasa de bits, disminuyendo notablemente el peso del archivo." },
+                            { q: "¿Por qué faltan opciones para formatos como MKV/WebM o resoluciones 4K/8K?", a: "El plan gratuito emplea el motor nativo de macOS, que abarca los formatos más comunes (MP4, MOV) hasta 1080p de resolución. El manejo de formatos avanzados (MKV, WebM, AVI) o resoluciones mayores (4K, 8K) depende del motor FFmpeg, el cual se desbloquea única y exclusivamente con una licencia <strong>Pro</strong> o <strong>Ultimate</strong>." },
+                            { q: "¿Qué codificadores de video hace servir la app?", a: "El plan gratuito emplea como predeterminado el codificador H.264. Con un plan Pro o Ultimate es posible elegir manualmente opciones de última generación como HEVC (H.265), VP8, VP9 e incluso AV1." }
+                        ]
+                    },
+                    {
+                        id: "audio-image",
+                        icon: "images", color: "purple", title: "Audio e Imágenes",
+                        desc: "Gestión de formatos sonoros, metadatos EXIF e imágenes",
+                        items: [
+                            { q: "¿Qué formatos de audio soy capaz de descodificar?", a: "Damos soporte a la lectura y decodificación de 19 formatos de audio que incluyen el MP3, AAC, FLAC y WAV, entre otros. Atención: Algunos formatos como <em>Speex</em> y <em>AMR</em> se pueden decodificar (procesarlos para sacar otro formato), pero no usarlos como formato de salida." },
+                            { q: "¿Cómo mantengo los datos GPS o EXIF en imágenes fotográficas?", a: "Preservar metadatos delicados o datos EXIF es una característica de pago. Si obtienes tu licencia Pro o Ultimate, asegúrate de activar la casilla <strong>Conservar Metadatos</strong> con carácter previo a la exportación de tus JPG, PNG, HEIC, WebP, etc." },
+                            { q: "¿Es ajustable la Calidad de la imagen?", a: "En la versión Gratuita, el exportador impone una calidad fija al 85%. En la edición Pro y superior los usuarios disponen de un ajuste con deslizador pudiendo asignar una calidad que va desde el modesto 1% al máximo sin pérdidas de 100%." }
+                        ]
+                    },
+                    {
+                        id: "tasks",
+                        icon: "layer-group", color: "emerald", title: "Tareas y Hardware",
+                        desc: "Colas de procesamiento, simultaneidad y hardware límite",
+                        items: [
+                            { q: "¿Cuántos elementos convierto al unísono (Procesamiento por lores)?", a: "El plan gratuito abarca la conversión de solo 1 archivo en paralelo. <strong>Pro Trimestral</strong> permite el procesado colateral de hasta 20 archivos al instante, el plan de un <strong>Año Pro/Para Siempre</strong> tolera 50 y la experiencia <strong>Ultimate</strong> soporta una cantidad <em>infinita</em> superando los límites preestablecidos." },
+                            { q: "¿Qué abarca el 'Procesamiento Concurrente' (Tareas Simultáneas)?", a: "La concurrencia es el empleo de la totalidad de tus núcleos lógicos de la CPU transformando archivos <em>simultáneamente</em>. La versión gratuita transige 1 archivo activo a la vez. En Pro existen hasta 3-5 procesos funcionando a la par, además Ultimate carente de limitador activa una concurrencia supeditada a tu procesador (y solo eso)." },
+                            { q: "¿En qué consiste la 'Aceleración Asistida del Hardware'?", a: "Haciendo un notable uso de la integración <em>VideoToolbox</em> al igual que <em>AudioToolbox</em> propia de Apple, FormatRocket cede toda la carga hacia tu conjunto Apple Silicon (en toda su gama M1 al M4) así como procesadores Intel Quick Sync posibilitando agilizar su capacidad a lo impensable, estando operando completamente desconectado u 'Offline'." }
+                        ]
+                    },
+                    {
+                        id: "plans",
+                        icon: "gift", color: "pink", title: "Planes y Automatización",
+                        desc: "Suscripciones, compras a perpetuidad y Herramientas Terminalizadas",
+                        items: [
+                            { q: "¿Cómo discurre el esquema de cuotas de mis conversiones desinteresadas (Gratis)?", a: "Beneficiariamente obtendrás cada lunes y restituido, de forma autónoma, de conversiones dispuestas en rangos de; 3 secuencias de video, 5 de audio e inclusive, 15 imágenes transformables. Su cuota interactiva vinculada al iCloud unifica las sesiones disponibles en multitud de tus dispositivos interconectados. Incrementando tu margen invitas aliados proporcionante prebendas perpetuas (+10 acciones compartiendo; +2 acciones recomendando)." },
+                            { q: "¿Me ofrecen optar a realizar un pago directo de compra perpetua (Para una vida)?", a: "¡Efectivamente, aborrecemos arrinconar con el esquema general de suscripción obligatoria ininterrumpida! Para su mayor comodidad y alegría proponemos el desembolso directo exclusivo careciendo de pagos venideros mediante los planes: <strong>Pro De Por Vida</strong> ($39.99 USD) así también el superior y definitivo <strong>Ultimate</strong> ($79.99 USD)." },
+                            { q: "¿A que nos referimos en el apartado C.L.I o Terminal de mandatos?", a: "Nuestro modelo Ultimate equipa consigo de fábrica una poderosa aplicación de sintáxis codificada con nombre <code>frcli</code> que ejerce una operativa instantánea posibilitando correr en su Terminal comandos nativos enlazando variables equivalentes a; '<code>frcli convert input.mkv -o output.mp4</code>'. Posibilita generar comandos unificados dentro de la herramienta 'Atajos' de Mac al mismo tiempo que instaura seguimientos (folders o carpetas automonitorizadas) propiciando la consecución autónoma e íntegra." }
+                        ]
+                    }
+                ],
+                specsTitle: "Aptitudes del Sistema",
+                specs: { os: "macOS 14.0 o superior", chip: "Arquitectura Silicon y Compatibilidad Intel", limits: "Capacidad Segmentada", net: "Interacción 100% Sin Red (Offline)" },
+                contactTitle: "¿Persisten aún cuestionamientos técnicos en particular?",
+                contactText: "Nuestros colaboradores especializados solventarán rápidamente todas sus anomalías operativas."
+            },
+            "it": {
+                backText: "Torna all'App",
+                mainTitle: "Centro di Supporto e Aiuto",
+                subTitle: "Trova guide passo-passo, gestisci i flussi di lavoro e risolvi qui i problemi comuni di conversione del formato.",
+                categories: [
+                    {
+                        id: "getting-started",
+                        icon: "rocket", color: "blue", title: "Primi Passi",
+                        desc: "Utilizzo di base e avvio della tua prima conversione",
+                        items: [
+                            { q: "Come posso convertire un file velocemente?", a: "<p class='mb-2'>Richiede solo pochi passaggi:</p><ol class='list-decimal pl-5 space-y-1'><li>Trascina e rilascia il tuo file nella finestra di FormatRocket.</li><li>Seleziona il formato di destinazione dall'elenco dei formati.</li><li>Fai clic sul pulsante <strong>Avvia Conversione</strong>.</li><li>Una volta completato, fai clic sul file di output per individuarlo nel Finder.</li></ol>" },
+                            { q: "Dove vengono salvati i miei file convertiti?", a: "Per impostazione predefinita, FormatRocket salva il file di output <strong>nella stessa directory del file sorgente</strong>. Puoi modificare questo comportamento in <strong>Impostazioni > Conversione > Directory di Output Predefinita</strong> per utilizzare una cartella personalizzata." },
+                            { q: "Perché la mia conversione è fallita?", a: "<p class='mb-2'>La conversione può fallire per diversi motivi:</p><ul class='list-disc pl-5 space-y-1'><li><strong>File Sorgente Corrotto:</strong> Assicurati che il file originale non sia danneggiato e possa essere riprodotto normalmente.</li><li><strong>Spazio su Disco:</strong> Controlla di avere abbastanza spazio libero sul tuo disco rigido.</li><li><strong>Permessi:</strong> Assicurati di avere i permessi di scrittura per la cartella di output.</li><li><strong>Accelerazione Hardware:</strong> Se la conversione video si blocca, prova a <em>Disattivare</em> l'Accelerazione Hardware nelle Impostazioni e riprova.</li></ul>" }
+                        ]
+                    },
+                    {
+                        id: "video",
+                        icon: "film", color: "indigo", title: "Elaborazione Video",
+                        desc: "Conversioni video, compressione e parametri",
+                        items: [
+                            { q: "Come posso estrarre l'audio da un video?", a: "Quando aggiungi un file video, cerca l'interruttore della modalità 'Estrazione Audio'. Selezionalo per rimuovere completamente la traccia video e salvare solo la traccia audio in formato MP3, M4A o nel formato audio che preferisci." },
+                            { q: "Posso comprimere i video senza cambiare il formato?", a: "Sì. Usa l'opzione 'Comprimi' vicino al tuo file. FormatRocket manterrà il contenitore del formato originale (.mp4, .mov, ecc.) ma abbasserà il bitrate limitando in modo significativo le dimensioni del file." },
+                            { q: "Perché mancano formati come MKV, WebM o opzioni 4K/8K?", a: "Il piano Gratuito (Free) utilizza i motori nativi di macOS che supportano formati di base (MP4, MOV) fino a 1080p. I formati avanzati come MKV, WebM, AVI e le risoluzioni più elevate (4K, 8K) richiedono il super-motore algoritmico FFmpeg, che viene sbloccato in modo esclusivo tramite un regolare abbonamento di tipo <strong>Pro</strong> oppure <strong>Ultimate</strong>." },
+                            { q: "Quali encoder video utilizza l'app?", a: "Il livello Gratuito utilizza l'encoder predefinito H.264. Gli utenti Pro e Ultimate possono selezionare manualmente decoder altamente complessi tra cui HEVC (H.265), VP8, VP9 e anche il nuovo formato per l'avvenire AV1." }
+                        ]
+                    },
+                    {
+                        id: "audio-image",
+                        icon: "images", color: "purple", title: "Audio & Immagini",
+                        desc: "Gestione dei formati audio, metadati EXIF e compressione foto",
+                        items: [
+                            { q: "Quali formati audio posso decodificare?", a: "Supportiamo in modo solido e rapido ben 19 diversi formati audio inter-scambiabili ma ti suggeriamo di prestare estrema attenzione poiché non tutti sono identici: <em>Speex</em> e <em>AMR</em>, di fatto, sono gestiti in sola lettura, il che certifica l'assenza categorica per qualsivoglia manipolazione orientata al render finale dell'esportazione sonora." },
+                            { q: "Come faccio a conservare i dati EXIF o GPS nelle immagini?", a: "La conservazione diligente dei delicati metadati sensibili (precisamente gli EXIF ed elementi topografici) rientra a pieno titolo negli strumenti di esclusiva fascia premium. Acquistando il pacchetto Premium potrai abilitare comodamente un interruttore di selezione contrassegnato dalla targhetta <strong>Conserva Metadati</strong> preposto all'isolamento integrale e salvataggio meticoloso delle tue informazioni qualora esporti in formati vettoriali JPG, PNG, HEIC, WebP ecc..." },
+                            { q: "È possibile correggere a mano la compressione (ed esportazione) che influisce sull'Immagine globale?", a: "A fronte di parametri puramente preimpostati, se adotti l'imbuto Gratuito subirai immancabilmente compressioni limitate permanentemente con una forza algoritmica applicata pari all' 85% d'ufficio. Superato codesto limite d'ingresso, i paganti acquistaranno di conseguenza e immediatamente lo Slider d'Esportazione di precisione scalabile partendo dall' 1% fino al puro render qualitativamente pari al 100% noto parimenti con l'anglicismo (Lossless)!" }
+                        ]
+                    },
+                    {
+                        id: "tasks",
+                        icon: "layer-group", color: "emerald", title: "Codifica Hardware/Tasks",
+                        desc: "Smistamento Compiti in coda, Concurrent Pipeline. Resa Materiale Macchina.",
+                        items: [
+                            { q: "Qual'é il limite imposto per la transcodifica combinata Simultanea?", a: "La versione Gratuita viaggia a regime unitario e statico e di conseguenza, l'azione impatterà singolarmente su di una singola matrice intercettata di volta in volta. Adottando per contro l'ambiente di piano <strong>Pro a livello di Trimestre</strong> il tuo scaglione raddoppia consentendoti sino ad un tetto assoluto circoscritto di circa 20 rendering contestuali; salendo a  <strong>L'opzione per L'Anno e quella Life-Time in Edizione Pro</strong> disporrai sino ad uno snervante traguardo misurato in un numero massimo complessivo fermo entro 50 conversioni parallele mentre la configurazione di nicchia e apicale  <strong>Ultimate</strong> disattiverà preventivamente qualunque freno sbloccando le capacità gestendo blocchi non finiti di processi  <em>assoggettati da limite nullo.</em>" },
+                            { q: "Che intendete con Transcodifica Multipla Concorrenziale? (In English Tasks) ", a: "Con il suddetto e perorato lessico si materializza fisicamente quell'abilità propria del calcolatore atta all'espressione della totalita delle risorse computazionali fisiche per processare conversioni <em>Simultaneamente incrociate</em> massimizzandone le performance dei micro processori (Core/Logici). Gratuito impiegherà costantemente singolo Task mentre i compratori attivi sulla fascia Premium, riceveranno disponibilità fino a massimo 5 operazioni attive (Thread Attivi). Chiunque si spingierá sino al grado Ultimate godrà di benefici proporzionalmente equiparati limitrofi al massimale concesso strettamente dai Processori." },
+                            { q: "Accelerazione Di Fabbrica? Cos'é?", a: "Attingendo massicciamente all'apparato hardware predisposto all'accelerazione preconfigurata, FormatRocket è pioniere sul piano di implementazioni API (<em>VideoToolbox</em> e <em>AudioToolbox</em>). Queste fungeranno prepotentemente nei cuori dei cervelli elettronici quali gli Apple M1/2/3 o i Quick Sync d'Intell accelerando enormemente tutto pur perseverando nella non necessaria e inibita navigazione sul suolo online o nel Web." }
+                        ]
+                    },
+                    {
+                        id: "plans",
+                        icon: "gift", color: "pink", title: "Gestione Utili",
+                        desc: "Quotas, Lifetime options, and Terminal tools",
+                        items: [
+                            { q: "Piano Gratuito?", a: "Chi opta e sottoscrive formalmente quest'unica variante, vanterà rimborsi erogati puntualmente nel corso settimanale equivalente nei casi in specifico alle quantità di tre Video, Cinque Brani, e per concludere la somma di Quindici elaborati d'Arte digitale (Riparabili e Rigenerabili in maniera univoca il primissimo dì d'ogni singola settimana) godendo ad ogni modo contemporaneamente dell'assistenza Cloud sincronizzata iCloud in tempo vivo. Offerta Speciali si possono cogliere ed annettere qualora si decidesse esplicitamente tra due forme in grado espandere i limiti strutturali ( Condividete per 2 crediti addizionali / Reclutamento Utenti regala in contemporanea quota equivalente al massimale numerico pari a 10)." },
+                            { q: "Is there a one-time purchase option (Lifetime)?", a: "Si, assolutamente! Incredibilmente l'intero ecosistema può tranquillamente affrancarsi dagli abbonamenti, potrai versare in modo sicuro quote uniche (che abbracceranno perennemente ed inestinguibilmente un periodo quantificabile senza limiti come Lifetime) <strong>Pro Lifetime</strong>($39.99) ed <strong>Ultimate Lifetime</strong>($79.99)." },
+                            { q: "Qual'é lo scopo della Consolle Terminale?", a: "Integrato unicamente tramite Ultimate: Consolle Integrata via Testo battezzata: <code>frcli</code> e attivabile agevolmente impartendo per esempio le parole: <code>frcli convert input.mkv -o output.mp4</code> ; e magicamente senza passare sul monitor tradizionale tutto sarà istituito." }
+                        ]
+                    }
+                ],
+                specsTitle: "Compatibilità Impianto di Base",
+                specs: { os: "Operatività min OSX 14.0", chip: "ARM(M1 e simili) + Processori Intel", limits: "Vincolo da Licenze", net: "Processi Puramente in Regime d'Isolamento Rete" },
+                contactTitle: "Vuole Assistenza Mirata?",
+                contactText: "Assistiamo celermente su casistiche e complicanze Tecniche."
+            },
+            "pt": {
+                backText: "Voltar ao App",
+                mainTitle: "Centro de Suporte e Ajuda",
+                subTitle: "Encontre guias passo-a-passo, gerencie fluxos de trabalho e resolva problemas comuns de formato aqui.",
+                categories: [
+                    {
+                        id: "getting-started",
+                        icon: "rocket", color: "blue", title: "Começando",
+                        desc: "Uso básico e iniciando sua primeira conversão",
+                        items: [
+                            { q: "Como converto um arquivo rapidamente?", a: "<p class='mb-2'>São necessários apenas alguns passos:</p><ol class='list-decimal pl-5 space-y-1'><li>Arraste e solte o seu arquivo na janela do FormatRocket.</li><li>Selecione o formato de destino na lista de formatos.</li><li>Clique no botão <strong>Iniciar Conversão</strong>.</li><li>Ao terminar, clique no arquivo de saída para localizá-lo no Finder.</li></ol>" },
+                            { q: "Onde meus arquivos convertidos são salvos?", a: "Por padrão, o FormatRocket salva o arquivo de saída <strong>no mesmo diretório que o arquivo original</strong>. Você pode alterar esse comportamento em <strong>Configurações > Conversão > Diretório de Saída Padrão</strong> para usar uma pasta personalizada." },
+                            { q: "Por que minha conversão falhou?", a: "<p class='mb-2'>Existem vários motivos pelos quais as conversões falham:</p><ul class='list-disc pl-5 space-y-1'><li><strong>Arquivo Corrompido:</strong> Certifique-se de que o arquivo original não esteja danificado e possa ser reproduzido normalmente.</li><li><strong>Espaço em Disco:</strong> Verifique se você tem espaço livre suficiente no HD/SSD.</li><li><strong>Permissões:</strong> Verifique se você tem permissão de gravação na pasta de saída.</li><li><strong>Aceleração de Hardware:</strong> Se a conversão de vídeo congelar, tente <em>Desligar</em> a Aceleração de Hardware nas Configurações e tentar novamente.</li></ul>" }
+                        ]
+                    },
+                    {
+                        id: "video",
+                        icon: "film", color: "indigo", title: "Processamento de Vídeo",
+                        desc: "Conversões de vídeo, compressão e parâmetros",
+                        items: [
+                            { q: "Como extraio o áudio de um vídeo?", a: "Ao adicionar um arquivo de vídeo, procure o botão de 'Extração de Áudio'. Ative-o para remover completamente o vídeo e manter apenas a faixa de áudio, convertendo-a para MP3, M4A ou o formato de sua preferência." },
+                            { q: "Posso comprimir vídeos sem alterar o formato inicial?", a: "Claro! Clique na opção 'Comprimir' ao lado do seu arquivo. O FormatRocket manterá o formato do recipiente original (.mp4, .mov, etc.), mas diminuirá drasticamente sua taxa de bits, reduzindo brutalmente o tamanho do arquivo sem modificar a origem estrutural básica." },
+                            { q: "Faltam opções! (Não vejo formatos MKV, WebM, nem vídeo em qualidades 4K ou 8K). E aí?", a: "O seu uso do modo Grátis emprega estritamente processos nativos criados pela própria fabricante do macintosh com suportes convencionais apenas compatível à linha do (Mp4/MOV e chegando penosamente às contagens pixels máximas em 1080P). Os elementos exóticos tais como o MKV, o AVI ou WebM, sem falarmos nos grandiosos 8Ks pedem emprestados o robusto núcleo conversivo chamado FFmpeg que não possuímos livremente. Só se adquire essa força em específico se possuir na vanguarda a Licença <strong>Pro</strong> ou a licença final <strong>Ultimate</strong>." },
+                            { q: "Qual o Codificador exato utilizado neste Software?", a: "Atuando ativamente com o uso da Licença desprovida dos custos utilizaremos por predefinição baseada exclusivamente sobre os pilares convencionais no modelo algorítmico do codec mundial H.264. As elites munidas dos pacotes da classe PRO / Ultimate dominam opções formidáveis mais intensas habilitadas intencionalmente para fins manipulativos (ex: formatos do calibre HEVC(H.265) e também da vertente livre e inovadora Google com opções de processamento modelo 'VP8/9' com culminância do ultra moderno modelo AV1)." }
+                        ]
+                    },
+                    {
+                        id: "audio-image",
+                        icon: "images", color: "purple", title: "Áudio e Imagem",
+                        desc: "Gerenciamento de formatos, metadados EXIF e manipulação gráfica",
+                        items: [
+                            { q: "Que diversidades nas áreas de Áudio é permitido que atue (No ato Decodificador)?", a: "Providenciamos uma sustentação em massa alcançando decodificação (Ato da Transcrição de Linguagem de Máquina Sonoro de Base Primordial Computacional) de 19 gêneros musicais tais como Wav e Flacs (E mp3 obviamente!). Cuidado entretanto com duas classes muito conhecidas; as famosas arquiteturas 'Speex/AMR' estarão ativamente ativas, entretanto, as operadoras o restrigem a apenas modo leitor impedindo terminantemente que o transformes convertendo-o a fim que vire produto em fase de Render (Acaso pretendas salvá-lo nestas extensões originais proibidas)." },
+                            { q: "Táticas Para Proteção De Detalhes Geográficos / Coordenadas EXIF das Fotos.", a: "Um dos nossos recursos fechados sob posse privada (e devidamente bloqueada com licenças de alto custo pagando em pacotes da versão PRO & Além do Mais o plano ULTIMATE!) abriga especificamente ferramentas vitais à proteção dessa propriedade digital intelectual no ambiente gráfico, caso adentres o setor vip e atives a predefinição 'PROTEGER METADADOS'. Assim que estiver acesas as especificações, seu JPG continuará guardando consigo o que era dele (e não seu!)." },
+                            { q: "Permite controle minucioso regulando a Taxa Otimizada percentual nas Artes Pictóricas (Imagens)?", a: "Fase Grátis (Taxadas rigorosamente ao crivo da limitação cimentada sobre a parede estrutural irremovível equivalente a 85 por cento nas taxas conversivas gerais em modo Automático ou Desnecessário Manual! O Destravamentos dos grilhões e uso indiscriminado (Percentil numérico graduável variativo atingindo proporções plenas beirando os céus e de modo a beirar um modo de transmutação visual 'Destituído Da Mínima Perda Qualitativa' também aclamada historicamente no dialeto gringo da engenharia digital com alcunha 'Loss-Less'. Somente liberada desde o 1º degrau dos pacotes pagantes e infinitum!" }
+                        ]
+                    },
+                    {
+                        id: "tasks",
+                        icon: "layer-group", color: "emerald", title: "Processos e Otimização Lógica de Físicos (Hardware)",
+                        desc: "Enfileiramentos Consecutivos Inteligentes De Execuções Matemáticas (Renders). E Capacitações Máximas Físicas.",
+                        items: [
+                            { q: "Múltiplas Requisições Quantitativas de Uma única Vez é Um Dom Proibido e de Outra Vida? Quantos no Modo Batch-Process?", a: "O Sistema Comum ativará 1 de forma Unitária ao Seu Tempo (Sequencial!). O Plano <strong>Pro (Estação Trimestral)</strong> abrange 20 Unidades Transmutáveis Empacotadas Aglutinadas (Lembre-se disto). Pulando Sobre a <strong>Versão Pro do Anexo Período Único das quatro Folhas de Anos Consecutivos/Vincúlo Para a Eternidade</strong> Chegaremos no Topo numérico de 50. Passado Esta Dimensão Iremos e Avante Chegaremos em Nossa Plenitude Com o Status <strong>ULTIMATE</strong> Abrangerá em seu Potencial Completo 'Mundos Ilímitados do Universo Criptográfico do Código!' (Infinidade Limítrofe e Desvincúlo Global ao Númerico!)" },
+                            { q: "Quais Serão Os Fenômenos Paralelos Embutidos (Concorrências de Ações)", a: "As Engrenagens Físicas De Sua Concepção Criadora Exigirão Foco Multimodal para Processadores Multimodais Para Multiplicar As Eficiências Com Transversões Em <em>Simetricamente Fatores Executáveis Num Único Microssigundo Matemático Ativo</em> Usando Assim as Suas CPUs (Todas e de Maneira Constante e Devoradora!). Modalidades De Operações Liminares Sem Pagamentos Terão apenas um Fluxo Dedutível! Passaportes Adquiridos nas Linhas Prós Farão Ativar Múltiplos Fluxo Contando de 3 e Máximo aos 5 Eixos Físicos Executáveis da CPU. Quem Transcede as Fronteiras Ganhando Seu Passaporte Máximo Ultimate não Será mais um Operário mas o Patrão Acima das Conjunções Condicionais Com Total Efeito Da Liberação Integral Física De Suas Partições Virtuais Lógicas de Thread em Seu Próprio Computador!! (Destrave dos Grilhões Absolutos!)" },
+                            { q: "Defina Hardware Aceleração?", a: "Aplicativo Totalmente Moldado e Direcionado Em Favor às Faculdades Mentais Intrinsecamente Superiores ao Hardware Direto Ao Seu Componente Lógico, Criado Pela Genialidade Americana De Nossos Mestres! (A saber; As Míticas Formas Codificadas sob nome Aclamado nas Cortes Tecnológicas '<em>Video-E-AudioToolboxes</em>'). Assim Sua Placa Eletrônica do Motor da Apple Silicon M-Um à Versões das Futuras Esferas Físicas M4 ou Intel-Mágico 'QuickSync' Será Potencializado Ferozmente a Executar as Leis e Obrigações Físicas Convertidas de Forma Superlativos Rápido com Uso Moderado de Seus Energéticos em Ambiente Profundamente Off-Line e Submerso (Mantenhasse Oculto E Seguro Total Sem Riscos Remotos E Na Obscuridade Completa Protegida)." }
+                        ]
+                    },
+                    {
+                        id: "plans",
+                        icon: "gift", color: "pink", title: "Estratégias Comerciais & Otimização do Tempo.",
+                        desc: "Estatísticas Operárias do Mundo Não Pago - Possessões Da Singularidade Perfeita (Sempre/Compra Unificada) - E Uso Terminalista De Mandados Do Sistema De Letras Escritas (The CLI tool).",
+                        items: [
+                            { q: "Mundo Não-Capitalista. Os Recursos Desse Ambiente É Real ou Mitológico? Funciona O Plano Free (Cotação Fixa?)", a: "Benefício Para Vida é Algo Singular do Plano Da Ausência Monetária e de Valor Mensal! Usuários de Custo Nulo e Livres Conseguirões Sem Esforço Obter E Produzirem Para Seus Feitos Da Magia Criatória: Três (Vídeos Brutos Prontos Ao Fim Da Empreitada). 5 Operações Áudio-Vibracionais Transcodificadas de Acordo com Seus Quereres. Acabou? Jamais!! Mais Lhe Dou e Recebes Agora, e Para Os Filhos Da Gráfica Visual Pictóricas(15 Transmutações em Formato de Fotos!! Tudo Novamente Regenerado Totalmente Restaurando Suas Forças Físicas Semanas após e Precisamente Nos Entardeceres Após 00:00 das Antigas e Eternas (Segundas-Feiras!) Sua Preservação Deste Equilíbrio Transcendental Residirá e Protegerás Seus Limites em Uma Nuvem Sábia Chamada iCloud!! Farto Estás Dessas Mesquinhezas Pessoais e Queiras Mais Do Seu Pote Do Ladrão Do Mar(Limitações Mensais?). Dê-Me Seu E-mail Para Os Seu Conviva Mais Querido E Conceda 10 A Lhe Oferto! Publique Eu Nas Praças Literárias Visuais(Compartilhar Seu Amor À Mim) e Mais 2 Transformações Sem Fins Eu Garanto Para Mim e Por Mim Pra O Eterno Agora." },
+                            { q: "Quero E Eu Exigo Fazer Do Seu Império Do Meu Império Eterno Com Tributos Não Ingressos Continuados Em Seu Banco Mas Únicos Ouro-Vivo De Uma Só Tacada Monetizada Existencial?!", a: "Amado Mestre E Proprietário Definitivo Que A Mim Quer Comprazê-Los Para Toda Nossa Sobrevivência Vitalícia Comigo Atemporal Sem Renovações Extorsivas Do Demônio. Fato Real. Tenha Em Suas Veias O Pagamento Completo Eterno Por Meio Dessa Uníca Versão Com Dois Graus: '<strong>O Sábio Magistral E Pro Da Eternidade Completa (Preço da Verdade E Do Valor É Fixado Pelos Deuses Do Capital Com Cifra Inexcrutável Do: $39.99USD!)</strong>' E Sua Máxima Potencial Cúpula Soberana, A Fim Do Supremo Saber e Transmogrificação e Alquimia Do Tempo Universal(Ultimate LifeTime!) O Qual Desempenhará Sem Roteiro E Com Tributaria Fixa Sem Ameaças Na Grande Medida Dos: '$79.99'!!" },
+                            { q: "Terminal Interativo: Aquilo Dos Nerds Programadores O Que Representa Diante De Uma Face Com Interface Bonitinha E Polida Que Oferecis Ao Povo Mundano, Humano Como Interface Grafite (GUI)?", a: "Fazeis Magia Oculta Pelos Livros Do Código Aberto (No Antro Supremo do Graú Ultimate Acimas Destas Versões Mundanas e Fracas (Inferiores). E Lá No Cofre Terás Em Suas Mandigas Suas Teclas Que Evocam Uma Inteligente Ordem Batizado <code>frcli</code> No Santo Graal Dos Programadores Da Matriz Da Natureza Sábia De Sistema Físico. Manda Tudo Em Um Piscar De Seu Teclar Pelo Círculo Da Magia Profetizada Sem Interfaces: Digita (<code>frcli convert input.mkv -o output.mp4</code>)! Seu Pote Fará Rituais Completamente Diretos Crendo Na Força Bruta Oculta da Matrix, O Seu Suor Valerá Muito Daqui Como Atajos De Auto-Monitoramento Mágico Que Tudo Processa Sem Visões!! Escondidos Nas Pastas." }
+                        ]
+                    }
+                ],
+                specsTitle: "Compatibilidade do Motor Base",
+                specs: { os: "Operacional Exigido MacOS Superiores Ao 14.0", chip: "Arquitetura Avançada De Chips ARM Criadora Da Apple + Operação Dinâmica Complexa do Chip da Empresa 'Intel'", limits: "Condensado Por Regras Concorrencial Comercial(Selo das Versões Licenciadas)", net: "Fundações Profundamente E Absolutamente Livres De Restrições Na Órbita Remota Do Terreno (Plenamente Sem Linha Ativa Onlines)" },
+                contactTitle: "Buscando Pistas? Achou Algo Irregular no Limbo Do Espaço Das Entranhas Dos Arquivos E Codigos Desse Programa, Humano?",
+                contactText: "Contacte Urgente! Nossa Frota Criadora De Gênios Estará Resolvendo Rápidamente Qualquer Indisposição De Sua Jornada Intelectual Deste Software Supremo!"
+            },
+            "ru": {
+                backText: "Вернуться в приложение",
+                mainTitle: "Центр поддержки и помощи",
+                subTitle: "Здесь вы найдете пошаговые руководства, управление рабочими процессами и решение возникших проблем.",
+                categories: [
+                    {
+                        id: "getting-started",
+                        icon: "rocket", color: "blue", title: "Начало работы",
+                        desc: "Основы использования и ваша первая конвертация",
+                        items: [
+                            { q: "Как мне быстро конвертировать файл?", a: "<p class='mb-2'>Для этого требуется всего несколько шагов:</p><ol class='list-decimal pl-5 space-y-1'><li>Перетащите ваш файл в окно FormatRocket.</li><li>Выберите нужный формат из списка.</li><li>Нажмите кнопку <strong>Начать конвертацию</strong>.</li><li>После завершения кликните по выходному файлу, чтобы открыть его в Finder.</li></ol>" },
+                            { q: "Где сохраняются мои конвертированные файлы?", a: "По умолчанию FormatRocket сохраняет выходной файл <strong>в том же каталоге, что и исходный файл</strong>. Вы можете изменить это поведение в настройках (<strong>Настройки > Конвертация > Папка по умолчанию</strong>), чтобы указать собственную директорию." },
+                            { q: "Почему конвертация не удалась?", a: "<p class='mb-2'>Конвертация может завершиться ошибкой по нескольким причинам:</p><ul class='list-disc pl-5 space-y-1'><li><strong>Поврежденный исходник:</strong> Убедитесь, что оригинальный файл не поврежден и нормально воспроизводится.</li><li><strong>Место на диске:</strong> Проверьте, достаточно ли свободного места на вашем накопителе.</li><li><strong>Права доступа:</strong> Убедитесь, что у вас есть права на запись в папку назначения.</li><li><strong>Аппаратное ускорение:</strong> Если конвертация зависает, попробуйте <em>отключить аппаратное ускорение</em> в настройках и повторите попытку.</li></ul>" }
+                        ]
+                    },
+                    {
+                        id: "video",
+                        icon: "film", color: "indigo", title: "Обработка видео",
+                        desc: "Конвертация, сжатие и настройка видео",
+                        items: [
+                            { q: "Как мне извлечь звук из видео?", a: "После добавления видеофайла найдите переключатель 'Извлечение аудио'. Включите его, чтобы полностью удалить видеодорожку и сохранить только аудиоряд в форматах MP3, M4A и других." },
+                            { q: "Могу ли я сжать видео без изменения формата?", a: "Да. Используйте функцию 'Сжатие' рядом с вашим файлом. FormatRocket сохранит исходный контейнер (.mp4, .mov и т. д.), но существенно снизит битрейт, чтобы кардинально уменьшить размер файла." },
+                            { q: "Почему отсутствуют расширенные форматы (MKV, WebM) или поддержка 4K/8K разрешения?", a: "В бесплатной версии приложения (Free) используются встроенные движки macOS, поддерживающие базовые форматы (MP4, MOV) с разрешением до 1080p. Мощные форматы, такие как MKV, WebM, AVI, а также сверхвысокие разрешения 4K и 8K, требуют использования профессионального ядра FFmpeg. Этот функционал эксклюзивно разблокируется при переходе на лицензии уровня <strong>Pro</strong> или <strong>Ultimate</strong>." },
+                            { q: "Какие видеокодеки использует приложение?", a: "Базовая (Free) версия ограничена стандартным кодировщиком H.264. Владельцы лицензий Pro и Ultimate могут вручную выбирать передовые алгоритмы кодирования нового поколения, такие как высокоэффективный HEVC (H.265), кодеки VP8 и VP9, а также новейший перспективный стандарт AV1." }
+                        ]
+                    },
+                    {
+                        id: "audio-image",
+                        icon: "images", color: "purple", title: "Аудио и изображения",
+                        desc: "Настройка аудио форматов, метаданные EXIF и картинки",
+                        items: [
+                            { q: "Какие аудиоформаты я могу декодировать?", a: "Мы поддерживаем чтение и декодирование внушительных 19 различных звуковых форматов, среди которых, разумеется, популярные MP3, высококачественные AAC, аудиофильские FLAC и некомпрессированные WAV. Важное уточнение: Специфические кодировки, такие как <em>Speex</em> и <em>AMR</em>, поддерживаются нашей программой исключительно в режиме чтения. Поэтому вы не сможете сохранить (или конвертировать) ваши файлы обратно в эти устаревшие форматы." },
+                            { q: "Как мне сохранить метаданные (EXIF или GPS координаты) в конвертируемых изображениях?", a: "Функция сохранения важной сервисной информации и приватных метаданных (различных EXIF параметров, местоположений на карте и т.д.) является элементом расширенных премиум-возможностей. Если у вас имеется активная подписка или бессрочная лицензия класса Pro или Ultimate, вам необходимо лишь предварительно включить чекбокс <strong>(Сохранять метаданные)</strong> непосредственно перед началом пакетной конвертации любых цифровых картинок в форматы JPG, PNG, HEIC, WebP." },
+                            { q: "У меня есть возможность самому настроить качество для сохранения изображений?", a: "При использовании нашей программы в рамках общедоступного бесплатного плана (Free tier), сжатие картинок всегда остаётся зафиксированным на усредненной отметке качества, которая математически составляет ровно 85%. Счастливые же обладатели платных тарифов серии Pro (или более высоких) получают в своё безграничное распоряжение полностью интерактивный и легко регулируемый в реальном времени ползунок. Данный инструмент позволит вам управлять итоговым качеством сжатия с ювелирной точностью, начиная от максимального агрессивного сжатия в 1% и уверенно заканчивая кристально прозрачными 100% — что практически означает полностью оригинальное, беспотерьное качество выходного файла без какого-либо видимого сжатия." }
+                        ]
+                    },
+                    {
+                        id: "tasks",
+                        icon: "layer-group", color: "emerald", title: "Очереди и оборудование",
+                        desc: "Одновременная пакетная работа и лимиты ваших аппаратных ресурсов",
+                        items: [
+                            { q: "Сколько файлов можно добавить в обработку одновременно (Пакетная работа)?", a: "Если вы пользуетесь приложением бесплатно, наш алгоритм будет добросовестно конвертировать каждый добавленный вами файл строго в порядке строгой очереди (т.е. по одной штуке за раз). Пользователи, оплатившие продвинутый статус <strong>Pro с ежеквартальной оплатой</strong>, могут спокойно отправлять на параллельную конвертацию сразу до 20 файлов в один клик. Что же касается владельцев <strong>годовых или пожизненных Pro подписок</strong> — им доступен запуск обработки внушительных пакетов по 50 файлов одновременно. Венцом же свободы является покупка лицензии <strong>Ultimate</strong>, благодаря которой ваши лимиты снимаются окончательно, позволяя программе 'переваривать' <em>неограниченное количество</em> медиа контента в один грандиозный проход." },
+                            { q: "А что значит режим 'Параллельных задач'?", a: "Термин 'Параллельность' описывает способность вычислительной машины <em>синхронно</em> (буквально в одни и те же доли секунды времени) загрузить сразу несколько ваших файлов в процессы конвертирования, при этом эффективно утилизируя вычислительную мощь всех имеющихся ядер вашего центрального процессора (CPU). Ввиду технических ограничений, бесплатная версия программы ограничивается выполнением всего 1 текущей активной задачи. Тарифные же планы линейки Pro без труда смогут разделить свою работу одновременно на период от 3 до 5 независимых задач. Режим Ultimate в буквальном смысле разблокирует все системные затворы, предоставляя вашим процессам бесконечную способность к распараллеливанию, которая физически зависит только от количества доступных логических потоков вашего собственного железа." },
+                            { q: "А как функционирует хваленое 'Аппаратное ускорение' ?", a: "Ключевое отличие FormatRocket от его более старомодных аналогов состоит в глубочайшей интеграции с мощными низкоуровневыми фреймворками самой компании Apple: <em>VideoToolbox</em> и <em>AudioToolbox</em>. В процессе конвертации наша программа перекладывает всю колоссальную вычислительную нагрузку напрямик на встроенные медиадвижки современных процессоров, будь то революционная линейка энергоэффективных чипов Apple Silicon (серии M1, M2, M3, M4) или же классическая и проверенная годами функция Intel Quick Sync. Благодаря подобной синергии, скорость конвертации увеличивается во множество раз, энергозатраты сводятся к историческому минимуму, а самое важное — вся эта алгоритмическая 'магия' работает 100% офлайн прямо на вашем локальном компьютере без всякой потребности подключаться к чужим облакам!" }
+                        ]
+                    },
+                    {
+                        id: "plans",
+                        icon: "gift", color: "pink", title: "Лицензии и автоматизация",
+                        desc: "Ваши выделенные квоты, бессрочные предложения и мощный CLI для гиков",
+                        items: [
+                            { q: "Объясните мне, как работают ликвидные 'квоты' на бесплатном тарифе?", a: "Каждому нашему пользователю совершенно безвозмездно предоставляется скромный, но крайне сбалансированный стартовый пакет использования программы: ровно 3 видео, пять (5) аудио и наконец пятнадцать (15) графических изображений для конвертации. Этот выделенный вам лимит беспристрастно обновляется с наступлением нового рабочего цикла в каждый понедельник. Более того, эти квоты умно синхронизируются через сервисы iCloud на всех ваших яблочных устройствах. И помните, вы легко можете получить постоянную прибавку к этим лимитам не тратя денег: приглашение друга в приложение подарит обеим сторонам сразу +10 бонусных конвертаций навсегда, а простое использование кнопки 'Поделиться приложением' прибавит вам +2 конвертации за каждое успешное действие!" },
+                            { q: "Я ненавижу систему подписок. Предусмотрена ли у вас опция 'пожизненной покупки' одним платежом?", a: "Безусловно! Наша команда презирает методы принудительного навязывания периодических снятий абонентской платы. Именно поэтому с великой гордостью мы оставляем кристально прозрачные условия для одномоментных (разовых) бессрочных приобретений, которые навсегда закрепят за вами статус владельца приложения со всеми будущими обновлениями: это тарифный план <strong>Пожизненный Pro</strong> (всего $39.99), или же наш флагманский продукт премиум-класса — версия <strong>Ultimate</strong> ($79.99) которая предоставляется вам также на всю оставшуюся жизнь." },
+                            { q: "А для чего предназначен Инструмент Командной Строки (CLI)?", a: "Приобретая Ultimate лицензию, вы разблокируете доступ к скрытому в недрах программы мощнейшему терминальному интерфейсу, известному как <code>frcli</code>. Если вы не любите кликать мышкой по графическим кнопочкам, то вы можете зайти в стандартное системное приложение 'Терминал' и выполнить текстовую команду вроде: <code>frcli convert input.mkv -o output.mp4</code> и конвертация начнется из-под капота. Помимо ручной работы, это означает, что отныне вы сможете полностью автоматизировать свои процессы интегрируя эти команды в приложение 'Команды (Shortcuts)' или же написав собственный скрипт, который будет следить за вашей папкой и без вашего ведома автоматически конвертировать любые файлы, что вы туда положите." }
+                        ]
+                    }
+                ],
+                specsTitle: "Возможности приложения",
+                specs: { os: "ОС не ниже macOS 14.0", chip: "Полноценная архитектура Apple Silicon, а также Intel", limits: "В зависимости от приобретенной версии", net: "Работает абсолютно без сети интернет (100% Offline режим)" },
+                contactTitle: "У вас все еще не решены возникшие проблемы?",
+                contactText: "Команда технической поддержки завжди готова к диалогу и с радостью ответит на все ваши технические запросы в кратчайшие сроки."
+            }
         };
 
         // 渲染核心逻辑 updateUI
