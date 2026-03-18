@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,87 +15,129 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        
-        html, body { 
+
+        html,
+        body {
             overflow-x: hidden;
             width: 100vw;
             max-width: 100%;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
-            background-color: #fbfbfd; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+            background-color: #fbfbfd;
             color: #1d1d1f;
         }
 
-        .glass-nav { 
-            background: rgba(255, 255, 255, 0.75); 
-            backdrop-filter: blur(24px) saturate(180%); 
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .ambient-glow {
-            position: absolute; 
-            width: 1200px; 
+            position: absolute;
+            width: 1200px;
             height: 1200px;
-            background: radial-gradient(circle, rgba(64,156,255,0.08) 0%, rgba(255,255,255,0) 70%);
-            top: -300px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            z-index: -1; 
+            background: radial-gradient(circle, rgba(64, 156, 255, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            top: -300px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
             pointer-events: none;
         }
 
         .bento-card {
             background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid rgba(0, 0, 0, 0.04);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
             border-radius: 2rem;
         }
+
         @media (min-width: 768px) {
-            .bento-card { border-radius: 2.5rem; }
+            .bento-card {
+                border-radius: 2.5rem;
+            }
         }
-        
+
         .bento-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12);
-            border: 1px solid rgba(0,0,0,0.08);
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         /* Ultimate 卡片专属的高级暗黑样式 */
         .bento-card.ultimate-card {
-            background: #111827; /* Tailwind gray-900 */
+            background: #111827;
+            /* Tailwind gray-900 */
             border: 1px solid #1f2937;
         }
+
         .bento-card.ultimate-card:hover {
             border-color: #374151;
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
         }
 
         /* FAQ 动画样式 */
-        .faq-answer { display: none; }
-        .faq-item.active .faq-answer { display: block; animation: fadeIn 0.4s ease-in-out; }
-        .faq-item.active .fa-chevron-down { transform: rotate(180deg); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        .faq-answer {
+            display: none;
+        }
 
-        @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
-        .animate-fade-in { animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .faq-item.active .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
     </style>
 </head>
+
 <body class="relative min-h-screen antialiased">
 
     <div class="ambient-glow"></div>
 
     <nav class="glass-nav fixed top-0 w-full z-50">
         <div class="max-w-6xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center gap-2">
-            <a href="./" class="text-base md:text-lg font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2 flex-shrink-0">
+            <a href="./"
+                class="text-base md:text-lg font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2 flex-shrink-0">
                 <i class="fas fa-chevron-left text-xs md:text-sm"></i> <span id="nav-back-text">Back to App</span>
             </a>
-            
+
             <div class="relative group flex-shrink-0">
-                <select id="langSelector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-1.5 md:py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[105px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
+                <select id="langSelector" onchange="switchLang(this.value)"
+                    class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-1.5 md:py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[105px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
                     <option value="en">🇺🇸 English</option>
                     <option value="zh-CN">🇨🇳 简体中文</option>
                     <option value="zh-TW">🇭🇰 繁體中文</option>
@@ -107,33 +150,44 @@
                     <option value="pt">🇧🇷 Português</option>
                     <option value="ru">🇷🇺 Русский</option>
                 </select>
-                <i class="fas fa-chevron-down absolute right-2.5 md:right-3 top-1/2 -translate-y-1/2 text-[9px] md:text-[10px] pointer-events-none opacity-60"></i>
+                <i
+                    class="fas fa-chevron-down absolute right-2.5 md:right-3 top-1/2 -translate-y-1/2 text-[9px] md:text-[10px] pointer-events-none opacity-60"></i>
             </div>
         </div>
     </nav>
 
     <main class="pt-24 md:pt-32 pb-24 md:pb-32 px-4 md:px-6 max-w-6xl mx-auto animate-fade-in opacity-0">
         <header class="mb-12 md:mb-16 text-center">
-            <h1 id="mainTitle" class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 md:mb-6 tracking-tight">Support & Help Center</h1>
-            <p id="subTitle" class="text-base md:text-xl text-gray-500 font-medium max-w-3xl mx-auto px-2">Learn how to convert files, manage tasks, and automate workflows with FormatRocket.</p>
+            <h1 id="mainTitle" class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 md:mb-6 tracking-tight">
+                Support & Help Center</h1>
+            <p id="subTitle" class="text-base md:text-xl text-gray-500 font-medium max-w-3xl mx-auto px-2">Master all 53
+                formats, advanced features, and workflow automations in FormatRocket.</p>
         </header>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20" id="guidesGrid"></div>
 
         <section class="mb-16 md:mb-20">
-            <h2 id="faqSectionTitle" class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-10 text-gray-900 tracking-tight">Frequently Asked Questions</h2>
+            <h2 id="faqSectionTitle"
+                class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-10 text-gray-900 tracking-tight">Frequently
+                Asked Questions</h2>
             <div id="faqContainer" class="space-y-3 md:space-y-4 max-w-4xl mx-auto"></div>
         </section>
 
-        <section class="bg-gray-900 text-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 mb-16 md:mb-20 shadow-2xl shadow-gray-900/20 border border-gray-800 transition-transform hover:-translate-y-1 duration-500">
-            <h2 id="specsTitle" class="text-xl md:text-2xl font-bold mb-6 md:mb-10 tracking-tight text-center md:text-left">System Capabilities</h2>
+        <section
+            class="bg-gray-900 text-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 mb-16 md:mb-20 shadow-2xl shadow-gray-900/20 border border-gray-800 transition-transform hover:-translate-y-1 duration-500">
+            <h2 id="specsTitle"
+                class="text-xl md:text-2xl font-bold mb-6 md:mb-10 tracking-tight text-center md:text-left">System
+                Capabilities</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8" id="specsGrid"></div>
         </section>
 
         <section class="text-center py-10 md:py-12 border-t border-gray-200/60">
-            <h2 id="contactTitle" class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900 tracking-tight">Still need help?</h2>
-            <p id="contactText" class="text-gray-500 font-medium mb-6 md:mb-8 text-base md:text-lg">Our support team is ready to assist you with any technical issues.</p>
-            <a href="mailto:strivemoring@gmail.com" class="inline-flex items-center px-6 md:px-10 py-3 md:py-4 bg-black text-white text-sm md:text-base font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-xl shadow-black/10 break-all w-full sm:w-auto justify-center">
+            <h2 id="contactTitle" class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900 tracking-tight">Still
+                need help?</h2>
+            <p id="contactText" class="text-gray-500 font-medium mb-6 md:mb-8 text-base md:text-lg">Our support team is
+                ready to assist you with any technical issues.</p>
+            <a href="mailto:strivemoring@gmail.com"
+                class="inline-flex items-center px-6 md:px-10 py-3 md:py-4 bg-black text-white text-sm md:text-base font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-xl shadow-black/10 break-all w-full sm:w-auto justify-center">
                 <i class="fas fa-envelope mr-2"></i> strivemoring@gmail.com
             </a>
         </section>
@@ -148,14 +202,14 @@
             "en": {
                 backText: "Back to App",
                 mainTitle: "Support & Help Center",
-                subTitle: "Learn how to convert files, manage tasks, and automate workflows with FormatRocket.",
+                subTitle: "Master all formats, unlimited concurrency, and workflow automations in FormatRocket.",
                 guides: [
-                    { icon: "rocket", color: "blue", title: "Quick Start", items: ["Drag in files or click \"Choose Files\" to add", "Select the target format, then click \"Start\"", "Click the filename to reveal it in Finder", "Supports Video, Audio & Image media types"] },
-                    { icon: "file-alt", color: "indigo", title: "Formats (53 Total)", items: ["Video 15: MP4, MOV, MKV, WebM, AVI, FLV, TS…", "Audio 19: MP3, AAC, FLAC, WAV, OGG, Opus…", "Image 19: JPG, PNG, HEIC, WebP, AVIF, RAW…", "Free uses native engine (~10); Pro+ unlocks all 53"] },
-                    { icon: "film", color: "purple", title: "Video & Audio", items: ["Resolution 480p–8K; codecs H.264/H.265/VP9/AV1", "Audio extraction: export audio track from video", "Video compression: keep format, reduce file size", "Custom bitrate, frame rate & sample rate (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "Batch & Queue", items: ["Add multiple files and submit at once", "Real-time progress & estimated time remaining", "Pause queue, cancel tasks, retry failed ones", "Concurrency: Free 1 / Pro 3-5 / Ultimate = CPU cores"] },
-                    { icon: "gift", color: "pink", title: "Free Quota & Rewards", items: ["Weekly quota: Video 3 / Audio 5 / Image 15 (resets Mon)", "Invite a friend: both get +10 quota (up to 50 invites)", "Share to unlock: +2 per share, max 3 per week", "Upgrade to Pro or Ultimate for unlimited conversions"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate Automation", items: ["CLI: frcli convert input.mkv -o output.mp4", "Apple Shortcuts integration for automated workflows", "Folder monitoring: auto-convert new files by rules", "Install: Settings → click \"Install CLI Tool\""] }
+                    { icon: "rocket", color: "blue", title: "Core Conversions", items: ["Drag & drop to convert Video, Audio & Image", "Basic formats available on Free tier", "Extract audio or convert videos to GIF", "Hardware accelerated processing"] },
+                    { icon: "film", color: "indigo", title: "Advanced Media Output", items: ["Unlock up to 8K resolution & 240fps (Ultimate)", "Full access to all encoders and formats", "Customize bitrates and sample rates", "Flexible audio retention settings"] },
+                    { icon: "images", color: "purple", title: "Image & Metadata", items: ["Convert between 19 image formats", "Adjustable image compression quality", "Preserve EXIF metadata natively", "Custom file naming rules (Pro+)"] },
+                    { icon: "layer-group", color: "emerald", title: "Batch & Concurrency", items: ["Batch process up to UNLIMITED files", "Unlock up to UNLIMITED concurrent tasks", "Task priority queuing (Yearly/Ultimate)", "Fully utilize Apple Silicon & multi-core power"] },
+                    { icon: "gift", color: "pink", title: "Free Tier & Upgrades", items: ["Basic conversions (1080p, 30fps) for Free", "Upgrade to lift batch and task limits", "Lifetime ownership available (Lifetime/Ultimate)", "Upgrade to unlock limitless professional capabilities"] },
+                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate Automation", items: ["CLI tool 'frcli' for terminal workflows", "Full Apple Shortcuts integration", "Background auto-folder monitoring", "Experience the ultimate, uncompromised workflow"] }
                 ],
                 faqSectionTitle: "Frequently Asked Questions",
                 faqs: [
@@ -173,14 +227,14 @@
             "zh-CN": {
                 backText: "返回应用",
                 mainTitle: "支持与帮助中心",
-                subTitle: "了解如何使用 FormatRocket 完成格式转换、管理任务与自动化工作流。",
+                subTitle: "掌握 FormatRocket 全格式转换、无上限并发与极致自动化工作流。",
                 guides: [
-                    { icon: "rocket", color: "blue", title: "快速开始", items: ["拖入文件或点击「选择文件」添加", "选择目标格式，点击「开始转换」", "转换完成后点击文件名可在 Finder 中定位", "支持视频、音频、图片三种媒体类型"] },
-                    { icon: "file-alt", color: "indigo", title: "格式一览（53 种）", items: ["视频 15 种：MP4、MOV、MKV、WebM、AVI、FLV、TS 等", "音频 19 种：MP3、AAC、FLAC、WAV、OGG、Opus 等", "图片 19 种：JPG、PNG、HEIC、WebP、AVIF、RAW 等", "免费版使用原生引擎约 10 种，Pro+ 解锁全部 53 种"] },
-                    { icon: "film", color: "purple", title: "视频与音频详解", items: ["分辨率 480p～8K；编码器 H.264/H.265/VP9/AV1", "音频提取：从视频中导出独立的音频文件", "视频压缩：保持格式不变，减小文件体积", "自定义码率、帧率、采样率（Pro+）"] },
-                    { icon: "layer-group", color: "emerald", title: "批量处理与任务管理", items: ["批量添加多文件，一次提交转换", "实时进度与预估剩余时间", "暂停队列、取消任务、一键重试失败任务", "并发数：Free 1 / Pro 3-5 / Ultimate = CPU 核心数"] },
-                    { icon: "gift", color: "pink", title: "免费额度与奖励机制", items: ["每周额度：视频 3 / 音频 5 / 图片 15（周一自动刷新）", "邀请好友：双方各 +10 次额度，最多邀请 50 人", "分享解锁：每次 +2 次，每周最多 3 次", "升级 Pro 或 Ultimate 即可无限转换"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate 自动化", items: ["CLI：frcli convert input.mkv -o output.mp4", "Apple 快捷指令集成，接入自动化工作流", "文件夹监控：新文件自动按规则转换", "安装：设置页面 → 点击「安装 CLI 工具」"] }
+                    { icon: "rocket", color: "blue", title: "核心转换基础", items: ["拖拽即可转换视频、音频与图片", "基础版自带常规格式互转", "支持无损提取音频，或视频直接转 GIF", "全系支持 Apple 硬件加速处理"] },
+                    { icon: "film", color: "indigo", title: "高阶视听参数", items: ["最高解锁 8K 极清分辨率与 240fps 极高帧率", "解锁全部编码器与格式限制", "完全自定义视频码率与音频采样率", "视频转换时自由决定是否保留音轨"] },
+                    { icon: "images", color: "purple", title: "图片与元数据", items: ["支持 19 种主流及 RAW 图片无缝互转", "图片压缩质量百分比自由调节", "完整保留图片 EXIF 元数据 (Pro+)", "支持自定义文件命名规则"] },
+                    { icon: "layer-group", color: "emerald", title: "批量与并发性能", items: ["批量处理最高可达“无上限”", "多任务并发最高解锁至“无上限”", "Pro年付与 Ultimate 独享任务优先级队列", "全面释放 Apple Silicon 与多核硬件潜能"] },
+                    { icon: "gift", color: "pink", title: "版本与免费权益", items: ["免费版专享 1080p@30fps 基础转换", "升级版本突破批量与并发限制", "提供 Pro 终身版与 Ultimate 买断选项", "解锁无限制的专业级生产力体验"] },
+                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate 极客自动化", items: ["内置 frcli 命令行工具，专为终端达人打造", "深度无缝集成 macOS 快捷指令 App", "全自动后台文件夹监控，解放双手", "享受毫不妥协的终极自动化工作流"] }
                 ],
                 faqSectionTitle: "常见问题解答",
                 faqs: [
@@ -198,14 +252,14 @@
             "zh-TW": {
                 backText: "返回應用",
                 mainTitle: "支援與幫助中心",
-                subTitle: "了解如何使用 FormatRocket 完成格式轉換、管理任務與自動化工作流。",
+                subTitle: "掌握 FormatRocket 全格式轉換、無上限併發與極致自動化工作流。",
                 guides: [
-                    { icon: "rocket", color: "blue", title: "快速開始", items: ["拖入檔案或點擊「選擇檔案」新增", "選擇目標格式，點擊「開始轉換」", "轉換完成後點擊檔案名稱可在 Finder 中定位", "支援影片、音訊、圖片三種媒體類型"] },
-                    { icon: "file-alt", color: "indigo", title: "格式一覽（53 種）", items: ["影片 15 種：MP4、MOV、MKV、WebM、AVI、FLV、TS 等", "音訊 19 種：MP3、AAC、FLAC、WAV、OGG、Opus 等", "圖片 19 種：JPG、PNG、HEIC、WebP、AVIF、RAW 等", "免費版使用原生引擎約 10 種，Pro+ 解鎖全部 53 種"] },
-                    { icon: "film", color: "purple", title: "影片與音訊詳解", items: ["解析度 480p～8K；編碼器 H.264/H.265/VP9/AV1", "音訊提取：從影片中匯出獨立的音訊檔案", "影片壓縮：保持格式不變，縮小檔案大小", "自訂碼率、幀率、取樣率（Pro+）"] },
-                    { icon: "layer-group", color: "emerald", title: "批次處理與任務管理", items: ["批次新增多個檔案，一次提交轉換", "即時進度與預估剩餘時間", "暫停佇列、取消任務、一鍵重試失敗任務", "併發數：Free 1 / Pro 3-5 / Ultimate = CPU 核心數"] },
-                    { icon: "gift", color: "pink", title: "免費額度與獎勵機制", items: ["每週額度：影片 3 / 音訊 5 / 圖片 15（週一自動刷新）", "邀請好友：雙方各 +10 次額度，最多邀請 50 人", "分享解鎖：每次 +2 次，每週最多 3 次", "升級 Pro 或 Ultimate 即可無限轉換"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate 自動化", items: ["CLI：frcli convert input.mkv -o output.mp4", "Apple 捷徑整合，接入自動化工作流", "資料夾監控：新檔案自動按規則轉換", "安裝：設定頁面 → 點擊「安裝 CLI 工具」"] }
+                    { icon: "rocket", color: "blue", title: "核心轉換基礎", items: ["拖拽即可轉換影片、音訊與圖片", "基礎版自帶常規格式互轉", "支援無損提取音訊，或影片直接轉 GIF", "全系支援 Apple 硬體加速處理"] },
+                    { icon: "film", color: "indigo", title: "高階視聽參數", items: ["最高解鎖 8K 極清解析度與 240fps 極高幀率", "解鎖全部編碼器與格式限制", "完全自定義影片碼率與音訊採樣率", "影片轉換時自由決定是否保留音軌"] },
+                    { icon: "images", color: "purple", title: "圖片與元數據", items: ["支援 19 種主流及 RAW 圖片無縫互轉", "圖片壓縮品質百分比自由調節", "完整保留圖片 EXIF 元數據 (Pro+)", "支援自定義檔案命名規則"] },
+                    { icon: "layer-group", color: "emerald", title: "批次與併發性能", items: ["批次處理最高可達「無上限」", "多任務併發最高解鎖至「無上限」", "Pro年付與 Ultimate 獨享任務優先級佇列", "全面釋放 Apple Silicon 與多核硬體潛能"] },
+                    { icon: "gift", color: "pink", title: "版本與免費權益", items: ["免費版專享 1080p@30fps 基礎轉換", "升級版本突破批次與併發限制", "提供 Pro 終身版與 Ultimate 買斷選項", "解鎖無限制的專業級生產力體驗"] },
+                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate 極客自動化", items: ["內建 frcli 命令列工具，專為終端達人打造", "深度無縫整合 macOS 捷徑 App", "全自動後台資料夾監控，解放雙手", "享受毫不妥協的終極自動化工作流"] }
                 ],
                 faqSectionTitle: "常見問題解答",
                 faqs: [
@@ -223,14 +277,14 @@
             "ja": {
                 backText: "アプリに戻る",
                 mainTitle: "サポート＆ヘルプ",
-                subTitle: "FormatRocket でファイル変換、タスク管理、ワークフロー自動化を行う方法をご案内します。",
+                subTitle: "全フォーマット、無制限の同時処理、FormatRocketの自動化をマスターしましょう。",
                 guides: [
-                    { icon: "rocket", color: "blue", title: "クイックスタート", items: ["ファイルをドラッグするか「ファイルを選択」をクリック", "出力形式を選び「変換開始」をクリック", "完了後、ファイル名をクリックして Finder で表示", "動画・音声・画像の3種類に対応"] },
-                    { icon: "file-alt", color: "indigo", title: "フォーマット一覧（53種）", items: ["動画 15種：MP4, MOV, MKV, WebM, AVI, FLV, TS…", "音声 19種：MP3, AAC, FLAC, WAV, OGG, Opus…", "画像 19種：JPG, PNG, HEIC, WebP, AVIF, RAW…", "無料版はネイティブエンジン約10種、Pro+で全53種解放"] },
-                    { icon: "film", color: "purple", title: "動画と音声の詳細", items: ["解像度 480p〜8K、コーデック H.264/H.265/VP9/AV1", "音声抽出：動画から音声トラックを書き出し", "動画圧縮：形式を維持したままファイルサイズを削減", "ビットレート・フレームレート・サンプルレートのカスタマイズ（Pro+）"] },
-                    { icon: "layer-group", color: "emerald", title: "バッチ処理とキュー管理", items: ["複数ファイルを追加して一括変換", "リアルタイム進捗と推定残り時間を表示", "キューの一時停止・タスクのキャンセル・失敗のリトライ", "同時処理数：Free 1 / Pro 3-5 / Ultimate = CPUコア数"] },
-                    { icon: "gift", color: "pink", title: "無料枠とリワード", items: ["週間枠：動画3 / 音声5 / 画像15（毎週月曜リセット）", "友達を招待：双方に +10 回分（最大50人まで招待可）", "シェアで解放：1回 +2 回分、週最大3回まで", "Pro または Ultimate にアップグレードで無制限変換"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate 自動化", items: ["CLI：frcli convert input.mkv -o output.mp4", "Apple ショートカット連携で自動化ワークフローに接続", "フォルダ監視：新しいファイルをルールに従い自動変換", "インストール：設定画面 →「CLI ツールをインストール」をクリック"] }
+                    { icon: "rocket", color: "blue", title: "基本の変換", items: ["動画、音声、画像をドラッグ＆ドロップ", "無料版でも基本的なフォーマットを利用可能", "音声を抽出、または動画をGIFに変換", "ハードウェアアクセラレーション処理"] },
+                    { icon: "film", color: "indigo", title: "高度なメディア出力", items: ["最大8K解像度と240fps（Ultimate）", "全エンコーダとフォーマットにアクセス", "ビットレートとサンプルレートをカスタマイズ", "柔軟な音声保持設定"] },
+                    { icon: "images", color: "purple", title: "画像とメタデータ", items: ["19種類の画像フォーマット間で変換", "画像の圧縮品質を調整可能", "EXIFメタデータを保持", "カスタムファイル命名規則（Pro+）"] },
+                    { icon: "layer-group", color: "emerald", title: "バッチ＆同時処理", items: ["無制限のファイル数をバッチ処理", "無制限の同時タスク処理のロック解除", "タスクの優先順位付け（年額/Ultimate）", "Apple Siliconとマルチコアの性能を最大限に引き出す"] },
+                    { icon: "gift", color: "pink", title: "無料版とアップグレード", items: ["無料版では1080p、30fpsの基本変換", "アップグレードでバッチとタスクの制限を解除", "買い切りオプションあり（買い切り/Ultimate）", "プロフェッショナル向けの無制限機能を解放"] },
+                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate自動化", items: ["ターミナル用CLIツール「frcli」", "Appleショートカットの完全統合", "バックグラウンドでのフォルダ自動監視", "妥協のない究極の自動化ワークフローを体験"] }
                 ],
                 faqSectionTitle: "よくある質問",
                 faqs: [
@@ -248,14 +302,14 @@
             "ko": {
                 backText: "앱으로 돌아가기",
                 mainTitle: "지원 및 도움말 센터",
-                subTitle: "FormatRocket으로 파일 변환, 작업 관리 및 워크플로우 자동화 방법을 알아보세요.",
+                subTitle: "FormatRocket의 모든 포맷, 무제한 동시성 및 워크플로우 자동화를 마스터하세요.",
                 guides: [
-                    { icon: "rocket", color: "blue", title: "빠른 시작", items: ["파일을 드래그하거나 \"파일 선택\"을 클릭하여 추가", "대상 포맷을 선택하고 \"변환 시작\"을 클릭", "완료 후 파일 이름을 클릭하면 Finder에서 표시", "비디오, 오디오, 이미지 세 가지 미디어 유형 지원"] },
-                    { icon: "file-alt", color: "indigo", title: "포맷 목록 (53종)", items: ["비디오 15종: MP4, MOV, MKV, WebM, AVI, FLV, TS…", "오디오 19종: MP3, AAC, FLAC, WAV, OGG, Opus…", "이미지 19종: JPG, PNG, HEIC, WebP, AVIF, RAW…", "무료 버전은 네이티브 엔진 약 10종, Pro+에서 전체 53종 해제"] },
-                    { icon: "film", color: "purple", title: "비디오 및 오디오 상세", items: ["해상도 480p~8K; 코덱 H.264/H.265/VP9/AV1", "오디오 추출: 비디오에서 독립 오디오 파일 내보내기", "비디오 압축: 포맷 유지하면서 파일 크기 축소", "비트레이트, 프레임 속도, 샘플 속도 사용자 지정 (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "일괄 처리 및 대기열", items: ["여러 파일을 추가하고 한 번에 변환 제출", "실시간 진행률 및 예상 남은 시간 표시", "대기열 일시 중지, 작업 취소, 실패 작업 재시도", "동시 처리: Free 1 / Pro 3-5 / Ultimate = CPU 코어 수"] },
-                    { icon: "gift", color: "pink", title: "무료 할당량 및 보상", items: ["주간 할당량: 비디오 3 / 오디오 5 / 이미지 15 (월요일 초기화)", "친구 초대: 양측 모두 +10회 (최대 50명 초대)", "공유 해제: 1회당 +2회, 주당 최대 3회", "Pro 또는 Ultimate로 업그레이드하면 무제한 변환"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate 자동화", items: ["CLI: frcli convert input.mkv -o output.mp4", "Apple 단축어 통합으로 자동화 워크플로우 연결", "폴더 모니터링: 새 파일을 규칙에 따라 자동 변환", "설치: 설정 페이지 → \"CLI 도구 설치\" 클릭"] }
+                    { icon: "rocket", color: "blue", title: "핵심 변환", items: ["드래그 앤 드롭으로 비디오, 오디오 및 이미지 변환", "무료 등급에서 기본 포맷 사용 가능", "오디오 추출 또는 비디오를 GIF로 변환", "하드웨어 가속 처리"] },
+                    { icon: "film", color: "indigo", title: "고급 미디어 출력", items: ["최대 8K 해상도 및 240fps 잠금 해제(Ultimate)", "모든 인코더 및 포맷에 대한 전체 액세스", "비트레이트 및 샘플 속도 사용자 지정", "유연한 오디오 보존 설정"] },
+                    { icon: "images", color: "purple", title: "이미지 및 메타데이터", items: ["19가지 이미지 포맷 간 변환", "조정 가능한 이미지 압축 품질", "EXIF 메타데이터 보존", "사용자 지정 파일 명명 규칙(Pro+)"] },
+                    { icon: "layer-group", color: "emerald", title: "일괄 처리 및 동시성", items: ["무제한 파일 일괄 처리", "무제한 동시 작업 잠금 해제", "작업 우선 순위 대기열(연간/Ultimate)", "Apple Silicon 및 멀티 코어 하드웨어 잠재력 극대화"] },
+                    { icon: "gift", color: "pink", title: "무료 등급 및 업그레이드", items: ["무료로 기본 변환(1080p, 30fps) 제공", "업그레이드하여 일괄 처리 및 작업 제한 해제", "평생 소유 가능(평생/Ultimate)", "무제한 전문가급 생산성 기능 잠금 해제"] },
+                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate 자동화", items: ["터미널 워크플로우를 위한 CLI 도구 'frcli'", "Apple 단축어 완벽 통합", "백그라운드 자동 폴더 모니터링", "타협 없는 궁극의 자동화 워크플로우 경험"] }
                 ],
                 faqSectionTitle: "자주 묻는 질문",
                 faqs: [
@@ -273,14 +327,14 @@
             "de": {
                 backText: "Zurück zur App",
                 mainTitle: "Support & Hilfe-Center",
-                subTitle: "Erfahren Sie, wie Sie mit FormatRocket Dateien konvertieren, Aufgaben verwalten und Workflows automatisieren.",
+                subTitle: "Meistern Sie alle Formate, unbegrenzte Gleichzeitigkeit und Automatisierung in FormatRocket.",
                 guides: [
-                    { icon: "rocket", color: "blue", title: "Schnellstart", items: ["Dateien hineinziehen oder auf \u201eDateien auswählen\u201c klicken", "Zielformat wählen und auf \u201eKonvertierung starten\u201c klicken", "Nach Abschluss auf den Dateinamen klicken, um im Finder anzuzeigen", "Unterstützt Video, Audio und Bild als Medientypen"] },
-                    { icon: "file-alt", color: "indigo", title: "Formate (53 insgesamt)", items: ["Video 15: MP4, MOV, MKV, WebM, AVI, FLV, TS…", "Audio 19: MP3, AAC, FLAC, WAV, OGG, Opus…", "Bild 19: JPG, PNG, HEIC, WebP, AVIF, RAW…", "Free nutzt die native Engine (~10); Pro+ schaltet alle 53 frei"] },
-                    { icon: "film", color: "purple", title: "Video & Audio im Detail", items: ["Auflösung 480p–8K; Codecs H.264/H.265/VP9/AV1", "Audio-Extraktion: Audiospur aus Video exportieren", "Videokompression: Format beibehalten, Dateigröße reduzieren", "Bitrate, Framerate & Samplerate anpassen (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "Stapelverarbeitung & Warteschlange", items: ["Mehrere Dateien hinzufügen und auf einmal konvertieren", "Echtzeit-Fortschritt und geschätzte Restzeit", "Warteschlange pausieren, Aufgaben abbrechen, fehlgeschlagene erneut versuchen", "Gleichzeitigkeit: Free 1 / Pro 3-5 / Ultimate = CPU-Kerne"] },
-                    { icon: "gift", color: "pink", title: "Gratis-Kontingent & Belohnungen", items: ["Wochenkontingent: Video 3 / Audio 5 / Bild 15 (Montag zurückgesetzt)", "Freund einladen: beide erhalten +10 Kontingent (max. 50 Einladungen)", "Teilen: +2 pro Mal, max. 3 Mal pro Woche", "Upgrade auf Pro oder Ultimate für unbegrenzte Konvertierungen"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate Automatisierung", items: ["CLI: frcli convert input.mkv -o output.mp4", "Apple Shortcuts Integration für automatisierte Workflows", "Ordnerüberwachung: neue Dateien automatisch nach Regeln konvertieren", "Installation: Einstellungen → \u201eCLI-Tool installieren\u201c klicken"] }
+                    { icon: "rocket", color: "blue", title: "Kernkonvertierungen", items: ["Video, Audio & Bild per Drag & Drop konvertieren", "Basisformate im Free-Tarif", "Audio extrahieren oder Videos zu GIF machen", "Hardwarebeschleunigte Verarbeitung"] },
+                    { icon: "film", color: "indigo", title: "Erweiterte Medien", items: ["Bis zu 8K-Auflösung & 240fps (Ultimate)", "Voller Zugriff auf alle Encoder", "Bitraten & Sampleraten anpassen", "Flexible Audio-Beibehaltung"] },
+                    { icon: "images", color: "purple", title: "Bild & Metadaten", items: ["Zwischen 19 Bildformaten konvertieren", "Einstellbare Bildkompression", "EXIF-Metadaten erhalten", "Benutzerdefinierte Dateinamen (Pro+)"] },
+                    { icon: "layer-group", color: "emerald", title: "Stapel & Leistung", items: ["UNBEGRENZTE Dateien als Stapel", "UNBEGRENZTE gleichzeitige Aufgaben", "Aufgabenpriorität (Yearly/Ultimate)", "Nutzen Sie die volle Leistung von Apple Silicon & Multicore"] },
+                    { icon: "gift", color: "pink", title: "Free-Tarif & Upgrades", items: ["Basiskonvertierung (1080p, 30fps) kostenlos", "Upgraden, um Limits aufzuheben", "Lebenslange Lizenzen verfügbar", "Entsperren Sie unbegrenzte professionelle Funktionen"] },
+                    { icon: "terminal", color: "gray", isUltimate: true, title: "Ultimate Automatisierung", items: ["CLI-Tool 'frcli' für Terminals", "Volle Apple Shortcuts Integration", "Automatische Ordnerüberwachung", "Erleben Sie den ultimativen, kompromisslosen Workflow"] }
                 ],
                 faqSectionTitle: "Häufig gestellte Fragen",
                 faqs: [
@@ -298,14 +352,14 @@
             "fr": {
                 backText: "Retour à l'App",
                 mainTitle: "Centre d'Assistance",
-                subTitle: "Découvrez comment convertir des fichiers, gérer les tâches et automatiser vos flux de travail avec FormatRocket.",
+                subTitle: "Maîtrisez tous les formats, la simultanéité illimitée et l'automatisation dans FormatRocket.",
                 guides: [
-                    { icon: "rocket", color: "blue", title: "Démarrage rapide", items: ["Glissez des fichiers ou cliquez sur « Choisir des fichiers »", "Sélectionnez le format cible, puis cliquez sur « Démarrer »", "Cliquez sur le nom du fichier pour l'afficher dans le Finder", "Prend en charge la vidéo, l'audio et l'image"] },
-                    { icon: "file-alt", color: "indigo", title: "Formats (53 au total)", items: ["Vidéo 15 : MP4, MOV, MKV, WebM, AVI, FLV, TS…", "Audio 19 : MP3, AAC, FLAC, WAV, OGG, Opus…", "Image 19 : JPG, PNG, HEIC, WebP, AVIF, RAW…", "La version gratuite utilise le moteur natif (~10) ; Pro+ débloque les 53"] },
-                    { icon: "film", color: "purple", title: "Vidéo et audio en détail", items: ["Résolution 480p–8K ; codecs H.264/H.265/VP9/AV1", "Extraction audio : exporter la piste audio d'une vidéo", "Compression vidéo : conserver le format, réduire la taille", "Débit, fréquence d'images et taux d'échantillonnage personnalisés (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "Traitement par lot et file d'attente", items: ["Ajoutez plusieurs fichiers et soumettez en une fois", "Progression en temps réel et temps restant estimé", "Mettre en pause la file, annuler, réessayer les échecs", "Simultanéité : Free 1 / Pro 3-5 / Ultimate = cœurs CPU"] },
-                    { icon: "gift", color: "pink", title: "Quota gratuit et récompenses", items: ["Quota hebdo : Vidéo 3 / Audio 5 / Image 15 (réinitialisé le lundi)", "Inviter un ami : chacun obtient +10 quota (max 50 invitations)", "Partage : +2 par partage, max 3 fois par semaine", "Passez à Pro ou Ultimate pour des conversions illimitées"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automatisation Ultimate", items: ["CLI : frcli convert input.mkv -o output.mp4", "Intégration Apple Raccourcis pour des flux automatisés", "Surveillance de dossier : convertir automatiquement les nouveaux fichiers", "Installation : Réglages → cliquez sur « Installer l'outil CLI »"] }
+                    { icon: "rocket", color: "blue", title: "Conversions de Base", items: ["Glissez-déposez Vidéo, Audio & Image", "Formats basiques en version Gratuite", "Extraire l'audio ou convertir en GIF", "Traitement par accélération matérielle"] },
+                    { icon: "film", color: "indigo", title: "Médias Avancés", items: ["Résolution jusqu'à 8K & 240fps (Ultimate)", "Accès total aux encodeurs et formats", "Personnaliser les débits (bitrates)", "Conservation flexible de l'audio"] },
+                    { icon: "images", color: "purple", title: "Image & Métadonnées", items: ["Convertir parmi 19 formats d'image", "Qualité de compression ajustable", "Préserver les métadonnées EXIF", "Règles de nommage (Pro+)"] },
+                    { icon: "layer-group", color: "emerald", title: "Lot & Concurrence", items: ["Traiter des fichiers en lot ILLIMITÉ", "Tâches simultanées ILLIMITÉES", "Priorité des tâches (Annuel/Ultimate)", "Exploitez toute la puissance d'Apple Silicon et du multi-cœur"] },
+                    { icon: "gift", color: "pink", title: "Version Gratuite & Mises à niveau", items: ["Conversions de base (1080p, 30fps) Gratuites", "Améliorez pour lever les limites", "Licences à vie disponibles", "Débloquez des capacités professionnelles illimitées"] },
+                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automatisation Ultimate", items: ["Outil CLI 'frcli' pour le terminal", "Intégration Apple Shortcuts", "Surveillance auto des dossiers", "Profitez d'un flux de travail automatisé sans compromis"] }
                 ],
                 faqSectionTitle: "Questions Fréquentes",
                 faqs: [
@@ -323,14 +377,14 @@
             "es": {
                 backText: "Volver a la App",
                 mainTitle: "Centro de Soporte",
-                subTitle: "Aprende a convertir archivos, gestionar tareas y automatizar flujos de trabajo con FormatRocket.",
+                subTitle: "Domina todos los formatos, concurrencia ilimitada y automatización en FormatRocket.",
                 guides: [
-                    { icon: "rocket", color: "blue", title: "Inicio rápido", items: ["Arrastra archivos o haz clic en \"Elegir archivos\"", "Selecciona el formato de destino y haz clic en \"Iniciar\"", "Haz clic en el nombre del archivo para verlo en Finder", "Compatible con vídeo, audio e imagen"] },
-                    { icon: "file-alt", color: "indigo", title: "Formatos (53 en total)", items: ["Vídeo 15: MP4, MOV, MKV, WebM, AVI, FLV, TS…", "Audio 19: MP3, AAC, FLAC, WAV, OGG, Opus…", "Imagen 19: JPG, PNG, HEIC, WebP, AVIF, RAW…", "La versión gratis usa el motor nativo (~10); Pro+ desbloquea los 53"] },
-                    { icon: "film", color: "purple", title: "Vídeo y audio en detalle", items: ["Resolución 480p–8K; códecs H.264/H.265/VP9/AV1", "Extracción de audio: exportar la pista de audio del vídeo", "Compresión de vídeo: mantener formato, reducir tamaño", "Bitrate, fps y frecuencia de muestreo personalizados (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "Procesamiento por lotes y cola", items: ["Añade varios archivos y envíalos de una vez", "Progreso en tiempo real y tiempo restante estimado", "Pausar cola, cancelar tareas, reintentar las fallidas", "Concurrencia: Free 1 / Pro 3-5 / Ultimate = núcleos CPU"] },
-                    { icon: "gift", color: "pink", title: "Cuota gratuita y recompensas", items: ["Cuota semanal: Vídeo 3 / Audio 5 / Imagen 15 (se renueva el lunes)", "Invita a un amigo: ambos obtienen +10 cuota (máx. 50 invitaciones)", "Compartir: +2 por vez, máx. 3 veces por semana", "Actualiza a Pro o Ultimate para conversiones ilimitadas"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automatización Ultimate", items: ["CLI: frcli convert input.mkv -o output.mp4", "Integración con Atajos de Apple para flujos automatizados", "Monitorización de carpetas: convertir automáticamente nuevos archivos", "Instalación: Ajustes → clic en \"Instalar herramienta CLI\""] }
+                    { icon: "rocket", color: "blue", title: "Conversiones Core", items: ["Arrastra y suelta para convertir", "Formatos básicos en la versión Gratis", "Extraer audio o crear GIFs", "Aceleración por hardware"] },
+                    { icon: "film", color: "indigo", title: "Medios Avanzados", items: ["Resolución hasta 8K y 240fps (Ultimate)", "Acceso total a todos los codificadores", "Personalizar bitrates y sample rates", "Ajustes de conservación de audio"] },
+                    { icon: "images", color: "purple", title: "Imagen y Metadatos", items: ["Convierte entre 19 formatos de imagen", "Compresión de imagen ajustable", "Conservar metadatos EXIF", "Nombramiento de archivos personalizado"] },
+                    { icon: "layer-group", color: "emerald", title: "Lotes y Concurrencia", items: ["Procesamiento por lotes ILIMITADO", "Tareas concurrentes ILIMITADAS", "Prioridad de tareas (Anual/Ultimate)", "Aprovecha al máximo Apple Silicon y el multinúcleo"] },
+                    { icon: "gift", color: "pink", title: "Versión Gratis y Mejoras", items: ["Conversiones base (1080p, 30fps) Gratis", "Actualiza para eliminar límites", "Propiedad de por vida disponible", "Desbloquea capacidades profesionales ilimitadas"] },
+                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automatización Ultimate", items: ["Herramienta CLI 'frcli' para terminal", "Integración con Atajos de Apple", "Monitorización automática de carpetas", "Disfruta de un flujo de trabajo automatizado sin compromisos"] }
                 ],
                 faqSectionTitle: "Preguntas Frecuentes",
                 faqs: [
@@ -348,14 +402,14 @@
             "it": {
                 backText: "Torna all'App",
                 mainTitle: "Centro Assistenza",
-                subTitle: "Scopri come convertire file, gestire le attività e automatizzare i flussi di lavoro con FormatRocket.",
+                subTitle: "Padroneggia tutti i formati, la concorrenza illimitata e l'automazione in FormatRocket.",
                 guides: [
-                    { icon: "rocket", color: "blue", title: "Avvio rapido", items: ["Trascina i file o clicca su \"Scegli file\" per aggiungere", "Seleziona il formato di destinazione, poi clicca su \"Avvia\"", "Clicca sul nome del file per visualizzarlo nel Finder", "Supporta video, audio e immagini come tipi di media"] },
-                    { icon: "file-alt", color: "indigo", title: "Formati (53 in totale)", items: ["Video 15: MP4, MOV, MKV, WebM, AVI, FLV, TS…", "Audio 19: MP3, AAC, FLAC, WAV, OGG, Opus…", "Immagini 19: JPG, PNG, HEIC, WebP, AVIF, RAW…", "La versione Free usa il motore nativo (~10); Pro+ sblocca tutti i 53"] },
-                    { icon: "film", color: "purple", title: "Video e audio in dettaglio", items: ["Risoluzione 480p–8K; codec H.264/H.265/VP9/AV1", "Estrazione audio: esporta la traccia audio dal video", "Compressione video: mantieni il formato, riduci le dimensioni", "Bitrate, frame rate e frequenza di campionamento personalizzati (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "Elaborazione batch e coda", items: ["Aggiungi più file e inviali tutti insieme", "Avanzamento in tempo reale e tempo rimanente stimato", "Metti in pausa la coda, annulla attività, riprova quelle fallite", "Simultaneità: Free 1 / Pro 3-5 / Ultimate = core CPU"] },
-                    { icon: "gift", color: "pink", title: "Quota gratuita e premi", items: ["Quota settimanale: Video 3 / Audio 5 / Immagini 15 (reset ogni lunedì)", "Invita un amico: entrambi ottengono +10 quota (max 50 inviti)", "Condividi: +2 per volta, max 3 volte a settimana", "Passa a Pro o Ultimate per conversioni illimitate"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automazione Ultimate", items: ["CLI: frcli convert input.mkv -o output.mp4", "Integrazione Apple Comandi Rapidi per flussi automatizzati", "Monitoraggio cartelle: converti automaticamente i nuovi file", "Installazione: Impostazioni → clicca su \"Installa strumento CLI\""] }
+                    { icon: "rocket", color: "blue", title: "Conversioni Base", items: ["Trascina e rilascia Video, Audio e Immagini", "Formati base disponibili nel piano Free", "Estrai audio o converti video in GIF", "Elaborazione con accelerazione hardware"] },
+                    { icon: "film", color: "indigo", title: "Output Multimediale Avanzato", items: ["Fino a 8K di risoluzione e 240fps (Ultimate)", "Accesso completo a tutti gli encoder", "Personalizza bitrate e frequenze di campionamento", "Impostazioni flessibili per l'audio"] },
+                    { icon: "images", color: "purple", title: "Immagini e Metadati", items: ["Converti tra 19 formati immagine", "Qualità di compressione immagine regolabile", "Preserva nativamente i metadati EXIF", "Regole di denominazione personalizzate (Pro+)"] },
+                    { icon: "layer-group", color: "emerald", title: "Batch e Concorrenza", items: ["Elabora file in batch ILLIMITATI", "Sblocca attività simultanee ILLIMITATE", "Coda con priorità delle attività", "Sfrutta tutta la potenza di Apple Silicon e multi-core"] },
+                    { icon: "gift", color: "pink", title: "Piano Free e Upgrade", items: ["Conversioni base (1080p, 30fps) gratis", "Esegui l'upgrade per eliminare i limiti", "Licenze a vita disponibili", "Sblocca capacità professionali illimitate"] },
+                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automazione Ultimate", items: ["Strumento CLI 'frcli' per il terminale", "Integrazione completa con Apple Shortcuts", "Monitoraggio automatico delle cartelle", "Sperimenta il flusso di lavoro automatizzato definitivo"] }
                 ],
                 faqSectionTitle: "Domande Frequenti",
                 faqs: [
@@ -373,14 +427,14 @@
             "pt": {
                 backText: "Voltar ao App",
                 mainTitle: "Centro de Suporte",
-                subTitle: "Saiba como converter arquivos, gerenciar tarefas e automatizar fluxos de trabalho com o FormatRocket.",
+                subTitle: "Domine todos os formatos, concorrência ilimitada e automação no FormatRocket.",
                 guides: [
-                    { icon: "rocket", color: "blue", title: "Início rápido", items: ["Arraste arquivos ou clique em \"Escolher arquivos\"", "Selecione o formato de destino e clique em \"Iniciar\"", "Clique no nome do arquivo para exibi-lo no Finder", "Suporta vídeo, áudio e imagem como tipos de mídia"] },
-                    { icon: "file-alt", color: "indigo", title: "Formatos (53 no total)", items: ["Vídeo 15: MP4, MOV, MKV, WebM, AVI, FLV, TS…", "Áudio 19: MP3, AAC, FLAC, WAV, OGG, Opus…", "Imagem 19: JPG, PNG, HEIC, WebP, AVIF, RAW…", "A versão grátis usa o motor nativo (~10); Pro+ desbloqueia todos os 53"] },
-                    { icon: "film", color: "purple", title: "Vídeo e áudio em detalhe", items: ["Resolução 480p–8K; codecs H.264/H.265/VP9/AV1", "Extração de áudio: exportar faixa de áudio do vídeo", "Compressão de vídeo: manter formato, reduzir tamanho", "Bitrate, taxa de quadros e taxa de amostragem personalizados (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "Processamento em lote e fila", items: ["Adicione vários arquivos e envie de uma vez", "Progresso em tempo real e tempo restante estimado", "Pausar fila, cancelar tarefas, retentar as que falharam", "Simultaneidade: Free 1 / Pro 3-5 / Ultimate = núcleos CPU"] },
-                    { icon: "gift", color: "pink", title: "Cota gratuita e recompensas", items: ["Cota semanal: Vídeo 3 / Áudio 5 / Imagem 15 (renova na segunda)", "Convide um amigo: ambos recebem +10 cota (máx. 50 convites)", "Compartilhar: +2 por vez, máx. 3 vezes por semana", "Atualize para Pro ou Ultimate para conversões ilimitadas"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automação Ultimate", items: ["CLI: frcli convert input.mkv -o output.mp4", "Integração com Atalhos da Apple para fluxos automatizados", "Monitoramento de pastas: converter automaticamente novos arquivos", "Instalação: Configurações → clique em \"Instalar ferramenta CLI\""] }
+                    { icon: "rocket", color: "blue", title: "Conversões Essenciais", items: ["Arraste e solte Vídeo, Áudio e Imagem", "Formatos básicos disponíveis no plano Free", "Extraia áudio ou converta vídeos para GIF", "Processamento acelerado por hardware"] },
+                    { icon: "film", color: "indigo", title: "Mídia Avançada", items: ["Resolução até 8K e 240fps (Ultimate)", "Acesso total a todos os codificadores", "Personalize bitrates e taxas de amostragem", "Configurações flexíveis de retenção de áudio"] },
+                    { icon: "images", color: "purple", title: "Imagem e Metadados", items: ["Converta entre 19 formatos de imagem", "Qualidade de compressão ajustável", "Preserve metadados EXIF", "Regras de nomenclatura personalizadas"] },
+                    { icon: "layer-group", color: "emerald", title: "Lote e Concorrência", items: ["Processe arquivos em lote ILIMITADOS", "Desbloqueie tarefas simultâneas ILIMITADAS", "Fila de prioridade de tarefas (Anual/Ultimate)", "Aproveite ao máximo o Apple Silicon e hardware multinúcleo"] },
+                    { icon: "gift", color: "pink", title: "Plano Free e Upgrades", items: ["Conversões básicas (1080p, 30fps) Grátis", "Faça upgrade para remover limites", "Licenças vitalícias disponíveis", "Desbloqueie capacidades profissionais ilimitadas"] },
+                    { icon: "terminal", color: "gray", isUltimate: true, title: "Automação Ultimate", items: ["Ferramenta CLI 'frcli' para terminal", "Integração total com Atalhos da Apple", "Monitoramento automático de pastas", "Experimente o fluxo de trabalho automatizado definitivo"] }
                 ],
                 faqSectionTitle: "Perguntas Frequentes",
                 faqs: [
@@ -398,14 +452,14 @@
             "ru": {
                 backText: "Назад к приложению",
                 mainTitle: "Центр поддержки",
-                subTitle: "Узнайте, как конвертировать файлы, управлять задачами и автоматизировать рабочие процессы в FormatRocket.",
+                subTitle: "Освойте все форматы, неограниченную многозадачность и автоматизацию в FormatRocket.",
                 guides: [
-                    { icon: "rocket", color: "blue", title: "Быстрый старт", items: ["Перетащите файлы или нажмите «Выбрать файлы»", "Выберите целевой формат и нажмите «Начать конвертацию»", "Нажмите на имя файла, чтобы открыть его в Finder", "Поддерживает видео, аудио и изображения"] },
-                    { icon: "file-alt", color: "indigo", title: "Форматы (53 всего)", items: ["Видео 15: MP4, MOV, MKV, WebM, AVI, FLV, TS…", "Аудио 19: MP3, AAC, FLAC, WAV, OGG, Opus…", "Изображения 19: JPG, PNG, HEIC, WebP, AVIF, RAW…", "Бесплатная версия: нативный движок (~10); Pro+ разблокирует все 53"] },
-                    { icon: "film", color: "purple", title: "Видео и аудио подробно", items: ["Разрешение 480p–8K; кодеки H.264/H.265/VP9/AV1", "Извлечение аудио: экспорт звуковой дорожки из видео", "Сжатие видео: сохранить формат, уменьшить размер файла", "Настройка битрейта, частоты кадров и частоты дискретизации (Pro+)"] },
-                    { icon: "layer-group", color: "emerald", title: "Пакетная обработка и очередь", items: ["Добавьте несколько файлов и отправьте на конвертацию сразу", "Прогресс в реальном времени и расчётное оставшееся время", "Пауза очереди, отмена задач, повторная попытка неудавшихся", "Параллельность: Free 1 / Pro 3-5 / Ultimate = ядра CPU"] },
-                    { icon: "gift", color: "pink", title: "Бесплатная квота и бонусы", items: ["Недельная квота: Видео 3 / Аудио 5 / Изображения 15 (сброс в понедельник)", "Пригласите друга: оба получают +10 квоту (макс. 50 приглашений)", "Поделиться: +2 за раз, макс. 3 раза в неделю", "Обновитесь до Pro или Ultimate для неограниченных конвертаций"] },
-                    { icon: "terminal", color: "gray", isUltimate: true, title: "Автоматизация Ultimate", items: ["CLI: frcli convert input.mkv -o output.mp4", "Интеграция Apple Команды для автоматизированных процессов", "Мониторинг папок: автоматическая конвертация новых файлов по правилам", "Установка: Настройки → нажмите «Установить CLI-инструмент»"] }
+                    { icon: "rocket", color: "blue", title: "Базовые конвертации", items: ["Перетаскивайте видео, аудио и изображения", "Базовые форматы доступны в бесплатной версии", "Извлекайте аудио или создавайте GIF", "Аппаратное ускорение"] },
+                    { icon: "film", color: "indigo", title: "Продвинутые настройки медиа", items: ["Разрешение до 8K и 240fps (Ultimate)", "Полный доступ ко всем кодекам", "Настройка битрейта и частоты дискретизации", "Гибкие настройки сохранения звука"] },
+                    { icon: "images", color: "purple", title: "Изображения и Метаданные", items: ["Конвертация между 19 форматами изображений", "Регулируемое качество сжатия", "Сохранение метаданных EXIF", "Настраиваемые правила именования файлов"] },
+                    { icon: "layer-group", color: "emerald", title: "Пакеты и многозадачность", items: ["НЕОГРАНИЧЕННАЯ пакетная обработка файлов", "НЕОГРАНИЧЕННЫЕ параллельные задачи", "Приоритет задач (Годовая/Ultimate)", "Раскройте весь потенциал Apple Silicon и многоядерных процессоров"] },
+                    { icon: "gift", color: "pink", title: "Бесплатная версия и улучшения", items: ["Базовые конвертации (1080p, 30fps) бесплатно", "Обновитесь, чтобы снять ограничения", "Доступны пожизненные лицензии", "Разблокируйте неограниченные профессиональные возможности"] },
+                    { icon: "terminal", color: "gray", isUltimate: true, title: "Автоматизация Ultimate", items: ["Инструмент CLI 'frcli' для терминала", "Интеграция с Apple Shortcuts", "Авто-мониторинг папок в фоне", "Испытайте бескомпромиссный автоматизированный рабочий процесс"] }
                 ],
                 faqSectionTitle: "Часто задаваемые вопросы",
                 faqs: [
@@ -424,7 +478,7 @@
 
         function updateUI(langCode) {
             const data = translations[langCode] || translations['en'];
-            
+
             document.getElementById('nav-back-text').innerText = data.backText;
             document.getElementById('mainTitle').innerText = data.mainTitle;
             document.getElementById('subTitle').innerText = data.subTitle;
@@ -494,18 +548,19 @@
             updateUI(langCode);
         }
 
-        window.onload = function() {
+        window.onload = function () {
             const savedLang = localStorage.getItem('formatrocket_lang') || 'en';
             const finalLang = translations[savedLang] ? savedLang : 'en';
-            
+
             const selector = document.getElementById('langSelector');
-            if(selector.querySelector(`option[value="${finalLang}"]`)) {
+            if (selector.querySelector(`option[value="${finalLang}"]`)) {
                 selector.value = finalLang;
             }
-            
+
             updateUI(finalLang);
             setTimeout(() => document.querySelector('main.animate-fade-in').classList.add('opacity-100'), 100);
         }
     </script>
 </body>
+
 </html>
