@@ -531,9 +531,9 @@
                 container.innerHTML = ''; 
                 
                 const descMap = {
-                    'Qwen3.5-122B-A10B-MLX-3.7bit-VL': '3.7-bit quantization with vision. Alibaba 122B MoE, 10B active, 256K context. Runs on 64GB Apple Silicon.',
-                    'GPT-OSS-120B-MLX-3.6bit': '3.6-bit quantization. OpenAI\'s first open-source model, 5.1B active, near o4-mini reasoning. Runs on 64GB Apple Silicon.',
-                    'Nemotron-3-Super-120B-A12B-MLX-3.6bit': '3.6-bit quantization. NVIDIA Mamba-2 + MoE, 12B active, 2.2x faster than GPT-OSS, 1M context. Runs on 64GB Apple Silicon.'
+                    'Qwen3.5-122B-A10B-MLX-3.7bit-VL': '3.7-bit quantization with vision. Alibaba 122B MoE, 10B active, 256K context. 122B models. Now possible on 64GB Apple Silicon.',
+                    'GPT-OSS-120B-MLX-3.6bit': '3.6-bit quantization. OpenAI\'s first open-source model, 5.1B active, near o4-mini reasoning. 120B models. Now possible on 64GB Apple Silicon.',
+                    'Nemotron-3-Super-120B-A12B-MLX-3.6bit': '3.6-bit quantization. NVIDIA Mamba-2 + MoE, 12B active, 2.2x faster than GPT-OSS, 1M context. 120B models. Now possible on 64GB Apple Silicon.'
                 };
 
                 models.slice(0, 6).forEach(model => {
@@ -573,17 +573,17 @@
                 const fallbackModels = [
                     {
                         name: 'Qwen3.5-122B-A10B-MLX-3.7bit-VL',
-                        desc: '3.7-bit quantization with vision. Alibaba 122B MoE, 10B active, 256K context. Runs on 64GB Apple Silicon.',
+                        desc: '3.7-bit quantization with vision. Alibaba 122B MoE, 10B active, 256K context. 122B models. Now possible on 64GB Apple Silicon.',
                         url: 'https://huggingface.co/MoringLabs/Qwen3.5-122B-A10B-MLX-3.7bit-VL'
                     },
                     {
                         name: 'GPT-OSS-120B-MLX-3.6bit',
-                        desc: '3.6-bit quantization. OpenAI\'s first open-source model, 5.1B active, near o4-mini reasoning. Runs on 64GB Apple Silicon.',
+                        desc: '3.6-bit quantization. OpenAI\'s first open-source model, 5.1B active, near o4-mini reasoning. 120B models. Now possible on 64GB Apple Silicon.',
                         url: 'https://huggingface.co/MoringLabs/GPT-OSS-120B-MLX-3.6bit'
                     },
                     {
                         name: 'Nemotron-3-Super-120B-A12B-MLX-3.6bit',
-                        desc: '3.6-bit quantization. NVIDIA Mamba-2 + MoE, 12B active, 2.2x faster than GPT-OSS, 1M context. Runs on 64GB Apple Silicon.',
+                        desc: '3.6-bit quantization. NVIDIA Mamba-2 + MoE, 12B active, 2.2x faster than GPT-OSS, 1M context. 120B models. Now possible on 64GB Apple Silicon.',
                         url: 'https://huggingface.co/MoringLabs/Nemotron-3-Super-120B-A12B-MLX-3.6bit'
                     }
                 ];
