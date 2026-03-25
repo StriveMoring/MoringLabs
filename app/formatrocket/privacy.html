@@ -116,7 +116,7 @@
         <header class="mb-8 md:mb-12 text-center">
             <h1 id="mainTitle" class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-2 md:mb-4">Privacy Policy</h1>
             <p class="text-base md:text-lg text-gray-500 font-medium">FormatRocket</p>
-            <p id="effectiveDate" class="text-sm text-gray-400 mt-2">Effective Date: March 25, 2026</p>
+
         </header>
 
         <div class="bento-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12">
@@ -804,7 +804,7 @@
             document.title = data.title + " | FormatRocket";
             document.getElementById('nav-back-text').innerText = data.backText;
             document.getElementById('mainTitle').innerText = data.title;
-            document.getElementById('effectiveDate').innerText = data.date;
+
             const introElem = document.getElementById('introText');
             // 根据翻译对象中的 intro 字段是否为空来决定是否显示简介容器（避免空占位影响布局）
             if (data.intro && data.intro.trim() !== "") {
