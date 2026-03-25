@@ -116,7 +116,7 @@
         <header class="mb-8 md:mb-12 text-center">
             <h1 id="mainTitle" class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-2 md:mb-4">Privacy Policy</h1>
             <p class="text-base md:text-lg text-gray-500 font-medium">FormatRocket</p>
-            <p id="effectiveDate" class="text-sm text-gray-400 mt-2">Effective Date: March 18, 2026</p>
+            <p id="effectiveDate" class="text-sm text-gray-400 mt-2">Effective Date: March 25, 2026</p>
         </header>
 
         <div class="bento-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12">
@@ -146,238 +146,700 @@
 
     <script>
         const translations = {
-            "en": {
-                backText: "Back to App",
-                title: "Privacy Policy",
-                date: "Effective Date: March 18, 2026 | Last Updated: March 18, 2026",
-                intro: "Moring Labs (\"we\", \"us\", \"our\") built FormatRocket as a commercial application. This Privacy Policy explains how we handle information when you use FormatRocket (\"the App\").",
-                contactTitle: "Contact Us",
-                contactText: "If you have any questions, please contact:",
-                websiteText: "Website:",
-                sections: [
-                    { h: "Summary", p: "<ul><li>All file conversions happen locally on your Mac. We never upload your files.</li><li>We use Apple's CloudKit to sync usage quotas and invite codes — no third-party servers.</li><li>We do not collect personal information, analytics, or tracking data.</li><li>We do not use any third-party SDKs for analytics, advertising, or tracking.</li></ul>" },
-                    { h: "Information We Collect", p: "<h3>Information We Do NOT Collect</h3><ul><li>We do <strong>not</strong> collect your name, email address, phone number, or any personal contact information.</li><li>We do <strong>not</strong> access, upload, or transmit the content of your files (videos, audio, images).</li><li>We do <strong>not</strong> use any third-party analytics, crash reporting, or advertising SDKs.</li><li>We do <strong>not</strong> track your usage behavior, browsing history, or location.</li></ul><h3>Information Stored Locally on Your Device</h3><p>The following data is stored locally within the App's sandbox on your Mac and is never transmitted to any server:</p><ul><li><strong>User Preferences</strong>: Language, output directory, conversion settings, UI preferences. Stored in the App's sandboxed UserDefaults.</li><li><strong>Conversion Tasks</strong>: Task history (file names, status, timestamps) stored in a local SwiftData database within the App's sandbox.</li><li><strong>Device Identifier</strong>: A locally generated identifier used solely to generate your invite code. Stored in the macOS Keychain.</li><li><strong>Entitlement Status</strong>: Your subscription tier (Free, Pro, or Ultimate) cached locally in the Keychain for offline access.</li><li><strong>Initial Quota</strong>: First-time usage quota stored in the Keychain.</li></ul><h3>Information Synced via Apple CloudKit</h3><p>If you are signed in to iCloud on your Mac, the following data is synced through Apple's CloudKit service:</p><ul><li><strong>Weekly Conversion Quota</strong>: The number of remaining conversions for the current week (video, audio, image counts). Used to enforce free-tier limits and sync across your devices.</li><li><strong>Bonus Conversions</strong>: Additional conversion credits earned through invitations or sharing.</li><li><strong>Invite Code Records</strong>: Your invite code, usage count, and the iCloud user IDs of users who redeemed your code. Used to verify invitations and distribute rewards.</li><li><strong>Share-to-Unlock Count</strong>: The number of times you have shared the App this week. Used to enforce the weekly sharing limit.</li><li><strong>Server Timestamps</strong>: Used to determine the current calendar week for quota resets. This prevents circumvention by local clock manipulation.</li></ul><p>All CloudKit data is stored in Apple's infrastructure, governed by <a href='https://www.apple.com/privacy/' target='_blank'>Apple's Privacy Policy</a>. We access this data solely through Apple's CloudKit API and do not operate any independent servers.</p><h3>In-App Purchases</h3><p>Subscription and purchase information is processed entirely by Apple through StoreKit 2. We do not receive or store your payment details, Apple ID, or financial information. We only receive a confirmation of your entitlement tier (Free, Pro, or Ultimate).</p>" },
-                    { h: "How We Use Information", p: "<table><thead><tr><th>Data</th><th>Purpose</th></tr></thead><tbody><tr><td>Local preferences</td><td>Restore your settings between sessions</td></tr><tr><td>Conversion task history</td><td>Display task status and enable retry</td></tr><tr><td>Device identifier</td><td>Generate a unique invite code</td></tr><tr><td>Weekly quota (CloudKit)</td><td>Enforce free-tier conversion limits</td></tr><tr><td>Invite records (CloudKit)</td><td>Verify invite codes and distribute rewards</td></tr><tr><td>Share count (CloudKit)</td><td>Enforce weekly sharing limits</td></tr><tr><td>Server timestamps (CloudKit)</td><td>Determine calendar week for quota resets</td></tr><tr><td>Entitlement status</td><td>Determine which features are available</td></tr></tbody></table>" },
-                    { h: "Data Sharing", p: "<p>We do <strong>not</strong> share, sell, rent, or disclose your data to any third parties.</p><p>The only external service we interact with is Apple's CloudKit, which is used solely for the purposes described above. No data is sent to any non-Apple server.</p>" },
-                    { h: "Data Retention", p: "<ul><li><strong>Local data</strong> (preferences, task history, Keychain items) persists on your device until you delete the App or manually clear it.</li><li><strong>CloudKit data</strong> (quotas, invite records) is retained in your iCloud account. You can delete your iCloud data by signing out of iCloud or contacting us.</li><li><strong>Conversion output files</strong> are saved to the directory you specify. We do not manage or delete your output files.</li></ul>" },
-                    { h: "Data Security", p: "<ul><li><strong>Local storage</strong>: Sensitive data (entitlement status, device identifier, quota) is stored in the macOS Keychain, which is encrypted by the operating system.</li><li><strong>Network communication</strong>: All CloudKit communication uses HTTPS encryption provided by Apple.</li><li><strong>App Sandbox</strong>: FormatRocket runs in the macOS App Sandbox, restricting file access to user-authorized locations only.</li><li><strong>No remote servers</strong>: We do not operate any servers. All server-side logic is handled by Apple's CloudKit infrastructure.</li></ul>" },
-                    { h: "Children's Privacy", p: "<p>FormatRocket is not directed at children under 13. We do not knowingly collect information from children. Since we do not collect personal information from any user, this is inherently satisfied.</p>" },
-                    { h: "Your Rights", p: "<p>Since we do not collect personal information on our own servers, there is minimal data to manage. However:</p><ul><li><strong>Local data</strong>: You can delete all local data by removing the App from your Mac.</li><li><strong>Keychain data</strong>: Removed when the App is deleted, or you can manually remove FormatRocket entries via the Keychain Access app.</li><li><strong>CloudKit data</strong>: Synced to your iCloud account. You can request deletion by contacting us at the email below.</li><li><strong>Purchase history</strong>: Managed by Apple. See <a href='https://support.apple.com/manage-subscriptions' target='_blank'>Apple's support page</a> to manage subscriptions.</li></ul>" },
-                    { h: "Changes to This Policy", p: "<p>We may update this Privacy Policy from time to time. Changes will be posted within the App and on our website. Continued use of the App after changes constitutes acceptance of the updated policy.</p>" },
-                    { h: "Open Source Components", p: "<p>FormatRocket includes the following open-source libraries, used solely for local media processing. None of these libraries collect or transmit any data:</p><table><thead><tr><th>Library</th><th>License</th><th>Purpose</th></tr></thead><tbody><tr><td>FFmpeg 7.1.1</td><td>LGPL 2.1+</td><td>Media encoding/decoding</td></tr><tr><td>libvpx 1.15.2</td><td>BSD 3-Clause</td><td>VP8/VP9 video codec</td></tr><tr><td>libaom 3.13.1</td><td>BSD 2-Clause</td><td>AV1 video codec</td></tr><tr><td>LAME 3.100</td><td>LGPL 2.0</td><td>MP3 encoder</td></tr><tr><td>libvorbis 1.3.7</td><td>BSD 3-Clause</td><td>Ogg Vorbis audio codec</td></tr><tr><td>libopus 1.5.2</td><td>BSD 3-Clause</td><td>Opus audio codec</td></tr><tr><td>libogg 1.3.5</td><td>BSD 3-Clause</td><td>Ogg container format</td></tr><tr><td>libwebp 1.5.0</td><td>BSD 3-Clause</td><td>WebP image codec</td></tr><tr><td>XZ Utils 5.6.4</td><td>Public Domain</td><td>LZMA compression</td></tr><tr><td>VMAF 3.0.0</td><td>BSD 2-Clause</td><td>Video quality assessment</td></tr></tbody></table>" }
-                ]
+    "en": {
+        "backText": "Back to App",
+        "title": "Privacy Policy",
+        "date": "Effective Date: March 25, 2026 | Last Updated: March 25, 2026",
+        "intro": "Moring Labs (\"we\", \"us\", \"our\") built FormatRocket as a commercial application. This Privacy Policy explains how we handle your information when you use FormatRocket (\"the App\").",
+        "contactTitle": "Contact Us",
+        "contactText": "If you have any questions about this Privacy Policy, please contact us at:",
+        "websiteText": "Website:",
+        "sections": [
+            {
+                "h": "Summary",
+                "p": "<ul><li>All file conversions are performed locally on your Mac. Your files are never uploaded to any server.</li><li>We do not collect personal identifiers such as your name, email address, or phone number.</li><li>We do not integrate any third-party analytics, advertising, or tracking SDKs.</li><li>We use Apple CloudKit to sync your usage quota and invite records, and our own server to verify purchases and quotas.</li></ul>"
             },
-            "zh-CN": {
-                backText: "返回应用",
-                title: "隐私政策",
-                date: "生效日期：2026年3月18日 | 最后更新：2026年3月18日",
-                intro: "Moring Labs（“我们”）开发了 FormatRocket 作为一款商业应用程序。本隐私政策解释了当您使用 FormatRocket（“本应用”）时，我们如何处理信息。",
-                contactTitle: "联系方式",
-                contactText: "如有疑问，请联系：",
-                websiteText: "官方网站：",
-                sections: [
-                    { h: "摘要", p: "<ul><li>所有文件转换均在您的 Mac 本地进行。我们绝不会上传您的文件。</li><li>我们使用 Apple 的 CloudKit 同步使用额度和邀请码 — 不存在任何第三方服务器。</li><li>我们不收集个人信息、分析数据或跟踪数据。</li><li>我们不使用任何用于分析、广告或跟踪的第三方 SDK。</li></ul>" },
-                    { h: "我们收集的信息", p: "<h3>我们【不】收集的信息</h3><ul><li>我们<strong>不</strong>收集您的姓名、电子邮件地址、电话号码或任何个人联系信息。</li><li>我们<strong>不</strong>访问、上传或传输您的文件内容（视频、音频、图片）。</li><li>我们<strong>不</strong>使用任何第三方分析、崩溃报告或广告 SDK。</li><li>我们<strong>不</strong>跟踪您的使用行为、浏览历史或位置。</li></ul><h3>本地存储在您设备上的信息</h3><p>以下数据存储在您 Mac 上本应用的沙盒本地中，绝不会传输到任何服务器：</p><ul><li><strong>用户偏好设置</strong>：语言、输出目录、转换设置、UI 偏好。存储在应用沙盒内的 UserDefaults 中。</li><li><strong>转换任务</strong>：任务历史记录（文件名、状态、时间戳）存储在应用沙盒内的本地 SwiftData 数据库中。</li><li><strong>设备标识符</strong>：本地生成的标识符，仅用于生成您的邀请码。存储在 macOS 钥匙串 (Keychain) 中。</li><li><strong>权益状态</strong>：您的订阅层级（免费版、专业版或终极版）缓存在本地钥匙串中，以供离线访问。</li><li><strong>初始额度</strong>：首次使用的额度存储在钥匙串中。</li></ul><h3>通过 Apple CloudKit 同步的信息</h3><p>如果您在 Mac 上登录了 iCloud，以下数据将通过 Apple 的 CloudKit 服务进行同步：</p><ul><li><strong>每周转换额度</strong>：当前自然周剩余的转换次数。用于执行免费层级的限制并跨设备同步。</li><li><strong>奖励转换次数</strong>：通过邀请或分享获得的额外转换额度。</li><li><strong>邀请码记录</strong>：您的邀请码、使用次数以及兑换您邀请码的用户的 iCloud 用户 ID。用于验证邀请并分发奖励。</li><li><strong>分享解锁次数</strong>：您本周分享该应用程序的次数。用于执行每周分享限制。</li><li><strong>服务器时间戳</strong>：用于确定重置额度的当前自然周。防止通过修改本地时钟来绕过限制。</li></ul><p>所有 CloudKit 数据均存储在 Apple 的基础设施中，受 <a href='https://www.apple.com/legal/privacy/szh/' target='_blank'>Apple 隐私政策</a>的约束。我们仅通过 Apple 的 CloudKit API 访问这些数据，并不运营任何独立的服务器。</p><h3>应用内购买</h3><p>订阅和购买信息完全由 Apple 通过 StoreKit 2 处理。我们不接收或存储您的付款详细信息、Apple ID 或财务信息。我们仅接收您的权益层级确认。</p>" },
-                    { h: "我们如何使用信息", p: "<table><thead><tr><th>数据</th><th>目的</th></tr></thead><tbody><tr><td>本地偏好设置</td><td>在会话之间恢复您的设置</td></tr><tr><td>转换任务历史</td><td>显示任务状态并允许重试</td></tr><tr><td>设备标识符</td><td>生成唯一的邀请码</td></tr><tr><td>每周额度 (CloudKit)</td><td>执行免费层级的转换限制</td></tr><tr><td>邀请记录 (CloudKit)</td><td>验证邀请码并分发奖励</td></tr><tr><td>分享次数 (CloudKit)</td><td>执行每周分享限制</td></tr><tr><td>服务器时间戳 (CloudKit)</td><td>确定额度重置的自然周</td></tr><tr><td>权益状态</td><td>确定您可以使用的功能</td></tr></tbody></table>" },
-                    { h: "数据共享", p: "<p>我们<strong>不</strong>向任何第三方共享、出售、出租或披露您的数据。</p><p>我们交互的唯一外部服务是 Apple 的 CloudKit，仅用于上述目的。不会将任何数据发送到非 Apple 服务器。</p>" },
-                    { h: "数据保留", p: "<ul><li><strong>本地数据</strong>（首选项、任务历史、钥匙串项目）将保留在您的设备上，直到您删除本应用或手动清除它。</li><li><strong>CloudKit 数据</strong>（额度、邀请记录）保留在您的 iCloud 帐户中。您可以通过注销 iCloud 或联系我们来删除您的 iCloud 数据。</li><li><strong>转换输出文件</strong>保存在您指定的目录中。我们不管理或删除您的输出文件。</li></ul>" },
-                    { h: "数据安全", p: "<ul><li><strong>本地存储</strong>：敏感数据（权益状态、设备标识符、配额）存储在 macOS 钥匙串中，由操作系统进行加密。</li><li><strong>网络通信</strong>：所有 CloudKit 通信均使用 Apple 提供的 HTTPS 加密。</li><li><strong>应用沙盒</strong>：FormatRocket 运行在 macOS 应用沙盒中，仅将文件访问权限限制在用户授权的位置。</li><li><strong>无远程服务器</strong>：我们不运营任何服务器。所有服务器端逻辑均由 Apple 的 CloudKit 基础设施处理。</li></ul>" },
-                    { h: "儿童隐私", p: "<p>FormatRocket 不面向 13 岁以下的儿童。我们不会有意收集儿童的信息。由于我们不收集任何用户的个人信息，因此天然满足这一要求。</p>" },
-                    { h: "您的权利", p: "<p>由于我们不在自己的服务器上收集个人信息，因此几乎没有需要管理的数据。然而：</p><ul><li><strong>本地数据</strong>：您可以通过从 Mac 中移除本应用来删除所有本地数据。</li><li><strong>钥匙串数据</strong>：在删除应用时一并移除，或者您可以通过“钥匙串访问”应用手动移除 FormatRocket 条目。</li><li><strong>CloudKit 数据</strong>：同步到您的 iCloud 帐户。您可以通过以下电子邮件联系我们请求删除。</li><li><strong>购买历史记录</strong>：由 Apple 管理。请参阅 <a href='https://support.apple.com/zh-cn/HT202039' target='_blank'>Apple 支持页面</a>以管理订阅。</li></ul>" },
-                    { h: "本政策的变更", p: "<p>我们可能会不时更新本隐私政策。更改将在应用内和我们的网站上发布。更改后继续使用本应用即构成接受更新后的政策。</p>" },
-                    { h: "开源组件", p: "<p>FormatRocket 包含以下开源库，仅用于本地媒体处理。这些库均不收集或传输任何数据：</p><table><thead><tr><th>库名称</th><th>许可证</th><th>用途</th></tr></thead><tbody><tr><td>FFmpeg 7.1.1</td><td>LGPL 2.1+</td><td>媒体编码/解码</td></tr><tr><td>libvpx 1.15.2</td><td>BSD 3-Clause</td><td>VP8/VP9 视频编解码器</td></tr><tr><td>libaom 3.13.1</td><td>BSD 2-Clause</td><td>AV1 视频编解码器</td></tr><tr><td>LAME 3.100</td><td>LGPL 2.0</td><td>MP3 编码器</td></tr><tr><td>libvorbis 1.3.7</td><td>BSD 3-Clause</td><td>Ogg Vorbis 音频编解码器</td></tr><tr><td>libopus 1.5.2</td><td>BSD 3-Clause</td><td>Opus 音频编解码器</td></tr><tr><td>libogg 1.3.5</td><td>BSD 3-Clause</td><td>Ogg 容器格式</td></tr><tr><td>libwebp 1.5.0</td><td>BSD 3-Clause</td><td>WebP 图像编解码器</td></tr><tr><td>XZ Utils 5.6.4</td><td>Public Domain</td><td>LZMA 压缩</td></tr><tr><td>VMAF 3.0.0</td><td>BSD 2-Clause</td><td>视频质量评估</td></tr></tbody></table>" }
-                ]
+            {
+                "h": "Data Stored Locally",
+                "p": "<p>The following data is stored solely on your device and is never transmitted to any server:</p><ul><li><strong>User Preferences</strong>: Settings such as language, output directory, conversion parameters, and UI themes are saved in UserDefaults within the App sandbox.</li><li><strong>Conversion Task Records</strong>: Task history (file names, status, timestamps, and parameters) is stored in a local SwiftData database.</li><li><strong>Keychain Storage</strong>: Sensitive data is encrypted and securely stored using the macOS Keychain. This includes: authentication tokens (JWT), entitlement tier cache (with HMAC signatures to prevent tampering), device identifiers (UUID), initial quota claim status, and invite code redemption records.</li></ul>"
             },
-            "zh-TW": {
-                backText: "返回應用",
-                title: "隱私權政策",
-                date: "生效日期：2026年3月18日 | 最後更新：2026年3月18日",
-                intro: "Moring Labs（「我們」）開發了 FormatRocket 作為一款商業應用程式。本隱私權政策解釋了當您使用 FormatRocket（「本應用」）時，我們如何處理資訊。",
-                contactTitle: "聯絡方式",
-                contactText: "如有疑問，請聯絡：",
-                websiteText: "官方網站：",
-                sections: [
-                    { h: "摘要", p: "<ul><li>所有檔案轉換均在您的 Mac 本地進行。我們絕不會上傳您的檔案。</li><li>我們使用 Apple 的 CloudKit 同步使用額度和邀請碼 — 不存在任何第三方伺服器。</li><li>我們不收集個人資訊、分析數據或追蹤數據。</li><li>我們不使用任何用於分析、廣告或追蹤的第三方 SDK。</li></ul>" },
-                    { h: "我們收集的資訊", p: "<h3>我們【不】收集的資訊</h3><ul><li>我們<strong>不</strong>收集您的姓名、電子郵件地址、電話號碼或任何個人聯絡資訊。</li><li>我們<strong>不</strong>存取、上傳或傳輸您的檔案內容（影片、音訊、圖片）。</li><li>我們<strong>不</strong>使用任何第三方分析、崩潰報告或廣告 SDK。</li><li>我們<strong>不</strong>追蹤您的使用行為、瀏覽歷史或位置。</li></ul><h3>本地儲存在您設備上的資訊</h3><p>以下數據儲存在您 Mac 上本應用的沙盒本地中，絕不會傳輸到任何伺服器：</p><ul><li><strong>使用者偏好設定</strong>：語言、輸出目錄、轉換設定、UI 偏好。儲存在應用沙盒內的 UserDefaults 中。</li><li><strong>轉換任務</strong>：任務歷史記錄（檔案名、狀態、時間戳）儲存在應用沙盒內的本地 SwiftData 資料庫中。</li><li><strong>設備標識符</strong>：本地生成的標識符，僅用於生成您的邀請碼。儲存在 macOS 鑰匙圈 (Keychain) 中。</li><li><strong>權益狀態</strong>：您的訂閱層級（免費版、專業版或終極版）緩存在本地鑰匙圈中，以供離線存取。</li><li><strong>初始額度</strong>：首次使用的額度儲存在鑰匙圈中。</li></ul><h3>透過 Apple CloudKit 同步的資訊</h3><p>如果您在 Mac 上登入了 iCloud，以下數據將透過 Apple 的 CloudKit 服務進行同步：</p><ul><li><strong>每週轉換額度</strong>：目前自然週剩餘的轉換次數。用於執行免費層級的限制並跨設備同步。</li><li><strong>獎勵轉換次數</strong>：透過邀請或分享獲得的額外轉換額度。</li><li><strong>邀請碼記錄</strong>：您的邀請碼、使用次數以及兌換您邀請碼的使用者的 iCloud 使用者 ID。用於驗證邀請並分發獎勵。</li><li><strong>分享解鎖次數</strong>：您本週分享該應用程式的次數。用於執行每週分享限制。</li><li><strong>伺服器時間戳</strong>：用於確定重置額度的目前自然週。防止透過修改本地時鐘來繞過限制。</li></ul><p>所有 CloudKit 數據均儲存在 Apple 的基礎設施中，受 <a href='https://www.apple.com/legal/privacy/tzh/' target='_blank'>Apple 隱私權政策</a>的約束。我們僅透過 Apple 的 CloudKit API 存取這些數據，並不營運任何獨立的伺服器。</p><h3>應用內購買</h3><p>訂閱和購買資訊完全由 Apple 透過 StoreKit 2 處理。我們不接收或儲存您的付款詳細資訊、Apple ID 或財務資訊。我們僅接收您的權益層級確認。</p>" },
-                    { h: "我們如何使用資訊", p: "<table><thead><tr><th>數據</th><th>目的</th></tr></thead><tbody><tr><td>本地偏好設定</td><td>在會話之間恢復您的設定</td></tr><tr><td>轉換任務歷史</td><td>顯示任務狀態並允許重試</td></tr><tr><td>設備標識符</td><td>生成唯一的邀請碼</td></tr><tr><td>每週額度 (CloudKit)</td><td>執行免費層級的轉換限制</td></tr><tr><td>邀請記錄 (CloudKit)</td><td>驗證邀請碼並分發獎勵</td></tr><tr><td>分享次數 (CloudKit)</td><td>執行每週分享限制</td></tr><tr><td>伺服器時間戳 (CloudKit)</td><td>確定額度重置的自然週</td></tr><tr><td>權益狀態</td><td>確定您可以使用的功能</td></tr></tbody></table>" },
-                    { h: "數據共享", p: "<p>我們<strong>不</strong>向任何第三方共享、出售、出租或披露您的數據。</p><p>我們互動的唯一外部服務是 Apple 的 CloudKit，僅用於上述目的。不會將任何數據發送到非 Apple 伺服器。</p>" },
-                    { h: "數據保留", p: "<ul><li><strong>本地數據</strong>（偏好設定、任務歷史、鑰匙圈項目）將保留在您的設備上，直到您刪除本應用或手動清除它。</li><li><strong>CloudKit 數據</strong>（額度、邀請記錄）保留在您的 iCloud 帳戶中。您可以透過登出 iCloud 或聯絡我們來刪除您的 iCloud 數據。</li><li><strong>轉換輸出檔案</strong>保存在您指定的目錄中。我們不管理或刪除您的輸出檔案。</li></ul>" },
-                    { h: "數據安全", p: "<ul><li><strong>本地儲存</strong>：敏感數據（權益狀態、設備標識符、配額）儲存在 macOS 鑰匙圈中，由作業系統進行加密。</li><li><strong>網路通訊</strong>：所有 CloudKit 通訊均使用 Apple 提供的 HTTPS 加密。</li><li><strong>應用沙盒</strong>：FormatRocket 運行在 macOS 應用沙盒中，僅將檔案存取權限限制在使用者授權的位置。</li><li><strong>無遠端伺服器</strong>：我們不營運任何伺服器。所有伺服器端邏輯均由 Apple 的 CloudKit 基礎設施處理。</li></ul>" },
-                    { h: "兒童隱私", p: "<p>FormatRocket 不面向 13 歲以下的兒童。我們不會有意收集兒童的資訊。由於我們不收集任何使用者的個人資訊，因此天然滿足此要求。</p>" },
-                    { h: "您的權利", p: "<p>由於我們不在自己的伺服器上收集個人資訊，因此幾乎沒有需要管理的數據。然而：</p><ul><li><strong>本地數據</strong>：您可以透過從 Mac 中移除本應用來刪除所有本地數據。</li><li><strong>鑰匙圈數據</strong>：在刪除應用時一併移除，或者您可以透過「鑰匙圈存取」應用手動移除 FormatRocket 項目。</li><li><strong>CloudKit 數據</strong>：同步到您的 iCloud 帳戶。您可以透過以下電子郵件聯絡我們請求刪除。</li><li><strong>購買歷史記錄</strong>：由 Apple 管理。請參閱 <a href='https://support.apple.com/zh-tw/HT202039' target='_blank'>Apple 支援頁面</a>以管理訂閱。</li></ul>" },
-                    { h: "本政策的變更", p: "<p>我們可能會不時更新本隱私權政策。更改將在應用內和我們的網站上發布。更改後繼續使用本應用即構成接受更新後的政策。</p>" },
-                    { h: "開源組件", p: "<p>FormatRocket 包含以下開源庫，僅用於本地媒體處理。這些庫均不收集或傳輸任何數據：</p><table><thead><tr><th>庫名稱</th><th>授權</th><th>用途</th></tr></thead><tbody><tr><td>FFmpeg 7.1.1</td><td>LGPL 2.1+</td><td>媒體編碼/解碼</td></tr><tr><td>libvpx 1.15.2</td><td>BSD 3-Clause</td><td>VP8/VP9 影片編解碼器</td></tr><tr><td>libaom 3.13.1</td><td>BSD 2-Clause</td><td>AV1 影片編解碼器</td></tr><tr><td>LAME 3.100</td><td>LGPL 2.0</td><td>MP3 編碼器</td></tr><tr><td>libvorbis 1.3.7</td><td>BSD 3-Clause</td><td>Ogg Vorbis 音訊編解碼器</td></tr><tr><td>libopus 1.5.2</td><td>BSD 3-Clause</td><td>Opus 音訊編解碼器</td></tr><tr><td>libogg 1.3.5</td><td>BSD 3-Clause</td><td>Ogg 容器格式</td></tr><tr><td>libwebp 1.5.0</td><td>BSD 3-Clause</td><td>WebP 圖像編解碼器</td></tr><tr><td>XZ Utils 5.6.4</td><td>Public Domain</td><td>LZMA 壓縮</td></tr><tr><td>VMAF 3.0.0</td><td>BSD 2-Clause</td><td>影片品質評估</td></tr></tbody></table>" }
-                ]
+            {
+                "h": "Data Transmitted to Our Server",
+                "p": "<p>The App communicates with <code>api.moringlabs.com</code> via HTTPS for purchase verification and quota management. All requests include an HMAC-SHA256 signature to prevent forgery.</p><ul><li><strong>Purchase Verification</strong>: We submit the StoreKit transaction ID, a hashed device identifier, and your iCloud User ID to verify the legitimacy of your App Store purchase on our server and issue an authentication token.</li><li><strong>Token Refresh</strong>: We submit the hashed device identifier and iCloud User ID to refresh an expired authentication token.</li><li><strong>Quota Deduction</strong>: We submit the conversion type (video/audio/image) and amount to deduct from a free user's weekly conversion quota on the server.</li><li><strong>Invite Codes</strong>: We submit or receive invite codes to generate, register, and redeem invite rewards.</li><li><strong>Device Identifier Note</strong>: The device identifier is generated via a SHA256 hash of your Mac's hardware serial number. This is an irreversible, one-way hash that cannot be traced back to the original hardware information.</li></ul>"
             },
-            "ja": {
-                backText: "アプリに戻る",
-                title: "プライバシーポリシー",
-                date: "発効日：2026年3月18日 | 最終更新日：2026年3月18日",
-                intro: "Moring Labs（「当社」）は、商用アプリケーションとしてFormatRocketを構築しました。本プライバシーポリシーは、お客様がFormatRocket（「本アプリ」）を使用する際の情報の取り扱いについて説明します。",
-                contactTitle: "お問い合わせ",
-                contactText: "ご不明な点がございましたら、こちらまでご連絡ください：",
-                websiteText: "ウェブサイト：",
-                sections: [
-                    { h: "概要", p: "<ul><li>すべてのファイル変換はMac上でローカルに行われます。ファイルをアップロードすることは決してありません。</li><li>使用枠と招待コードの同期にはAppleのCloudKitを使用します。サードパーティのサーバーはありません。</li><li>個人情報、分析データ、追跡データは収集しません。</li><li>分析、広告、追跡のためのサードパーティ製SDKは使用しません。</li></ul>" },
-                    { h: "収集する情報", p: "<h3>収集【しない】情報</h3><ul><li>氏名、メールアドレス、電話番号などの個人連絡先情報は<strong>収集しません</strong>。</li><li>ファイル（動画、音声、画像）のコンテンツへのアクセス、アップロード、送信は<strong>行いません</strong>。</li><li>サードパーティの分析、クラッシュレポート、広告SDKは<strong>使用しません</strong>。</li><li>使用状況、閲覧履歴、位置情報の追跡は<strong>行いません</strong>。</li></ul><h3>デバイスにローカル保存される情報</h3><p>以下のデータはMac上の本アプリのサンドボックス内にローカル保存され、サーバーには送信されません：</p><ul><li><strong>ユーザー設定</strong>：言語、出力先、変換設定、UI設定。UserDefaultsに保存されます。</li><li><strong>変換タスク</strong>：タスク履歴（ファイル名、状態、タイムスタンプ）はローカルのSwiftDataに保存されます。</li><li><strong>デバイス識別子</strong>：招待コードを生成するためだけに使用される識別子。キーチェーンに保存されます。</li><li><strong>権限ステータス</strong>：サブスクリプション層（Free, Pro, Ultimate）はオフラインアクセスのためキーチェーンに保存されます。</li><li><strong>初期使用枠</strong>：初回使用枠はキーチェーンに保存されます。</li></ul><h3>Apple CloudKit経由で同期される情報</h3><p>MacでiCloudにサインインしている場合、以下のデータがAppleのCloudKitサービスを通じて同期されます：</p><ul><li><strong>週間変換枠</strong>：今週の残り変換回数。無料層の制限適用とデバイス間の同期に使用されます。</li><li><strong>ボーナス変換</strong>：招待や共有で獲得した追加枠。</li><li><strong>招待コード記録</strong>：招待コード、使用回数、招待されたユーザーのiCloud ID。招待の検証と報酬の配布に使用されます。</li><li><strong>シェアロック解除回数</strong>：今週アプリを共有した回数。週間共有制限の適用に使用されます。</li><li><strong>サーバータイムスタンプ</strong>：枠リセット用のカレンダー週の決定に使用されます。これにより時計の操作による不正を防ぎます。</li></ul><p>すべてのCloudKitデータはAppleのインフラストラクチャに保存され、<a href='https://www.apple.com/jp/privacy/' target='_blank'>Appleのプライバシーポリシー</a>に準拠します。当社はAppleのCloudKit APIを通じてのみこのデータにアクセスし、独自のサーバーは運営していません。</p><h3>アプリ内課金</h3><p>サブスクリプションおよび購入情報は、StoreKit 2を通じてAppleによって完全に処理されます。当社は支払い情報、Apple ID、または財務情報を受け取ったり保存したりすることはありません。権限層の確認のみを受け取ります。</p>" },
-                    { h: "情報の利用方法", p: "<table><thead><tr><th>データ</th><th>目的</th></tr></thead><tbody><tr><td>ローカル設定</td><td>セッション間の設定の復元</td></tr><tr><td>変換タスク履歴</td><td>タスクステータスの表示と再試行の有効化</td></tr><tr><td>デバイス識別子</td><td>一意の招待コードの生成</td></tr><tr><td>週間枠 (CloudKit)</td><td>無料層の変換制限の適用</td></tr><tr><td>招待記録 (CloudKit)</td><td>招待コードの検証と報酬の配布</td></tr><tr><td>共有回数 (CloudKit)</td><td>週間共有制限の適用</td></tr><tr><td>サーバータイムスタンプ</td><td>枠リセットのカレンダー週の決定</td></tr><tr><td>権限ステータス</td><td>利用可能な機能の判定</td></tr></tbody></table>" },
-                    { h: "データの共有", p: "<p>当社は、お客様のデータを第三者に共有、販売、貸与、開示することは<strong>ありません</strong>。</p><p>当社がやり取りする唯一の外部サービスはAppleのCloudKitであり、上記の目的のみに使用されます。Apple以外のサーバーにデータが送信されることはありません。</p>" },
-                    { h: "データの保持", p: "<ul><li><strong>ローカルデータ</strong>（設定、タスク履歴、キーチェーン項目）は、アプリを削除するか手動でクリアするまでデバイスに保持されます。</li><li><strong>CloudKitデータ</strong>（枠、招待記録）はiCloudアカウントに保持されます。iCloudからサインアウトするか、当社に連絡することで削除できます。</li><li><strong>変換出力ファイル</strong>はお客様が指定したディレクトリに保存されます。当社が管理または削除することはありません。</li></ul>" },
-                    { h: "データセキュリティ", p: "<ul><li><strong>ローカルストレージ</strong>：機密データ（権限ステータス、デバイス識別子、枠）は、OSによって暗号化されるmacOSキーチェーンに保存されます。</li><li><strong>ネットワーク通信</strong>：すべてのCloudKit通信はAppleが提供するHTTPS暗号化を使用します。</li><li><strong>アプリサンドボックス</strong>：FormatRocketはmacOSアプリサンドボックス内で実行され、ファイルアクセスはユーザーが許可した場所に制限されます。</li><li><strong>リモートサーバーなし</strong>：当社はサーバーを運営していません。すべてのサーバー側ロジックはAppleのCloudKitインフラストラクチャによって処理されます。</li></ul>" },
-                    { h: "子供のプライバシー", p: "<p>FormatRocketは13歳未満の子供を対象としていません。意図的に情報を収集することはありません。すべてのユーザーから個人情報を収集しないため、この条件は本質的に満たされています。</p>" },
-                    { h: "お客様の権利", p: "<p>当社は独自のサーバーで個人情報を収集しないため、管理するデータは最小限です。ただし：</p><ul><li><strong>ローカルデータ</strong>：Macからアプリを削除することで、すべてのローカルデータを削除できます。</li><li><strong>キーチェーンデータ</strong>：アプリ削除時に削除されるか、「キーチェーンアクセス」アプリから手動で削除できます。</li><li><strong>CloudKitデータ</strong>：iCloudアカウントに同期されます。下記のメールで削除をリクエストできます。</li><li><strong>購入履歴</strong>：Appleによって管理されます。サブスクリプションの管理については<a href='https://support.apple.com/ja-jp/HT202039' target='_blank'>Appleのサポートページ</a>をご覧ください。</li></ul>" },
-                    { h: "本ポリシーの変更", p: "<p>当社は本プライバシーポリシーを随時更新する場合があります。変更はアプリ内および当社のウェブサイトに掲載されます。変更後もアプリの使用を継続することで、更新されたポリシーに同意したものとみなされます。</p>" },
-                    { h: "オープンソースコンポーネント", p: "<p>FormatRocketには、ローカルメディア処理のみに使用される以下のオープンソースライブラリが含まれています。これらのライブラリがデータを収集または送信することはありません：</p><table><thead><tr><th>ライブラリ</th><th>ライセンス</th><th>目的</th></tr></thead><tbody><tr><td>FFmpeg 7.1.1</td><td>LGPL 2.1+</td><td>メディアのエンコード/デコード</td></tr><tr><td>libvpx 1.15.2</td><td>BSD 3-Clause</td><td>VP8/VP9 ビデオコーデック</td></tr><tr><td>libaom 3.13.1</td><td>BSD 2-Clause</td><td>AV1 ビデオコーデック</td></tr><tr><td>LAME 3.100</td><td>LGPL 2.0</td><td>MP3 エンコーダー</td></tr><tr><td>libvorbis 1.3.7</td><td>BSD 3-Clause</td><td>Ogg Vorbis オーディオコーデック</td></tr><tr><td>libopus 1.5.2</td><td>BSD 3-Clause</td><td>Opus オーディオコーデック</td></tr><tr><td>libogg 1.3.5</td><td>BSD 3-Clause</td><td>Ogg コンテナ形式</td></tr><tr><td>libwebp 1.5.0</td><td>BSD 3-Clause</td><td>WebP 画像コーデック</td></tr><tr><td>XZ Utils 5.6.4</td><td>Public Domain</td><td>LZMA 圧縮</td></tr><tr><td>VMAF 3.0.0</td><td>BSD 2-Clause</td><td>動画品質評価</td></tr></tbody></table>" }
-                ]
+            {
+                "h": "Data Synced via Apple CloudKit",
+                "p": "<p>When you are signed into iCloud, the following data is synced through the Apple CloudKit service:</p><ul><li><strong>Weekly Conversion Quota</strong>: The remaining number of video, audio, and image conversions for the current week, as well as bonus quotas.</li><li><strong>Invite Code Records</strong>: Your invite code, its usage count, and the iCloud User IDs of the inviter and the invitee.</li><li><strong>Share-to-Unlock Records</strong>: The number of times you've shared the app this week and the weekly identifier.</li><li><strong>Purchase Backup Records</strong>: The product ID, activation status, and last verification time, used to back up your purchase status on CloudKit.</li><li><strong>Server Timestamps</strong>: Used to determine the current calendar week for quota resets, preventing limits from being bypassed by changing the local system clock.</li></ul><p>CloudKit data is stored on Apple's infrastructure and is governed by <a href='https://www.apple.com/privacy/' target='_blank'>Apple's Privacy Policy</a>.</p>"
             },
-            "ko": {
-                backText: "앱으로 돌아가기",
-                title: "개인정보 처리방침",
-                date: "시행일: 2026년 3월 18일 | 최종 업데이트: 2026년 3월 18일",
-                intro: "Moring Labs('당사')는 상용 애플리케이션으로 FormatRocket을 개발했습니다. 본 개인정보 처리방침은 귀하가 FormatRocket('앱')을 사용할 때 당사가 정보를 처리하는 방법을 설명합니다.",
-                contactTitle: "문의하기",
-                contactText: "본 방침에 대해 질문이 있으시면 다음으로 연락해 주십시오:",
-                websiteText: "웹사이트:",
-                sections: [
-                    { h: "요약", p: "<ul><li>모든 파일 변환은 Mac에서 로컬로 진행됩니다. 당사는 귀하의 파일을 절대 업로드하지 않습니다.</li><li>당사는 Apple의 CloudKit을 사용하여 사용 할당량과 초대 코드를 동기화하며, 타사 서버는 없습니다.</li><li>당사는 개인정보, 분석 데이터 또는 추적 데이터를 수집하지 않습니다.</li><li>당사는 분석, 광고 또는 추적을 위한 타사 SDK를 사용하지 않습니다.</li></ul>" },
-                    { h: "수집하는 정보", p: "<h3>수집하지 않는 정보</h3><ul><li>당사는 귀하의 이름, 이메일 주소, 전화번호 또는 개인 연락처 정보를 <strong>수집하지 않습니다</strong>.</li><li>당사는 귀하의 파일(비디오, 오디오, 이미지) 콘텐츠에 접근, 업로드 또는 전송하지 <strong>않습니다</strong>.</li><li>당사는 타사 분석, 크래시 보고 또는 광고 SDK를 사용하지 <strong>않습니다</strong>.</li><li>당사는 귀하의 사용 행동, 검색 기록 또는 위치를 추적하지 <strong>않습니다</strong>.</li></ul><h3>기기에 로컬로 저장되는 정보</h3><p>다음 데이터는 Mac의 앱 샌드박스 내에 로컬로 저장되며 어떤 서버로도 전송되지 않습니다:</p><ul><li><strong>사용자 기본 설정</strong>: 언어, 출력 디렉토리, 변환 설정 등. 앱 샌드박스의 UserDefaults에 저장됩니다.</li><li><strong>변환 작업</strong>: 작업 기록(파일 이름, 상태, 타임스탬프). 앱 샌드박스의 로컬 SwiftData에 저장됩니다.</li><li><strong>기기 식별자</strong>: 초대 코드를 생성하기 위해서만 사용되는 로컬 생성 식별자. macOS 키체인에 저장됩니다.</li><li><strong>권한 상태</strong>: 오프라인 액세스를 위해 키체인에 로컬 캐시된 구독 등급.</li><li><strong>초기 할당량</strong>: 키체인에 저장된 첫 사용 할당량.</li></ul><h3>Apple CloudKit을 통해 동기화되는 정보</h3><p>Mac에서 iCloud에 로그인한 경우 다음 데이터가 Apple의 CloudKit 서비스를 통해 동기화됩니다:</p><ul><li><strong>주간 변환 할당량</strong>: 현재 주에 남은 변환 횟수. 무료 등급 제한을 적용하고 기기 간 동기화에 사용됩니다.</li><li><strong>보너스 변환</strong>: 초대 또는 공유를 통해 얻은 추가 변환 크레딧.</li><li><strong>초대 코드 기록</strong>: 초대 코드, 사용 횟수 및 코드를 사용한 사용자의 iCloud ID.</li><li><strong>공유 잠금 해제 횟수</strong>: 이번 주 앱을 공유한 횟수. 주간 공유 제한을 적용하는 데 사용됩니다.</li><li><strong>서버 타임스탬프</strong>: 할당량 재설정을 위한 현재 달력 주를 결정하는 데 사용됩니다.</li></ul><p>모든 CloudKit 데이터는 Apple의 인프라에 저장되며 <a href='https://www.apple.com/kr/privacy/' target='_blank'>Apple의 개인정보 처리방침</a>의 적용을 받습니다. 당사는 Apple의 CloudKit API를 통해서만 이 데이터에 접근하며 독립적인 서버를 운영하지 않습니다.</p><h3>인앱 구매</h3><p>구독 및 구매 정보는 StoreKit 2를 통해 전적으로 Apple에서 처리합니다. 당사는 지불 세부 정보, Apple ID 또는 금융 정보를 수신하거나 저장하지 않습니다.</p>" },
-                    { h: "정보 이용 방법", p: "<table><thead><tr><th>데이터</th><th>목적</th></tr></thead><tbody><tr><td>로컬 설정</td><td>세션 간 설정 복원</td></tr><tr><td>변환 작업 기록</td><td>작업 상태 표시 및 재시도 활성화</td></tr><tr><td>기기 식별자</td><td>고유한 초대 코드 생성</td></tr><tr><td>주간 할당량 (CloudKit)</td><td>무료 등급 변환 제한 적용</td></tr><tr><td>초대 기록 (CloudKit)</td><td>초대 코드 확인 및 보상 배포</td></tr><tr><td>공유 횟수 (CloudKit)</td><td>주간 공유 제한 적용</td></tr><tr><td>서버 타임스탬프 (CloudKit)</td><td>할당량 재설정을 위한 달력 주 결정</td></tr><tr><td>권한 상태</td><td>사용 가능한 기능 결정</td></tr></tbody></table>" },
-                    { h: "데이터 공유", p: "<p>당사는 귀하의 데이터를 제3자에게 공유, 판매, 대여 또는 공개하지 <strong>않습니다</strong>.</p><p>당사가 상호 작용하는 유일한 외부 서비스는 위에서 설명한 목적으로만 사용되는 Apple의 CloudKit입니다. Apple 이외의 서버로 데이터가 전송되지 않습니다.</p>" },
-                    { h: "데이터 보관", p: "<ul><li><strong>로컬 데이터</strong>(설정, 작업 기록, 키체인 항목)는 앱을 삭제하거나 수동으로 지울 때까지 기기에 유지됩니다.</li><li><strong>CloudKit 데이터</strong>(할당량, 초대 기록)는 iCloud 계정에 유지됩니다. iCloud에서 로그아웃하거나 당사에 연락하여 삭제할 수 있습니다.</li><li><strong>변환 출력 파일</strong>은 귀하가 지정한 디렉토리에 저장됩니다. 당사는 출력 파일을 관리하거나 삭제하지 않습니다.</li></ul>" },
-                    { h: "데이터 보안", p: "<ul><li><strong>로컬 저장소</strong>: 민감한 데이터(권한 상태, 기기 식별자, 할당량)는 OS에 의해 암호화되는 macOS 키체인에 저장됩니다.</li><li><strong>네트워크 통신</strong>: 모든 CloudKit 통신은 Apple이 제공하는 HTTPS 암호화를 사용합니다.</li><li><strong>앱 샌드박스</strong>: FormatRocket은 macOS 앱 샌드박스에서 실행되어 파일 액세스를 사용자 승인 위치로만 제한합니다.</li><li><strong>원격 서버 없음</strong>: 당사는 서버를 운영하지 않습니다. 모든 서버 측 로직은 Apple의 CloudKit 인프라에서 처리합니다.</li></ul>" },
-                    { h: "아동의 개인정보", p: "<p>FormatRocket은 13세 미만 아동을 대상으로 하지 않습니다. 당사는 아동의 정보를 고의로 수집하지 않습니다. 어떤 사용자로부터도 개인정보를 수집하지 않으므로 이는 본질적으로 충족됩니다.</p>" },
-                    { h: "사용자의 권리", p: "<p>자체 서버에서 개인정보를 수집하지 않으므로 관리할 데이터가 최소화됩니다. 그러나:</p><ul><li><strong>로컬 데이터</strong>: Mac에서 앱을 제거하여 모든 로컬 데이터를 삭제할 수 있습니다.</li><li><strong>키체인 데이터</strong>: 앱 삭제 시 제거되거나 '키체인 접근' 앱을 통해 수동으로 제거할 수 있습니다.</li><li><strong>CloudKit 데이터</strong>: iCloud 계정에 동기화됩니다. 아래 이메일로 연락하여 삭제를 요청할 수 있습니다.</li><li><strong>구매 내역</strong>: Apple에서 관리합니다. 구독 관리는 <a href='https://support.apple.com/ko-kr/HT202039' target='_blank'>Apple 지원 페이지</a>를 참조하십시오.</li></ul>" },
-                    { h: "본 방침의 변경", p: "<p>당사는 이 개인정보 처리방침을 수시로 업데이트할 수 있습니다. 변경 사항은 앱 내 및 웹사이트에 게시됩니다. 변경 후 앱을 계속 사용하는 것은 업데이트된 방침을 수락하는 것으로 간주됩니다.</p>" },
-                    { h: "오픈소스 구성 요소", p: "<p>FormatRocket에는 로컬 미디어 처리에만 사용되는 다음 오픈소스 라이브러리가 포함되어 있습니다. 이 라이브러리 중 어느 것도 데이터를 수집하거나 전송하지 않습니다:</p><table><thead><tr><th>라이브러리</th><th>라이선스</th><th>목적</th></tr></thead><tbody><tr><td>FFmpeg 7.1.1</td><td>LGPL 2.1+</td><td>미디어 인코딩/디코딩</td></tr><tr><td>libvpx 1.15.2</td><td>BSD 3-Clause</td><td>VP8/VP9 비디오 코덱</td></tr><tr><td>libaom 3.13.1</td><td>BSD 2-Clause</td><td>AV1 비디오 코덱</td></tr><tr><td>LAME 3.100</td><td>LGPL 2.0</td><td>MP3 인코더</td></tr><tr><td>libvorbis 1.3.7</td><td>BSD 3-Clause</td><td>Ogg Vorbis 오디오 코덱</td></tr><tr><td>libopus 1.5.2</td><td>BSD 3-Clause</td><td>Opus 오디오 코덱</td></tr><tr><td>libogg 1.3.5</td><td>BSD 3-Clause</td><td>Ogg 컨테이너 형식</td></tr><tr><td>libwebp 1.5.0</td><td>BSD 3-Clause</td><td>WebP 이미지 코덱</td></tr><tr><td>XZ Utils 5.6.4</td><td>퍼블릭 도메인</td><td>LZMA 압축</td></tr><tr><td>VMAF 3.0.0</td><td>BSD 2-Clause</td><td>비디오 품질 평가</td></tr></tbody></table>" }
-                ]
+            {
+                "h": "In-App Purchases and Subscriptions",
+                "p": "<p>Subscription and purchase information is processed entirely by Apple through StoreKit 2. The App neither receives nor stores payment information, Apple IDs, or financial data. We only retrieve the transaction ID, product identifier, expiration date, and refund status from StoreKit to determine your entitlement tier.</p>"
             },
-            "de": {
-                backText: "Zurück zur App",
-                title: "Datenschutzerklärung",
-                date: "Inkrafttreten: 18. März 2026 | Letzte Aktualisierung: 18. März 2026",
-                intro: "Moring Labs (\"wir\", \"uns\", \"unser\") hat FormatRocket als kommerzielle Anwendung entwickelt. Diese Datenschutzerklärung erklärt, wie wir Informationen verarbeiten, wenn Sie FormatRocket (\"die App\") nutzen.",
-                contactTitle: "Kontakt",
-                contactText: "Bei Fragen zu dieser Datenschutzerklärung kontaktieren Sie bitte:",
-                websiteText: "Webseite:",
-                sections: [
-                    { h: "Zusammenfassung", p: "<ul><li>Alle Dateikonvertierungen erfolgen lokal auf Ihrem Mac. Wir laden Ihre Dateien niemals hoch.</li><li>Wir nutzen Apple CloudKit, um Nutzungsquoten und Einladungscodes zu synchronisieren — keine Server von Drittanbietern.</li><li>Wir sammeln keine persönlichen Daten, Analysedaten oder Tracking-Daten.</li><li>Wir verwenden keine SDKs von Drittanbietern für Analysen, Werbung oder Tracking.</li></ul>" },
-                    { h: "Informationen, die wir sammeln", p: "<h3>Informationen, die wir NICHT sammeln</h3><ul><li>Wir sammeln <strong>keinen</strong> Namen, keine E-Mail-Adresse, Telefonnummer oder sonstige persönliche Kontaktinformationen.</li><li>Wir greifen <strong>nicht</strong> auf den Inhalt Ihrer Dateien zu, laden sie nicht hoch und übertragen sie nicht.</li><li>Wir verwenden <strong>keine</strong> Analyse-, Absturzberichts- oder Werbe-SDKs von Drittanbietern.</li><li>Wir verfolgen <strong>nicht</strong> Ihr Nutzungsverhalten, Ihren Browserverlauf oder Ihren Standort.</li></ul><h3>Lokal auf Ihrem Gerät gespeicherte Informationen</h3><p>Die folgenden Daten werden lokal in der Sandbox der App auf Ihrem Mac gespeichert und niemals an einen Server übertragen:</p><ul><li><strong>Benutzereinstellungen</strong>: Sprache, Ausgabeverzeichnis, Konvertierungseinstellungen.</li><li><strong>Konvertierungsaufgaben</strong>: Aufgabenverlauf, lokal in SwiftData gespeichert.</li><li><strong>Gerätekennung</strong>: Ein lokal generierter Identifier, der nur zur Generierung Ihres Einladungscodes dient. Gespeichert in der macOS Keychain.</li><li><strong>Berechtigungsstatus</strong>: Ihre Abonnementstufe, lokal in der Keychain zwischengespeichert.</li><li><strong>Anfangsquote</strong>: Erste Nutzungsquote in der Keychain gespeichert.</li></ul><h3>Über Apple CloudKit synchronisierte Informationen</h3><p>Wenn Sie auf Ihrem Mac bei iCloud angemeldet sind, werden die folgenden Daten über Apples CloudKit-Dienst synchronisiert:</p><ul><li><strong>Wöchentliche Konvertierungsquote</strong>: Verbleibende Konvertierungen für die aktuelle Woche.</li><li><strong>Bonuskonvertierungen</strong>: Zusätzliche Credits durch Einladungen oder Teilen.</li><li><strong>Einladungscode-Einträge</strong>: Ihr Code, Nutzungshäufigkeit und die iCloud-IDs von Nutzern, die Ihren Code eingelöst haben.</li><li><strong>Share-to-Unlock-Zähler</strong>: Anzahl, wie oft Sie die App diese Woche geteilt haben.</li><li><strong>Server-Zeitstempel</strong>: Bestimmt die aktuelle Kalenderwoche für das Zurücksetzen der Quote.</li></ul><p>Alle CloudKit-Daten werden auf Apples Infrastruktur gespeichert und unterliegen der <a href='https://www.apple.com/de/legal/privacy/' target='_blank'>Apple-Datenschutzerklärung</a>. Wir greifen nur über die API darauf zu.</p><h3>In-App-Käufe</h3><p>Abonnement- und Kaufinformationen werden vollständig von Apple über StoreKit 2 verarbeitet. Wir erhalten oder speichern keine Zahlungsdaten.</p>" },
-                    { h: "Wie wir Informationen verwenden", p: "<table><thead><tr><th>Daten</th><th>Zweck</th></tr></thead><tbody><tr><td>Lokale Einstellungen</td><td>Wiederherstellen Ihrer Einstellungen zwischen Sitzungen</td></tr><tr><td>Konvertierungsaufgabenverlauf</td><td>Anzeige des Status und Ermöglichen von Wiederholungen</td></tr><tr><td>Gerätekennung</td><td>Generierung eines eindeutigen Einladungscodes</td></tr><tr><td>Wöchentliche Quote (CloudKit)</td><td>Durchsetzung der Free-Tier-Limits</td></tr><tr><td>Einladungsdatensätze (CloudKit)</td><td>Überprüfung von Codes und Verteilung von Belohnungen</td></tr><tr><td>Freigabeanzahl (CloudKit)</td><td>Durchsetzung wöchentlicher Freigabelimits</td></tr><tr><td>Server-Zeitstempel (CloudKit)</td><td>Bestimmung der Woche für Quotenrücksetzungen</td></tr><tr><td>Berechtigungsstatus</td><td>Bestimmung der verfügbaren Funktionen</td></tr></tbody></table>" },
-                    { h: "Datenweitergabe", p: "<p>Wir geben Ihre Daten <strong>nicht</strong> an Dritte weiter, verkaufen, vermieten oder offenbaren sie nicht.</p><p>Der einzige externe Dienst ist Apples CloudKit. Es werden keine Daten an Nicht-Apple-Server gesendet.</p>" },
-                    { h: "Datenaufbewahrung", p: "<ul><li><strong>Lokale Daten</strong> (Einstellungen, Aufgabenverlauf) verbleiben auf Ihrem Gerät, bis Sie die App löschen.</li><li><strong>CloudKit-Daten</strong> (Quoten, Einladungen) verbleiben in Ihrem iCloud-Konto.</li><li><strong>Ausgabedateien</strong> werden im von Ihnen angegebenen Verzeichnis gespeichert.</li></ul>" },
-                    { h: "Datensicherheit", p: "<ul><li><strong>Lokaler Speicher</strong>: Sensible Daten werden in der macOS Keychain gespeichert, die vom Betriebssystem verschlüsselt wird.</li><li><strong>Netzwerkkommunikation</strong>: Alle CloudKit-Kommunikationen verwenden von Apple bereitgestellte HTTPS-Verschlüsselung.</li><li><strong>App-Sandbox</strong>: FormatRocket läuft in der macOS-App-Sandbox.</li><li><strong>Keine Remote-Server</strong>: Wir betreiben keine eigenen Server.</li></ul>" },
-                    { h: "Privatsphäre von Kindern", p: "<p>FormatRocket richtet sich nicht an Kinder unter 13 Jahren. Da wir grundsätzlich keine persönlichen Daten sammeln, ist dies naturgemäß erfüllt.</p>" },
-                    { h: "Ihre Rechte", p: "<p>Da wir keine Daten auf unseren Servern sammeln, gibt es minimale Daten zu verwalten:</p><ul><li><strong>Lokale Daten</strong>: Sie können alle lokalen Daten löschen, indem Sie die App von Ihrem Mac entfernen.</li><li><strong>Keychain-Daten</strong>: Werden gelöscht, wenn die App entfernt wird.</li><li><strong>CloudKit-Daten</strong>: Synchronisiert mit Ihrem iCloud-Konto. Sie können die Löschung per E-Mail anfordern.</li><li><strong>Kaufhistorie</strong>: Wird von Apple verwaltet.</li></ul>" },
-                    { h: "Änderungen dieser Richtlinie", p: "<p>Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Änderungen werden innerhalb der App und auf unserer Website veröffentlicht.</p>" },
-                    { h: "Open-Source-Komponenten", p: "<p>FormatRocket enthält die folgenden Open-Source-Bibliotheken, die ausschließlich zur lokalen Medienverarbeitung verwendet werden. Keine dieser Bibliotheken sammelt oder überträgt Daten:</p><table><thead><tr><th>Bibliothek</th><th>Lizenz</th><th>Zweck</th></tr></thead><tbody><tr><td>FFmpeg 7.1.1</td><td>LGPL 2.1+</td><td>Medien-Codierung/Decodierung</td></tr><tr><td>libvpx 1.15.2</td><td>BSD 3-Clause</td><td>VP8/VP9 Video-Codec</td></tr><tr><td>libaom 3.13.1</td><td>BSD 2-Clause</td><td>AV1 Video-Codec</td></tr><tr><td>LAME 3.100</td><td>LGPL 2.0</td><td>MP3-Encoder</td></tr><tr><td>libvorbis 1.3.7</td><td>BSD 3-Clause</td><td>Ogg Vorbis Audio-Codec</td></tr><tr><td>libopus 1.5.2</td><td>BSD 3-Clause</td><td>Opus Audio-Codec</td></tr><tr><td>libogg 1.3.5</td><td>BSD 3-Clause</td><td>Ogg-Container-Format</td></tr><tr><td>libwebp 1.5.0</td><td>BSD 3-Clause</td><td>WebP Bild-Codec</td></tr><tr><td>XZ Utils 5.6.4</td><td>Public Domain</td><td>LZMA-Komprimierung</td></tr><tr><td>VMAF 3.0.0</td><td>BSD 2-Clause</td><td>Video-Qualitätsbewertung</td></tr></tbody></table>" }
-                ]
+            {
+                "h": "How We Use Data",
+                "p": "<table><thead><tr><th>Data</th><th>Purpose</th></tr></thead><tbody><tr><td>Local Preferences</td><td>Restore settings between sessions</td></tr><tr><td>Conversion Task Records</td><td>Display task status and enable retries</td></tr><tr><td>Hashed Device Identifier</td><td>Generate invite codes and verify device binding</td></tr><tr><td>Authentication Token</td><td>Authenticate server API requests</td></tr><tr><td>Weekly Conversion Quota</td><td>Enforce limits for free users</td></tr><tr><td>Invite Code Records</td><td>Verify invites and issue rewards</td></tr><tr><td>Share-to-Unlock Count</td><td>Limit weekly sharing attempts</td></tr><tr><td>Entitlement Tier Cache</td><td>Determine available features while offline</td></tr></tbody></table>"
             },
-            "fr": {
-                backText: "Retour à l'App",
-                title: "Politique de Confidentialité",
-                date: "Date d'entrée en vigueur : 18 mars 2026 | Dernière mise à jour : 18 mars 2026",
-                intro: "Moring Labs (« nous », « notre », « nos ») a créé FormatRocket en tant qu'application commerciale. Cette politique de confidentialité explique comment nous traitons les informations lorsque vous utilisez FormatRocket (« l'Application »).",
-                contactTitle: "Contactez-nous",
-                contactText: "Si vous avez des questions concernant cette Politique, veuillez contacter :",
-                websiteText: "Site Web:",
-                sections: [
-                    { h: "Résumé", p: "<ul><li>Toutes les conversions de fichiers s'effectuent localement sur votre Mac. Nous ne téléversons jamais vos fichiers.</li><li>Nous utilisons CloudKit d'Apple pour synchroniser les quotas et les codes d'invitation — aucun serveur tiers.</li><li>Nous ne collectons aucune information personnelle, ni donnée d'analyse ou de suivi.</li><li>Nous n'utilisons aucun SDK tiers pour l'analyse, la publicité ou le suivi.</li></ul>" },
-                    { h: "Informations que nous collectons", p: "<h3>Informations que nous NE collectons PAS</h3><ul><li>Nous ne collectons <strong>pas</strong> votre nom, adresse e-mail, numéro de téléphone ou toute autre information de contact.</li><li>Nous n'accédons <strong>pas</strong>, ne téléversons pas et ne transmettons pas le contenu de vos fichiers.</li><li>Nous n'utilisons <strong>pas</strong> de SDK d'analyse, de rapport de plantage ou de publicité tiers.</li><li>Nous ne suivons <strong>pas</strong> votre comportement d'utilisation, votre historique de navigation ou votre localisation.</li></ul><h3>Informations stockées localement sur votre appareil</h3><p>Les données suivantes sont stockées localement dans le bac à sable (sandbox) de l'Application sur votre Mac et ne sont jamais transmises à un serveur :</p><ul><li><strong>Préférences de l'utilisateur</strong> : Langue, répertoire de sortie, paramètres de conversion.</li><li><strong>Tâches de conversion</strong> : Historique des tâches, stocké dans une base de données SwiftData locale.</li><li><strong>Identifiant de l'appareil</strong> : Utilisé uniquement pour générer votre code d'invitation. Stocké dans le trousseau (Keychain) macOS.</li><li><strong>Statut des droits</strong> : Votre niveau d'abonnement mis en cache localement dans le trousseau.</li><li><strong>Quota initial</strong> : Quota de première utilisation stocké dans le trousseau.</li></ul><h3>Informations synchronisées via Apple CloudKit</h3><p>Si vous êtes connecté à iCloud sur votre Mac, les données suivantes sont synchronisées via CloudKit :</p><ul><li><strong>Quota de conversion hebdomadaire</strong> : Nombre de conversions restantes pour la semaine en cours.</li><li><strong>Conversions bonus</strong> : Crédits supplémentaires gagnés par le biais d'invitations ou de partages.</li><li><strong>Enregistrements des codes d'invitation</strong> : Votre code et les identifiants iCloud des utilisateurs qui l'ont utilisé.</li><li><strong>Compteur de partage</strong> : Nombre de fois que vous avez partagé l'Application cette semaine.</li><li><strong>Horodatages du serveur</strong> : Utilisés pour déterminer la semaine civile en cours pour la réinitialisation des quotas.</li></ul><p>Toutes les données CloudKit sont régies par la <a href='https://www.apple.com/fr/privacy/' target='_blank'>Politique de confidentialité d'Apple</a>. Nous n'exploitons aucun serveur indépendant.</p><h3>Achats intégrés</h3><p>Les informations d'abonnement et d'achat sont traitées par Apple via StoreKit 2. Nous ne recevons ni ne stockons aucune information de paiement.</p>" },
-                    { h: "Comment nous utilisons les informations", p: "<table><thead><tr><th>Données</th><th>Objectif</th></tr></thead><tbody><tr><td>Préférences locales</td><td>Restaurer vos paramètres entre les sessions</td></tr><tr><td>Historique des tâches</td><td>Afficher l'état et permettre de réessayer</td></tr><tr><td>Identifiant de l'appareil</td><td>Générer un code d'invitation unique</td></tr><tr><td>Quota hebdomadaire (CloudKit)</td><td>Appliquer les limites de conversion gratuites</td></tr><tr><td>Enregistrements (CloudKit)</td><td>Vérifier les codes et distribuer les récompenses</td></tr><tr><td>Compteur de partage</td><td>Appliquer les limites de partage hebdomadaires</td></tr><tr><td>Horodatages du serveur</td><td>Déterminer la semaine pour la réinitialisation du quota</td></tr><tr><td>Statut des droits</td><td>Déterminer les fonctionnalités disponibles</td></tr></tbody></table>" },
-                    { h: "Partage de données", p: "<p>Nous ne partageons, ne vendons, ne louons et ne divulguons <strong>pas</strong> vos données à des tiers.</p><p>Le seul service externe avec lequel nous interagissons est CloudKit d'Apple. Aucune donnée n'est envoyée à des serveurs non Apple.</p>" },
-                    { h: "Conservation des données", p: "<ul><li><strong>Données locales</strong> : Conservées sur votre appareil jusqu'à ce que vous supprimiez l'Application.</li><li><strong>Données CloudKit</strong> : Conservées dans votre compte iCloud.</li><li><strong>Fichiers de sortie</strong> : Enregistrés dans le répertoire que vous spécifiez. Nous ne les gérons ni ne les supprimons.</li></ul>" },
-                    { h: "Sécurité des données", p: "<ul><li><strong>Stockage local</strong> : Les données sensibles sont stockées dans le trousseau macOS, chiffré par le système.</li><li><strong>Réseau</strong> : Toutes les communications CloudKit utilisent le chiffrement HTTPS d'Apple.</li><li><strong>Aucun serveur distant</strong> : Nous n'exploitons aucun serveur de manière indépendante.</li></ul>" },
-                    { h: "Confidentialité des enfants", p: "<p>FormatRocket ne s'adresse pas aux enfants de moins de 13 ans. Comme nous ne collectons aucune information personnelle, cette condition est intrinsèquement remplie.</p>" },
-                    { h: "Vos droits", p: "<p>Puisque nous ne collectons pas d'informations personnelles sur nos propres serveurs, les données à gérer sont minimes :</p><ul><li><strong>Données locales</strong> : Vous pouvez les supprimer en désinstallant l'Application.</li><li><strong>Données iCloud</strong> : Vous pouvez demander la suppression en nous contactant par e-mail.</li><li><strong>Historique des achats</strong> : Géré par Apple.</li></ul>" },
-                    { h: "Modifications de cette Politique", p: "<p>Nous pouvons mettre à jour cette politique de temps à autre. Les modifications seront publiées dans l'Application et sur notre site Web.</p>" },
-                    { h: "Composants Open Source", p: "<p>FormatRocket inclut les bibliothèques open-source suivantes, utilisées uniquement pour le traitement des médias locaux. Aucune de ces bibliothèques ne collecte ni ne transmet de données :</p><table><thead><tr><th>Bibliothèque</th><th>Licence</th><th>Objectif</th></tr></thead><tbody><tr><td>FFmpeg 7.1.1</td><td>LGPL 2.1+</td><td>Encodage/décodage multimédia</td></tr><tr><td>libvpx 1.15.2</td><td>BSD 3-Clause</td><td>Codec vidéo VP8/VP9</td></tr><tr><td>libaom 3.13.1</td><td>BSD 2-Clause</td><td>Codec vidéo AV1</td></tr><tr><td>LAME 3.100</td><td>LGPL 2.0</td><td>Encodeur MP3</td></tr><tr><td>libvorbis 1.3.7</td><td>BSD 3-Clause</td><td>Codec audio Ogg Vorbis</td></tr><tr><td>libopus 1.5.2</td><td>BSD 3-Clause</td><td>Codec audio Opus</td></tr><tr><td>libogg 1.3.5</td><td>BSD 3-Clause</td><td>Format conteneur Ogg</td></tr><tr><td>libwebp 1.5.0</td><td>BSD 3-Clause</td><td>Codec d'image WebP</td></tr><tr><td>XZ Utils 5.6.4</td><td>Domaine public</td><td>Compression LZMA</td></tr><tr><td>VMAF 3.0.0</td><td>BSD 2-Clause</td><td>Évaluation de la qualité vidéo</td></tr></tbody></table>" }
-                ]
+            {
+                "h": "Data Sharing",
+                "p": "<p>We do not sell, rent, or disclose user data to any third parties.</p><p>The App only communicates with the following external services:</p><ul><li><strong>api.moringlabs.com</strong>: For purchase verification and quota management (our proprietary server).</li><li><strong>Apple CloudKit</strong>: For quota synchronization and invite records.</li><li><strong>Apple StoreKit</strong>: For processing in-app purchases and subscriptions.</li></ul>"
             },
-            "es": {
-                backText: "Volver a la App",
-                title: "Política de Privacidad",
-                date: "Fecha de entrada en vigor: 18 de marzo de 2026 | Última actualización: 18 de marzo de 2026",
-                intro: "Moring Labs (\"nosotros\", \"nuestro\") construyó FormatRocket como una aplicación comercial. Esta Política de Privacidad explica cómo manejamos la información cuando utilizas FormatRocket (\"la Aplicación\").",
-                contactTitle: "Contáctanos",
-                contactText: "Si tienes alguna pregunta sobre esta Política, comunícate a:",
-                websiteText: "Sitio Web:",
-                sections: [
-                    { h: "Resumen", p: "<ul><li>Todas las conversiones de archivos ocurren localmente en tu Mac. Nunca subimos tus archivos.</li><li>Usamos CloudKit de Apple para sincronizar cuotas y códigos de invitación, sin servidores de terceros.</li><li>No recopilamos información personal, análisis ni datos de seguimiento.</li><li>No usamos SDK de terceros para análisis, publicidad o seguimiento.</li></ul>" },
-                    { h: "Información que recopilamos", p: "<h3>Información que NO recopilamos</h3><ul><li><strong>No</strong> recopilamos tu nombre, dirección de correo electrónico, número de teléfono ni información de contacto.</li><li><strong>No</strong> accedemos, subimos ni transmitimos el contenido de tus archivos.</li><li><strong>No</strong> usamos SDK de terceros para informes de fallos o publicidad.</li><li><strong>No</strong> rastreamos tu comportamiento de uso ni ubicación.</li></ul><h3>Información almacenada localmente en tu dispositivo</h3><p>Los siguientes datos se almacenan localmente dentro del entorno de pruebas (sandbox) de la Aplicación en tu Mac:</p><ul><li><strong>Preferencias del usuario</strong>: Idioma, directorio de salida, ajustes.</li><li><strong>Tareas de conversión</strong>: Historial de tareas, almacenado en una base de datos local de SwiftData.</li><li><strong>Identificador del dispositivo</strong>: Usado únicamente para generar tu código de invitación. Almacenado en el Llavero (Keychain) de macOS.</li><li><strong>Estado de derechos</strong>: Tu nivel de suscripción, en caché en el Llavero.</li><li><strong>Cuota inicial</strong>: Cuota de uso por primera vez.</li></ul><h3>Información sincronizada vía Apple CloudKit</h3><p>Si has iniciado sesión en iCloud en tu Mac, los siguientes datos se sincronizan:</p><ul><li><strong>Cuota de conversión semanal</strong>: Conversiones restantes de la semana.</li><li><strong>Conversiones de bonificación</strong>: Créditos adicionales obtenidos mediante invitaciones.</li><li><strong>Registros de códigos de invitación</strong>: Tu código y los ID de iCloud de quienes lo canjearon.</li><li><strong>Recuento de compartir para desbloquear</strong>: Veces que has compartido la App esta semana.</li><li><strong>Marcas de tiempo del servidor</strong>: Para determinar la semana y reiniciar cuotas.</li></ul><p>Todos los datos de CloudKit se rigen por la <a href='https://www.apple.com/es/privacy/' target='_blank'>Política de Privacidad de Apple</a>. No operamos servidores independientes.</p><h3>Compras dentro de la aplicación</h3><p>Las suscripciones y compras son procesadas por Apple a través de StoreKit 2. No recibimos ni almacenamos tus datos de pago.</p>" },
-                    { h: "Cómo usamos la información", p: "<table><thead><tr><th>Dato</th><th>Propósito</th></tr></thead><tbody><tr><td>Preferencias locales</td><td>Restaurar tus ajustes entre sesiones</td></tr><tr><td>Historial de tareas</td><td>Mostrar el estado de las tareas</td></tr><tr><td>Identificador del dispositivo</td><td>Generar un código de invitación único</td></tr><tr><td>Cuota semanal (CloudKit)</td><td>Hacer cumplir los límites del nivel gratuito</td></tr><tr><td>Registros de invitación</td><td>Verificar códigos y distribuir recompensas</td></tr><tr><td>Recuento de compartir</td><td>Hacer cumplir los límites de compartir</td></tr><tr><td>Marcas de tiempo</td><td>Determinar la semana para reinicio de cuotas</td></tr><tr><td>Estado de derechos</td><td>Determinar las funciones disponibles</td></tr></tbody></table>" },
-                    { h: "Intercambio de datos", p: "<p><strong>No</strong> compartimos, vendemos, alquilamos ni divulgamos tus datos a terceros.</p><p>El único servicio externo con el que interactuamos es CloudKit de Apple. No se envían datos a servidores que no sean de Apple.</p>" },
-                    { h: "Retención de datos", p: "<ul><li><strong>Datos locales</strong>: Permanecen en tu dispositivo hasta que elimines la Aplicación.</li><li><strong>Datos de CloudKit</strong>: Se retienen en tu cuenta de iCloud.</li><li><strong>Archivos de salida</strong>: Se guardan en el directorio que especifiques. Nosotros no los gestionamos.</li></ul>" },
-                    { h: "Seguridad de los datos", p: "<ul><li><strong>Almacenamiento local</strong>: Los datos sensibles se almacenan en el Llavero de macOS (cifrado por el SO).</li><li><strong>Red</strong>: Todas las comunicaciones usan el cifrado HTTPS de Apple.</li><li><strong>Sin servidores remotos</strong>: No operamos ningún servidor.</li></ul>" },
-                    { h: "Privacidad infantil", p: "<p>FormatRocket no está dirigida a niños menores de 13 años. Dado que no recopilamos información personal de ningún usuario, esto se cumple inherentemente.</p>" },
-                    { h: "Tus Derechos", p: "<p>Dado que no recopilamos información en servidores propios, los datos a gestionar son mínimos:</p><ul><li><strong>Datos locales</strong>: Puedes eliminarlos desinstalando la Aplicación de tu Mac.</li><li><strong>Datos de iCloud</strong>: Puedes solicitar su eliminación contactándonos por correo.</li><li><strong>Historial de compras</strong>: Gestionado por Apple.</li></ul>" },
-                    { h: "Cambios en esta Política", p: "<p>Podemos actualizar esta política de vez en cuando. Los cambios se publicarán en la Aplicación y en nuestro sitio web.</p>" },
-                    { h: "Componentes de código abierto", p: "<p>FormatRocket incluye las siguientes bibliotecas de código abierto, utilizadas solo para el procesamiento de medios locales. Ninguna recopila ni transmite datos:</p><table><thead><tr><th>Biblioteca</th><th>Licencia</th><th>Propósito</th></tr></thead><tbody><tr><td>FFmpeg 7.1.1</td><td>LGPL 2.1+</td><td>Codificación/decodificación multimedia</td></tr><tr><td>libvpx 1.15.2</td><td>BSD 3-Clause</td><td>Códec de video VP8/VP9</td></tr><tr><td>libaom 3.13.1</td><td>BSD 2-Clause</td><td>Códec de video AV1</td></tr><tr><td>LAME 3.100</td><td>LGPL 2.0</td><td>Codificador MP3</td></tr><tr><td>libvorbis 1.3.7</td><td>BSD 3-Clause</td><td>Códec de audio Ogg Vorbis</td></tr><tr><td>libopus 1.5.2</td><td>BSD 3-Clause</td><td>Códec de audio Opus</td></tr><tr><td>libogg 1.3.5</td><td>BSD 3-Clause</td><td>Formato contenedor Ogg</td></tr><tr><td>libwebp 1.5.0</td><td>BSD 3-Clause</td><td>Códec de imagen WebP</td></tr><tr><td>XZ Utils 5.6.4</td><td>Dominio Público</td><td>Compresión LZMA</td></tr><tr><td>VMAF 3.0.0</td><td>BSD 2-Clause</td><td>Evaluación de calidad de video</td></tr></tbody></table>" }
-                ]
+            {
+                "h": "Data Retention and Deletion",
+                "p": "<ul><li><strong>Local Data</strong>: Preferences, task records, and Keychain items are automatically cleared when you delete the App. You can also manually clean this up by deleting <code>~/Library/Application Support/com.moring.FormatRocket</code> and the relevant entries in Keychain Access.</li><li><strong>CloudKit Data</strong>: Retained in your iCloud account. You can request its deletion by signing out of iCloud or by contacting us.</li><li><strong>Server Data</strong>: Hashed device identifiers and quota records are retained on our server. Contact us to request deletion.</li><li><strong>Conversion Output Files</strong>: Saved in the directory you specify and managed entirely by you.</li></ul>"
             },
-            "it": {
-                backText: "Torna all'App",
-                title: "Informativa sulla Privacy",
-                date: "Data di entrata in vigore: 18 marzo 2026 | Ultimo aggiornamento: 18 marzo 2026",
-                intro: "Moring Labs (\"noi\", \"ci\", \"nostro\") ha sviluppato FormatRocket come applicazione commerciale. Questa Informativa sulla privacy spiega come gestiamo le informazioni quando utilizzi FormatRocket (\"l'App\").",
-                contactTitle: "Contattaci",
-                contactText: "In caso di domande su questa Informativa, contattare:",
-                websiteText: "Sito web:",
-                sections: [
-                    { h: "Riepilogo", p: "<ul><li>Tutte le conversioni di file avvengono localmente sul tuo Mac. Non carichiamo mai i tuoi file.</li><li>Utilizziamo Apple CloudKit per sincronizzare le quote di utilizzo: nessun server di terze parti.</li><li>Non raccogliamo informazioni personali, analisi o dati di tracciamento.</li><li>Non utilizziamo SDK di terze parti per analisi, pubblicità o tracciamento.</li></ul>" },
-                    { h: "Informazioni che raccogliamo", p: "<h3>Informazioni che NON raccogliamo</h3><ul><li><strong>Non</strong> raccogliamo il tuo nome, indirizzo email o informazioni di contatto personali.</li><li><strong>Non</strong> accediamo, carichiamo o trasmettiamo il contenuto dei tuoi file.</li><li><strong>Non</strong> utilizziamo SDK di terze parti per segnalazioni di arresti anomali o pubblicità.</li><li><strong>Non</strong> tracciamo il tuo comportamento di utilizzo o la tua posizione.</li></ul><h3>Informazioni archiviate localmente sul dispositivo</h3><p>I seguenti dati sono archiviati localmente nella sandbox dell'App sul tuo Mac:</p><ul><li><strong>Preferenze utente</strong>: Lingua, directory di output, impostazioni.</li><li><strong>Attività di conversione</strong>: Cronologia delle attività, archiviata in SwiftData locale.</li><li><strong>Identificatore del dispositivo</strong>: Utilizzato solo per generare il codice di invito. Archiviato nel Portachiavi (Keychain) macOS.</li><li><strong>Stato dei diritti</strong>: Il livello di abbonamento memorizzato nella cache locale.</li><li><strong>Quota iniziale</strong>: Quota per il primo utilizzo.</li></ul><h3>Informazioni sincronizzate tramite Apple CloudKit</h3><p>Se hai effettuato l'accesso a iCloud, vengono sincronizzati i seguenti dati:</p><ul><li><strong>Quota di conversione settimanale</strong>: Conversioni rimanenti per la settimana corrente.</li><li><strong>Conversioni bonus</strong>: Crediti extra ottenuti tramite inviti.</li><li><strong>Record del codice di invito</strong>: Il tuo codice e gli ID iCloud di chi lo ha riscattato.</li><li><strong>Conteggio condivisioni</strong>: Quante volte hai condiviso l'App questa settimana.</li><li><strong>Timestamp del server</strong>: Per determinare la settimana per il ripristino delle quote.</li></ul><p>Tutti i dati di CloudKit sono disciplinati dall'<a href='https://www.apple.com/it/privacy/' target='_blank'>Informativa sulla privacy di Apple</a>. Non gestiamo server indipendenti.</p><h3>Acquisti In-App</h3><p>Le informazioni di abbonamento sono elaborate da Apple tramite StoreKit 2. Non riceviamo o archiviamo i tuoi dettagli di pagamento.</p>" },
-                    { h: "Come utilizziamo le informazioni", p: "<table><thead><tr><th>Dati</th><th>Scopo</th></tr></thead><tbody><tr><td>Preferenze locali</td><td>Ripristinare le impostazioni tra le sessioni</td></tr><tr><td>Cronologia attività</td><td>Mostrare lo stato dell'attività</td></tr><tr><td>Identificatore dispositivo</td><td>Generare un codice di invito univoco</td></tr><tr><td>Quota settimanale (CloudKit)</td><td>Applicare i limiti del livello gratuito</td></tr><tr><td>Record di invito</td><td>Verificare i codici e distribuire i premi</td></tr><tr><td>Conteggio condivisioni</td><td>Applicare i limiti di condivisione settimanali</td></tr><tr><td>Timestamp</td><td>Determinare la settimana per i ripristini della quota</td></tr><tr><td>Stato diritti</td><td>Determinare le funzioni disponibili</td></tr></tbody></table>" },
-                    { h: "Condivisione dei dati", p: "<p><strong>Non</strong> condividiamo, vendiamo o divulghiamo i tuoi dati a terzi.</p><p>L'unico servizio esterno con cui interagiamo è CloudKit di Apple. Nessun dato viene inviato a server non Apple.</p>" },
-                    { h: "Conservazione dei dati", p: "<ul><li><strong>Dati locali</strong>: Rimangono sul dispositivo fino all'eliminazione dell'App.</li><li><strong>Dati CloudKit</strong>: Vengono conservati nel tuo account iCloud.</li><li><strong>File di output</strong>: Vengono salvati nella directory da te specificata.</li></ul>" },
-                    { h: "Sicurezza dei dati", p: "<ul><li><strong>Archiviazione locale</strong>: I dati sensibili sono archiviati nel Portachiavi macOS.</li><li><strong>Rete</strong>: Tutte le comunicazioni utilizzano la crittografia HTTPS fornita da Apple.</li><li><strong>Nessun server remoto</strong>: Non gestiamo alcun server.</li></ul>" },
-                    { h: "Privacy dei bambini", p: "<p>FormatRocket non è rivolto a bambini di età inferiore a 13 anni. Poiché non raccogliamo informazioni personali, questo requisito è intrinsecamente soddisfatto.</p>" },
-                    { h: "I tuoi diritti", p: "<p>Poiché non raccogliamo informazioni sui nostri server, ci sono dati minimi da gestire:</p><ul><li><strong>Dati locali</strong>: Puoi eliminarli rimuovendo l'App.</li><li><strong>Dati iCloud</strong>: Puoi richiederne l'eliminazione contattandoci via email.</li><li><strong>Cronologia acquisti</strong>: Gestita da Apple.</li></ul>" },
-                    { h: "Modifiche a questa Politica", p: "<p>Potremmo aggiornare questa politica di tanto in tanto. Le modifiche saranno pubblicate nell'App e sul nostro sito web.</p>" },
-                    { h: "Componenti Open Source", p: "<p>FormatRocket include le seguenti librerie open-source. Nessuna di queste raccoglie dati:</p><table><thead><tr><th>Libreria</th><th>Licenza</th><th>Scopo</th></tr></thead><tbody><tr><td>FFmpeg 7.1.1</td><td>LGPL 2.1+</td><td>Codifica/decodifica multimediale</td></tr><tr><td>libvpx 1.15.2</td><td>BSD 3-Clause</td><td>Codec video VP8/VP9</td></tr><tr><td>libaom 3.13.1</td><td>BSD 2-Clause</td><td>Codec video AV1</td></tr><tr><td>LAME 3.100</td><td>LGPL 2.0</td><td>Codificatore MP3</td></tr><tr><td>libvorbis 1.3.7</td><td>BSD 3-Clause</td><td>Codec audio Ogg Vorbis</td></tr><tr><td>libopus 1.5.2</td><td>BSD 3-Clause</td><td>Codec audio Opus</td></tr><tr><td>libogg 1.3.5</td><td>BSD 3-Clause</td><td>Formato contenitore Ogg</td></tr><tr><td>libwebp 1.5.0</td><td>BSD 3-Clause</td><td>Codec immagine WebP</td></tr><tr><td>XZ Utils 5.6.4</td><td>Dominio Pubblico</td><td>Compressione LZMA</td></tr><tr><td>VMAF 3.0.0</td><td>BSD 2-Clause</td><td>Valutazione qualità video</td></tr></tbody></table>" }
-                ]
+            {
+                "h": "Data Security",
+                "p": "<ul><li>Sensitive data (tokens, entitlement status, device identifiers) is stored encrypted in the macOS Keychain.</li><li>All network communication is transmitted securely over HTTPS.</li><li>API requests include an HMAC-SHA256 signature and a timestamp to prevent replay attacks and forgery.</li><li>The App operates within the macOS Sandbox, limiting file access strictly to user-authorized directories.</li><li>The entitlement cache incorporates HMAC signature validation to prevent local tampering.</li></ul>"
             },
-            "pt": {
-                backText: "Voltar ao App",
-                title: "Política de Privacidade",
-                date: "Data de Vigência: 18 de março de 2026 | Última Atualização: 18 de março de 2026",
-                intro: "A Moring Labs (\"nós\", \"nosso\") construiu o FormatRocket como um aplicativo comercial. Esta Política de Privacidade explica como lidamos com as informações quando você usa o FormatRocket (\"o App\").",
-                contactTitle: "Contate-nos",
-                contactText: "Se você tiver alguma dúvida sobre esta Política, entre em contato:",
-                websiteText: "Site:",
-                sections: [
-                    { h: "Resumo", p: "<ul><li>Todas as conversões ocorrem localmente no seu Mac. Nunca fazemos upload dos seus arquivos.</li><li>Usamos o CloudKit da Apple para sincronizar cotas e códigos de convite — sem servidores de terceiros.</li><li>Não coletamos informações pessoais, análises ou dados de rastreamento.</li><li>Não usamos SDKs de terceiros para análises, publicidade ou rastreamento.</li></ul>" },
-                    { h: "Informações que Coletamos", p: "<h3>Informações que NÃO Coletamos</h3><ul><li><strong>Não</strong> coletamos seu nome, e-mail, número de telefone ou informações de contato.</li><li><strong>Não</strong> acessamos, fazemos upload ou transmitimos o conteúdo dos seus arquivos.</li><li><strong>Não</strong> usamos SDKs de terceiros para relatórios de falhas ou publicidade.</li><li><strong>Não</strong> rastreamos seu comportamento de uso ou localização.</li></ul><h3>Informações Armazenadas Localmente no seu Dispositivo</h3><p>Os seguintes dados são armazenados localmente na sandbox do App no seu Mac:</p><ul><li><strong>Preferências do Usuário</strong>: Idioma, diretório de saída, configurações de conversão.</li><li><strong>Tarefas de Conversão</strong>: Histórico de tarefas, armazenado em um banco de dados SwiftData local.</li><li><strong>Identificador do Dispositivo</strong>: Usado apenas para gerar seu código de convite. Armazenado nas Chaves (Keychain) do macOS.</li><li><strong>Status de Direitos</strong>: Seu nível de assinatura em cache local.</li><li><strong>Cota Inicial</strong>: Cota de primeiro uso armazenada nas Chaves.</li></ul><h3>Informações Sincronizadas via Apple CloudKit</h3><p>Se você estiver conectado ao iCloud no seu Mac, os seguintes dados serão sincronizados:</p><ul><li><strong>Cota de Conversão Semanal</strong>: Conversões restantes para a semana atual.</li><li><strong>Conversões Bônus</strong>: Créditos adicionais ganhos através de convites.</li><li><strong>Registros de Código de Convite</strong>: Seu código e os IDs do iCloud dos usuários que o resgataram.</li><li><strong>Contagem de Compartilhamento</strong>: Número de vezes que você compartilhou o App nesta semana.</li><li><strong>Carimbos de Data/Hora do Servidor</strong>: Usados para determinar a semana do calendário para redefinições de cota.</li></ul><p>Todos os dados do CloudKit são regidos pela <a href='https://www.apple.com/br/privacy/' target='_blank'>Política de Privacidade da Apple</a>. Nós não operamos servidores independentes.</p><h3>Compras no Aplicativo</h3><p>As informações de assinatura e compra são processadas inteiramente pela Apple através do StoreKit 2. Não recebemos ou armazenamos seus detalhes de pagamento.</p>" },
-                    { h: "Como Usamos as Informações", p: "<table><thead><tr><th>Dados</th><th>Finalidade</th></tr></thead><tbody><tr><td>Preferências locais</td><td>Restaurar suas configurações entre as sessões</td></tr><tr><td>Histórico de tarefas</td><td>Exibir o status da tarefa</td></tr><tr><td>Identificador do dispositivo</td><td>Gerar um código de convite exclusivo</td></tr><tr><td>Cota semanal (CloudKit)</td><td>Impor os limites do nível gratuito</td></tr><tr><td>Registros de convite</td><td>Verificar códigos e distribuir recompensas</td></tr><tr><td>Contagem de compartilhamento</td><td>Impor limites de compartilhamento semanais</td></tr><tr><td>Carimbos de data/hora</td><td>Determinar a semana para redefinições de cota</td></tr><tr><td>Status de direitos</td><td>Determinar quais recursos estão disponíveis</td></tr></tbody></table>" },
-                    { h: "Compartilhamento de Dados", p: "<p>Nós <strong>não</strong> compartilhamos, vendemos, alugamos ou divulgamos seus dados a terceiros.</p><p>O único serviço externo com o qual interagimos é o CloudKit da Apple. Nenhum dado é enviado para servidores que não sejam da Apple.</p>" },
-                    { h: "Retenção de Dados", p: "<ul><li><strong>Dados locais</strong>: Permanecem no seu dispositivo até você excluir o App.</li><li><strong>Dados do CloudKit</strong>: São retidos na sua conta do iCloud.</li><li><strong>Arquivos de saída de conversão</strong>: São salvos no diretório que você especificar.</li></ul>" },
-                    { h: "Segurança de Dados", p: "<ul><li><strong>Armazenamento local</strong>: Dados confidenciais são armazenados nas Chaves do macOS, criptografados pelo sistema operacional.</li><li><strong>Comunicação de rede</strong>: Todas as comunicações do CloudKit usam criptografia HTTPS da Apple.</li><li><strong>Sem servidores remotos</strong>: Nós não operamos nenhum servidor próprio.</li></ul>" },
-                    { h: "Privacidade Infantil", p: "<p>O FormatRocket não é direcionado a crianças menores de 13 anos. Como não coletamos informações pessoais, isso é inerentemente satisfeito.</p>" },
-                    { h: "Seus Direitos", p: "<p>Como não coletamos informações pessoais em nossos próprios servidores, há dados mínimos para gerenciar:</p><ul><li><strong>Dados locais</strong>: Você pode excluir todos os dados locais removendo o App do seu Mac.</li><li><strong>Dados do iCloud</strong>: Você pode solicitar a exclusão entrando em contato conosco pelo e-mail abaixo.</li><li><strong>Histórico de compras</strong>: Gerenciado pela Apple.</li></ul>" },
-                    { h: "Alterações a Esta Política", p: "<p>Podemos atualizar esta Política de tempos em tempos. As alterações serão publicadas dentro do App e em nosso site.</p>" },
-                    { h: "Componentes de Código Aberto", p: "<p>O FormatRocket inclui as seguintes bibliotecas de código aberto, usadas apenas para processamento de mídia local. Nenhuma destas bibliotecas coleta ou transmite quaisquer dados:</p><table><thead><tr><th>Biblioteca</th><th>Licença</th><th>Finalidade</th></tr></thead><tbody><tr><td>FFmpeg 7.1.1</td><td>LGPL 2.1+</td><td>Codificação/decodificação de mídia</td></tr><tr><td>libvpx 1.15.2</td><td>BSD 3-Clause</td><td>Codec de vídeo VP8/VP9</td></tr><tr><td>libaom 3.13.1</td><td>BSD 2-Clause</td><td>Codec de vídeo AV1</td></tr><tr><td>LAME 3.100</td><td>LGPL 2.0</td><td>Codificador MP3</td></tr><tr><td>libvorbis 1.3.7</td><td>BSD 3-Clause</td><td>Codec de áudio Ogg Vorbis</td></tr><tr><td>libopus 1.5.2</td><td>BSD 3-Clause</td><td>Codec de áudio Opus</td></tr><tr><td>libogg 1.3.5</td><td>BSD 3-Clause</td><td>Formato de contêiner Ogg</td></tr><tr><td>libwebp 1.5.0</td><td>BSD 3-Clause</td><td>Codec de imagem WebP</td></tr><tr><td>XZ Utils 5.6.4</td><td>Domínio Público</td><td>Compressão LZMA</td></tr><tr><td>VMAF 3.0.0</td><td>BSD 2-Clause</td><td>Avaliação de qualidade de vídeo</td></tr></tbody></table>" }
-                ]
+            {
+                "h": "Children's Privacy",
+                "p": "<p>FormatRocket is not directed at children under the age of 13. We do not knowingly collect personal identifiable information from anyone.</p>"
             },
-            "ru": {
-                backText: "Назад к приложению",
-                title: "Политика конфиденциальности",
-                date: "Дата вступления в силу: 18 марта 2026 г. | Последнее обновление: 18 марта 2026 г.",
-                intro: "Moring Labs («мы», «нас», «наш») создала FormatRocket как коммерческое приложение. В этой Политике конфиденциальности объясняется, как мы обрабатываем информацию при использовании FormatRocket («Приложение»).",
-                contactTitle: "Связаться с нами",
-                contactText: "Если у вас есть вопросы по этой Политике, свяжитесь с нами:",
-                websiteText: "Веб-сайт:",
-                sections: [
-                    { h: "Краткое изложение", p: "<ul><li>Все конвертации файлов происходят локально на вашем Mac. Мы никогда не загружаем ваши файлы на сервер.</li><li>Мы используем Apple CloudKit для синхронизации квот и пригласительных кодов — никаких сторонних серверов.</li><li>Мы не собираем личную информацию, данные аналитики или данные отслеживания.</li><li>Мы не используем сторонние SDK для аналитики, рекламы или отслеживания.</li></ul>" },
-                    { h: "Какую информацию мы собираем", p: "<h3>Информацию, которую мы НЕ собираем</h3><ul><li>Мы <strong>не</strong> собираем ваше имя, адрес электронной почты, номер телефона или любую личную контактную информацию.</li><li>Мы <strong>не</strong> получаем доступ, не загружаем и не передаем содержимое ваших файлов (видео, аудио, изображения).</li><li>Мы <strong>не</strong> используем сторонние SDK для аналитики или рекламы.</li><li>Мы <strong>не</strong> отслеживаем ваше поведение, историю просмотров или местоположение.</li></ul><h3>Информация, хранящаяся локально на вашем устройстве</h3><p>Следующие данные хранятся локально в песочнице Приложения на вашем Mac и никогда не передаются на серверы:</p><ul><li><strong>Пользовательские настройки</strong>: Язык, каталог вывода, настройки конвертации.</li><li><strong>Задачи конвертации</strong>: История задач, хранящаяся в локальной базе данных SwiftData.</li><li><strong>Идентификатор устройства</strong>: Локально сгенерированный идентификатор, используемый только для создания вашего кода приглашения. Хранится в Связке ключей (Keychain) macOS.</li><li><strong>Статус подписки</strong>: Ваш уровень подписки, локально кэшируемый в Связке ключей.</li><li><strong>Начальная квота</strong>: Квота для первого использования.</li></ul><h3>Информация, синхронизируемая через Apple CloudKit</h3><p>Если вы вошли в iCloud на своем Mac, через службу CloudKit синхронизируются следующие данные:</p><ul><li><strong>Еженедельная квота конвертаций</strong>: Количество оставшихся конвертаций на текущую неделю.</li><li><strong>Бонусные конвертации</strong>: Дополнительные кредиты, заработанные через приглашения.</li><li><strong>Записи кодов приглашений</strong>: Ваш код и идентификаторы iCloud пользователей, которые его активировали.</li><li><strong>Счетчик обмена</strong>: Сколько раз вы поделились Приложением на этой неделе.</li><li><strong>Временные метки сервера</strong>: Используются для определения текущей календарной недели для сброса квот.</li></ul><p>Все данные CloudKit хранятся в инфраструктуре Apple и регулируются <a href='https://www.apple.com/ru/privacy/' target='_blank'>Политикой конфиденциальности Apple</a>. Мы не управляем независимыми серверами.</p><h3>Встроенные покупки</h3><p>Информация о подписке и покупках полностью обрабатывается Apple через StoreKit 2. Мы не получаем и не храним ваши платежные данные.</p>" },
-                    { h: "Как мы используем информацию", p: "<table><thead><tr><th>Данные</th><th>Цель</th></tr></thead><tbody><tr><td>Локальные настройки</td><td>Восстановление настроек между сеансами</td></tr><tr><td>История задач</td><td>Отображение статуса задачи</td></tr><tr><td>Идентификатор устройства</td><td>Генерация уникального кода приглашения</td></tr><tr><td>Еженедельная квота (CloudKit)</td><td>Применение лимитов бесплатного уровня</td></tr><tr><td>Записи приглашений (CloudKit)</td><td>Проверка кодов и распределение наград</td></tr><tr><td>Счетчик обмена (CloudKit)</td><td>Применение еженедельных лимитов обмена</td></tr><tr><td>Временные метки сервера</td><td>Определение недели для сброса квот</td></tr><tr><td>Статус подписки</td><td>Определение доступных функций</td></tr></tbody></table>" },
-                    { h: "Передача данных", p: "<p>Мы <strong>не</strong> делимся, не продаем, не сдаем в аренду и не раскрываем ваши данные третьим лицам.</p><p>Единственный внешний сервис, с которым мы взаимодействуем, — это Apple CloudKit. Данные не отправляются на серверы, не принадлежащие Apple.</p>" },
-                    { h: "Хранение данных", p: "<ul><li><strong>Локальные данные</strong>: Хранятся на вашем устройстве до удаления Приложения.</li><li><strong>Данные CloudKit</strong>: Хранятся в вашей учетной записи iCloud.</li><li><strong>Выходные файлы конвертации</strong>: Сохраняются в указанном вами каталоге.</li></ul>" },
-                    { h: "Безопасность данных", p: "<ul><li><strong>Локальное хранилище</strong>: Конфиденциальные данные хранятся в Связке ключей macOS, которая шифруется операционной системой.</li><li><strong>Сетевое соединение</strong>: Все связи CloudKit используют HTTPS-шифрование, предоставляемое Apple.</li><li><strong>Нет удаленных серверов</strong>: Мы не управляем никакими серверами. Вся серверная логика обрабатывается инфраструктурой Apple CloudKit.</li></ul>" },
-                    { h: "Конфиденциальность детей", p: "<p>FormatRocket не предназначен для детей младше 13 лет. Поскольку мы не собираем личную информацию ни от каких пользователей, это условие выполняется по умолчанию.</p>" },
-                    { h: "Ваши права", p: "<p>Поскольку мы не собираем личную информацию на наших серверах, управлять нужно минимальным объемом данных:</p><ul><li><strong>Локальные данные</strong>: Вы можете удалить все локальные данные, удалив Приложение с вашего Mac.</li><li><strong>Данные iCloud</strong>: Вы можете запросить удаление, связавшись с нами по электронной почте.</li><li><strong>История покупок</strong>: Управляется Apple.</li></ul>" },
-                    { h: "Изменения в этой Политике", p: "<p>Мы можем время от времени обновлять эту Политику конфиденциальности. Изменения будут публиковаться в Приложении и на нашем веб-сайте.</p>" },
-                    { h: "Компоненты с открытым исходным кодом", p: "<p>FormatRocket включает следующие библиотеки с открытым исходным кодом, используемые только для локальной обработки мультимедиа. Ни одна из этих библиотек не собирает и не передает данные:</p><table><thead><tr><th>Библиотека</th><th>Лицензия</th><th>Цель</th></tr></thead><tbody><tr><td>FFmpeg 7.1.1</td><td>LGPL 2.1+</td><td>Кодирование/декодирование медиа</td></tr><tr><td>libvpx 1.15.2</td><td>BSD 3-Clause</td><td>Видеокодек VP8/VP9</td></tr><tr><td>libaom 3.13.1</td><td>BSD 2-Clause</td><td>Видеокодек AV1</td></tr><tr><td>LAME 3.100</td><td>LGPL 2.0</td><td>MP3-кодировщик</td></tr><tr><td>libvorbis 1.3.7</td><td>BSD 3-Clause</td><td>Аудиокодек Ogg Vorbis</td></tr><tr><td>libopus 1.5.2</td><td>BSD 3-Clause</td><td>Аудиокодек Opus</td></tr><tr><td>libogg 1.3.5</td><td>BSD 3-Clause</td><td>Формат контейнера Ogg</td></tr><tr><td>libwebp 1.5.0</td><td>BSD 3-Clause</td><td>Кодек изображений WebP</td></tr><tr><td>XZ Utils 5.6.4</td><td>Public Domain</td><td>Сжатие LZMA</td></tr><tr><td>VMAF 3.0.0</td><td>BSD 2-Clause</td><td>Оценка качества видео</td></tr></tbody></table>" }
-                ]
+            {
+                "h": "Your Rights",
+                "p": "<ul><li>Deleting the App removes all local data and Keychain entries.</li><li>You can contact us to request the deletion of related data on CloudKit and our server.</li><li>To manage your subscriptions, please visit the <a href='https://apps.apple.com/account/subscriptions' target='_blank'>Apple Subscription Management Page</a>.</li></ul>"
+            },
+            {
+                "h": "Open Source Components",
+                "p": "<p>FormatRocket integrates the following open-source libraries solely for local media processing. They do not collect or transmit any data:</p><table><thead><tr><th>Library</th><th>License</th><th>Purpose</th></tr></thead><tbody><tr><td>FFmpeg 7.1</td><td>LGPL 2.1+</td><td>Media encoding/decoding</td></tr><tr><td>libvpx</td><td>BSD 3-Clause</td><td>VP8/VP9 video codec</td></tr><tr><td>libaom</td><td>BSD 2-Clause</td><td>AV1 video codec</td></tr><tr><td>LAME</td><td>LGPL 2.0</td><td>MP3 encoding</td></tr><tr><td>libvorbis</td><td>BSD 3-Clause</td><td>Ogg Vorbis audio codec</td></tr><tr><td>libopus</td><td>BSD 3-Clause</td><td>Opus audio codec</td></tr><tr><td>libogg</td><td>BSD 3-Clause</td><td>Ogg container format</td></tr><tr><td>libwebp</td><td>BSD 3-Clause</td><td>WebP image codec</td></tr><tr><td>XZ Utils</td><td>Public Domain</td><td>LZMA compression</td></tr><tr><td>VMAF</td><td>BSD 2-Clause</td><td>Video quality assessment</td></tr></tbody></table>"
+            },
+            {
+                "h": "Changes to This Privacy Policy",
+                "p": "<p>This Privacy Policy may be updated periodically. Any changes will be posted within the App and on our official website. By continuing to use the App, you agree to the updated policy.</p>"
             }
-        };
+        ]
+    },
+    "zh-CN": {
+        "backText": "返回应用",
+        "title": "隐私政策",
+        "date": "生效日期：2026 年 3 月 25 日 | 最后更新：2026 年 3 月 25 日",
+        "intro": "Moring Labs（“我们”）开发了 格式火箭（FormatRocket）作为一款商业应用程序。本隐私政策解释了当您使用 格式火箭（“本应用”）时，我们如何处理您的信息。",
+        "contactTitle": "联系方式",
+        "contactText": "如对本隐私政策有任何疑问，请联系：",
+        "websiteText": "网站：",
+        "sections": [
+            {
+                "h": "概要",
+                "p": "<ul><li>所有文件转换均在本地 Mac 上完成，文件内容不会上传至任何服务器。</li><li>不收集姓名、邮箱、电话等个人身份信息。</li><li>不集成任何第三方分析、广告或追踪 SDK。</li><li>使用 Apple CloudKit 同步使用额度与邀请记录，使用自有服务端验证购买与配额。</li></ul>"
+            },
+            {
+                "h": "本地存储的数据",
+                "p": "<p>以下数据仅保存在本机，不会传输至任何服务器：</p><ul><li><strong>用户偏好设置</strong>：语言、输出目录、转换参数、界面主题等配置项，保存在应用沙箱内的 UserDefaults 中。</li><li><strong>转换任务记录</strong>：任务历史（文件名、状态、时间戳、转换参数）保存在本地 SwiftData 数据库中。</li><li><strong>钥匙串存储</strong>：敏感数据通过 macOS 钥匙串加密存储，包括：认证令牌（JWT）、权益等级缓存（含 HMAC 签名防篡改）、设备标识符（UUID）、首次额度领取状态、邀请码兑换记录。</li></ul>"
+            },
+            {
+                "h": "传输至服务端的数据",
+                "p": "<p>应用通过 HTTPS 与 <code>api.moringlabs.com</code> 通信，用于购买验证和配额管理。所有请求均附带 HMAC-SHA256 签名，防止伪造。</p><ul><li><strong>购买验证</strong>：提交 StoreKit 交易 ID、设备标识哈希值、iCloud 用户 ID，用于在服务端验证 App Store 购买的合法性并签发认证令牌。</li><li><strong>令牌刷新</strong>：提交设备标识哈希值和 iCloud 用户 ID，用于刷新过期的认证令牌。</li><li><strong>配额扣减</strong>：提交转换类型（视频/音频/图片）和数量，用于在服务端同步扣减免费用户的周转换额度。</li><li><strong>邀请码相关</strong>：提交或接收邀请码，用于邀请奖励的生成、注册和兑换。</li><li><strong>设备标识说明</strong>：设备标识通过 macOS 硬件序列号的 SHA256 哈希生成，为不可逆的单向哈希值，无法还原为原始硬件信息。</li></ul>"
+            },
+            {
+                "h": "通过 Apple CloudKit 同步的数据",
+                "p": "<p>登录 iCloud 后，以下数据通过 Apple CloudKit 服务同步：</p><ul><li><strong>周转换额度</strong>：当前周的视频、音频、图片剩余转换次数及奖励额度。</li><li><strong>邀请码记录</strong>：邀请码、使用次数、邀请人与受邀人的 iCloud 用户 ID。</li><li><strong>分享解锁记录</strong>：本周分享次数及周标识符。</li><li><strong>购买备份记录</strong>：产品 ID、激活状态、最后验证时间，用于 CloudKit 端购买状态备份。</li><li><strong>服务器时间戳</strong>：用于确定当前日历周以重置额度，防止通过修改本地时钟绕过限制。</li></ul><p>CloudKit 数据存储在 Apple 基础设施中，受 <a href='https://www.apple.com/legal/privacy/szh/' target='_blank'>Apple 隐私政策</a> 约束。</p>"
+            },
+            {
+                "h": "内购与订阅",
+                "p": "<p>订阅和购买信息完全由 Apple 通过 StoreKit 2 处理。应用不接收也不存储支付信息、Apple ID 或财务数据。仅从 StoreKit 获取交易 ID、产品标识符、到期日期和退款状态，用于确定权益等级。</p>"
+            },
+            {
+                "h": "数据用途",
+                "p": "<table><thead><tr><th>数据</th><th>用途</th></tr></thead><tbody><tr><td>本地偏好设置</td><td>在会话之间恢复设置</td></tr><tr><td>转换任务记录</td><td>显示任务状态，支持重试</td></tr><tr><td>设备标识哈希</td><td>生成邀请码、设备绑定验证</td></tr><tr><td>认证令牌</td><td>服务端接口鉴权</td></tr><tr><td>周转换额度</td><td>免费用户额度限制</td></tr><tr><td>邀请码记录</td><td>验证邀请并发放奖励</td></tr><tr><td>分享解锁计数</td><td>每周分享次数限制</td></tr><tr><td>权益等级缓存</td><td>离线时确定可用功能</td></tr></tbody></table>"
+            },
+            {
+                "h": "数据共享",
+                "p": "<p>不会向任何第三方出售、出租或披露用户数据。</p><p>应用仅与以下外部服务通信：</p><ul><li><strong>api.moringlabs.com</strong>：购买验证与配额管理（开发者自有服务端）</li><li><strong>Apple CloudKit</strong>：额度同步与邀请记录</li><li><strong>Apple StoreKit</strong>：内购与订阅处理</li></ul>"
+            },
+            {
+                "h": "数据保留与删除",
+                "p": "<ul><li><strong>本地数据</strong>：偏好设置、任务记录、钥匙串项在删除应用后自动清除。也可通过手动删除 <code>~/Library/Application Support/com.moring.FormatRocket</code> 和钥匙串中的相关条目进行清理。</li><li><strong>CloudKit 数据</strong>：保留在 iCloud 账户中。退出 iCloud 登录或联系开发者可请求删除。</li><li><strong>服务端数据</strong>：设备标识哈希和配额记录保存在服务端。联系开发者可请求删除。</li><li><strong>转换输出文件</strong>：保存在用户指定的目录中，由用户自行管理。</li></ul>"
+            },
+            {
+                "h": "数据安全",
+                "p": "<ul><li>敏感数据（令牌、权益状态、设备标识）通过 macOS 钥匙串加密存储。</li><li>所有网络通信使用 HTTPS 加密传输。</li><li>API 请求附带 HMAC-SHA256 签名和时间戳，防止重放和伪造。</li><li>应用运行在 macOS 沙箱中，文件访问仅限用户授权的目录。</li><li>权益缓存使用 HMAC 签名校验，防止本地篡改。</li></ul>"
+            },
+            {
+                "h": "儿童隐私",
+                "p": "<p>格式火箭不面向 13 岁以下儿童。应用不主动收集个人身份信息。</p>"
+            },
+            {
+                "h": "用户权利",
+                "p": "<ul><li>删除应用即可清除所有本地数据和钥匙串条目。</li><li>联系开发者可请求删除 CloudKit 和服务端中的相关数据。</li><li>订阅管理请前往 <a href='https://apps.apple.com/account/subscriptions' target='_blank'>Apple 订阅管理页面</a>。</li></ul>"
+            },
+            {
+                "h": "开源组件",
+                "p": "<p>格式火箭集成以下开源库，仅用于本地媒体处理，不收集或传输任何数据：</p><table><thead><tr><th>库</th><th>许可证</th><th>用途</th></tr></thead><tbody><tr><td>FFmpeg 7.1</td><td>LGPL 2.1+</td><td>媒体编解码</td></tr><tr><td>libvpx</td><td>BSD 3-Clause</td><td>VP8/VP9 视频编解码</td></tr><tr><td>libaom</td><td>BSD 2-Clause</td><td>AV1 视频编解码</td></tr><tr><td>LAME</td><td>LGPL 2.0</td><td>MP3 编码</td></tr><tr><td>libvorbis</td><td>BSD 3-Clause</td><td>Ogg Vorbis 音频编解码</td></tr><tr><td>libopus</td><td>BSD 3-Clause</td><td>Opus 音频编解码</td></tr><tr><td>libogg</td><td>BSD 3-Clause</td><td>Ogg 容器格式</td></tr><tr><td>libwebp</td><td>BSD 3-Clause</td><td>WebP 图片编解码</td></tr><tr><td>XZ Utils</td><td>Public Domain</td><td>LZMA 压缩</td></tr><tr><td>VMAF</td><td>BSD 2-Clause</td><td>视频质量评估</td></tr></tbody></table>"
+            },
+            {
+                "h": "隐私政策变更",
+                "p": "<p>本隐私政策可能不定期更新。变更内容将在应用内及官方网站公布。继续使用应用即视为接受更新后的政策。</p>"
+            }
+        ]
+    },
+    "zh-TW": {
+        "backText": "返回應用程式",
+        "title": "隱私權政策",
+        "date": "生效日期：2026 年 3 月 25 日 | 最後更新：2026 年 3 月 25 日",
+        "intro": "Moring Labs（「我們」）開發了 格式火箭（FormatRocket）作為一款商業應用程式。本隱私權政策解釋了當您使用 格式火箭（「本應用」）時，我們如何處理您的資訊。",
+        "contactTitle": "聯絡我們",
+        "contactText": "如對本隱私權政策有任何疑問，請聯絡：",
+        "websiteText": "網站：",
+        "sections": [
+            {
+                "h": "摘要",
+                "p": "<ul><li>所有檔案轉換均在您的 Mac 本地進行，檔案內容絕對不會上傳至任何伺服器。</li><li>我們不會收集姓名、電子郵件、電話等個人身分資訊。</li><li>不整合任何第三方分析、廣告或追蹤 SDK。</li><li>使用 Apple CloudKit 同步使用額度與邀請紀錄，並使用我們自有的伺服器驗證購買與配額。</li></ul>"
+            },
+            {
+                "h": "本地儲存的資料",
+                "p": "<p>以下資料僅儲存在您的裝置上，絕不會傳輸至任何伺服器：</p><ul><li><strong>使用者偏好設定</strong>：語言、輸出目錄、轉換參數、介面主題等設定，儲存在應用程式沙盒內的 UserDefaults 中。</li><li><strong>轉換任務紀錄</strong>：任務歷史（檔名、狀態、時間戳記、轉換參數）儲存於本地 SwiftData 資料庫中。</li><li><strong>鑰匙圈儲存</strong>：敏感資料透過 macOS 鑰匙圈加密儲存，包含：認證權杖（JWT）、權益等級快取（含 HMAC 簽名防竄改）、裝置識別碼（UUID）、首次額度領取狀態、邀請碼兌換紀錄。</li></ul>"
+            },
+            {
+                "h": "傳輸至伺服器的資料",
+                "p": "<p>本應用透過 HTTPS 與 <code>api.moringlabs.com</code> 通訊，用於購買驗證和配額管理。所有請求均附帶 HMAC-SHA256 簽名以防止偽造。</p><ul><li><strong>購買驗證</strong>：提交 StoreKit 交易 ID、裝置識別碼雜湊值、iCloud 使用者 ID，用於在伺服器端驗證 App Store 購買的合法性並核發認證權杖。</li><li><strong>權杖更新</strong>：提交裝置識別碼雜湊值和 iCloud 使用者 ID，用於更新過期的認證權杖。</li><li><strong>配額扣減</strong>：提交轉換類型（影片/音訊/圖片）和數量，用於在伺服器端同步扣減免費使用者的每週轉換額度。</li><li><strong>邀請碼相關</strong>：提交或接收邀請碼，用於邀請獎勵的生成、註冊和兌換。</li><li><strong>裝置識別碼說明</strong>：裝置識別碼是透過 macOS 硬體序號的 SHA256 雜湊產生，為不可逆的單向雜湊值，無法還原為原始硬體資訊。</li></ul>"
+            },
+            {
+                "h": "透過 Apple CloudKit 同步的資料",
+                "p": "<p>登入 iCloud 後，以下資料將透過 Apple CloudKit 服務同步：</p><ul><li><strong>每週轉換額度</strong>：目前當週的影片、音訊、圖片剩餘轉換次數及獎勵額度。</li><li><strong>邀請碼紀錄</strong>：邀請碼、使用次數、邀請人與受邀人的 iCloud 使用者 ID。</li><li><strong>分享解鎖紀錄</strong>：本週分享次數及每週識別碼。</li><li><strong>購買備份紀錄</strong>：產品 ID、啟用狀態、最後驗證時間，用於 CloudKit 端的購買狀態備份。</li><li><strong>伺服器時間戳記</strong>：用於確定目前的日曆週以重置額度，防止透過修改本地時鐘來繞過限制。</li></ul><p>CloudKit 資料儲存在 Apple 基礎設施中，受 <a href='https://www.apple.com/legal/privacy/tzh/' target='_blank'>Apple 隱私權政策</a> 約束。</p>"
+            },
+            {
+                "h": "應用內購買與訂閱",
+                "p": "<p>訂閱和購買資訊完全由 Apple 透過 StoreKit 2 處理。本應用不接收也不儲存付款資訊、Apple ID 或財務資料。僅從 StoreKit 取得交易 ID、產品識別碼、到期日期和退款狀態，用以確定權益等級。</p>"
+            },
+            {
+                "h": "資料用途",
+                "p": "<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td>本地偏好設定</td><td>在不同工作階段間恢復設定</td></tr><tr><td>轉換任務紀錄</td><td>顯示任務狀態，支援重試</td></tr><tr><td>裝置識別碼雜湊</td><td>產生邀請碼、裝置綁定驗證</td></tr><tr><td>認證權杖</td><td>伺服器 API 驗證</td></tr><tr><td>每週轉換額度</td><td>限制免費使用者的轉換次數</td></tr><tr><td>邀請碼紀錄</td><td>驗證邀請並發放獎勵</td></tr><tr><td>分享解鎖計數</td><td>限制每週分享次數</td></tr><tr><td>權益等級快取</td><td>離線時確定可用的功能</td></tr></tbody></table>"
+            },
+            {
+                "h": "資料分享",
+                "p": "<p>我們不會向任何第三方出售、出租或揭露使用者資料。</p><p>本應用僅與以下外部服務通訊：</p><ul><li><strong>api.moringlabs.com</strong>：用於購買驗證與配額管理（開發者自有伺服器）。</li><li><strong>Apple CloudKit</strong>：用於額度同步與邀請紀錄。</li><li><strong>Apple StoreKit</strong>：用於處理應用內購買與訂閱。</li></ul>"
+            },
+            {
+                "h": "資料保留與刪除",
+                "p": "<ul><li><strong>本地資料</strong>：偏好設定、任務紀錄、鑰匙圈項目在刪除應用程式後會自動清除。您也可以透過手動刪除 <code>~/Library/Application Support/com.moring.FormatRocket</code> 以及「鑰匙圈存取」中的相關項目來進行清理。</li><li><strong>CloudKit 資料</strong>：保留在您的 iCloud 帳戶中。您可以透過登出 iCloud 或聯絡我們以要求刪除。</li><li><strong>伺服器資料</strong>：裝置識別碼雜湊與配額紀錄保存在伺服器端。請聯絡我們以要求刪除。</li><li><strong>轉換輸出檔案</strong>：儲存在您指定的目錄中，由您自行管理。</li></ul>"
+            },
+            {
+                "h": "資料安全",
+                "p": "<ul><li>敏感資料（權杖、權益狀態、裝置識別碼）皆透過 macOS 鑰匙圈加密儲存。</li><li>所有網路連線均使用 HTTPS 加密傳輸。</li><li>API 請求均附帶 HMAC-SHA256 簽名及時間戳記，以防止重放攻擊與偽造。</li><li>本應用運行在 macOS 沙盒環境中，檔案存取權限僅限於使用者授權的目錄。</li><li>權益快取採用 HMAC 簽名驗證，防止在地端被竄改。</li></ul>"
+            },
+            {
+                "h": "兒童隱私",
+                "p": "<p>格式火箭的服務對象不包含 13 歲以下的兒童。我們不會主動收集任何使用者的個人身分資訊。</p>"
+            },
+            {
+                "h": "您的權利",
+                "p": "<ul><li>刪除應用程式即可清除所有本地資料與鑰匙圈項目。</li><li>您可以聯絡我們，要求刪除 CloudKit 及伺服器中的相關資料。</li><li>若要管理您的訂閱，請造訪 <a href='https://apps.apple.com/account/subscriptions' target='_blank'>Apple 訂閱管理頁面</a>。</li></ul>"
+            },
+            {
+                "h": "開源套件",
+                "p": "<p>格式火箭整合了以下開源函式庫，僅用於本地媒體處理，且不收集或傳輸任何資料：</p><table><thead><tr><th>函式庫</th><th>授權條款</th><th>用途</th></tr></thead><tbody><tr><td>FFmpeg 7.1</td><td>LGPL 2.1+</td><td>媒體編碼/解碼</td></tr><tr><td>libvpx</td><td>BSD 3-Clause</td><td>VP8/VP9 影片編解碼</td></tr><tr><td>libaom</td><td>BSD 2-Clause</td><td>AV1 影片編解碼</td></tr><tr><td>LAME</td><td>LGPL 2.0</td><td>MP3 編碼</td></tr><tr><td>libvorbis</td><td>BSD 3-Clause</td><td>Ogg Vorbis 音訊編解碼</td></tr><tr><td>libopus</td><td>BSD 3-Clause</td><td>Opus 音訊編解碼</td></tr><tr><td>libogg</td><td>BSD 3-Clause</td><td>Ogg 容器格式</td></tr><tr><td>libwebp</td><td>BSD 3-Clause</td><td>WebP 圖片編解碼</td></tr><tr><td>XZ Utils</td><td>Public Domain</td><td>LZMA 壓縮</td></tr><tr><td>VMAF</td><td>BSD 2-Clause</td><td>影片品質評估</td></tr></tbody></table>"
+            },
+            {
+                "h": "隱私權政策變更",
+                "p": "<p>本隱私權政策可能會不定期更新。變更內容將在應用程式內及我們的官方網站上發布。繼續使用本應用即表示您同意更新後的政策。</p>"
+            }
+        ]
+    },
+    "ja": {
+        "backText": "アプリに戻る",
+        "title": "プライバシーポリシー",
+        "date": "発効日：2026年3月25日 | 最終更新日：2026年3月25日",
+        "intro": "Moring Labs（以下「当社」）は、商用アプリケーションとしてFormatRocketを開発しました。本プライバシーポリシーでは、お客様がFormatRocket（以下「本アプリ」）をご利用になる際の情報の取り扱いについてご説明します。",
+        "contactTitle": "お問い合わせ",
+        "contactText": "本プライバシーポリシーについてご不明な点がございましたら、こちらまでご連絡ください：",
+        "websiteText": "ウェブサイト：",
+        "sections": [
+            {
+                "h": "概要",
+                "p": "<ul><li>すべてのファイル変換はローカルのMac上で実行され、ファイルがサーバーにアップロードされることは決してありません。</li><li>氏名、メールアドレス、電話番号などの個人を特定できる情報は収集しません。</li><li>サードパーティの分析、広告、追跡SDKは統合していません。</li><li>使用枠と招待記録の同期にはApple CloudKitを使用し、購入と枠の検証には当社のサーバーを使用します。</li></ul>"
+            },
+            {
+                "h": "ローカルに保存されるデータ",
+                "p": "<p>以下のデータはお客様のデバイス上のみに保存され、サーバーに送信されることはありません：</p><ul><li><strong>ユーザー設定</strong>：言語、出力先、変換パラメータ、UIテーマなどの設定は、アプリサンドボックス内のUserDefaultsに保存されます。</li><li><strong>変換タスク履歴</strong>：タスク履歴（ファイル名、ステータス、タイムスタンプ、パラメータ）は、ローカルのSwiftDataデータベースに保存されます。</li><li><strong>キーチェーンストレージ</strong>：機密データはmacOSのキーチェーンを使用して安全に暗号化保存されます。これには、認証トークン（JWT）、権限層のキャッシュ（改ざん防止のためのHMAC署名付き）、デバイス識別子（UUID）、初回枠の取得状況、招待コードの引き換え記録が含まれます。</li></ul>"
+            },
+            {
+                "h": "当社のサーバーに送信されるデータ",
+                "p": "<p>本アプリは、購入の検証と枠の管理のために、HTTPS経由で <code>api.moringlabs.com</code> と通信します。すべてのリクエストには偽造を防ぐためのHMAC-SHA256署名が含まれます。</p><ul><li><strong>購入の検証</strong>：StoreKitのトランザクションID、ハッシュ化されたデバイス識別子、およびiCloudユーザーIDを送信し、当社のサーバーでApp Store購入の正当性を検証して認証トークンを発行します。</li><li><strong>トークンの更新</strong>：期限切れの認証トークンを更新するために、ハッシュ化されたデバイス識別子とiCloudユーザーIDを送信します。</li><li><strong>枠の消費</strong>：無料ユーザーの週間変換枠をサーバー上で消費するため、変換の種類（動画/音声/画像）と量を送信します。</li><li><strong>招待コード関連</strong>：招待報酬の生成、登録、引き換えのために招待コードを送受信します。</li><li><strong>デバイス識別子に関する注意</strong>：デバイス識別子は、Macのハードウェアシリアル番号のSHA256ハッシュを通じて生成されます。これは不可逆的な一方向ハッシュであり、元のハードウェア情報に復元することはできません。</li></ul>"
+            },
+            {
+                "h": "Apple CloudKit経由で同期されるデータ",
+                "p": "<p>iCloudにサインインしている場合、以下のデータがApple CloudKitサービスを通じて同期されます：</p><ul><li><strong>週間変換枠</strong>：今週の動画、音声、画像の残り変換回数、およびボーナス枠。</li><li><strong>招待コード記録</strong>：招待コード、その使用回数、および招待者と被招待者のiCloudユーザーID。</li><li><strong>シェアロック解除記録</strong>：今週アプリを共有した回数と週間識別子。</li><li><strong>購入バックアップ記録</strong>：製品ID、有効化ステータス、最終検証日時（CloudKitでの購入ステータスのバックアップに使用）。</li><li><strong>サーバータイムスタンプ</strong>：枠リセットのためのカレンダー週の決定に使用され、ローカル時計の変更による制限の回避を防ぎます。</li></ul><p>CloudKitのデータはAppleのインフラストラクチャに保存され、<a href='https://www.apple.com/jp/privacy/' target='_blank'>Appleのプライバシーポリシー</a>に準拠します。</p>"
+            },
+            {
+                "h": "アプリ内購入とサブスクリプション",
+                "p": "<p>サブスクリプションおよび購入情報は、StoreKit 2を通じてAppleによって完全に処理されます。本アプリが支払い情報、Apple ID、または財務データを受け取ったり保存したりすることはありません。権限層を決定するために、StoreKitからトランザクションID、製品識別子、有効期限、返金ステータスのみを取得します。</p>"
+            },
+            {
+                "h": "データの使用目的",
+                "p": "<table><thead><tr><th>データ</th><th>目的</th></tr></thead><tbody><tr><td>ローカル設定</td><td>セッション間の設定の復元</td></tr><tr><td>変換タスク履歴</td><td>タスクステータスの表示と再試行</td></tr><tr><td>ハッシュ化されたデバイス識別子</td><td>招待コードの生成とデバイス紐付けの検証</td></tr><tr><td>認証トークン</td><td>サーバーAPIリクエストの認証</td></tr><tr><td>週間変換枠</td><td>無料ユーザーの制限適用</td></tr><tr><td>招待コード記録</td><td>招待の検証と報酬の配布</td></tr><tr><td>シェアロック解除回数</td><td>週間共有回数の制限</td></tr><tr><td>権限層キャッシュ</td><td>オフライン時の利用可能機能の決定</td></tr></tbody></table>"
+            },
+            {
+                "h": "データの共有",
+                "p": "<p>当社がユーザーデータを第三者に販売、貸与、開示することはありません。</p><p>本アプリは以下の外部サービスと通信します：</p><ul><li><strong>api.moringlabs.com</strong>：購入の検証および枠の管理機能（当社独自のサーバー）。</li><li><strong>Apple CloudKit</strong>：枠の同期および招待記録。</li><li><strong>Apple StoreKit</strong>：アプリ内購入およびサブスクリプションの処理。</li></ul>"
+            },
+            {
+                "h": "データの保持と削除",
+                "p": "<ul><li><strong>ローカルデータ</strong>：本アプリを削除すると、設定、タスク履歴、キーチェーン項目は自動的にクリアされます。<code>~/Library/Application Support/com.moring.FormatRocket</code> および「キーチェーンアクセス」の関連エントリを手動で削除することでもクリアできます。</li><li><strong>CloudKitデータ</strong>：iCloudアカウントで保持されます。iCloudからサインアウトするか、当社に連絡することで削除をリクエストできます。</li><li><strong>サーバーデータ</strong>：ハッシュ化されたデバイス識別子と枠の記録は当社のサーバーに保持されます。削除をリクエストするには当社にご連絡ください。</li><li><strong>変換の出力ファイル</strong>：指定したディレクトリに保存され、お客様ご自身で管理されます。</li></ul>"
+            },
+            {
+                "h": "データセキュリティ",
+                "p": "<ul><li>機密データ（トークン、権限ステータス、デバイス識別子）は、macOSのキーチェーンに暗号化されて保存されます。</li><li>すべてのネットワーク通信はHTTPS経由で安全に送信されます。</li><li>APIリクエストには、リプレイ攻撃や偽造を防ぐためのHMAC-SHA256署名とタイムスタンプが含まれます。</li><li>本アプリはmacOSサンドボックス内で動作し、ファイルアクセスはユーザーが許可したディレクトリに厳密に制限されます。</li><li>権限キャッシュはHMAC署名の検証を組み込み、ローカルでの改ざんを防ぎます。</li></ul>"
+            },
+            {
+                "h": "お子様のプライバシー",
+                "p": "<p>FormatRocketは13歳未満のお子様を対象としていません。意図的に個人を特定できる情報を収集することはありません。</p>"
+            },
+            {
+                "h": "お客様の権利",
+                "p": "<ul><li>本アプリを削除すると、すべてのローカルデータとキーチェーン項目が削除されます。</li><li>CloudKitおよび当社サーバー上の関連データの削除については、当社までご連絡ください。</li><li>サブスクリプションの管理については、<a href='https://apps.apple.com/account/subscriptions' target='_blank'>Appleのサブスクリプション管理ページ</a>をご覧ください。</li></ul>"
+            },
+            {
+                "h": "オープンソースコンポーネント",
+                "p": "<p>FormatRocketはメディア処理をローカルで行うためだけに以下のオープンソースライブラリを統合しています。データの収集や送信は行いません：</p><table><thead><tr><th>ライブラリ</th><th>ライセンス</th><th>目的</th></tr></thead><tbody><tr><td>FFmpeg 7.1</td><td>LGPL 2.1+</td><td>メディアのエンコード/デコード</td></tr><tr><td>libvpx</td><td>BSD 3-Clause</td><td>VP8/VP9 ビデオコーデック</td></tr><tr><td>libaom</td><td>BSD 2-Clause</td><td>AV1 ビデオコーデック</td></tr><tr><td>LAME</td><td>LGPL 2.0</td><td>MP3 エンコード</td></tr><tr><td>libvorbis</td><td>BSD 3-Clause</td><td>Ogg Vorbis オーディオコーデック</td></tr><tr><td>libopus</td><td>BSD 3-Clause</td><td>Opus オーディオコーデック</td></tr><tr><td>libogg</td><td>BSD 3-Clause</td><td>Ogg コンテナ形式</td></tr><tr><td>libwebp</td><td>BSD 3-Clause</td><td>WebP 画像コーデック</td></tr><tr><td>XZ Utils</td><td>Public Domain</td><td>LZMA 圧縮</td></tr><tr><td>VMAF</td><td>BSD 2-Clause</td><td>動画品質の評価</td></tr></tbody></table>"
+            },
+            {
+                "h": "本プライバシーポリシーの変更",
+                "p": "<p>本プライバシーポリシーは随時更新される場合があります。変更は、アプリ内および公式ウェブサイトに掲載されます。本アプリの使用を継続することにより、更新されたポリシーに同意したものとみなされます。</p>"
+            }
+        ]
+    },
+    "ko": {
+        "backText": "앱으로 돌아가기",
+        "title": "개인정보 처리방침",
+        "date": "시행일: 2026년 3월 25일 | 최종 업데이트: 2026년 3월 25일",
+        "intro": "Moring Labs('당사')는 상용 애플리케이션으로 FormatRocket을 개발했습니다. 본 개인정보 처리방침은 귀하가 FormatRocket('앱')을 사용할 때 당사가 귀하의 정보를 처리하는 방법을 설명합니다.",
+        "contactTitle": "문의하기",
+        "contactText": "본 개인정보 처리방침에 대해 질문이 있으시면 다음으로 문의해 주십시오:",
+        "websiteText": "웹사이트:",
+        "sections": [
+            {
+                "h": "요약",
+                "p": "<ul><li>모든 파일 변환은 Mac에서 로컬로 실행됩니다. 귀하의 파일은 어떤 서버로도 업로드되지 않습니다.</li><li>이름, 이메일 주소, 전화번호와 같은 개인 식별 정보를 수집하지 않습니다.</li><li>타사 분석, 광고 또는 추적 SDK를 통합하지 않습니다.</li><li>Apple CloudKit을 사용하여 사용 할당량 및 초대 기록을 동기화하고, 자체 서버를 사용하여 구매 및 할당량을 확인합니다.</li></ul>"
+            },
+            {
+                "h": "기기에 로컬로 저장되는 데이터",
+                "p": "<p>다음 데이터는 기기에만 저장되며 어떤 서버로도 전송되지 않습니다:</p><ul><li><strong>사용자 기본 설정</strong>: 언어, 출력 디렉토리, 변환 매개변수 및 UI 테마와 같은 설정이 앱 샌드박스의 UserDefaults에 저장됩니다.</li><li><strong>변환 작업 기록</strong>: 작업 기록(파일 이름, 상태, 타임스탬프 및 매개변수)은 로컬 SwiftData 데이터베이스에 저장됩니다.</li><li><strong>키체인 스토리지</strong>: 민감한 데이터는 macOS 키체인을 사용하여 암호화되어 안전하게 저장됩니다. 여기에는 인증 토큰(JWT), 권한 등급 캐시(변조 방지를 위한 HMAC 서명 포함), 기기 식별자(UUID), 최초 할당량 청구 상태, 초대 코드 교환 기록이 포함됩니다.</li></ul>"
+            },
+            {
+                "h": "서버로 전송되는 데이터",
+                "p": "<p>앱은 구매 확인 및 할당량 관리를 위해 HTTPS를 통해 <code>api.moringlabs.com</code> 과 통신합니다. 위조를 방지하기 위해 모든 요청에 HMAC-SHA256 서명이 포함됩니다.</p><ul><li><strong>구매 확인</strong>: StoreKit 트랜잭션 ID, 해시된 기기 식별자 및 iCloud 사용자 ID를 제출하여 서버에서 App Store 구매의 합법성을 확인하고 인증 토큰을 발급합니다.</li><li><strong>토큰 갱신</strong>: 해시된 기기 식별자와 iCloud 사용자 ID를 제출하여 만료된 인증 토큰을 갱신합니다.</li><li><strong>할당량 차감</strong>: 변환 유형(비디오/오디오/이미지)과 양을 제출하여 서버에서 무료 사용자의 주간 변환 할당량을 차감합니다.</li><li><strong>초대 코드</strong>: 초대 포상을 생성, 등록 및 교환하기 위해 초대 코드를 제출하거나 수신합니다.</li><li><strong>기기 식별자 참고</strong>: 기기 식별자는 Mac의 하드웨어 일련번호에 대한 SHA256 해시를 통해 생성됩니다. 이는 비가역적인 단방향 해시로, 원본 하드웨어 정보로 되돌릴 수 없습니다.</li></ul>"
+            },
+            {
+                "h": "Apple CloudKit을 통해 동기화되는 데이터",
+                "p": "<p>iCloud에 로그인한 경우, 다음 데이터가 Apple CloudKit 서비스를 통해 동기화됩니다:</p><ul><li><strong>주간 변환 할당량</strong>: 현재 주에 남은 비디오, 오디오, 이미지 변환 횟수 및 보너스 할당량.</li><li><strong>초대 코드 기록</strong>: 초대 코드, 사용 횟수, 초대자와 초대받은 사람의 iCloud 사용자 ID.</li><li><strong>공유 잠금 해제 기록</strong>: 이번 주 앱을 공유한 횟수 및 주간 식별자.</li><li><strong>구매 백업 기록</strong>: CloudKit에서 구매 상태를 백업하는 데 사용되는 제품 ID, 활성화 상태 및 최신 확인 시간.</li><li><strong>서버 타임스탬프</strong>: 할당량 초기화를 위한 현재 달력 주를 결정하는 데 사용되어, 로컬 시계를 변경하여 제한을 우회하는 것을 방지합니다.</li></ul><p>CloudKit 데이터는 Apple 인프라에 저장되며 <a href='https://www.apple.com/kr/privacy/' target='_blank'>Apple의 개인정보 처리방침</a>이 적용됩니다.</p>"
+            },
+            {
+                "h": "인앱 구매 및 구독",
+                "p": "<p>구독 및 구매 정보는 StoreKit 2를 통해 완전히 Apple에서 처리합니다. 앱은 결제 정보, Apple ID 또는 금융 데이터를 수신하거나 저장하지 않습니다. 권한 등급을 결정하기 위해 StoreKit에서 트랜잭션 ID, 제품 식별자, 만료일, 환불 상태만 가져옵니다.</p>"
+            },
+            {
+                "h": "데이터 이용 방법",
+                "p": "<table><thead><tr><th>데이터</th><th>목적</th></tr></thead><tbody><tr><td>로컬 설정</td><td>세션 간에 설정 복원</td></tr><tr><td>변환 작업 기록</td><td>작업 상태 표시 및 재시도 활성화</td></tr><tr><td>해시된 기기 식별자</td><td>초대 코드 생성 및 기기 연결 확인</td></tr><tr><td>인증 토큰</td><td>서버 API 요청 인증</td></tr><tr><td>주간 변환 할당량</td><td>무료 사용자에 대한 제한 적용</td></tr><tr><td>초대 코드 기록</td><td>초대 확인 및 보상 지급</td></tr><tr><td>공유 잠금 해제 횟수</td><td>주간 공유 시도 제한</td></tr><tr><td>권한 등급 캐시</td><td>오프라인 상태에서 사용 가능한 기능 결정</td></tr></tbody></table>"
+            },
+            {
+                "h": "데이터 공유",
+                "p": "<p>당사는 사용자 데이터를 제3자에게 판매, 임대 또는 공개하지 않습니다.</p><p>앱은 다음 외부 서비스하고만 통신합니다:</p><ul><li><strong>api.moringlabs.com</strong>: 구매 확인 및 할당량 관리(당사의 독점 서버).</li><li><strong>Apple CloudKit</strong>: 할당량 동기화 및 초대 기록.</li><li><strong>Apple StoreKit</strong>: 인앱 구매 및 구독 처리.</li></ul>"
+            },
+            {
+                "h": "데이터 보관 및 삭제",
+                "p": "<ul><li><strong>로컬 데이터</strong>: 기본 설정, 작업 기록, 키체인 항목은 앱 삭제 시 자동으로 삭제됩니다. <code>~/Library/Application Support/com.moring.FormatRocket</code> 및 '키체인 접근' 앱의 관련 항목을 직접 삭제하여 취소할 수도 있습니다.</li><li><strong>CloudKit 데이터</strong>: iCloud 계정에 보관됩니다. iCloud에서 로그아웃하거나 당사에 문의하여 삭제를 요청할 수 있습니다.</li><li><strong>서버 데이터</strong>: 해시된 기기 식별자 및 할당량 기록은 당사 서버에 보관됩니다. 당사에 문의하여 삭제를 요청해 주십시오.</li><li><strong>변환 출력 파일</strong>: 지정한 디렉토리에 저장되며 사용자가 직접 관리합니다.</li></ul>"
+            },
+            {
+                "h": "데이터 보안",
+                "p": "<ul><li>민감한 데이터(토큰, 권한 상태, 기기 식별자)는 macOS 키체인에 암호화되어 저장됩니다.</li><li>모든 네트워크 통신은 HTTPS를 통해 안전하게 전송됩니다.</li><li>API 요청에는 재전송 공격과 위조를 방지하기 위해 HMAC-SHA256 서명과 타임스탬프가 포함되어 있습니다.</li><li>앱은 파일 접근 권한을 사용자가 승인한 디렉토리로만 엄격하게 제한하는 macOS 샌드박스 내에서 작동합니다.</li><li>권한 캐시는 HMAC 서명 유효성 검사를 통합하여 로컬 변조를 방지합니다.</li></ul>"
+            },
+            {
+                "h": "아동의 개인정보",
+                "p": "<p>FormatRocket은 13세 미만 아동을 대상으로 하지 않습니다. 당사는 어떠한 개인 식별 정보도 고의로 수집하지 않습니다.</p>"
+            },
+            {
+                "h": "사용자의 권리",
+                "p": "<ul><li>앱을 삭제하면 모든 로컬 데이터와 키체인 항목이 제거됩니다.</li><li>당사에 연락하여 CloudKit 및 당사 서버에 있는 관련 데이터 삭제를 요청하실 수 있습니다.</li><li>구독을 관리하려면 <a href='https://apps.apple.com/account/subscriptions' target='_blank'>Apple 구독 관리 페이지</a>를 방문하십시오.</li></ul>"
+            },
+            {
+                "h": "오픈소스 구성요소",
+                "p": "<p>FormatRocket에는 로컬 미디어 처리에만 전적으로 사용되는 다음 오픈소스 라이브러리가 포함되어 있습니다. 이들은 데이터를 수집하거나 전송하지 않습니다:</p><table><thead><tr><th>라이브러리</th><th>라이선스</th><th>목적</th></tr></thead><tbody><tr><td>FFmpeg 7.1</td><td>LGPL 2.1+</td><td>미디어 인코딩/디코딩</td></tr><tr><td>libvpx</td><td>BSD 3-Clause</td><td>VP8/VP9 비디오 코덱</td></tr><tr><td>libaom</td><td>BSD 2-Clause</td><td>AV1 비디오 코덱</td></tr><tr><td>LAME</td><td>LGPL 2.0</td><td>MP3 인코딩</td></tr><tr><td>libvorbis</td><td>BSD 3-Clause</td><td>Ogg Vorbis 오디오 코덱</td></tr><tr><td>libopus</td><td>BSD 3-Clause</td><td>Opus 오디오 코덱</td></tr><tr><td>libogg</td><td>BSD 3-Clause</td><td>Ogg 컨테이너 형식</td></tr><tr><td>libwebp</td><td>BSD 3-Clause</td><td>WebP 이미지 코덱</td></tr><tr><td>XZ Utils</td><td>퍼블릭 도메인</td><td>LZMA 압축</td></tr><tr><td>VMAF</td><td>BSD 2-Clause</td><td>비디오 품질 평가</td></tr></tbody></table>"
+            },
+            {
+                "h": "본 개인정보 처리방침의 변경",
+                "p": "<p>본 개인정보 처리방침은 수시로 업데이트될 수 있습니다. 모든 변경 사항은 앱 내 및 공식 웹사이트에 게시됩니다. 앱을 계속 사용하면 업데이트된 정책에 동의하는 것으로 간주됩니다.</p>"
+            }
+        ]
+    },
+    "de": {
+        "backText": "Zurück zur App",
+        "title": "Datenschutzerklärung",
+        "date": "Datum des Inkrafttretens: 25. März 2026 | Zuletzt aktualisiert: 25. März 2026",
+        "intro": "Moring Labs („wir“, „uns“, „unser“) hat FormatRocket als kommerzielle Anwendung entwickelt. Diese Datenschutzerklärung erläutert, wie wir Ihre Daten behandeln, wenn Sie FormatRocket („die App“) nutzen.",
+        "contactTitle": "Kontakt",
+        "contactText": "Wenn Sie Fragen zu dieser Datenschutzerklärung haben, kontaktieren Sie uns bitte unter:",
+        "websiteText": "Webseite:",
+        "sections": [
+            {
+                "h": "Zusammenfassung",
+                "p": "<ul><li>Alle Dateikonvertierungen werden lokal auf Ihrem Mac durchgeführt. Ihre Dateien werden niemals auf einen Server hochgeladen.</li><li>Wir erfassen keine persönlichen Kennungen wie Ihren Namen, Ihre E-Mail-Adresse oder Ihre Telefonnummer.</li><li>Wir integrieren keine Analyse-, Werbe- oder Tracking-SDKs von Drittanbietern.</li><li>Wir nutzen Apple CloudKit, um Ihre Nutzungsquote und Einladungsaufzeichnungen zu synchronisieren, sowie unseren eigenen Server, um Käufe und Quoten zu überprüfen.</li></ul>"
+            },
+            {
+                "h": "Lokal gespeicherte Daten",
+                "p": "<p>Die folgenden Daten werden ausschließlich auf Ihrem Gerät gespeichert und niemals an einen Server übermittelt:</p><ul><li><strong>Benutzereinstellungen</strong>: Einstellungen wie Sprache, Ausgabeverzeichnis, Konvertierungsparameter und UI-Themes werden in den UserDefaults innerhalb der App-Sandbox gespeichert.</li><li><strong>Konvertierungsaufgaben-Datensätze</strong>: Der Aufgabenverlauf (Dateinamen, Status, Zeitstempel und Parameter) wird in einer lokalen SwiftData-Datenbank gespeichert.</li><li><strong>Keychain-Speicher</strong>: Sensible Daten werden verschlüsselt und sicher über die macOS-Keychain gespeichert. Dazu gehören: Authentifizierungs-Token (JWT), Berechtigungsstufen-Cache (mit HMAC-Signaturen zum Schutz vor Manipulation), Gerätekennungen (UUID), Status der Erstquotenbeanspruchung und Einlösungsprotokolle von Einladungscodes.</li></ul>"
+            },
+            {
+                "h": "An unseren Server übermittelte Daten",
+                "p": "<p>Die App kommuniziert über HTTPS zur Kaufüberprüfung und Quotenverwaltung mit <code>api.moringlabs.com</code>. Alle Anfragen enthalten eine HMAC-SHA256-Signatur, um Fälschungen zu verhindern.</p><ul><li><strong>Kaufüberprüfung</strong>: Wir übermitteln die StoreKit-Transaktions-ID, eine gehashte Gerätekennung und Ihre iCloud-Benutzer-ID, um die Rechtmäßigkeit Ihres App Store-Kaufs auf unserem Server zu überprüfen und ein Authentifizierungs-Token auszustellen.</li><li><strong>Token-Aktualisierung</strong>: Wir übermitteln die gehashte Gerätekennung und die iCloud-Benutzer-ID, um ein abgelaufenes Authentifizierungs-Token zu aktualisieren.</li><li><strong>Quotenabzug</strong>: Wir übermitteln die Konvertierungsart (Video/Audio/Bild) und die Menge, um dies auf dem Server vom wöchentlichen Konvertierungskontingent eines kostenlosen Benutzers abzuziehen.</li><li><strong>Einladungscodes</strong>: Wir übermitteln oder empfangen Einladungscodes, um Einladungsbelohnungen zu generieren, zu registrieren und einzulösen.</li><li><strong>Hinweis zur Gerätekennung</strong>: Die Gerätekennung wird über einen SHA256-Hash der Hardware-Seriennummer Ihres Macs generiert. Dies ist ein irreversibler Einweg-Hash, der nicht auf die ursprünglichen Hardwareinformationen zurückgeführt werden kann.</li></ul>"
+            },
+            {
+                "h": "Über Apple CloudKit synchronisierte Daten",
+                "p": "<p>Wenn Sie bei iCloud angemeldet sind, werden die folgenden Daten über den Apple CloudKit-Dienst synchronisiert:</p><ul><li><strong>Wöchentliche Konvertierungsquote</strong>: Die verbleibende Anzahl von Video-, Audio- und Bildkonvertierungen für die aktuelle Woche sowie Bonusquoten.</li><li><strong>Einladungsaufzeichnungen</strong>: Ihr Einladungscode, dessen Nutzungshäufigkeit sowie die iCloud-Benutzer-IDs des Einladenden und des Eingeladenen.</li><li><strong>Einträge zum Freischalten durch Teilen</strong>: Die Anzahl der Freigaben der App in dieser Woche und die wöchentliche Kennung.</li><li><strong>Kauf-Backup-Aufzeichnungen</strong>: Produkt-ID, Aktivierungsstatus und letzter Überprüfungszeitpunkt, um Ihren Kaufstatus im CloudKit zu sichern.</li><li><strong>Server-Zeitstempel</strong>: Werden verwendet, um die aktuelle Kalenderwoche für das Zurücksetzen der Quoten zu bestimmen, und verhindern, dass Limits durch Ändern der lokalen Systemuhr umgangen werden.</li></ul><p>CloudKit-Daten werden auf der Infrastruktur von Apple gespeichert und unterliegen der <a href='https://www.apple.com/de/privacy/' target='_blank'>Datenschutzerklärung von Apple</a>.</p>"
+            },
+            {
+                "h": "In-App-Käufe und Abonnements",
+                "p": "<p>Abonnement- und Kaufinformationen werden vollständig von Apple über StoreKit 2 verarbeitet. Die App empfängt oder speichert weder Zahlungsinformationen, Apple-IDs noch finanzielle Daten. Wir rufen lediglich die Transaktions-ID, die Produktkennung, das Ablaufdatum und den Rückerstattungsstatus von StoreKit ab, um Ihre Berechtigungsstufe zu bestimmen.</p>"
+            },
+            {
+                "h": "Wie wir Daten verwenden",
+                "p": "<table><thead><tr><th>Daten</th><th>Zweck</th></tr></thead><tbody><tr><td>Lokale Einstellungen</td><td>Wiederherstellung der Einstellungen zwischen den Sitzungen</td></tr><tr><td>Konvertierungsaufgaben-Datensätze</td><td>Anzeige des Aufgabenstatus und Ermöglichung von Wiederholungen</td></tr><tr><td>Gehashte Gerätekennung</td><td>Generieren von Einladungscodes und Überprüfen der Gerätebindung</td></tr><tr><td>Authentifizierungs-Token</td><td>Authentifizierung von Server-API-Anfragen</td></tr><tr><td>Wöchentliche Konvertierungsquote</td><td>Durchsetzung der Limits für kostenlose Benutzer</td></tr><tr><td>Einladungscode-Datensätze</td><td>Einladungen überprüfen und Belohnungen vergeben</td></tr><tr><td>Share-to-Unlock-Zähler</td><td>Begrenzung wöchentlicher Freigabeversuche</td></tr><tr><td>Berechtigungsstufen-Cache</td><td>Bestimmung der verfügbaren Funktionen im Offline-Modus</td></tr></tbody></table>"
+            },
+            {
+                "h": "Datenaustausch",
+                "p": "<p>Wir verkaufen, vermieten oder geben Benutzerdaten nicht an Dritte weiter.</p><p>Die App kommuniziert nur mit den folgenden externen Diensten:</p><ul><li><strong>api.moringlabs.com</strong>: Für die Kaufüberprüfung und Quotenverwaltung (unser eigener Server).</li><li><strong>Apple CloudKit</strong>: Für Quotensynchronisation und Einladungsaufzeichnungen.</li><li><strong>Apple StoreKit</strong>: Zur Verarbeitung von In-App-Käufen und Abonnements.</li></ul>"
+            },
+            {
+                "h": "Datenspeicherung und Datenlöschung",
+                "p": "<ul><li><strong>Lokale Daten</strong>: Einstellungen, Aufgabendatensätze und Keychain-Elemente werden automatisch gelöscht, wenn Sie die App löschen. Sie können dies auch manuell tun, indem Sie <code>~/Library/Application Support/com.moring.FormatRocket</code> und die entsprechenden Einträge in der Schlüsselbundverwaltung löschen.</li><li><strong>CloudKit-Daten</strong>: Werden in Ihrem iCloud-Konto aufbewahrt. Sie können deren Löschung beantragen, indem Sie sich von iCloud abmelden oder uns kontaktieren.</li><li><strong>Serverdaten</strong>: Gehashte Gerätekennungen und Quotenaufzeichnungen werden auf unserem Server aufbewahrt. Kontaktieren Sie uns, um eine Löschung zu beantragen.</li><li><strong>Konvertierungsausgabedateien</strong>: Sie werden im von Ihnen angegebenen Verzeichnis gespeichert und vollständig von Ihnen verwaltet.</li></ul>"
+            },
+            {
+                "h": "Datensicherheit",
+                "p": "<ul><li>Sensible Daten (Token, Berechtigungsstatus, Gerätekennungen) werden verschlüsselt in der macOS Keychain gespeichert.</li><li>Die gesamte Netzwerkkommunikation wird sicher über HTTPS übertragen.</li><li>API-Anfragen enthalten eine HMAC-SHA256-Signatur und einen Zeitstempel, um Replay-Angriffe und Fälschungen zu verhindern.</li><li>Die App läuft in der macOS-Sandbox und beschränkt den Dateizugriff streng auf die vom Benutzer berechtigten Verzeichnisse.</li><li>Der Berechtigungs-Cache umfasst eine HMAC-Signaturprüfung, um lokale Manipulationen zu verhindern.</li></ul>"
+            },
+            {
+                "h": "Datenschutz von Kindern",
+                "p": "<p>FormatRocket richtet sich nicht an Kinder unter 13 Jahren. Wir sammeln wissentlich keine personenbezogenen Daten von irgendjemandem.</p>"
+            },
+            {
+                "h": "Ihre Rechte",
+                "p": "<ul><li>Durch das Löschen der App werden sämtliche lokalen Daten und Keychain-Einträge entfernt.</li><li>Sie können uns kontaktieren, um die Löschung relevanter Daten aus CloudKit und unseren Servern anzufordern.</li><li>Um Ihre Abonnements zu verwalten, besuchen Sie bitte die <a href='https://apps.apple.com/account/subscriptions' target='_blank'>Abonnementverwaltungsseite von Apple</a>.</li></ul>"
+            },
+            {
+                "h": "Open-Source-Komponenten",
+                "p": "<p>FormatRocket integriert die folgenden Open-Source-Bibliotheken ausschließlich für die lokale Medienverarbeitung. Es werden keine Daten erfasst oder übertragen:</p><table><thead><tr><th>Bibliothek</th><th>Lizenz</th><th>Zweck</th></tr></thead><tbody><tr><td>FFmpeg 7.1</td><td>LGPL 2.1+</td><td>Medien-Codierung/Decodierung</td></tr><tr><td>libvpx</td><td>BSD 3-Clause</td><td>VP8/VP9 Video-Codec</td></tr><tr><td>libaom</td><td>BSD 2-Clause</td><td>AV1 Video-Codec</td></tr><tr><td>LAME</td><td>LGPL 2.0</td><td>MP3-Codierung</td></tr><tr><td>libvorbis</td><td>BSD 3-Clause</td><td>Ogg Vorbis Audio-Codec</td></tr><tr><td>libopus</td><td>BSD 3-Clause</td><td>Opus Audio-Codec</td></tr><tr><td>libogg</td><td>BSD 3-Clause</td><td>Ogg-Container-Format</td></tr><tr><td>libwebp</td><td>BSD 3-Clause</td><td>WebP Bild-Codec</td></tr><tr><td>XZ Utils</td><td>Public Domain</td><td>LZMA-Komprimierung</td></tr><tr><td>VMAF</td><td>BSD 2-Clause</td><td>Bewertung der Videoqualität</td></tr></tbody></table>"
+            },
+            {
+                "h": "Änderungen an dieser Datenschutzerklärung",
+                "p": "<p>Diese Datenschutzerklärung kann regelmäßig aktualisiert werden. Alle Änderungen werden in der App sowie auf unserer offiziellen Webseite veröffentlicht. Durch die weitere Nutzung der App stimmen Sie der aktualisierten Richtlinie zu.</p>"
+            }
+        ]
+    },
+    "fr": {
+        "backText": "Retour à l'App",
+        "title": "Politique de Confidentialité",
+        "date": "Date d'entrée en vigueur : 25 mars 2026 | Dernière mise à jour : 25 mars 2026",
+        "intro": "Moring Labs (« nous », « notre », « nos ») a conçu FormatRocket en tant qu'application commerciale. Cette Politique de Confidentialité explique comment nous traitons vos informations lorsque vous utilisez FormatRocket (« l'Application »).",
+        "contactTitle": "Contactez-nous",
+        "contactText": "Si vous avez des questions sur cette Politique de Confidentialité, veuillez nous contacter à :",
+        "websiteText": "Site Web :",
+        "sections": [
+            {
+                "h": "Résumé",
+                "p": "<ul><li>Toutes les conversions de fichiers ont lieu localement sur votre Mac. Vos fichiers ne sont jamais téléchargés vers un serveur.</li><li>Nous ne collectons pas d'identifiants personnels tels que votre nom, adresse e-mail ou numéro de téléphone.</li><li>Nous n'intégrons aucun kit de développement logiciel (SDK) tiers d'analyse, de publicité ou de suivi.</li><li>Nous utilisons Apple CloudKit pour synchroniser vos quotas d'utilisation et historiques d'invitations, et notre propre serveur pour vérifier les achats et quotas.</li></ul>"
+            },
+            {
+                "h": "Données stockées localement",
+                "p": "<p>Les données suivantes sont stockées uniquement sur votre appareil et ne sont jamais transmises à un serveur :</p><ul><li><strong>Préférences de l'utilisateur</strong> : Les paramètres incluant la langue, le répertoire de sortie, les paramètres de conversion et le thème de l'interface sont sauvegardés dans UserDefaults dans le bac à sable de l'Application.</li><li><strong>Historique des tâches de conversion</strong> : L'historique contenant le nom des fichiers, les statuts, les horodatages et les paramètres est stocké dans une base de données locale SwiftData.</li><li><strong>Stockage dans le Trousseau</strong> : Les données sensibles sont chiffrées et sécurisées via le Trousseau macOS. Cela comprend : jetons d'authentification (JWT), cache du niveau de privilèges (avec signature HMAC pour empêcher la modification), identifiants d'appareil (UUID), état de demande de quota initial et historique de validation des codes d'invitation.</li></ul>"
+            },
+            {
+                "h": "Données transmises à notre serveur",
+                "p": "<p>L'Application communique avec <code>api.moringlabs.com</code> en HTTPS pour la vérification des achats et la gestion des quotas. Toutes les requêtes contiennent une signature HMAC-SHA256 afin d'empêcher la falsification.</p><ul><li><strong>Vérification de l'achat</strong> : Nous transmettons l'identifiant de la transaction StoreKit, un identifiant d'appareil haché et votre identifiant utilisateur iCloud pour vérifier la légitimité de votre achat depuis notre serveur et émettre un jeton d'authentification.</li><li><strong>Renouvellement du jeton</strong> : Nous transmettons l'identifiant d'appareil haché et l'identifiant iCloud afin de renouveler un jeton expiré.</li><li><strong>Déduction du quota</strong> : Nous envoyons le type de conversion (vidéo/audio/image) et la quantité afin de les déduire du quota hebdomadaire d'un utilisateur gratuit depuis le serveur.</li><li><strong>Codes d'invitation</strong> : Nous envoyons ou recevons des codes pour générer, enregistrer et échanger des récompenses.</li><li><strong>Remarque sur les identifiants d'appareil</strong> : L'identifiant est généré via un hashage SHA256 du numéro de série du Mac. Ce hachage ne peut pas être inversé pour identifier le matériel d'origine.</li></ul>"
+            },
+            {
+                "h": "Données synchronisées via Apple CloudKit",
+                "p": "<p>Lorsque vous êtes connecté à iCloud, les données suivantes sont synchronisées via le service CloudKit d'Apple :</p><ul><li><strong>Quota de conversion hebdomadaire</strong> : Le nombre restant de conversions vidéo, audio et d'images de la semaine en cours, ainsi que les quotas bonus.</li><li><strong>Enregistrement de codes d'invitation</strong> : Votre code, son nombre d'utilisations, ainsi que l'identifiant iCloud de l'invitant et de l'invité.</li><li><strong>Statistiques de partage pour le déblocage</strong> : Le nombre de partages de la semaine et l'identifiant hebdomadaire de suivi.</li><li><strong>Détails des achats sauvegardés</strong> : L'identifiant du produit, l'état d'activation et la date de la dernière vérification pour sécuriser votre statut d'achat sur CloudKit.</li><li><strong>Horodatages de serveur</strong> : Ils servent à déterminer la semaine civile actuelle pour réinitialiser les quotas, ceci empêche le dépassement des limites causé par un changement frauduleux d'horloge.</li></ul><p>Les données de CloudKit sont stockées sur l'infrastructure d'Apple et se voient régies par <a href='https://www.apple.com/fr/privacy/' target='_blank'>La politique de confidentialité d'Apple</a>.</p>"
+            },
+            {
+                "h": "Achats intégrés et Abonnements",
+                "p": "<p>Les souscriptions et données d'achat sont gérées intégralement par Apple via StoreKit 2. L'Application ne conserve, ne reçoit et ne stocke ni données bancaires, ni identifiants Apple. Nous récupérons seulement depuis StoreKit l'identifiant de la transaction, du produit, la date d'expiration ou les remboursements accordés pour déterminer votre droit d'utilisation.</p>"
+            },
+            {
+                "h": "Comment nous utilisons les données",
+                "p": "<table><thead><tr><th>Données</th><th>Objectif</th></tr></thead><tbody><tr><td>Préférences locales</td><td>Restaurer les paramètres d'une session à l'autre</td></tr><tr><td>Tâches de conversion</td><td>Afficher l'historique et permettre un nouvel essai</td></tr><tr><td>Identifiant d'appareil haché</td><td>Créer un code d'invitation et valider l'association</td></tr><tr><td>Jeton d'authentification</td><td>Confirmer l'authenticité de l'API avec le serveur</td></tr><tr><td>Quota de conversion hebdomadaire</td><td>Appliquer la limitation des utilisateurs gratuits</td></tr><tr><td>Enregistrements des codes d'invitation</td><td>Vérifier l'invitation et envoyer le bonus</td></tr><tr><td>Compteur de partage</td><td>Contrôler la quantité d'accès bonus</td></tr><tr><td>Cache de droit d'abonnement</td><td>Prévoir l'utilisation hors ligne sans erreur</td></tr></tbody></table>"
+            },
+            {
+                "h": "Partage des données",
+                "p": "<p>Nous ne vendons, ne louons et ne divulguons aucune donnée utilisateur à des tiers.</p><p>L'Application est interconnectée avec les services suivants :</p><ul><li><strong>api.moringlabs.com</strong> : Le serveur de notre entreprise en charge de vérifier et maintenir les quotas/paiements.</li><li><strong>Apple CloudKit</strong> : Responsable du suivi des invitations et de la synchronisation des quotas.</li><li><strong>Apple StoreKit</strong> : Afin de garantir le bon traitement des achats intégrés et des abonnements.</li></ul>"
+            },
+            {
+                "h": "Rétention des données et suppression",
+                "p": "<ul><li><strong>Données locales</strong> : Les préférences, l'historique de tâches et les éléments du trousseau sont automatiquement effacés lorsque vous supprimez l'Application. Vous pouvez également les nettoyer manuellement en supprimant <code>~/Library/Application Support/com.moring.FormatRocket</code> et les entrées pertinentes de l'outil Trousseaux d'accès.</li><li><strong>Données CloudKit</strong> : Conservées dans votre compte iCloud. Vous pouvez demander leur suppression en vous déconnectant d'iCloud ou en nous contactant.</li><li><strong>Données du serveur</strong> : Les identifiants d'appareil hachés et les historiques de quotas sont conservés sur notre serveur. Veuillez nous contacter pour en demander la suppression.</li><li><strong>Fichiers de sortie de conversion</strong> : Sauvegardés dans le répertoire que vous spécifiez, et gérés entièrement par vous-même.</li></ul>"
+            },
+            {
+                "h": "Sécurité des données",
+                "p": "<ul><li>Les données sensibles (jetons, UUID matériel, droits d'acquisitions) sont stockées et cryptées dans le Trousseau macOS.</li><li>Tout l'interface réseau nécessite un transfert HTTPS sécurisé.</li><li>Les requêtes API comprennent une signature HMAC-SHA256 et un horodatage pour empêcher les attaques par rejeu et les falsifications.</li><li>L'Application opère dans le bac à sable macOS, limitant strictement l'accès aux répertoires autorisés par l'utilisateur.</li><li>Le cache des droits intègre une validation de signature HMAC pour empêcher la falsification locale.</li></ul>"
+            },
+            {
+                "h": "Confidentialité des enfants",
+                "p": "<p>FormatRocket n'est pas destiné aux enfants de moins de 13 ans. Nous ne recueillons sciemment aucune information personnelle identifiable de qui que ce soit.</p>"
+            },
+            {
+                "h": "Vos Droits",
+                "p": "<ul><li>La suppression de l'Application supprime toutes les données locales et les entrées du Trousseau.</li><li>Vous pouvez nous contacter pour demander la suppression des données liées sur CloudKit et sur notre serveur.</li><li>Pour gérer vos abonnements, veuillez visiter la <a href='https://apps.apple.com/account/subscriptions' target='_blank'>Page de gestion des abonnements Apple</a>.</li></ul>"
+            },
+            {
+                "h": "Composants Open Source",
+                "p": "<p>FormatRocket intègre les bibliothèques open-source suivantes uniquement pour le traitement média local. Elles ne collectent ni ne transmettent aucune donnée :</p><table><thead><tr><th>Bibliothèque</th><th>Licence</th><th>Objectif</th></tr></thead><tbody><tr><td>FFmpeg 7.1</td><td>LGPL 2.1+</td><td>Encodage/décodage de médias</td></tr><tr><td>libvpx</td><td>BSD 3-Clause</td><td>Codec vidéo VP8/VP9</td></tr><tr><td>libaom</td><td>BSD 2-Clause</td><td>Codec vidéo AV1</td></tr><tr><td>LAME</td><td>LGPL 2.0</td><td>Encodage MP3</td></tr><tr><td>libvorbis</td><td>BSD 3-Clause</td><td>Codec audio Ogg Vorbis</td></tr><tr><td>libopus</td><td>BSD 3-Clause</td><td>Codec audio Opus</td></tr><tr><td>libogg</td><td>BSD 3-Clause</td><td>Format conteneur Ogg</td></tr><tr><td>libwebp</td><td>BSD 3-Clause</td><td>Codec d'image WebP</td></tr><tr><td>XZ Utils</td><td>Domaine public</td><td>Compression LZMA</td></tr><tr><td>VMAF</td><td>BSD 2-Clause</td><td>Évaluation de la qualité vidéo</td></tr></tbody></table>"
+            },
+            {
+                "h": "Modifications de cette Politique de Confidentialité",
+                "p": "<p>Cette Politique de Confidentialité peut être mise à jour périodiquement. Tout changement sera publié au sein de l'Application et sur notre site officiel. En continuant d'utiliser l'Application, vous acceptez la politique mise à jour.</p>"
+            }
+        ]
+    },
+    "es": {
+        "backText": "Volver a la App",
+        "title": "Política de Privacidad",
+        "date": "Fecha de entrada en vigor: 25 de marzo de 2026 | Última actualización: 25 de marzo de 2026",
+        "intro": "Moring Labs (\"nosotros\", \"nuestro\") ha desarrollado FormatRocket como una aplicación comercial. Esta Política de Privacidad explica cómo manejamos tu información al utilizar FormatRocket (\"la Aplicación\").",
+        "contactTitle": "Contáctanos",
+        "contactText": "Si tienes alguna pregunta sobre esta Política de Privacidad, por favor contáctanos en:",
+        "websiteText": "Sitio Web:",
+        "sections": [
+            {
+                "h": "Resumen",
+                "p": "<ul><li>Todas las conversiones de archivos se realizan localmente en tu Mac. Tus archivos nunca se suben a ningún servidor.</li><li>No recopilamos identificadores personales como tu nombre, correo electrónico o número de teléfono.</li><li>No integramos SDKs de análisis, publicidad o seguimiento de terceros.</li><li>Utilizamos Apple CloudKit para sincronizar tu cuota de uso y registros de invitación, y nuestro propio servidor para verificar compras y cuotas.</li></ul>"
+            },
+            {
+                "h": "Datos almacenados localmente",
+                "p": "<p>Los siguientes datos se almacenan exclusivamente en tu dispositivo y nunca se transmiten a ningún servidor:</p><ul><li><strong>Preferencias del Usuario</strong>: Ajustes como el idioma, el directorio de salida, los parámetros de conversión y los temas de la interfaz se guardan en UserDefaults dentro del entorno seguro (sandbox) de la Aplicación.</li><li><strong>Registros de tareas de conversión</strong>: El historial de tareas (nombres de archivo, estado, marcas de tiempo y parámetros) se almacena en una base de datos local de SwiftData.</li><li><strong>Almacenamiento en el Llavero</strong>: Los datos confidenciales se cifran y almacenan de forma segura utilizando el Llavero de macOS. Esto incluye: tokens de autenticación (JWT), caché del nivel de derechos (con firmas HMAC para evitar alteraciones), identificadores de dispositivos (UUID), estado de reclamo de cuota inicial y registros de canje de códigos de invitación.</li></ul>"
+            },
+            {
+                "h": "Datos transmitidos a nuestro servidor",
+                "p": "<p>La Aplicación se comunica con <code>api.moringlabs.com</code> mediante HTTPS para la verificación de compras y la gestión de cuotas. Todas las solicitudes incluyen una firma HMAC-SHA256 para prevenir falsificaciones.</p><ul><li><strong>Verificación de Compras</strong>: Enviamos el ID de transacción de StoreKit, un identificador de dispositivo cifrado (hash) y tu ID de usuario de iCloud para verificar la legitimidad de tu compra en la App Store en nuestro servidor y emitir un token de autenticación.</li><li><strong>Actualización de Token</strong>: Enviamos el identificador de dispositivo cifrado y el ID de usuario de iCloud para actualizar un token de autenticación vencido.</li><li><strong>Deducción de Cuota</strong>: Enviamos el tipo de conversión (video/audio/imagen) y la cantidad para descontarla de la cuota de conversión semanal de un usuario gratuito en el servidor.</li><li><strong>Códigos de Invitación</strong>: Enviamos o recibimos códigos de invitación para generar, registrar y canjear recompensas de invitación.</li><li><strong>Nota sobre el Identificador de Dispositivo</strong>: El identificador se genera mediante un hash SHA256 del número de serie de hardware de tu Mac. Es un hash irreversible y unidireccional que no se puede rastrear hasta la información de hardware original.</li></ul>"
+            },
+            {
+                "h": "Datos sincronizados a través de Apple CloudKit",
+                "p": "<p>Cuando inicias sesión en iCloud, los siguientes datos se sincronizan a través del servicio Apple CloudKit:</p><ul><li><strong>Cuota de conversión semanal</strong>: El número restante de conversiones de video, audio e imagen para la semana actual, así como las cuotas adicionales (bonus).</li><li><strong>Registros de Códigos de Invitación</strong>: Tu código de invitación, su recuento de uso y los ID de usuario de iCloud del invitador y del invitado.</li><li><strong>Registros de Desbloqueo por Compartir</strong>: La cantidad de veces que has compartido la aplicación esta semana y el identificador semanal.</li><li><strong>Registros de Copia de Seguridad de Compras</strong>: El ID del producto, el estado de activación y la hora de la última verificación, utilizados para respaldar el estado de tu compra en CloudKit.</li><li><strong>Marcas de Tiempo del Servidor</strong>: Se utilizan para determinar la semana calendario actual para restablecer la cuota, evitando que se omitan los límites al cambiar el reloj local del sistema.</li></ul><p>Los datos de CloudKit se almacenan en la infraestructura de Apple y se rigen por la <a href='https://www.apple.com/es/privacy/' target='_blank'>Política de Privacidad de Apple</a>.</p>"
+            },
+            {
+                "h": "Compras dentro de la aplicación y Suscripciones",
+                "p": "<p>La información de suscripciones y compras es procesada en su totalidad por Apple a través de StoreKit 2. La Aplicación no recibe ni almacena información de pago, ID de Apple ni datos financieros. Solo recuperamos el ID de la transacción, el identificador del producto, la fecha de vencimiento y el estado del reembolso de StoreKit para determinar tu nivel de derechos.</p>"
+            },
+            {
+                "h": "Cómo utilizamos los datos",
+                "p": "<table><thead><tr><th>Dato</th><th>Propósito</th></tr></thead><tbody><tr><td>Preferencias Locales</td><td>Restaurar configuraciones entre sesiones</td></tr><tr><td>Registros de tareas de conversión</td><td>Mostrar el estado de la tarea y permitir reintentos</td></tr><tr><td>Identificador de dispositivo (hash)</td><td>Generar códigos y verificar el enlace del dispositivo</td></tr><tr><td>Token de autenticación</td><td>Autenticar solicitudes de API del servidor</td></tr><tr><td>Cuota de conversión semanal</td><td>Aplicar límites para usuarios de la versión gratuita</td></tr><tr><td>Registros de invitación</td><td>Verificar invitaciones y emitir recompensas</td></tr><tr><td>Conteo de Desbloqueo por Compartir</td><td>Limitar intentos de compartir semanales</td></tr><tr><td>Caché de nivel de derechos</td><td>Determinar las funciones disponibles sin conexión</td></tr></tbody></table>"
+            },
+            {
+                "h": "Distribución de Datos",
+                "p": "<p>No vendemos, alquilamos ni divulgamos datos de los usuarios a terceros.</p><p>La Aplicación solo se comunica con los siguientes servicios externos:</p><ul><li><strong>api.moringlabs.com</strong>: Para la verificación de compras y gestión de cuotas (nuestro propio servidor).</li><li><strong>Apple CloudKit</strong>: Para sincronización de cuotas y registros de invitaciones.</li><li><strong>Apple StoreKit</strong>: Para procesar compras dentro de la aplicación y suscripciones.</li></ul>"
+            },
+            {
+                "h": "Retención y eliminación de datos",
+                "p": "<ul><li><strong>Datos locales</strong>: Las preferencias, registros de tareas y elementos del llavero se borran automáticamente al eliminar la Aplicación. También puedes limpiarlo manualmente eliminando <code>~/Library/Application Support/com.moring.FormatRocket</code> y las entradas relevantes en el Acceso a Llaveros.</li><li><strong>Datos de CloudKit</strong>: Se retienen en tu cuenta de iCloud. Puedes solicitar su eliminación cerrando sesión en iCloud o contactándonos.</li><li><strong>Datos del servidor</strong>: Los identificadores cifrados de dispositivos y los registros de cuotas se retienen en nuestro servidor. Contáctanos para solicitar su eliminación.</li><li><strong>Archivos de conversión generados</strong>: Se guardan en el directorio que especifiques y son administrados enteramente por ti.</li></ul>"
+            },
+            {
+                "h": "Seguridad de Datos",
+                "p": "<ul><li>Los datos confidenciales (tokens, estado de los derechos y UUID) se almacenan cifrados en el Llavero de macOS.</li><li>Todas las comunicaciones de red son transmitidas de forma segura por HTTPS.</li><li>Las solicitudes de API incluyen una firma HMAC-SHA256 y una marca de tiempo para prevenir ataques de repetición y falsificaciones.</li><li>La Aplicación opera dentro del SandBox de macOS, lo cual limita el acceso a los archivos de forma estricta a los directorios autorizados.</li><li>La caché de derechos incorpora una validación de firma HMAC en caso de alteraciones de manera local.</li></ul>"
+            },
+            {
+                "h": "Privacidad infantil",
+                "p": "<p>FormatRocket no va dirigido a niños menores a los 13 años. No recopilamos información personal a sabiendas de ninguna persona.</p>"
+            },
+            {
+                "h": "Tus derechos",
+                "p": "<ul><li>Eliminar la App borrará todos los datos locales y las entradas en el Llavero.</li><li>Puedes contactarnos para pedir la eliminación de datos relacionados en CloudKit y nuestro servidor.</li><li>Para manejar las inscripciones, por favor visita <a href='https://apps.apple.com/account/subscriptions' target='_blank'>la Página de Gestión de Suscripciones Apple</a>.</li></ul>"
+            },
+            {
+                "h": "Componentes de Source Code abierto",
+                "p": "<p>FormatRocket integra de forma externa las siguientes librerías únicamente por procesamiento visual. Ellas no recopilan ni se transfieren a otras entidades:</p><table><thead><tr><th>Biblioteca</th><th>Licencia</th><th>Propósito</th></tr></thead><tbody><tr><td>FFmpeg 7.1</td><td>LGPL 2.1+</td><td>Codificación/decodificación multimedia</td></tr><tr><td>libvpx</td><td>BSD 3-Clause</td><td>Códec de video VP8/VP9</td></tr><tr><td>libaom</td><td>BSD 2-Clause</td><td>Códec de video AV1</td></tr><tr><td>LAME</td><td>LGPL 2.0</td><td>Codificación MP3</td></tr><tr><td>libvorbis</td><td>BSD 3-Clause</td><td>Códec de audio Ogg Vorbis</td></tr><tr><td>libopus</td><td>BSD 3-Clause</td><td>Códec de audio Opus</td></tr><tr><td>libogg</td><td>BSD 3-Clause</td><td>Formato de contenedor Ogg</td></tr><tr><td>libwebp</td><td>BSD 3-Clause</td><td>Códec de imagen WebP</td></tr><tr><td>XZ Utils</td><td>Public Domain</td><td>Compresión LZMA</td></tr><tr><td>VMAF</td><td>BSD 2-Clause</td><td>Evaluación de calidad de video</td></tr></tbody></table>"
+            },
+            {
+                "h": "Cambios en esta Política de Privacidad",
+                "p": "<p>Esta Política de Privacidad será actualizada periódicamente. Cualquier cambio se verá reflejado dentro de la aplicación y en nuestro sitio web oficial. Al seguir utilizando la aplicación aceptas la política modernizada.</p>"
+            }
+        ]
+    },
+    "it": {
+        "backText": "Torna all'App",
+        "title": "Informativa sulla Privacy",
+        "date": "Data di entrata in vigore: 25 marzo 2026 | Ultimo aggiornamento: 25 marzo 2026",
+        "intro": "Moring Labs (\"noi\", \"ci\", \"nostro\") ha sviluppato FormatRocket come applicazione commerciale. Questa Informativa sulla privacy spiega come gestiamo le tue informazioni quando utilizzi FormatRocket (\"l'App\").",
+        "contactTitle": "Contattaci",
+        "contactText": "In caso di domande su questa Informativa sulla Privacy, ti preghiamo di contattarci all'indirizzo:",
+        "websiteText": "Sito Web:",
+        "sections": [
+            {
+                "h": "Riepilogo",
+                "p": "<ul><li>Tutte le conversioni di file vengono eseguite localmente sul tuo Mac. I tuoi file non vengono mai caricati su alcun server.</li><li>Non raccogliamo identificatori personali come nome, indirizzo e-mail o numero di telefono.</li><li>Non integriamo SDK di analisi, pubblicità o tracciamento di terze parti.</li><li>Utilizziamo Apple CloudKit per sincronizzare la tua quota di utilizzo e i record degli inviti, e il nostro server per verificare acquisti e quote.</li></ul>"
+            },
+            {
+                "h": "Dati Archiviati Localmente",
+                "p": "<p>I seguenti dati sono archiviati esclusivamente sul tuo dispositivo e non vengono mai trasmessi a nessun server:</p><ul><li><strong>Preferenze Utente</strong>: Impostazioni come lingua, directory di output, parametri di conversione e temi UI vengono salvati in UserDefaults nella sandbox dell'App.</li><li><strong>Record delle Attività di Conversione</strong>: La cronologia delle attività (nomi dei file, stato, timestamp e parametri) è archiviata in un database SwiftData locale.</li><li><strong>Archiviazione nel Portachiavi</strong>: I dati sensibili sono crittografati e archiviati in modo sicuro utilizzando il Portachiavi (Keychain) di macOS. Ciò include: token di autenticazione (JWT), cache del livello di diritto (con firme HMAC per prevenire manomissioni), identificatori di dispositivo (UUID), stato della richiesta della quota iniziale e record di riscossione dei codici di invito.</li></ul>"
+            },
+            {
+                "h": "Dati Trasmessi al Nostro Server",
+                "p": "<p>L'App comunica tramite HTTPS con <code>api.moringlabs.com</code> per la verifica degli acquisti e la gestione delle quote. Tutte le richieste includono una firma HMAC-SHA256 per prevenire le falsificazioni.</p><ul><li><strong>Verifica dell'Acquisto</strong>: Inviamo l'ID della transazione StoreKit, un identificatore di dispositivo crittografato (hash) e il tuo ID utente iCloud per verificare la legittimità del tuo acquisto nell'App Store sul nostro server ed emettere un token di autenticazione.</li><li><strong>Aggiornamento del Token</strong>: Inviamo l'identificatore di dispositivo crittografato e l'ID utente iCloud per aggiornare un token di autenticazione scaduto.</li><li><strong>Deduzione della Quota</strong>: Inviamo al server il tipo di conversione (video/audio/immagine) e la quantità per sottrarla alla quota di conversione settimanale di un utente gratuito.</li><li><strong>Codici di Invito</strong>: Inviamo o riceviamo codici di invito per generare, registrare e riscattare le ricompense degli inviti.</li><li><strong>Nota sull'Identificatore del Dispositivo</strong>: L'identificatore del dispositivo è generato tramite un hash SHA256 del numero di serie hardware del tuo Mac. Si tratta di un hash unidirezionale e irreversibile che non può essere ricondotto alle informazioni hardware originali.</li></ul>"
+            },
+            {
+                "h": "Dati Sincronizzati Tramite Apple CloudKit",
+                "p": "<p>Quando hai effettuato l'accesso a iCloud, i seguenti dati vengono sincronizzati tramite il servizio Apple CloudKit:</p><ul><li><strong>Quota di Conversione Settimanale</strong>: Il numero rimanente di conversioni video, audio e immagini per la settimana in corso, insieme a eventuali quote bonus.</li><li><strong>Record dei Codici di Invito</strong>: Il tuo codice di invito, il numero di volte in cui è stato utilizzato e gli ID Utente iCloud di chi invita e di chi viene invitato.</li><li><strong>Record Condividi-per-Sbloccare</strong>: Il numero di volte in cui hai condiviso l'app questa settimana e l'identificatore settimanale.</li><li><strong>Record di Backup dell'Acquisto</strong>: L'ID del prodotto, lo stato di attivazione e l'ultimo orario di verifica per fare il backup del tuo abbonamento su CloudKit.</li><li><strong>Timestamp del Server</strong>: Utilizzati per determinare l'attuale settimana civile per l'aggiornamento della quota bloccando bypass illeciti tramite il cambio di orologio locale.</li></ul><p>CloudKit i dati sono memorizzati sui server d'infrastruttura d'Apple legiferato e governato dall'<a href='https://www.apple.com/it/privacy/' target='_blank'>Informativa Privacy Apple</a>.</p>"
+            },
+            {
+                "h": "Acquisti In-App e Abbonamenti",
+                "p": "<p>Tali informativi riguardo lo StoreKit 2 rientrano totalmente in gestione ad Apple. L'applicazione non gestisce per intero le fatture e transazioni. Identificazione, ID transizione, rimborso oppure lo status servono all'applicazione al fine di generare il corretto abbonamento pagato.</p>"
+            },
+            {
+                "h": "Utilizzo dati Utenti",
+                "p": "<table><thead><tr><th>Dati</th><th>Scopo</th></tr></thead><tbody><tr><td>Preferenze Locali</td><td>Salvataggio stato in sessioni</td></tr><tr><td>Record Attività</td><td>Stato del Task e retry in caso di operazione fallita</td></tr><tr><td>Hash Identificatore Singolo Mac</td><td>Gestione del codice d'invito</td></tr><tr><td>Certificato Token</td><td>Autentificazione all'API principale</td></tr><tr><td>Conversioni Settimanali Gratuiti</td><td>Applicare i limiti</td></tr><tr><td>Registri di condivisone</td><td>Attivare inviti per scartare premi</td></tr><tr><td>Condividi per Sblocca contatori</td><td>Attenzioni sui reset dei condividere premi</td></tr><tr><td>Diritti Accesso File Log(Cache)</td><td>Aperto ad abbonati che si scollegano</td></tr></tbody></table>"
+            },
+            {
+                "h": "Condivisioni Dati Utile",
+                "p": "<p>Non condividiamo vendendo tali premesse e segreti da alcuna parte in causa.</p><p>La singola Applicazione interagisce mediante tali servizi legali:</p><ul><li><strong>api.moringlabs.com</strong>: Nostro server al contare e verificare il pagamento ed i limit totali permessi.</p><li><strong>Apple CloudKit</strong>: Record al sincronia d'eventi bonus inviti.</p><li><strong>Apple StoreKit</strong>: Esecuzione delle ricevute o incrociate nel sistema macOS.</p></ul>"
+            },
+            {
+                "h": "Recinzioni e Soppressioni Permanenti",
+                "p": "<ul><li><strong>Dati Locali</strong>: Elementi crittografici, le preferenze ed i Task scompariranno dal sistema disinstallando o premendo per un clean up manuale localizzato qui : <code>~/Library/Application Support/com.moring.FormatRocket</code> più KeyChain Apple.</li><li><strong>Contenuti Cloud Storage</strong>: In vostro controllo vi resta cancellabile scollegandosi in primis oppure richiedendolo esplicitamente nell'e-mail a fondo pagina.</li><li><strong>Server Moring Labs</strong>: Registri su quanti inviti, quota totale per il dispositivo limitato. Contattaci e elimineremo su tua richiesta.</li><li><strong>Processamenti Media finalizzati</strong>: Solamente sui vostri Hard-Drive. Nessuna copia trattenuta ai fini dei laboratori nostrani.</li></ul>"
+            },
+            {
+                "h": "Standard d'integrità Informatici",
+                "p": "<ul><li>Dati Sensibili risederanno in modo mascherato e incapsulato dai procedimenti Portachiavi previsti da macOS.</li><li>Scontri d'attacchi evasi con HMAC-SHA256, marcature Timestamp per fermare ripetizioni di attacco o forzature falsificazione.</li><li>I permessi si bloccano ai muri pre-ordinati Sandbox dell'app. Oltre ciò il perimetro d'accesso finisce.</li><li>La firma crittografica HMAC rimedia alla frode in abbonamento garantendo nessuna muta in File di Sistema.</li></ul>"
+            },
+            {
+                "h": "Età Minore Informativo Estinta",
+                "p": "<p>FormatRocket vieta ogni interazione formativa per i bambini in pre-età ai 13. Ignoriamo profili e non ne generiamo in virtù che i dati permangono ignoti come previsto inizialmente.</p>"
+            },
+            {
+                "h": "Responsabilità Autonoma sui propri Diritti",
+                "p": "<ul><li>La Rimozione elimina in parallelo Portachiavi/Dati Localizzati.</li><li>Possiedi il nostro appoggio legale via Mail. Provvederemo.</li><li>Visita la vetrina App se vuoi ispezionare abbonamenti <a href='https://apps.apple.com/account/subscriptions' target='_blank'>La console Utenti Apple Subscriptions</a>.</li></ul>"
+            },
+            {
+                "h": "Cosa Integra e Appoggia(Open Source)",
+                "p": "<p>Noi in ForMatRocket aderimamo le libere librerie informatiche non maligne senza fini informativi sottratti.</p><table><thead><tr><th>Libreria</th><th>Licenza</th><th>Scopo</th></tr></thead><tbody><tr><td>FFmpeg 7.1</td><td>LGPL 2.1+</td><td>Codifica/Decodifica file multimediali</td></tr><tr><td>libvpx</td><td>BSD 3-Clause</td><td>VP8/VP9 Codec</td></tr><tr><td>libaom</td><td>BSD 2-Clause</td><td>AV1 Codec</td></tr><tr><td>LAME</td><td>LGPL 2.0</td><td>MP3 Enconding Avanzato</td></tr><tr><td>libvorbis</td><td>BSD 3-Clause</td><td>OGG Vorbis Audio</td></tr><tr><td>libopus</td><td>BSD 3-Clause</td><td>Opus Audio</td></tr><tr><td>libogg</td><td>BSD 3-Clause</td><td>Impalcatura Base x Ogg</td></tr><tr><td>libwebp</td><td>BSD 3-Clause</td><td>Compressione per la Rete(WebP)</td></tr><tr><td>XZ Utils</td><td>Dominio Pubblico</td><td>XZ/Lzma Compressione</td></tr><tr><td>VMAF</td><td>BSD 2-Clause</td><td>Controllo dei Fotogrammi Visivi in codifica</td></tr></tbody></table>"
+            },
+            {
+                "h": "Aggiornamenti a questa Policy",
+                "p": "<p>Le migliorie non avverranno occultate. La trasparenza permetterà visualizzazioni nell'app e nel sito madre. Usufruendo avvalliamo automaticamente e positivamente il corretto funzionamento d'uso con l'utenza e ne accettiamo i termini attuali al momento presente.</p>"
+            }
+        ]
+    },
+    "pt": {
+        "backText": "Voltar ao App",
+        "title": "Política de Privacidade",
+        "date": "Data de Vigência: 25 de março de 2026 | Última Atualização: 25 de março de 2026",
+        "intro": "A Moring Labs (\"nós\", \"nosso\") desenvolveu o FormatRocket como um aplicativo comercial. Esta Política de Privacidade explica como lidamos com as suas informações ao utilizar o FormatRocket (\"o App\").",
+        "contactTitle": "Contate-nos",
+        "contactText": "Se você tiver alguma dúvida sobre esta Política de Privacidade, entre em contato através de:",
+        "websiteText": "Site:",
+        "sections": [
+            {
+                "h": "Resumo",
+                "p": "<ul><li>Todas as conversões de arquivos ocorrem localmente no seu Mac. Os seus arquivos nunca são enviados a nenhum servidor.</li><li>Não coletamos identificadores pessoais, tais como nome, endereço de e-mail ou número de telefone.</li><li>Não integramos SDKs de análise, publicidade ou rastreamento de terceiros.</li><li>Utilizamos o Apple CloudKit para sincronizar a sua cota de utilização e registos de convites, bem como o nosso próprio servidor para verificar compras e cotas.</li></ul>"
+            },
+            {
+                "h": "Dados Armazenados Localmente",
+                "p": "<p>Os seguintes dados são armazenados exclusivamente no seu dispositivo e nunca são transmitidos para qualquer servidor:</p><ul><li><strong>Preferências do Usuário</strong>: Definições de idioma, diretórios de saída, parâmetros de conversão e temas de interface são salvos em UserDefaults, na sandbox do Aplicativo.</li><li><strong>Registos de Tarefas de Conversão</strong>: O histórico de tarefas (nomes de arquivos, status, marcações de tempo e parâmetros) é guardado numa base de dados SwiftData local.</li><li><strong>Armazenamento nas Chaves (Keychain)</strong>: Os dados sensíveis são criptografados e armazenados de forma segura mediante as Chaves do macOS. Isso abrange: tokens de autenticação (JWT), cache de nível de privilégios (com assinaturas HMAC de forma a impedir alterações), identificadores de dispositivos (UUID), estado do resgate da cota inicial e registos de códigos de convite.</li></ul>"
+            },
+            {
+                "h": "Dados Transmitidos para o Nosso Servidor",
+                "p": "<p>O App realiza comunicação com <code>api.moringlabs.com</code> por intermédio de HTTPS para verificação das compras e gerenciamento da cota. Para evitar falsificações, todas as solicitações incluem uma assinatura HMAC-SHA256.</p><ul><li><strong>Verificação da Compra</strong>: Transmitimos o ID da transação StoreKit, um identificador com hashing do dispositivo e o seu ID de utilizador iCloud a fim de confirmar a legitimidade da sua compra pela App Store, por intermédio de nosso servidor, originando o respectivo token de autenticação.</li><li><strong>Renovação de Token</strong>: Nós providenciamos a atualização de um token fora da validade mediante o ID de utilizador iCloud e identificador do dispositivo em hash.</li><li><strong>Dedução da Cota</strong>: Especificamos em servidor a dedução dos tipos (vídeos, imagens ou áudios), visando os devidos cálculos da quantia perante os membros usuários gratuitos limitados semanalmente.</li><li><strong>Códigos de Convites</strong>: Entregamos em canais virtuais um código passível de ser repassado registrando ou processando a recepção entre envolvidos pela recompensa extra do aplicativo.</li><li><strong>Considerações pelo Identificador Criptografado</strong>: Gera-se via identificação de seu Mac a qual recebe o modelo hash SHA256 para impossibilitar extrações que vinculem hardware primário inicial, atuando unicamente nesse vetor sem rastros diretos.</li></ul>"
+            },
+            {
+                "h": "Sincronizações ao Apple CloudKit",
+                "p": "<p>No decorrer em que houver atividades do iCloud em login será provido ao sistema:</p><ul><li><strong>Cota de Conversão Semanal</strong>: A soma total limitante e bonus creditados aos visuais (vídeo/áudio/fotografias).</li><li><strong>Registro Convidativo de Entradas</strong>: Resumos em contagem que correlacionem envios perante a pessoa e receptor baseados em vinculação do Cloud pessoal.</li><li><strong>Atividade do Computador \"Desbloqueio e Compartilhamento\"</strong>: Parâmetros numéricos contabilizados até restabelecimento em ciclos agendados baseados em limites pré definidos.</li><li><strong>Backup Perante a Aquisições Financiadas pelo Consumidor</strong>: Produtos reconhecíveis, aprovações, horários das avaliações ao App visando blindagens base na nuvem e no dispositivo, protegendo assinantes.</li><li><strong>Acompanhamento Server Timestamps (Carimbos Relativo ao Tempo/Calendário)</strong>: Monitoramentos ao horário central invulnerabilizando tentativas de fraudes temporizadas (uso desleal de sistema, regressos do relógio da máquina interna).</li></ul><p>Regulamentos legais para o CloudKit integram de forma direta <a href='https://www.apple.com/br/privacy/' target='_blank'>As Normatizações em Privacidade Apple</a>.</p>"
+            },
+            {
+                "h": "Assinaturas e Transações pelo Aplicativo (IAP)",
+                "p": "<p>Comprá-lo submete seus processamentos estritamente mediante tecnologias unificadas como o Storekit Apple(Modelo 2.0). FormatRocket negligencia a apreensão ou custódia permanente sobre transações, IDs, cartão, faturamentos, extratos. Buscamos tão somente repasse das autenticidades de confirmação (expirações e validez em compras no StoreKit) habilitando-o com seu benefício condizente. </p>"
+            },
+            {
+                "h": "Finalidades dos Respectivos Dados",
+                "p": "<table><thead><tr><th>Dato Correspondente</th><th>Função Principal</th></tr></thead><tbody><tr><td>Preferências Locais Globais</td><td>Retomadas de suas edições</td></tr><tr><td>Histórico em Log/Tarefas e Falhas</td><td>Visualização intuitiva aos reparos visuais</td></tr><tr><td>Aparelho Registrados(em modelagens Hash)</td><td>Previnem falsos logins, confirmam atuações</td></tr><tr><td>Token Criptograficos JWT de Veracidade</td><td>Passaportes interligando as interfaces em API do Servidor</td></tr><tr><td>Parâmetros Formadores Mensais ou Semanais de Limites (Gratuidade Total)</td><td>Estabelecimentos justos previnindo congestionamentos ou gastos ilegais(sempre redefinidos)</td></tr><tr><td>Contadores Relacionais aos Envios para os Terceiros(Convite Ouro)</td><td>Rendimentos Recompensatórios(Bônus Cota Convidar/Ganhar)</td></tr><tr><td>Logs de Conclusões de Destrancas Coletivas Semanais</td><td>Exposição social equilibrada ao Usuário Semanal Ouro(Bloqueios Diários).</td></tr><tr><td>Veracidade Offline Perante Assinaturas Compradas Validadas</td><td>Preservar direitos a acessos com Wi-Fi/Redes desabilitadas</td></tr></tbody></table>"
+            },
+            {
+                "h": "Gerenciar Compartilhamento com Externos",
+                "p": "<p>Não compactuamos com vendas sobre informações íntimas(Rastreamentos).</p><p>As fronteiras restritas englobam atuações somente para:</p><ul><li><strong>api.moringlabs.com</strong>: Gestão base Moring aos limites totais/licenças veridicas atestadas do Usuário (Nativo e Particular Servidor).</li><li><strong>Apple CloudKit</strong>: Intersecções de histórico / permissões Apple Nuvem.</li><li><strong>Apple StoreKit</strong>: Finalização de subscrição mensal/anual ou contraponto faturamento pela Empresa da Maçã(Cupertino).</li></ul>"
+            },
+            {
+                "h": "Descartes Retenções Limpezas e Remoção",
+                "p": "<ul><li><strong>Equipamento Interno macOS</strong>: Automaticamente eliminado assim ao pressionar à lata de lixo nativa(Desinstalar). Manutenções exigentes podem erradicar via macOS : <code>~/Library/Application Support/com.moring.FormatRocket</code> / Keychain Access.</li><li><strong>CloudKit Storage</strong>: Conserva ao seu e-mail do sistema, poderá ser esquecido nas regulagens do Logout base(Apple Menu) - Opcional solicitar no contato formal infra!</li><li><strong>Servidor Nuvem Moring Base API</strong>: Rastreamento em hash-UUID de sua versão máquina somados com a contagem semanal. Mediante contato iremos descartá-los para sempre em solicitação via Correio Internet.</li><li><strong>Seja Um Dono do Cujus Processamento Criador Visual/Audio Final Media(Output)</strong>: As exportações finalizadas na conversão repousam e permanecem fixamente por você organizados na pasta livre (Download ou Videos) decididas e imutáveis por nós!.</li></ul>"
+            },
+            {
+                "h": "As Proteções Computacionais da Privacidade Adotada(Proteção)",
+                "p": "<ul><li>Guardados no cofre digital de senhas macOS da Apple as assinaturas, Token de direito Premium e Aparelho Mãe Vinculado pela Criptografia Alta Forte.</li><li>Camadas Protecionais Digitais (Blindagens de Segurança Padrão da Indústria Web/HTTPS) ao movimentarem dados API na web online.</li><li>Prevenção atrelada com selos do relógio Servidor-API, HMACS em SHA256 não permitindo invasores, escutas falsas, injeções SQL falsos comandos(Attacking Injeções/Resend/Forgeries)!</li><li>Estar preso as leis Sandboxing (Modo de Janelas Bloqueado), lendo / gravando somente após sua confirmação Pop-Up e nenhuma porta invisível abertas!.</li><li>Comprobações autônomas Offline HMAC assinados protegendo a edição externa malandra(Local Hacks) não autorizada providenciando paz!.</li></ul>"
+            },
+            {
+                "h": "Tratativa Aos Menores Cidadãos Protegidos por Lei Idade Escolar (< 13 Anos) ",
+                "p": "<p>FormaatRocket repudia o uso ao infanto sem tutela legal(Não somos publico infantil direcionado)! Auscultar informativos, idades, CPFS são atos jamais tomados e nunca criamos bancos rastreadores (Consequentemente impedindo este contato)!</p>"
+            },
+            {
+                "h": "Direitos Reservados Legais A Sua Tutela Autônoma(Vocação de Controle)",
+                "p": "<ul><li>Atribulações resolvidas perante sua escolha e deletamento final, encerrando sua contabilidade de máquina(Registros e Tokens Locais extintos de vez)!</li><li>Você dispõe suporte de e-mail ao rodapé inferior (Contato Servidor). Nos providencia em limpar vestígios sobre Nuvem/Server!.</li><li>Trativas a carteiras da Apple Pay, re-inscrições mensais/compras : <a href='https://apps.apple.com/account/subscriptions' target='_blank'>Portão Gerenciável de Extratos e Termos Store InApp.</a>.</li></ul>"
+            },
+            {
+                "h": "O Licenciamento Abertos Código-Livre Incorporados Formando App Moring(Bases)",
+                "p": "<p>Agregadores puramente integram nossas finalidades sem roubar bytes de dados extras(Blindagem Plena em Executivo Off Line). Nula interferências de espias/propagandas!</p><table><thead><tr><th>Bibliotecas Nomeclaturas Técnicas Oportunizadas(Libs)</th><th>Normativa Licenças Oficiais</th><th>Razões Pela Qual Constam na Versão</th></tr></thead><tbody><tr><td>FFmpeg Core Engine(V.7.1 Base Moring Otimizado)</td><td>GPL 2.1 Menor L!</td><td>Cerebro decodificador transcodificador</td></tr><tr><td>Google Libvpx Foundation</td><td>Certame 3-Cláusulas BSD</td><td>Criador VP9 ou Versão inferior P-8</td></tr><tr><td>Alliance Open Media - libaom</td><td>Clausulado Oficial BSD do tipo: Dois.</td><td>O Formato Eficiente e Redutor A/V Numero 1(Video AV1)</td></tr><tr><td>Codec Projeto L.A.M.E</td><td>LGPL Nível Dois(02)</td><td>Sons Portáteis Antigos Mp-Treis!</td></tr><tr><td>Ogg/Vorbis Audio Open System(libvorbis)</td><td>C. Trinitário do Sistema FreeBSD Code</td><td>Auditivos Ogg Clássicos</td></tr><tr><td>Opus Standardizável libopus Code Audio!</td><td>C. Trinitário do Sistema FreeBSD Code</td><td>A Nova Onda em Auditividade e Voz do Planeta(Baixas ou Altas em KBPS).</td></tr><tr><td>Invólucro Embalador Libre -LibOgg Base Oficial Formatos Audiol-visuais Multimídia Aberta </td><td>C. Trinitário do Sistema FreeBSD Code</td><td>Cestas Embaladores Digitais.</td></tr><tr><td>Imagem na Plataforma WEB do Google(P) : WebP!</td><td>C. Trinitário do Sistema FreeBSD Code</td><td>Codificando / Decidindo Transparências Visualidades Modernizadas!.</td></tr><tr><td>Base Oficial Utilidades Em Compressão LZMA Formatos- Tukaani XZ!.</td><td>Dominação do Povo Livre(Public)</td><td>Comprimentar Documentos e Pastas Exatas em Menos Arquivo Global!.</td></tr><tr><td>Netflix V.M.A.F - Quality Avaliações Tecnológicas!</td><td>A Licença Dois-Cláusulas Tipo B_S_D!.</td><td>Um Robozinho Verificador Perceptivo Comparador e Analisador (Vídeo Pixel X Original em Excelência Visual!).</td></tr></tbody></table>"
+            },
+            {
+                "h": "Alterações nesta Carta/Estatuto Formal das Regras Formais",
+                "p": "<p>Isto não seria um estatuto petrificável e mudo. Aprimoradores em segurança são normatizados(Alterações Novatos são colocadas aos vista de nossos usuários por Website ou Notas do App visível). Manutenções no usufruir garantem o concordamento direto!.</p>"
+            }
+        ]
+    },
+    "ru": {
+        "backText": "Назад к приложению",
+        "title": "Политика конфиденциальности",
+        "date": "Дата вступления в силу: 25 марта 2026 г. | Последнее обновление: 25 марта 2026 г.",
+        "intro": "Moring Labs («мы», «нас», «наш») создала FormatRocket как коммерческое приложение. В этой Политике конфиденциальности объясняется, как мы обрабатываем вашу информацию при использовании FormatRocket («Приложение»).",
+        "contactTitle": "Свяжитесь с нами",
+        "contactText": "Если у вас есть вопросы по этой Политике конфиденциальности, свяжитесь с нами:",
+        "websiteText": "Веб-сайт:",
+        "sections": [
+            {
+                "h": "Краткое изложение",
+                "p": "<ul><li>Все конвертации файлов происходят локально на вашем Mac. Мы никогда не загружаем ваши файлы на сервер.</li><li>Мы не собираем личные идентификаторы, такие как ваше имя, адрес электронной почты или номер телефона.</li><li>Мы не интегрируем сторонние SDK для аналитики, рекламы или отслеживания.</li><li>Мы используем Apple CloudKit для синхронизации квот и записей приглашений, а также собственный сервер для проверки покупок и квот.</li></ul>"
+            },
+            {
+                "h": "Данные, хранящиеся локально",
+                "p": "<p>Следующие данные хранятся исключительно на вашем устройстве и никогда не передаются на серверы:</p><ul><li><strong>Пользовательские настройки</strong>: Настройки языка, выходной каталог, параметры преобразования и темы интерфейса сохраняются в UserDefaults в песочнице Приложения.</li><li><strong>Записи задач конвертации</strong>: История задач (имена файлов, статус, временные метки и параметры) хранится в локальной базе данных SwiftData.</li><li><strong>Хранилище Связки ключей (Keychain)</strong>: Конфиденциальные данные надежно шифруются и хранятся в Keychain macOS. Сюда входят: токены аутентификации (JWT), кэш уровня подписки (с подписями HMAC для предотвращения подделки), идентификаторы устройств (UUID), статус получения начальной квоты и история активации кодов приглашений.</li></ul>"
+            },
+            {
+                "h": "Данные, передаваемые на наш сервер",
+                "p": "<p>Приложение связывается с <code>api.moringlabs.com</code> по протоколу HTTPS для проверки покупок и управления квотами. Все запросы содержат подпись HMAC-SHA256 для предотвращения подделки.</p><ul><li><strong>Проверка покупок</strong>: Мы отправляем идентификатор транзакции StoreKit, хешированный идентификатор устройства и ваш идентификатор пользователя iCloud на наш сервер для подтверждения легальности покупки в App Store и выдачи токена аутентификации.</li><li><strong>Обновление токена</strong>: Мы отправляем хешированный ID устройства и ID пользователя iCloud, чтобы обновить истекший токен аутентификации.</li><li><strong>Списание квоты</strong>: Мы отправляем тип конвертации (видео/аудио/изображение) и количество на сервер, чтобы вычесть их из еженедельной квоты бесплатного пользователя.</li><li><strong>Коды приглашений</strong>: Мы отправляем или получаем коды для создания, регистрации и выдачи вознаграждений за приглашения.</li><li><strong>Примечание об идентификаторе устройства</strong>: Вычисляется через SHA256-хеш серийного номера вашего Mac. Это необратимый односторонний хеш, который нельзя преобразовать обратно в исходные аппаратные данные.</li></ul>"
+            },
+            {
+                "h": "Данные, синхронизируемые через Apple CloudKit",
+                "p": "<p>Если вы вошли в учетную запись iCloud, через службу Apple CloudKit синхронизируются следующие данные:</p><ul><li><strong>Еженедельная квота конвертаций</strong>: Оставшееся количество конвертаций (видео, аудио, изображения) на текущую неделю, а также бонусные квоты.</li><li><strong>Записи кодов приглашений</strong>: Ваш код приглашения, частота его использования и идентификаторы iCloud приглашающего и приглашенного.</li><li><strong>Счетчик обмена (Share-to-Unlock)</strong>: Количество раз, которое вы делились Приложением на этой неделе, и идентификатор недели.</li><li><strong>Резервное копирование покупок</strong>: Идентификатор продукта, статус активации и время последней проверки для резервной копии вашей подписки в CloudKit.</li><li><strong>Временные метки сервера</strong>: Используются для определения календарной недели и сброса квот, предотвращая обход ограничений путем изменения системного времени локально.</li></ul><p>Данные CloudKit хранятся на серверах инфраструктуры Apple и регулируются <a href='https://www.apple.com/ru/privacy/' target='_blank'>Политикой конфиденциальности Apple</a>.</p>"
+            },
+            {
+                "h": "Встроенные покупки и Подписки",
+                "p": "<p>Информация об подписках и покупках полностью обрабатывается Apple через StoreKit 2. Приложение не получает и не хранит платежную информацию, Apple ID или другие финансовые данные. Мы запрашиваем в StoreKit только ID транзакции, идентификатор продукта, срок действия и статус возврата, чтобы определить ваш уровень доступа.</p>"
+            },
+            {
+                "h": "Как мы используем данные",
+                "p": "<table><thead><tr><th>Данные</th><th>Цель</th></tr></thead><tbody><tr><td>Локальные настройки</td><td>Для восстановления параметров между сеансами</td></tr><tr><td>Записи задач конвертации</td><td>Отображение выполнения задачи и возможность повтора</td></tr><tr><td>Хешированный идентификатор устройства</td><td>Генерация кодов приглашений и подтверждение привязки устройства</td></tr><tr><td>Токен аутентификации</td><td>Проверка запросов к серверным API</td></tr><tr><td>Еженедельная квота</td><td>Соблюдение ограничений для бесплатных пользователей</td></tr><tr><td>Записи кодов приглашений</td><td>Проверка списков приглашенных и выдача вознаграждений</td></tr><tr><td>Счетчик обмена</td><td>Ограничение количества попыток обмена ссылкой в неделю</td></tr><tr><td>Кэш уровня подписки</td><td>Проверка доступности платных функций в автономном режиме</td></tr></tbody></table>"
+            },
+            {
+                "h": "Передача данных",
+                "p": "<p>Мы не продаем, не сдаем в аренду и не передаем данные пользователей третьим лицам.</p><p>Приложение осуществляет связь только со следующими внешними службами:</p><ul><li><strong>api.moringlabs.com</strong>: Для проверки покупок и управления квотами (наш закрытый сервер).</li><li><strong>Apple CloudKit</strong>: Для синхронизации квот и записей приглашений.</li><li><strong>Apple StoreKit</strong>: Для обработки встроенных подписок и платежей.</li></ul>"
+            },
+            {
+                "h": "Хранение и удаление данных",
+                "p": "<ul><li><strong>Локальные данные</strong>: Настройки, записи о задачах и ключи (Keychain) автоматически очищаются сразу после удаления приложения. Очистить их вручную можно удалив <code>~/Library/Application Support/com.moring.FormatRocket</code> и соответствующие элементы в программе Связка ключей (Keychain Access).</li><li><strong>Данные CloudKit</strong>: Хранятся в вашей учетной записи iCloud. Чтобы запросить их удаление, выйдите из iCloud или обратитесь к нам.</li><li><strong>Данные сервера</strong>: Хешированные идентификаторы устройств и записи квот хранятся на нашем сервере. Свяжитесь с нами для запроса удаления.</li><li><strong>Конвертированные файлы (Результат)</strong>: Сохраняются в указанной вами папке и находятся только под вашим собственным управлением.</li></ul>"
+            },
+            {
+                "h": "Безопасность данных",
+                "p": "<ul><li>Конфиденциальные данные хранятся в зашифрованном виде в Связке ключей macOS.</li><li>Связь через сеть защищена и использует доверенные протоколы HTTPS.</li><li>API-запросы снабжены метками времени и HMAC-SHA256 подписями во избежание подделок (и повторного списания/использования ключей).</li><li>Функции работают под бдительным мониторингом 'Песочницы' macOS, которая дает доступ приложению только по вашему прямому согласию на выбранные папки.</li><li>Автономный кэш проверяется с помощью подписей HMAC на предмет защиты от локального обхода правил (кряков).</li></ul>"
+            },
+            {
+                "h": "Конфиденциальность детей",
+                "p": "<p>FormatRocket в принципе не преследует интерес обращаться за предоставлением услуг к лицам моложе 13 лет. Приложение не осуществляет целенаправленного сбора личных (идентифицируемых) данных о ком-либо.</p>"
+            },
+            {
+                "h": "Ваши права",
+                "p": "<ul><li>Деинсталляция сотрет данные на устройстве и Связку ключей за один шаг.</li><li>Напишите нам, чтобы вручную стереть записи об устройстве с CloudKit и удаленных серверов.</li><li>Всеми приобретенными пакетами или подписками легко управлять тут: <a href='https://apps.apple.com/account/subscriptions' target='_blank'>Официальный раздел Apple Store Подписок</a>.</li></ul>"
+            },
+            {
+                "h": "Компоненты с открытым исходным кодом",
+                "p": "<p>FormatRocket поставляется с интегрированными свободными библиотеками, используемыми только для вашей локальной обработки медиаданных. Они не собирают и не передают ничего посторонним серверам:</p><table><thead><tr><th>Библиотека</th><th>Лицензия</th><th>Цель</th></tr></thead><tbody><tr><td>FFmpeg 7.1</td><td>LGPL 2.1+</td><td>Кодирование/Декодирование Медиа</td></tr><tr><td>libvpx</td><td>BSD 3-Clause</td><td>Видеокодек VP8/VP9</td></tr><tr><td>libaom</td><td>BSD 2-Clause</td><td>Видеокодек AV1</td></tr><tr><td>LAME</td><td>LGPL 2.0</td><td>Кодирование MP3</td></tr><tr><td>libvorbis</td><td>BSD 3-Clause</td><td>Аудиокодек Ogg Vorbis</td></tr><tr><td>libopus</td><td>BSD 3-Clause</td><td>Аудиокодек Opus</td></tr><tr><td>libogg</td><td>BSD 3-Clause</td><td>Формат контейнера Ogg</td></tr><tr><td>libwebp</td><td>BSD 3-Clause</td><td>Кодек изображений WebP</td></tr><tr><td>XZ Utils</td><td>Public Domain</td><td>Сжатие LZMA</td></tr><tr><td>VMAF</td><td>BSD 2-Clause</td><td>Оценка качества видео</td></tr></tbody></table>"
+            },
+            {
+                "h": "Изменения Политики конфиденциальности",
+                "p": "<p>Эта политика будет планомерно пересматриваться и обновляться. Каждая такая поправка найдет свое отражение на нашем сайте и в разделе настроек приложения. Ваше дальнейшее взаимодействие с продуктом негласно подразумевает прочтение и согласие с изложенными выше стандартами.</p>"
+            }
+        ]
+    }
+};
 
         // UI Update Logic
         function updateUI(langCode) {
