@@ -1866,13 +1866,13 @@
 
         // 语言切换与存储功能
         function switchLang(langCode) {
-            localStorage.setItem('formatrocket_lang', langCode);
+            localStorage.setItem('moring_lang', langCode);
             updateUI(langCode);
         }
 
         // 页面初始化逻辑
         window.onload = function () {
-            const savedLang = localStorage.getItem('formatrocket_lang') || 'en';
+            const savedLang = localStorage.getItem('moring_lang') || 'en';
             // 验证语言是否有效，处理未完全翻译退回英语
             const finalLang = (translations[savedLang] && translations[savedLang] !== null) ? savedLang : 'en';
 

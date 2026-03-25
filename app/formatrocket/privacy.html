@@ -796,13 +796,13 @@
 
         // Language Switcher Logic
         function switchLang(langCode) {
-            localStorage.setItem('formatrocket_lang', langCode);
+            localStorage.setItem('moring_lang', langCode);
             updateUI(langCode);
         }
 
         // Init
         window.onload = function() {
-            const savedLang = localStorage.getItem('formatrocket_lang') || 'en';
+            const savedLang = localStorage.getItem('moring_lang') || 'en';
             const finalLang = translations[savedLang] ? savedLang : 'en';
             
             const selector = document.getElementById('langSelector');
