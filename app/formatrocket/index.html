@@ -791,7 +791,7 @@
             const data = TEXTS[lang] || TEXTS['en'];
             document.getElementById('appName').innerText = INFO.name;
             document.getElementById('appTagline').innerText = data.tagline;
-            const imageOrder = [1, 9, 8, 10, 2, 12, 3, 11, 4, 5, 6, 13, 7];
+            const imageOrder = [1, 9, 8, 10, 2, 12, 11, 4, 5, 3, 6, 13, 7];
             for (let i = 1; i <= TOTAL_CARDS; i++) {
                 document.getElementById(`feat-title-${i}`).innerText = data.features[i-1].title;
                 document.getElementById(`feat-desc-${i}`).innerText = data.features[i-1].desc;
