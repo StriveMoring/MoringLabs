@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormatRocket</title>
+    <link href="../../assets/css/inter.css" rel="stylesheet">
+    <meta name="description" content="FormatRocket - The ultimate media conversion suite for Mac. Professional, blazing fast, and 100% offline.">
+    <meta property="og:title" content="FormatRocket">
+    <meta property="og:description" content="Independent App Labs focusing on performance, privacy, and elegant design.">
+    <meta property="og:image" content="https://moringlabs.com/apple-touch-icon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FormatRocket">
+    <meta name="twitter:description" content="Independent App Labs focusing on performance, privacy, and elegant design.">
+    <meta name="twitter:image" content="https://moringlabs.com/apple-touch-icon.png">
+
+    <script src="../../assets/js/tailwindcss.min.js"></script>
+    <link href="../../assets/css/fontawesome.min.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    
+    <style>
+        html, body { 
+            overflow-x: hidden;
+            width: 100vw;
+            max-width: 100%;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; 
+            background-color: #fbfbfd; 
+            color: #1d1d1f;
+        }
+        
+        .glass-nav { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .ambient-glow { position: absolute; width: 1200px; height: 1200px; background: radial-gradient(circle, rgba(64,156,255,0.08) 0%, rgba(255,255,255,0) 70%); top: -300px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
+        .premium-shadow { box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0,0,0,0.05); }
+        .bento-card { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(0,0,0,0.04); background: #ffffff; overflow: hidden; }
+        .bento-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12); border: 1px solid rgba(0,0,0,0.08); }
+        @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .skeleton-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+        .img-transition { transition: opacity 0.5s ease-in-out; }
+    </style>
+</head>
+<body class="relative min-h-screen antialiased">
+
+    <div class="ambient-glow"></div>
+
+    <nav class="glass-nav fixed top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center text-sm gap-2">
+            <a href="../../" class="font-bold tracking-tight text-gray-500 hover:text-black transition-colors flex items-center gap-2 flex-shrink-0">
+               <i class="fas fa-chevron-left text-xs"></i> <span>Moring Labs</span>
+            </a>
+            <div class="relative group flex-shrink-0">
+                <select id="langSelector" aria-label="Language Selector" onchange="switchLang(this.value)" class="bg-gray-100 hover:bg-gray-200 transition-colors text-xs md:text-sm font-semibold outline-none cursor-pointer py-1.5 md:py-2 pl-3 md:pl-4 pr-6 md:pr-8 rounded-full appearance-none w-[105px] sm:w-auto text-ellipsis overflow-hidden whitespace-nowrap">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh-CN">🇨🇳 简体中文</option>
+                    <option value="zh-TW">🇭🇰 繁體中文</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="pt">🇧🇷 Português</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                </select>
+                <i class="fas fa-chevron-down absolute right-2.5 md:right-3 top-1/2 -translate-y-1/2 text-[9px] md:text-[10px] pointer-events-none opacity-60"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 md:pt-32 pb-24 md:pb-32 px-4 md:px-6 max-w-7xl mx-auto">
+        <section class="flex flex-col items-center text-center animate-fade-in opacity-0">
+            <div class="relative mb-6 md:mb-8 mt-6 md:mt-10 group">
+                <div class="absolute inset-0 bg-blue-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                <!-- Assuming standard pattern formatrocket-appicon.webp, fallback if not found -->
+                <img id="appIcon" src="formatrocket-appicon.png" class="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-[28px] md:rounded-[32px] premium-shadow border border-black/5" onerror="this.src='../../apple-touch-icon.png'" alt="App Icon">
+            </div>
+            <h1 id="appName" class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900 break-words px-2"></h1>
+            <p id="appTagline" class="text-lg sm:text-xl md:text-2xl text-gray-500 font-medium mb-8 md:mb-12 max-w-2xl leading-relaxed px-2"></p>
+            
+            <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4 font-semibold w-full sm:w-auto">
+                <a href="https://apps.apple.com/us/app/formatrocket/id6742512196?mt=12" class="w-full sm:w-auto bg-black text-white text-sm md:text-base px-6 py-3.5 md:px-10 md:py-4 rounded-full hover:scale-105 transition-all duration-300 flex items-center justify-center shadow-lg"><i class="fab fa-apple mr-2 text-lg md:text-xl"></i> Mac App Store</a>
+                <a href="privacy.html" class="w-full sm:w-auto bg-white text-black text-sm md:text-base px-6 py-3.5 md:px-8 md:py-4 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300 flex items-center justify-center"><i class="fas fa-shield-alt mr-2 text-gray-400"></i> Privacy</a>
+            </div>
+        </section>
+
+        <section class="mt-16 md:mt-24">
+            <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 animate-fade-in opacity-0" style="animation-delay: 0.2s;">
+                <!-- Generated Cards Will Be Placed Here By JS -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 border-t border-gray-200/60 bg-white/50 text-center flex flex-col items-center">
+        <p class="text-sm text-gray-500 font-medium mb-4 md:mb-2">&copy; 2026 Moring Labs. Built for macOS.</p>
+        <div class="space-x-4 md:space-x-6 text-sm md:text-base">
+            <a href="../../" class="hover:text-black transition-colors">Labs Home</a>
+            <a href="privacy.html" class="hover:text-black transition-colors">Privacy</a>
+        </div>
+    </footer>
+
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 md:p-12 bg-white/50 backdrop-blur-3xl transition-all duration-500 opacity-0" onclick="closeModal()">
+        <div class="relative w-full h-full flex items-center justify-center pointer-events-none group/modal">
+            <img id="modalImage" src="" class="max-w-[95vw] md:max-w-[90vw] max-h-[85vh] object-contain rounded-xl md:rounded-2xl shadow-2xl transition-transform duration-500 scale-90 pointer-events-auto" onclick="event.stopPropagation()">
+            <button class="fixed top-4 right-4 md:top-8 md:right-8 w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-md rounded-full text-gray-400 hover:text-black shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto opacity-100 md:opacity-0 group-hover/modal:opacity-100">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const INFO = {
+            name: "FormatRocket", versionDir: "1.0.0", versionFile: "1_0_0", platform: "Mac",
+            langMap: { "en": "en-US", "zh-CN": "zh-Hans", "zh-TW": "zh-Hant", "ja": "ja", "ko": "ko", "de": "de-DE", "fr": "fr-FR", "es": "es-ES", "it": "it", "pt": "pt-BR", "ru": "ru" }
+        };
+
+        const TEXTS = {
+        "en": {
+                "tagline": "The ultimate media conversion suite for Mac. Professional, blazing fast, and 100% offline.",
+                "features": [
+                        {
+                                "title": "All-in-One Media Hub",
+                                "desc": "A beautifully designed interface handling all your format conversions seamlessly."
+                        },
+                        {
+                                "title": "Powerful CLI Tool",
+                                "desc": "Automate your workflow entirely with the built-in frcli command-line engine."
+                        },
+                        {
+                                "title": "Smart Folder Watch",
+                                "desc": "Automatically process and convert new files the moment they drop into your folders."
+                        },
+                        {
+                                "title": "Apple Shortcuts",
+                                "desc": "Build deep custom automation flows effortlessly across the macOS ecosystem."
+                        },
+                        {
+                                "title": "Universal Video Converter",
+                                "desc": "Convert between 15 formats with blazing speed powered by our dual-engine processing."
+                        },
+                        {
+                                "title": "Granular Control",
+                                "desc": "Precisely tune resolution, bitrate, and framerate for the perfect tailored output."
+                        },
+                        {
+                                "title": "High-Quality GIF",
+                                "desc": "Extract vibrant moments from videos with fully customizable FPS and resolution limits."
+                        },
+                        {
+                                "title": "Intelligent Compression",
+                                "desc": "Drastically reduce massive video file sizes while retaining stunning visual quality."
+                        },
+                        {
+                                "title": "Audio Extraction",
+                                "desc": "Isolate and export pristine audio tracks from any video media file instantly."
+                        },
+                        {
+                                "title": "Lossless Audio Processing",
+                                "desc": "Total support for 18 formats from standard MP3 to mastering-grade FLAC and WAV."
+                        },
+                        {
+                                "title": "Pro Image Transcoder",
+                                "desc": "Convert 29 image formats including camera RAW files down to modern web formats."
+                        },
+                        {
+                                "title": "Smart Image Compression",
+                                "desc": "Optimize spatial sizes instantly with adjustable and responsive quality sliders."
+                        },
+                        {
+                                "title": "Advanced Task Manager",
+                                "desc": "Adaptive concurrency control to squeeze every drop of your multi-core performance."
+                        }
+                ]
+        },
+        "zh-CN": {
+                "tagline": "极速、专业的 macOS 媒体格式转换引擎。100% 离线处理，确保数据隐私。",
+                "features": [
+                        {
+                                "title": "全能工作台",
+                                "desc": "直观、优雅的原生分栏界面，为您带来丝滑无缝的统一格式转换体验。"
+                        },
+                        {
+                                "title": "强大的 CLI 工具",
+                                "desc": "内置专属命令行 frcli 工具，让极客和开发者轻松构建自动化脚本。"
+                        },
+                        {
+                                "title": "智能文件夹监控",
+                                "desc": "后台静默监听，只要有新源文件落入目标文件夹，自动唤醒转换流程。"
+                        },
+                        {
+                                "title": "快捷指令深度集成",
+                                "desc": "完美接入 Apple Shortcuts，跨应用拼接流转，实现个性化批量操作。"
+                        },
+                        {
+                                "title": "全格式视频转换",
+                                "desc": "原生双引擎架构强力驱动，支持 15 种视频格式的极致互转。"
+                        },
+                        {
+                                "title": "独立参数控制",
+                                "desc": "从分辨率、帧率到特定压缩码率，所有细节参数全部开放，任您精调。"
+                        },
+                        {
+                                "title": "视频转原生 GIF",
+                                "desc": "一键提取视频高光时刻，自由定义输出尺寸与动图流畅帧率。"
+                        },
+                        {
+                                "title": "无损级视频压缩",
+                                "desc": "采用智能感知编码算法，在大幅缩减文件体积的同时保持极佳观感。"
+                        },
+                        {
+                                "title": "独立音频提取",
+                                "desc": "无需进入复杂剪辑软件，一拖即得，剥离视频音轨并保存为纯净音频。"
+                        },
+                        {
+                                "title": "母带级音频转换",
+                                "desc": "跨越 18 种音频格式壁垒，无论是低门槛 MP3 还是高保真 FLAC 轻松掌握。"
+                        },
+                        {
+                                "title": "专业图像处理",
+                                "desc": "包罗万象，支持 29 种常规与单反相机 RAW 格式输入，一键转为现代 WebP。"
+                        },
+                        {
+                                "title": "智能图像压缩",
+                                "desc": "提供实时顺滑的质量控制滑块，在体积和画质间找到最精妙的平衡。"
+                        },
+                        {
+                                "title": "自适应任务引擎",
+                                "desc": "并发调度技术，动态榨干 M 系列强悍多核并发性能，处理海量文件不卡顿。"
+                        }
+                ]
+        },
+        "zh-TW": {
+                "tagline": "極速、專業的 macOS 媒體格式轉換引擎。100% 離線處理，確保資料隱私。",
+                "features": [
+                        {
+                                "title": "全能工作台",
+                                "desc": "直觀、優雅的原生分欄介面，為您帶來滑順無縫的統一格式轉換體驗。"
+                        },
+                        {
+                                "title": "強大的 CLI 工具",
+                                "desc": "內建專屬命令列 frcli 工具，讓極客與開發者輕鬆構建自動化腳本。"
+                        },
+                        {
+                                "title": "智慧資料夾監控",
+                                "desc": "背景靜默監聽，只要有新來源檔案落入目標資料夾，自動喚醒轉換流程。"
+                        },
+                        {
+                                "title": "捷徑深度整合",
+                                "desc": "完美接入 Apple Shortcuts，跨應用拼接流轉，實現個人化批次操作。"
+                        },
+                        {
+                                "title": "全格式影片轉換",
+                                "desc": "原生雙引擎架構強力驅動，支援 15 種影片格式的極致極速互轉。"
+                        },
+                        {
+                                "title": "獨立參數控制",
+                                "desc": "從解析度、幀率到特定壓縮位元速率，所有細節參數全部開放，任您精調。"
+                        },
+                        {
+                                "title": "影片轉原生 GIF",
+                                "desc": "一鍵提取影片高光時刻，自由定義輸出尺寸與動圖流暢幀率。"
+                        },
+                        {
+                                "title": "無損級影片壓縮",
+                                "desc": "採用智慧感知編碼演算法，在大幅縮減檔案體積的同時保持極佳觀感。"
+                        },
+                        {
+                                "title": "獨立音訊提取",
+                                "desc": "無需進入複雜剪輯軟體，一拖即得，剝離影片音軌並儲存為純淨音訊。"
+                        },
+                        {
+                                "title": "母帶級音訊轉換",
+                                "desc": "跨越 18 種音訊格式壁壘，無論是低門檻 MP3 還是高保真 FLAC 輕鬆掌握。"
+                        },
+                        {
+                                "title": "專業影像處理",
+                                "desc": "包羅萬象，支援 29 種常規與單眼相機 RAW 格式輸入，一鍵轉為現代 WebP。"
+                        },
+                        {
+                                "title": "智慧影像壓縮",
+                                "desc": "提供即時順滑的品質控制滑桿，在體積和畫質間找到最精妙的平衡。"
+                        },
+                        {
+                                "title": "自適應任務引擎",
+                                "desc": "並行排程技術，動態榨乾 M 系列強悍多核心效能，處理海量檔案不卡頓。"
+                        }
+                ]
+        },
+        "ja": {
+                "tagline": "Mac用究極のメディア変換スイート。プロ仕様、超高速、100%オフライン。",
+                "features": [
+                        {
+                                "title": "オールインワンメディアハブ",
+                                "desc": "あらゆる変換をシームレスに処理する、美しくデザインされたインターフェース。"
+                        },
+                        {
+                                "title": "強力なCLIツール",
+                                "desc": "組み込みのfrcliコマンドラインエンジンで、ワークフローを完全に自動化。"
+                        },
+                        {
+                                "title": "スマートフォルダ監視",
+                                "desc": "監視フォルダにファイルが追加された瞬間に、自動で処理と変換を実行。"
+                        },
+                        {
+                                "title": "Appleショートカット",
+                                "desc": "macOSエコシステム全体で、高度なカスタム自動化フローを簡単に構築。"
+                        },
+                        {
+                                "title": "ユニバーサル動画変換",
+                                "desc": "デュアルエンジン処理により、15種類のフォーマットを超高速で相互変換。"
+                        },
+                        {
+                                "title": "詳細なパラメータ制御",
+                                "desc": "解像度、ビットレート、フレームレートを正確に調整し、完璧な出力を実現。"
+                        },
+                        {
+                                "title": "高品質GIF",
+                                "desc": "動画からハイライトを抽出し、FPSや解像度を自由にカスタマイズ。"
+                        },
+                        {
+                                "title": "インテリジェント圧縮",
+                                "desc": "驚異的な画質を維持しながら、巨大な動画ファイルサイズを大幅に縮小。"
+                        },
+                        {
+                                "title": "音声抽出",
+                                "desc": "あらゆる動画から、クリアな音声トラックを瞬時に分離・抽出。"
+                        },
+                        {
+                                "title": "ロスレス音声処理",
+                                "desc": "一般的なMP3からマスタリング級のFLACやWAVまで、18フォーマットを完全サポート。"
+                        },
+                        {
+                                "title": "プロ仕様の画像変換",
+                                "desc": "カメラのRAWファイルを含む29種類の画像形式から、最新のWebフォーマットに変換。"
+                        },
+                        {
+                                "title": "スマート画像圧縮",
+                                "desc": "調整可能でレスポンシブな品質スライダーで、ファイルサイズを即座に最適化。"
+                        },
+                        {
+                                "title": "高度なタスクマネージャー",
+                                "desc": "自適応型の並行処理制御で、マルチコア性能の限界までパフォーマンスを引き出します。"
+                        }
+                ]
+        },
+        "ko": {
+                "tagline": "Mac을 위한 최고의 미디어 변환 스위트. 전문가 수준, 초고속, 100% 오프라인.",
+                "features": [
+                        {
+                                "title": "올인원 미디어 허브",
+                                "desc": "아름다운 디자인의 인터페이스가 모든 포맷 변환을 매끄럽게 처리합니다."
+                        },
+                        {
+                                "title": "강력한 CLI 도구",
+                                "desc": "내장된 frcli 명령줄 엔진을 통해 워크플로우를 완벽하게 자동화하세요."
+                        },
+                        {
+                                "title": "스마트 폴더 모니터링",
+                                "desc": "경계 중인 폴더에 파일이 놓이는 즉시 백그라운드에서 자동으로 변환을 실행합니다."
+                        },
+                        {
+                                "title": "Apple 단축어 연동",
+                                "desc": "macOS 생태계 내에서 맞춤형 자동화 작업을 매끄럽고 심층적으로 구축하세요."
+                        },
+                        {
+                                "title": "광범위한 비디오 변환기",
+                                "desc": "듀얼 엔진 최적화로 15가지 비디오 포맷을 놀라운 속도로 상호 변환합니다."
+                        },
+                        {
+                                "title": "독립적인 정밀 제어",
+                                "desc": "해상도, 비트레이트, 프레임 레이트를 완벽한 출력을 위해 세밀하게 조정합니다."
+                        },
+                        {
+                                "title": "고품질 GIF 생성",
+                                "desc": "비디오의 명장면을 추출하고 FPS와 해상도를 완전히 커스터마이징하세요."
+                        },
+                        {
+                                "title": "지능형 비디오 압축",
+                                "desc": "탁월한 시각적 품질을 유지하면서 거대한 비디오 파일 크기를 대폭 줄입니다."
+                        },
+                        {
+                                "title": "오디오 추출 분석기",
+                                "desc": "무거운 편집기 없이 비디오 파일에서 깨끗한 오디오 트랙을 즉시 분리하여 내보냅니다."
+                        },
+                        {
+                                "title": "무손실 오디오 처리",
+                                "desc": "기본 MP3부터 스튜디오 마스터링급 FLAC 및 WAV까지 18개 포맷을 완벽하게 지원합니다."
+                        },
+                        {
+                                "title": "프로 이미지 트랜스코딩",
+                                "desc": "디지털 카메라 RAW 파일을 포함한 29종의 포맷을 현대적인 Web 포맷으로 일괄 변환합니다."
+                        },
+                        {
+                                "title": "스마트 이미지 압축",
+                                "desc": "즉각 반응하는 품질 제어 슬라이더를 통해 시각적 손실 없이 크기를 절묘하게 최적화합니다."
+                        },
+                        {
+                                "title": "고급 작업 관리자",
+                                "desc": "멀티 코어 성능을 활용하는 동적 적응형 동시성 작업 조율 엔진이 다량의 파일을 지휘합니다."
+                        }
+                ]
+        },
+        "de": {
+                "tagline": "Die ultimative Medienkonvertierungs-Suite für Mac. Professionell, blitzschnell und 100% offline.",
+                "features": [
+                        {
+                                "title": "All-in-One Medien-Hub",
+                                "desc": "Eine wunderschön gestaltete Oberfläche für nahtlose Konvertierungen all Ihrer Formate."
+                        },
+                        {
+                                "title": "Leistungsstarkes CLI-Tool",
+                                "desc": "Automatisieren Sie Ihren Workflow vollständig mit der integrierten Kommandozeile frcli."
+                        },
+                        {
+                                "title": "Intelligente Ordnerüberwachung",
+                                "desc": "Automatische Verarbeitung und Konvertierung neuer Dateien, sobald diese im Ordner landen."
+                        },
+                        {
+                                "title": "Apple Kurzbefehle",
+                                "desc": "Erstellen Sie mühelos tiefgreifende Automatisierungsabläufe im gesamten macOS-Ökosystem."
+                        },
+                        {
+                                "title": "Universeller Videokonverter",
+                                "desc": "Konvertieren Sie blitzschnell zwischen 15 Formaten dank unserer Dual-Engine-Verarbeitung."
+                        },
+                        {
+                                "title": "Präzise Parametersteuerung",
+                                "desc": "Passen Sie Auflösung, Bitrate und Framerate präzise an für ein perfekt abgestimmtes Ausgabeformat."
+                        },
+                        {
+                                "title": "Hochwertiges GIF",
+                                "desc": "Extrahieren Sie Highlights aus Videos mit vollständig anpassbaren FPS und Auflösungslimits."
+                        },
+                        {
+                                "title": "Intelligente Komprimierung",
+                                "desc": "Reduzieren Sie massive Videogrößen drastisch, während die brillante optische Qualität erhalten bleibt."
+                        },
+                        {
+                                "title": "Audioextraktion",
+                                "desc": "Isolieren und exportieren Sie makellose Audiospuren ohne Umwege aus jeder Videodatei."
+                        },
+                        {
+                                "title": "Verlustfreie Audioverarbeitung",
+                                "desc": "Umfassende Unterstützung für 18 Formate – vom Standard-MP3 bis hin zum Mastering in FLAC und WAV."
+                        },
+                        {
+                                "title": "Profi-Bildkonvertierung",
+                                "desc": "Konvertiert 29 Bildformate, einschließlich Kamera-RAW-Dateien, in moderne Web-Standardformate."
+                        },
+                        {
+                                "title": "Smarte Bildkomprimierung",
+                                "desc": "Optimieren Sie Bildgrößen in Sekundenschnelle mittels reaktionsschneller Schieberegler."
+                        },
+                        {
+                                "title": "Erweiterter Task-Manager",
+                                "desc": "Adaptive Parallelitätssteuerung holt das letzte Quäntchen Leistung aus Ihrer Multi-Core-CPU heraus."
+                        }
+                ]
+        },
+        "fr": {
+                "tagline": "La suite ultime de conversion sur Mac. Professionnelle, ultra rapide et 100% hors ligne.",
+                "features": [
+                        {
+                                "title": "Hub Multimédia Tout-En-Un",
+                                "desc": "Une interface au design exceptionnel fluidifiant sans effort l'ensemble de vos conversions."
+                        },
+                        {
+                                "title": "Outil CLI Puissant",
+                                "desc": "Automatisez entièrement vos habitudes avec le moteur de ligne de commande intégré frcli."
+                        },
+                        {
+                                "title": "Surveillance Intelligente",
+                                "desc": "Déclenchez et opérez la conversion automatiquement dès le dépôt d'un fichier spécifié."
+                        },
+                        {
+                                "title": "Raccourcis Apple Intégrés",
+                                "desc": "Création aisée de séquences d'action automatiques directement ancrées sur votre macOS."
+                        },
+                        {
+                                "title": "Convertisseur Vidéo Universel",
+                                "desc": "Basculez entre 15 formats à une vitesse éclair grâce à un traitement via notre moteur double."
+                        },
+                        {
+                                "title": "Contrôles Fins",
+                                "desc": "Ajustez d'une main experte les résolutions, les débits et les cadences d'image à souhait."
+                        },
+                        {
+                                "title": "Exportation GIF Haute Qualité",
+                                "desc": "Isolez une scène et extrayez-la pour constituer des moments animés paramétrables."
+                        },
+                        {
+                                "title": "Compression Intelligente",
+                                "desc": "Soustrayez un volume considérable à vos vidéos tout en sublimant leur visuel sans concession."
+                        },
+                        {
+                                "title": "Extraction Audio",
+                                "desc": "Dissociez et exportez des enregistrements originaux nets d'un clic pour une efficacité suprême."
+                        },
+                        {
+                                "title": "Encodage Audio Sans Perte",
+                                "desc": "Soutien infaillible pour 18 formats en partant du MP3 usuel vers le Master Audio FLAC et WAV."
+                        },
+                        {
+                                "title": "Transcodage d'Image Pro",
+                                "desc": "Conversion de 29 standards photographiques de l'Appareil Photo RAW direct vers l'optimisation Web."
+                        },
+                        {
+                                "title": "Compression d'Image Réactive",
+                                "desc": "Calibrez dynamiquement les qualités d'images volumineuses instantanément sur une glissière visuelle."
+                        },
+                        {
+                                "title": "Gestionnaire Avancé de Tâches",
+                                "desc": "Orchestration gérée concurrentiellement par le Mac poussant l'adaptabilité multi-cœur au sommet."
+                        }
+                ]
+        },
+        "es": {
+                "tagline": "La suite definitiva de conversión multimedia para Mac. Profesional, ultrarrápida y 100% offline.",
+                "features": [
+                        {
+                                "title": "Centro Multimedia Todo en Uno",
+                                "desc": "Una interfaz maravillosamente diseñada para encargarse de cualquier formato sin fricción."
+                        },
+                        {
+                                "title": "Herramienta CLI Potente",
+                                "desc": "Automatice su flujo de trabajo radicalmente empleando el motor de consola nativa frcli."
+                        },
+                        {
+                                "title": "Monitoreo Inteligente",
+                                "desc": "Convierta nuevos elementos de manera desatendida en el instante que aterrizan en la bandeja."
+                        },
+                        {
+                                "title": "Atajos de Apple (Shortcuts)",
+                                "desc": "Elabore potentes encadenamientos creativos automáticos dentro del rico entorno de macOS."
+                        },
+                        {
+                                "title": "Conversor Universal de Video",
+                                "desc": "Transite entre 15 formatos a velocidades supersónicas apoyados en maquinaria de doble motor."
+                        },
+                        {
+                                "title": "Control Paramétrico Fino",
+                                "desc": "Especifique con grado milimétrico desde la resolución hasta la tasa de fotogramas."
+                        },
+                        {
+                                "title": "Creador GIF de Alta Fidelidad",
+                                "desc": "Extraiga recortes vivaces de cualquier película adaptando la dimensión límite y frecuencia."
+                        },
+                        {
+                                "title": "Compresión de Video Inteligente",
+                                "desc": "Rebaje contundentemente un peso de archivo masivo preservando calidad óptica espectacular."
+                        },
+                        {
+                                "title": "Extracción de Audios Directa",
+                                "desc": "Aísle pistas musicales cristalinas y perfectas provenientes de un material fílmico con exactitud."
+                        },
+                        {
+                                "title": "Audio de Procesamiento Puro",
+                                "desc": "Acoplamiento total con 18 medios sonoros del usual MP3 hasta el rango supremo FLAC o WAV."
+                        },
+                        {
+                                "title": "Transformador de Imágenes Pro",
+                                "desc": "Modifique 29 estructuras crudas de fotografía RAW exportables al marco web ligero moderno."
+                        },
+                        {
+                                "title": "Compresión Gráfica Inteligente",
+                                "desc": "Aproveche controles deslizantes dinámicos regulando tallas y resoluciones ágilmente."
+                        },
+                        {
+                                "title": "Administrador de Tareas Avanzado",
+                                "desc": "Control de concurrencia adaptativo para exprimir cada gota de rendimiento de sus procesadores."
+                        }
+                ]
+        },
+        "it": {
+                "tagline": "La suite di conversione multimediale definitiva. Sicura, professionale e totalmente offline.",
+                "features": [
+                        {
+                                "title": "Hub Media All-in-One",
+                                "desc": "Un'interfaccia elegante che unifica la gestione ineguagliabile di vari formati con un drag-and-drop."
+                        },
+                        {
+                                "title": "Incredibile Tool CLI",
+                                "desc": "Automatizza interamente i processi delegandoli ai tuoi script usando il nostro terminal frcli."
+                        },
+                        {
+                                "title": "Monitoraggio Cartella Silente",
+                                "desc": "Una tecnologia geniale che acquisisce automaticamente file in nuove directory senza input esterno."
+                        },
+                        {
+                                "title": "Collegamenti con Apple Shortcuts",
+                                "desc": "Permette integrazioni assolute per assemblare procedure personalizzate all'interno di MacOS."
+                        },
+                        {
+                                "title": "Convertitore Video Universale",
+                                "desc": "Motore bivalente studiato e progettato per tradurre la logica di 15 standard video alla massima resa."
+                        },
+                        {
+                                "title": "Controllo Assoluto dei Parametri",
+                                "desc": "Dalla risoluzione a specifici bitrates per codificare frame perfetti senza sbavature al tracciato."
+                        },
+                        {
+                                "title": "Esportatore Qualitativo Animato",
+                                "desc": "Racconta scene con un GIF e modella liberamente peso visivo estraendo da qualsiasi formato sorgente."
+                        },
+                        {
+                                "title": "Compressione Video Esclusiva",
+                                "desc": "Affronta il peso smisurato compattando in codifiche ad altissima intelligenza e conservazione visiva."
+                        },
+                        {
+                                "title": "Straordinario Estrattore Audio",
+                                "desc": "Tira a lucido campioni musicali estirpandoli via dalla colonna sonora della pellicola con nitidezza totale."
+                        },
+                        {
+                                "title": "Pannello Audio Senz'alcuna Perdita",
+                                "desc": "Assimilazione radicale e pulita per elaborare estensioni di tipo flac, wav, mp3 senza intoppi tecnici."
+                        },
+                        {
+                                "title": "Transcoder Qualitativo Fotografia",
+                                "desc": "Infila archivi Camera RAW originari da reflex e produci scatti conformati adatti al web."
+                        },
+                        {
+                                "title": "Scala Compressioni Smart in Diretta",
+                                "desc": "Cursori a scorrimento intelligenti testano dal vivo risparmio kilobyte per taglia foto bilanciando i pixel."
+                        },
+                        {
+                                "title": "Organizzatore Concorrenziale Modulare",
+                                "desc": "I regimi di potenza vengono calcolati ottimizzando tutto sul tuo chip multifiocco con maestria pura."
+                        }
+                ]
+        },
+        "pt": {
+                "tagline": "A suíte definitiva de conversão de mídia para Mac. Profissional, incrivelmente rápida e 100% offline.",
+                "features": [
+                        {
+                                "title": "Central de Mídia Completa",
+                                "desc": "Uma interface de design maravilhoso lidando sem nenhum atrito na transição orgânica de arquivos."
+                        },
+                        {
+                                "title": "Poderosa Ferramenta CLI",
+                                "desc": "Automatize todo o seu fluxo de trabalho via comandos com o exclusivo motor nativo em linha frcli."
+                        },
+                        {
+                                "title": "Monitoramento de Pasta Inteligente",
+                                "desc": "Ative um radar virtual em segundo plano e converta silenciosamente ficheiros recém soltos nos diretórios."
+                        },
+                        {
+                                "title": "Atalhos Poderosos da Apple",
+                                "desc": "Projete rotas automáticas extensas em profundidade e total coerência nas bases digitais pelo macOS."
+                        },
+                        {
+                                "title": "Conversor Global de Películas",
+                                "desc": "Navegue entre quinze saídas de formato aceleradamente apoiadas nas dinâmicas de motor duplo."
+                        },
+                        {
+                                "title": "Afinidade Sobre as Condições",
+                                "desc": "Controle cirurgicamente das taxas às proporções em uma engenharia que entrega exatamente seu alvo final."
+                        },
+                        {
+                                "title": "Extrator Ágil a GIF",
+                                "desc": "Colha os curtos instantes inusitados regulando ao ponto as amarrações fotográficas na animação livre."
+                        },
+                        {
+                                "title": "Sistema de Compressão Extrema",
+                                "desc": "Quebre bruscamente toneladas de megabytes para a conservação impecável do brilho ótico perfeitíssimo."
+                        },
+                        {
+                                "title": "Remoção Profissional de Vozez",
+                                "desc": "Recorte magistral para separar as trilhas de áudio da imagem de forma perfeitamente limpa."
+                        },
+                        {
+                                "title": "Tratamento Absoluto sem Perdas",
+                                "desc": "Apoio a 18 saídas da prateleira, da menor mp3 às altíssimas e fiéis WAV e extensões padrão de luxo FLAC."
+                        },
+                        {
+                                "title": "Processador Avançado RAW",
+                                "desc": "Vinte e nove visuais lidos e convertidos da raiz fotográfica em reflexos visiveis para modernidade na web."
+                        },
+                        {
+                                "title": "Esforço Zero em Imagens",
+                                "desc": "Economize instantaneamente espaços usando a guia da alavancagem calibrada perfeitamente."
+                        },
+                        {
+                                "title": "Gerenciamento Supremo de Tarefas",
+                                "desc": "Diferencial autônomo e concorrência ajustável com intenções de drenar energia de cada módulo Mac."
+                        }
+                ]
+        },
+        "ru": {
+                "tagline": "Ультимативный набор для работы с медиаконтентом на Mac. Профессионально, молниеносно и полностью офлайн.",
+                "features": [
+                        {
+                                "title": "Универсальный медиа-центр",
+                                "desc": "Потрясающий дизайн интерфейса для плавной и надежной работы со всеми форматами сразу."
+                        },
+                        {
+                                "title": "Мощный терминал-движок CLI",
+                                "desc": "Полная свобода автоматизации вашей рутины благодаря встроенному компоненту frcli."
+                        },
+                        {
+                                "title": "Умное отслеживание папок",
+                                "desc": "Забудьте о рутине: файлы конвертируются в фоне автоматически при появлении в целевой папке."
+                        },
+                        {
+                                "title": "Apple Быстрые команды",
+                                "desc": "Внедрите программу в свою систему через продвинутые цепочки действий и автоматизацию macOS."
+                        },
+                        {
+                                "title": "Конвертер видео любого формата",
+                                "desc": "Поддержка 15 стандартов при сверхвысоких скоростях благодаря мощной двухъядерной архитектуре."
+                        },
+                        {
+                                "title": "Глубокая настройка параметров",
+                                "desc": "От разрешения до детальных настроек битрейта и частоты кадров — полный ручной контроль."
+                        },
+                        {
+                                "title": "Высококачественные GIF",
+                                "desc": "Превращайте крутые моменты видео в GIF-анимацию с гибкими рамками размера и частоты кадров."
+                        },
+                        {
+                                "title": "Умная система сжатия",
+                                "desc": "Колоссальное сокращение размеров видеофайлов при бескомпромиссном сохранении качества пикселей."
+                        },
+                        {
+                                "title": "Извлечение чистого аудио",
+                                "desc": "Мгновенно выделяйте и сохраняйте исходные звуковые дорожки из любых файлов без сложных редакторов."
+                        },
+                        {
+                                "title": "Обработка аудио без потерь",
+                                "desc": "18 стандартов для безупречного звука — от классического MP3 до мастерингов студийного FLAC и WAV."
+                        },
+                        {
+                                "title": "Фотоконвертер уровня Pro",
+                                "desc": "Поддержка 29 типов изображений — от сырых камерных файлов RAW до современных форматов WebP."
+                        },
+                        {
+                                "title": "Интеллектуальное сжатие графики",
+                                "desc": "Идеальный баланс размера и качества достигается одним плавным графическим ползунком на лету."
+                        },
+                        {
+                                "title": "Умный диспетчер задач",
+                                "desc": "Инновационное распределение нагрузки выжимает максимум мощности из вашей многоядерной системы M-серии."
+                        }
+                ]
+        }
+};
+
+        const TOTAL_CARDS = 13;
+        const container = document.getElementById('cards-container');
+        
+        let initialCardsHTML = '';
+        for (let i = 1; i <= TOTAL_CARDS; i++) {
+            let colSpanClass = "";
+            if (i === 1) colSpanClass = "md:col-span-2"; // Make the first one span full width
+            initialCardsHTML += `
+                <div class="bento-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 flex flex-col ${colSpanClass}">
+                    <div class="mb-6 md:mb-8"><h3 id="feat-title-${i}" class="text-xl md:text-2xl font-bold text-gray-900 mb-2 tracking-tight"></h3><p id="feat-desc-${i}" class="text-base md:text-lg text-gray-500 font-medium leading-relaxed"></p></div>
+                    <div class="relative w-full aspect-[16/10] bg-gray-50 rounded-[1.5rem] md:rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center shadow-inner cursor-zoom-in" onclick="openModal(document.getElementById('shot-${i}').src)">
+                        <div id="skeleton-${i}" class="absolute inset-0 bg-gray-200 skeleton-pulse"></div>
+                        <img id="shot-${i}" src="" class="w-full h-full object-cover relative z-10 img-transition opacity-0" alt="App Screenshot ${i}">
+                    </div>
+                </div>
+            `;
+        }
+        container.innerHTML = initialCardsHTML;
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+
+        function openModal(src) {
+            if(!src) return; modalImg.src = src; modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.add('opacity-100'); modalImg.classList.add('scale-100'); modalImg.classList.remove('scale-90'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('opacity-100'); modalImg.classList.add('scale-90'); modalImg.classList.remove('scale-100');
+            setTimeout(() => { modal.classList.add('hidden'); document.body.style.overflow = ''; }, 400);
+        }
+
+        function updateUI(lang) {
+            const fLang = INFO.langMap[lang] || "en-US";
+            const data = TEXTS[lang] || TEXTS['en'];
+            document.getElementById('appName').innerText = INFO.name;
+            document.getElementById('appTagline').innerText = data.tagline;
+            for (let i = 1; i <= TOTAL_CARDS; i++) {
+                document.getElementById(`feat-title-${i}`).innerText = data.features[i-1].title;
+                document.getElementById(`feat-desc-${i}`).innerText = data.features[i-1].desc;
+                const img = document.getElementById(`shot-${i}`);
+                const sk = document.getElementById(`skeleton-${i}`);
+                img.style.opacity = '0'; sk.style.display = 'block';
+                img.onload = () => { sk.style.display = 'none'; img.style.opacity = '1'; };
+                img.src = `Screenshots/${INFO.versionDir}/${fLang}/${INFO.platform}/FormatRocket-${INFO.versionFile}-${fLang}-${INFO.platform}-${i}.webp`;
+            }
+        }
+
+        function switchLang(lang) { localStorage.setItem('moring_lang', lang); updateUI(lang); }
+
+        window.onload = () => {
+            const savedLang = localStorage.getItem('moring_lang') || navigator.language || 'en';
+            let matched = 'en';
+            if(savedLang.includes('zh-CN')) matched = 'zh-CN'; else if(savedLang.includes('zh')) matched = 'zh-TW';
+            else if(savedLang.includes('ja')) matched = 'ja'; else if(savedLang.includes('ko')) matched = 'ko';
+            else if(savedLang.includes('de')) matched = 'de'; else if(savedLang.includes('fr')) matched = 'fr';
+            else if(savedLang.includes('es')) matched = 'es'; else if(savedLang.includes('it')) matched = 'it';
+            else if(savedLang.includes('pt')) matched = 'pt'; else if(savedLang.includes('ru')) matched = 'ru';
+            const final = INFO.langMap[matched] ? matched : 'en';
+            document.getElementById('langSelector').value = final;
+            updateUI(final);
+            setTimeout(() => document.querySelector('section.animate-fade-in').classList.add('opacity-100'), 100);
+        };
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    </script>
+</body>
+</html>
