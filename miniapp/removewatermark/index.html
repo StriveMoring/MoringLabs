@@ -79,19 +79,19 @@
     </nav>
 
     <!-- Hero -->
-    <header class="pt-28 md:pt-36 pb-8 md:pb-12 px-4 md:px-6 text-center animate-fade-in">
-        <div class="flex items-center justify-center gap-4 md:gap-5 mb-4 md:mb-5">
-            <img src="icon.webp" class="w-16 h-16 md:w-20 md:h-20 rounded-full shadow-lg" alt="App Icon">
-            <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-black to-gray-600 text-left"></h1>
-        </div>
-        <p id="hero-desc" class="text-sm sm:text-base md:text-lg text-gray-500 font-medium max-w-xl mx-auto mb-6 md:mb-8"></p>
-        <div class="flex items-center justify-center gap-5 md:gap-8">
-            <img src="qrcode.webp" alt="Mini Program QR Code" class="w-28 h-28 md:w-32 md:h-32">
-            <div class="text-left">
-                <p id="qr-hint" class="text-sm md:text-base text-gray-600 font-semibold mb-1"></p>
-                <p class="text-xs text-gray-400"><i class="fab fa-weixin mr-1"></i>WeChat Mini Program</p>
+    <header class="pt-24 md:pt-32 pb-16 md:pb-24 px-4 md:px-6">
+        <section class="flex flex-col items-center text-center animate-fade-in">
+            <div class="relative mb-6 md:mb-8 mt-6 md:mt-10 group">
+                <div class="absolute inset-0 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 bg-purple-500"></div>
+                <img src="icon.webp" class="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full shadow-xl border border-black/5" alt="App Icon">
             </div>
-        </div>
+            <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900 break-words px-2"></h1>
+            <p id="hero-desc" class="text-lg sm:text-xl md:text-2xl text-gray-500 font-medium mb-8 md:mb-12 max-w-2xl leading-relaxed px-2"></p>
+            <div class="flex flex-col items-center gap-3">
+                <img src="qrcode.webp" alt="Mini Program QR Code" class="w-36 h-36 md:w-44 md:h-44">
+                <p id="qr-hint" class="text-sm text-gray-400 font-medium"></p>
+            </div>
+        </section>
     </header>
 
     <!-- Features -->
@@ -156,7 +156,7 @@
     <script>
         const TEXTS = {
             "en": {
-                heroTitle: "AI Background<br>& Watermark Removal",
+                heroTitle: "AI Background & Watermark Removal",
                 heroDesc: "By Moring Labs — Remove backgrounds, make ID photos, remove Gemini watermarks, and extract video without watermark. Free WeChat Mini Program.",
                 f1Badge: "AI Powered", f1Title: "Remove Background", f1Desc: "AI smartly detects subjects and generates transparent backgrounds in one click. Great for portraits, products, and animals.",
                 f2Badge: "AI Matting", f2Title: "ID Photo Maker", f2Desc: "Standard sizes like 1-inch and 2-inch. Swap background colors easily. AI matting gives you an ID photo in seconds.",
@@ -167,7 +167,7 @@
                 footerContact: "Contact Us"
             },
             "zh-CN": {
-                heroTitle: "AI去水印<br>背景消除",
+                heroTitle: "AI去水印背景消除",
                 heroDesc: "Moring Labs 出品 — 图片去背景、证件照制作、Gemini 去水印、视频去水印，免费好用的微信小程序。",
                 f1Badge: "AI 驱动", f1Title: "图片去背景", f1Desc: "AI 智能识别主体，一键生成透明背景图。支持人像、商品、动物等多种场景。",
                 f2Badge: "AI 赋能", f2Title: "证件照制作", f2Desc: "一寸、二寸、驾照等标准尺寸，蓝底红底白底一键切换。AI 智能抠图，秒出证件照。",
@@ -178,7 +178,7 @@
                 footerContact: "联系我们"
             },
             "zh-TW": {
-                heroTitle: "AI去浮水印<br>去背",
+                heroTitle: "AI去浮水印去背",
                 heroDesc: "Moring Labs 出品 — 圖片去背、證件照製作、Gemini 去浮水印、影片去浮水印，免費好用的微信小程式。",
                 f1Badge: "AI 驅動", f1Title: "圖片去背", f1Desc: "AI 智慧辨識主體，一鍵產生透明背景圖。支援人像、商品、動物等多種場景。",
                 f2Badge: "AI 賦能", f2Title: "證件照製作", f2Desc: "一寸、二寸、駕照等標準尺寸，藍底紅底白底一鍵切換。AI 智慧摳圖，秒出證件照。",
@@ -189,7 +189,7 @@
                 footerContact: "聯絡我們"
             },
             "ja": {
-                heroTitle: "AI透かし消去<br>背景透過",
+                heroTitle: "AI透かし消去・背景透過",
                 heroDesc: "Moring Labs 提供 — 画像の背景透過、証明写真作成、Gemini透かし消去、動画透かし消去。無料で使いやすいWeChatミニプログラム。",
                 f1Badge: "AI 駆動", f1Title: "画像背景透過", f1Desc: "AIが被写体を認識し、ワンクリックで透過背景を生成。人物、商品、動物などに対応。",
                 f2Badge: "AI 切り抜き", f2Title: "証明写真作成", f2Desc: "各種標準サイズに対応。背景色もワンクリックで変更可能。AI切り抜きで高精度。",
@@ -200,7 +200,7 @@
                 footerContact: "お問い合わせ"
             },
             "ko": {
-                heroTitle: "AI 배경 <br>& 워터마크 제거",
+                heroTitle: "AI 배경 & 워터마크 제거",
                 heroDesc: "Moring Labs 제공 — 이미지 배경 제거, 증명사진 제작, Gemini 워터마크 제거, 동영상 워터마크 제거. 무료 위챗 미니 프로그램.",
                 f1Badge: "AI 구동", f1Title: "이미지 배경 제거", f1Desc: "AI가 피사체를 지능적으로 인식하여 원클릭으로 투명 배경 이미지를 생성합니다.",
                 f2Badge: "AI 매팅", f2Title: "증명사진 제작", f2Desc: "다양한 표준 규격 지원. 배경색 전환도 원클릭. 순식간에 증명사진 완성.",
@@ -211,7 +211,7 @@
                 footerContact: "문의하기"
             },
             "de": {
-                heroTitle: "AI Hintergrund <br>& Wasserzeichen",
+                heroTitle: "AI Hintergrund & Wasserzeichen",
                 heroDesc: "Von Moring Labs — Bildhintergrund entfernen, Passfoto-Maker, Gemini Wasserzeichen und Video Wasserzeichen entfernen. Kostenlos.",
                 f1Badge: "KI-basiert", f1Title: "Hintergrund Entfernen", f1Desc: "KI erkennt Subjekte smart und generiert transparente Hintergründe mit einem Klick.",
                 f2Badge: "KI Freistellen", f2Title: "Passfoto-Maker", f2Desc: "Standardgrößen. Hintergrundfarben leicht wechseln. Passfotos in Sekunden.",
@@ -222,7 +222,7 @@
                 footerContact: "Kontakt"
             },
             "fr": {
-                heroTitle: "IA Arrière-plan <br>& Filigrane",
+                heroTitle: "IA Arrière-plan & Filigrane",
                 heroDesc: "Par Moring Labs — Supprimer les arrière-plans, photos d'identité, filigranes vidéo. Gratuit.",
                 f1Badge: "Géré via IA", f1Title: "Supprimer Arrière-plan", f1Desc: "L'IA détecte intelligemment et supprime le fond en un seul clic.",
                 f2Badge: "Détourage IA", f2Title: "Créateur de Photos ID", f2Desc: "Tailles standards. IA pour obtenir une photo d'identité en quelques secondes.",
@@ -233,7 +233,7 @@
                 footerContact: "Contact"
             },
             "es": {
-                heroTitle: "IA Fondo <br>& Marca de Agua",
+                heroTitle: "IA Fondo & Marca de Agua",
                 heroDesc: "De Moring Labs — Quitar fondo, fotos de ID, marcas de agua de videos y Gemini. Gratis.",
                 f1Badge: "IA Aplicada", f1Title: "Deshacer Fondo", f1Desc: "La IA detecta automáticamente los sujetos y remueve el fondo en un clic.",
                 f2Badge: "Recorte por IA", f2Title: "Creador de Fotos ID", f2Desc: "Tamaños estándares de ID. Recortes al instante para tus documentos.",
@@ -244,7 +244,7 @@
                 footerContact: "Contáctenos"
             },
             "it": {
-                heroTitle: "IA Sfondo <br>& Filigrana",
+                heroTitle: "IA Sfondo & Filigrana",
                 heroDesc: "Da Moring Labs — Rimuovi sfondi, crea foto ID, filigrane video. Mini programma gratuito.",
                 f1Badge: "IA Dedicata", f1Title: "Rimuovi Sfondo", f1Desc: "L'IA rileva abilmente i soggetti e converte in trasparente in un colpo solo.",
                 f2Badge: "Selezione IA", f2Title: "Creatore di Foto ID", f2Desc: "Dimensioni classiche delle foto tessere preparate a tempo di record.",
@@ -255,7 +255,7 @@
                 footerContact: "Contatto"
             },
             "pt": {
-                heroTitle: "IA Fundo <br>& Marca D'água",
+                heroTitle: "IA Fundo & Marca D'água",
                 heroDesc: "Por Moring Labs — Apagar fundos, fazer fotos 3x4, remover marcas d'água. 100% grátis.",
                 f1Badge: "Powered by IA", f1Title: "Cortar Fundo", f1Desc: "O motor visual separa pessoas, pets e coisas magicamente num estalo.",
                 f2Badge: "Matting Inteligente", f2Title: "Modo Foto ID", f2Desc: "Ajuste na dimensão exata pra sua licença e fundos personalizados fáceis.",
@@ -266,7 +266,7 @@
                 footerContact: "Fale Conosco"
             },
             "ru": {
-                heroTitle: "ИИ Удаление фона<br>& Водяных знаков",
+                heroTitle: "ИИ Удаление фона & Водяных знаков",
                 heroDesc: "От Moring Labs — Удаляйте фон, создавайте фото на документы и видео. Бесплатно.",
                 f1Badge: "ИИ обработка", f1Title: "Удалить фон", f1Desc: "ИИ умно обнаруживает лица и предметы, стирая подложку в секунды.",
                 f2Badge: "Умное вырезание", f2Title: "Фото на документы", f2Desc: "Автоматическая подгонка по размеру, быстрая замена синего/красного фона.",
