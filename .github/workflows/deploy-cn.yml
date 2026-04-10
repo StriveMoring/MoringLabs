@@ -1,0 +1,29 @@
+name: deploy-cn
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.CN_SSH_KEY }}
+
+      - name: Rsync to CN server
+        env:
+          CN_HOST: ${{ secrets.CN_HOST }}
+          CN_USER: ${{ secrets.CN_USER }}
+          CN_PORT: ${{ secrets.CN_PORT || 22 }}
+          CN_PATH: ${{ secrets.CN_PATH }}
+        run: |
+          ssh -o StrictHostKeyChecking=no -p "$CN_PORT" "$CN_USER@$CN_HOST" "mkdir -p \"$CN_PATH\""
+
+          rsync -az --delete \
+            --exclude '.git' --exclude '.github' \
+            -e "ssh -p $CN_PORT -o StrictHostKeyChecking=no" \
+            ./ "$CN_USER@$CN_HOST:$CN_PATH/"
