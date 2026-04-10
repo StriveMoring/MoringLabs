@@ -277,16 +277,20 @@
                 a.textContent = "苏ICP备2026018086号";
                 c.appendChild(a);
 
-                var s = document.createTextNode(" | ");
-                s.className = "text-xs text-gray-300";
-                c.appendChild(s);
+                c.appendChild(document.createTextNode(" | "));
+
+                var img = document.createElement("img");
+                img.src = "/assets/beian.png";
+                img.alt = "公安备案";
+                img.style.cssText = "display:inline-block;vertical-align:middle;width:14px;height:14px;margin-right:3px";
 
                 var b = document.createElement("a");
-                b.href = "https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32010502011411";
+                b.href = "https://beian.mps.gov.cn/#/query/webSearch?code=32010502011411";
                 b.target = "_blank";
-                b.rel = "noopener noreferrer";
+                b.rel = "noreferrer";
                 b.className = "text-xs text-gray-400 hover:text-gray-500 transition-colors";
-                b.textContent = "苏公网安备32010502011411号";
+                b.appendChild(img);
+                b.appendChild(document.createTextNode("苏公网安备32010502011411号"));
                 c.appendChild(b);
             }
         })();
