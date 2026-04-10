@@ -265,17 +265,18 @@
     </footer>
 
     <script>
-        const isCNHost = location.hostname === "moringlabs.cn" || location.hostname.endsWith(".moringlabs.cn");
-        const icpContainer = document.getElementById("icp-container");
-        if (icpContainer && isCNHost) {
-            const icpLink = document.createElement("a");
-            icpLink.href = "https://beian.miit.gov.cn/";
-            icpLink.target = "_blank";
-            icpLink.rel = "noopener noreferrer";
-            icpLink.className = "text-xs text-gray-400 hover:text-gray-500 transition-colors";
-            icpLink.textContent = "苏ICP备2026018086号";
-            icpContainer.appendChild(icpLink);
-        }
+        (function() {
+            var h = location.hostname;
+            if (h === "moringlabs.cn" || h.endsWith(".moringlabs.cn")) {
+                var a = document.createElement("a");
+                a.href = "https://beian.miit.gov.cn/";
+                a.target = "_blank";
+                a.rel = "noopener noreferrer";
+                a.className = "text-xs text-gray-400 hover:text-gray-500 transition-colors";
+                a.textContent = "苏ICP备2026018086号";
+                document.getElementById("icp-container").appendChild(a);
+            }
+        })();
 
         const TRANSLATIONS = {
             "en": {
