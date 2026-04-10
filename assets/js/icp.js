@@ -3,14 +3,36 @@
   if (!(h === "moringlabs.cn" || h.endsWith(".moringlabs.cn") || h === "588280.xyz" || h.endsWith(".588280.xyz"))) return;
 
   var container = document.getElementById("icp-container");
+  var footer = document.querySelector("footer");
+  var attachToFooter = !!footer;
   if (!container) {
     container = document.createElement("div");
     container.id = "icp-container";
-    container.className = "inline-flex items-center gap-2 text-xs text-gray-400 mt-2";
-    var footer = document.querySelector("footer");
-    (footer || document.body).appendChild(container);
+    if (attachToFooter) {
+      container.className = "inline-flex items-center gap-2 text-xs text-gray-400 mt-2";
+      footer.appendChild(container);
+    } else {
+      container.className = "inline-flex items-center gap-2 text-xs text-gray-400";
+      container.style.position = "fixed";
+      container.style.left = "0";
+      container.style.right = "0";
+      container.style.bottom = "12px";
+      container.style.justifyContent = "center";
+      container.style.zIndex = "50";
+      container.style.padding = "0 12px";
+      document.body.appendChild(container);
+    }
   } else {
     container.className = "inline-flex items-center gap-2 text-xs text-gray-400";
+    if (!attachToFooter && container.parentElement === document.body) {
+      container.style.position = "fixed";
+      container.style.left = "0";
+      container.style.right = "0";
+      container.style.bottom = "12px";
+      container.style.justifyContent = "center";
+      container.style.zIndex = "50";
+      container.style.padding = "0 12px";
+    }
   }
 
   var a = document.createElement("a");
