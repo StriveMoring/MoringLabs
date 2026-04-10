@@ -10,6 +10,27 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: Prepare CN build (domain injection)
+        run: |
+          set -euo pipefail
+          BUILD_DIR="$(mktemp -d)"
+          export BUILD_DIR
+          rsync -a --exclude '.git' --exclude '.github' ./ "$BUILD_DIR/"
+          python - <<'PY'
+          import os
+          import pathlib
+
+          root = pathlib.Path(os.environ["BUILD_DIR"])
+          exts = {".html", ".xml", ".txt", ".webmanifest", ".json"}
+          for path in root.rglob("*"):
+              if path.is_file() and path.suffix in exts:
+                  data = path.read_text(encoding="utf-8")
+                  new = data.replace("https://moringlabs.com", "https://moringlabs.cn")
+                  if new != data:
+                      path.write_text(new, encoding="utf-8")
+          PY
+          echo "BUILD_DIR=$BUILD_DIR" >> "$GITHUB_ENV"
+
       - uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.CN_SSH_KEY }}
@@ -26,4 +47,4 @@ jobs:
           rsync -az --delete --timeout=120 \
             --exclude '.git' --exclude '.github' \
             -e "ssh -p $CN_PORT -o StrictHostKeyChecking=no -o ConnectTimeout=30 -o ServerAliveInterval=30 -o ServerAliveCountMax=3" \
-            ./ "$CN_USER@$CN_HOST:$CN_PATH/"
+            "$BUILD_DIR/" "$CN_USER@$CN_HOST:$CN_PATH/"
