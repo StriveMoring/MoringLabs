@@ -23,7 +23,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -p "$CN_PORT" "$CN_USER@$CN_HOST" "mkdir -p \"$CN_PATH\""
 
-          rsync -az --delete \
+          rsync -az --delete --timeout=120 --contimeout=30 \
             --exclude '.git' --exclude '.github' \
-            -e "ssh -p $CN_PORT -o StrictHostKeyChecking=no" \
+            -e "ssh -p $CN_PORT -o StrictHostKeyChecking=no -o ConnectTimeout=30 -o ServerAliveInterval=30 -o ServerAliveCountMax=3" \
             ./ "$CN_USER@$CN_HOST:$CN_PATH/"
