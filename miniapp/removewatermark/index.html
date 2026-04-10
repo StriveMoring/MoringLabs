@@ -79,25 +79,17 @@
     </nav>
 
     <!-- Hero -->
-    <header class="pt-28 md:pt-36 pb-12 md:pb-16 px-4 md:px-6 animate-fade-in">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16">
-            <!-- Left: Text -->
-            <div class="flex-1 text-center md:text-left">
-                <div class="flex items-center gap-4 mb-6 md:mb-8 justify-center md:justify-start">
-                    <img src="icon.webp" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-[22px] shadow-lg border border-black/5" alt="App Icon">
-                    <div>
-                        <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-black to-gray-600 leading-tight"></h1>
-                    </div>
-                </div>
-                <p id="hero-desc" class="text-base sm:text-lg md:text-xl text-gray-500 font-medium max-w-lg mb-6 md:mb-8"></p>
-                <div class="flex flex-wrap gap-3 justify-center md:justify-start font-semibold">
-                    <a href="privacy.html" class="bg-white text-black text-sm px-5 py-2.5 rounded-full border border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-300 flex items-center"><i class="fas fa-shield-alt mr-2 text-gray-400"></i> Privacy</a>
-                </div>
-            </div>
-            <!-- Right: QR Code -->
-            <div class="flex-shrink-0 text-center">
-                <img src="qrcode.webp" alt="Mini Program QR Code" class="w-44 h-44 md:w-52 md:h-52 rounded-2xl mx-auto">
-                <p id="qr-hint" class="text-xs text-gray-400 mt-3 font-medium"></p>
+    <header class="pt-28 md:pt-36 pb-8 md:pb-12 px-4 md:px-6 text-center animate-fade-in">
+        <div class="flex items-center justify-center gap-4 md:gap-5 mb-4 md:mb-5">
+            <img src="icon.webp" class="w-16 h-16 md:w-20 md:h-20 rounded-full shadow-lg" alt="App Icon">
+            <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-black to-gray-600 text-left"></h1>
+        </div>
+        <p id="hero-desc" class="text-sm sm:text-base md:text-lg text-gray-500 font-medium max-w-xl mx-auto mb-6 md:mb-8"></p>
+        <div class="flex items-center justify-center gap-5 md:gap-8">
+            <img src="qrcode.webp" alt="Mini Program QR Code" class="w-28 h-28 md:w-32 md:h-32">
+            <div class="text-left">
+                <p id="qr-hint" class="text-sm md:text-base text-gray-600 font-semibold mb-1"></p>
+                <p class="text-xs text-gray-400"><i class="fab fa-weixin mr-1"></i>WeChat Mini Program</p>
             </div>
         </div>
     </header>
