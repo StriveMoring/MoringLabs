@@ -87,10 +87,6 @@
             </div>
             <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900 break-words px-2"></h1>
             <p id="hero-desc" class="text-lg sm:text-xl md:text-2xl text-gray-500 font-medium mb-8 md:mb-12 max-w-2xl leading-relaxed px-2"></p>
-            <div class="flex flex-col items-center gap-3">
-                <img src="qrcode.webp" alt="Mini Program QR Code" class="w-36 h-36 md:w-44 md:h-44">
-                <p id="qr-hint" class="text-sm text-gray-400 font-medium"></p>
-            </div>
         </section>
     </header>
 
@@ -147,6 +143,13 @@
     </main>
 
 
+    <!-- WeChat QR -->
+    <section class="text-center py-16 md:py-20 animate-fade-in" style="animation-delay:0.2s;opacity:0;">
+        <h2 id="qr-title" class="text-2xl md:text-3xl font-extrabold tracking-tight mb-3"></h2>
+        <p id="qr-hint" class="text-gray-500 text-base font-medium mb-8"></p>
+        <img src="wechat-banner.webp" alt="WeChat Search" class="max-w-xs md:max-w-md mx-auto rounded-xl">
+    </section>
+
     <!-- Footer -->
     <footer class="py-10 border-t border-gray-200/60 bg-white/50 text-center">
         <p class="text-sm text-gray-500 font-medium mb-2">&copy; 2026 Moring Labs. All rights reserved.</p>
@@ -163,7 +166,7 @@
                 f3Badge: "Lossless", f3Title: "Gemini Watermark", f3Desc: "Accurately remove watermarks from Google Gemini AI images. Math-based reverse calculation with zero quality loss.",
                 f4Badge: "Ultra Fast", f4Title: "Video Watermark", f4Desc: "Supports 20+ major platforms. Paste the link to extract videos cleanly without watermarks.",
                 f5Badge: "Toolkit", f5Title: "Image Toolkit", f5Desc: "Image compression, format conversion, and resizing. Lightweight and high efficiency, saving original fidelity.",
-                qrHint: "Scan with WeChat",
+                qrTitle: "Scan to Experience", qrHint: "Open WeChat and scan to use immediately.",
                 footerContact: "Contact Us"
             },
             "zh-CN": {
@@ -174,7 +177,7 @@
                 f3Badge: "无损还原", f3Title: "Gemini 去水印", f3Desc: "精确去除 Google Gemini AI 生成图片的水印。数学精确反推，零质量损失。",
                 f4Badge: "极速处理", f4Title: "视频去水印", f4Desc: "支持 20+ 主流视频平台。粘贴分享链接，一键提取无水印视频。",
                 f5Badge: "实用工具", f5Title: "图片工具箱", f5Desc: "图片压缩、格式转换、尺寸调整。轻量高效，处理结果原画质保存。",
-                qrHint: "微信扫码体验",
+                qrTitle: "微信扫码体验", qrHint: "打开微信扫一扫，立即使用",
                 footerContact: "联系我们"
             },
             "zh-TW": {
@@ -185,7 +188,7 @@
                 f3Badge: "無損還原", f3Title: "Gemini 去浮水印", f3Desc: "精確去除 Google Gemini AI 產生圖片的浮水印。數學精確反推，零畫質損失。",
                 f4Badge: "極速處理", f4Title: "影片去浮水印", f4Desc: "支援 20+ 主流影音平台。貼上分享連結，一鍵提取無浮水印影片。",
                 f5Badge: "實用工具", f5Title: "圖片工具箱", f5Desc: "圖片壓縮、格式轉換、尺寸調整。輕量高效，處理結果原畫質儲存。",
-                qrHint: "微信掃碼體驗",
+                qrTitle: "微信掃碼體驗", qrHint: "開啟微信掃一掃，立即使用",
                 footerContact: "聯絡我們"
             },
             "ja": {
@@ -196,7 +199,7 @@
                 f3Badge: "無劣化", f3Title: "Gemini透かし消去", f3Desc: "Google Gemini AI生成画像の透かしを正確に除去。数学的な逆算で画質劣化ゼロ。",
                 f4Badge: "超高速", f4Title: "動画透かし消去", f4Desc: "20以上の主要動画プラットフォームに対応。リンクを貼るだけで透かしなし動画を抽出。",
                 f5Badge: "ツールキット", f5Title: "画像ツールキット", f5Desc: "圧縮、形式変換、サイズ変更。軽量かつ高効率で、元の画質を保持します。",
-                qrHint: "WeChatでスキャン",
+                qrTitle: "スキャンして体験", qrHint: "WeChatでスキャンしてすぐにご利用いただけます",
                 footerContact: "お問い合わせ"
             },
             "ko": {
@@ -207,7 +210,7 @@
                 f3Badge: "무손실", f3Title: "Gemini 워터마크", f3Desc: "Google Gemini AI 생성 이미지의 워터마크를 정확히 제거합니다. 화질 손상 제로.",
                 f4Badge: "초고속", f4Title: "동영상 워터마크", f4Desc: "20개 이상의 주요 플랫폼 지원. 링크를 붙여넣어 워터마크 없는 동영상 추출.",
                 f5Badge: "도구 상자", f5Title: "이미지 도구 상자", f5Desc: "이미지 압축, 포맷 변환, 크기 조정. 가볍고 효율적이며 원본 화질을 보존합니다.",
-                qrHint: "위챗 스캔",
+                qrTitle: "스캔하여 체험", qrHint: "위챗 스캔으로 즉시 사용하세요",
                 footerContact: "문의하기"
             },
             "de": {
@@ -218,7 +221,7 @@
                 f3Badge: "Verlustfrei", f3Title: "Gemini Wasserzeichen", f3Desc: "Wasserzeichen aus Google Gemini AI Bildern akkurat entfernen.",
                 f4Badge: "Superschnell", f4Title: "Video Wasserzeichen", f4Desc: "Unterstützt über 20 Plattformen. Link einfügen, fertig.",
                 f5Badge: "Toolkit", f5Title: "Bild-Toolkit", f5Desc: "Bildkomprimierung, Formatkonvertierung und Größenänderung. Hoch effizient.",
-                qrHint: "WeChat scannen",
+                qrTitle: "Scannen", qrHint: "Öffnen Sie WeChat zum Scannen",
                 footerContact: "Kontakt"
             },
             "fr": {
@@ -229,7 +232,7 @@
                 f3Badge: "Sans Perte", f3Title: "Filigrane Gemini", f3Desc: "Supprimez précisément les filigranes de Google Gemini AI sans perte de qualité.",
                 f4Badge: "Ultra Rapide", f4Title: "Filigrane Vidéo", f4Desc: "Plus de 20 plateformes supportées. Collez un lien sans filigrane.",
                 f5Badge: "Outils", f5Title: "Outils Image", f5Desc: "Compression d'image, redimensionnement et plus avec préservation de qualité.",
-                qrHint: "Scanner avec WeChat",
+                qrTitle: "Scanner", qrHint: "Ouvrez WeChat pour scanner",
                 footerContact: "Contact"
             },
             "es": {
@@ -240,7 +243,7 @@
                 f3Badge: "Sin Pérdida", f3Title: "Marca de Agua Gemini", f3Desc: "Elimina matemáticamente marcas de Google Gemini con cero impacto visual.",
                 f4Badge: "Carga Rápida", f4Title: "Marca de Agua Video", f4Desc: "Compatible con +20 plataformas. Solo pega el enlace.",
                 f5Badge: "Caja Fuerte", f5Title: "Caja de Herramientas", f5Desc: "Comprime imágenes, convierte formatos y redimensiona rápido.",
-                qrHint: "Escanear con WeChat",
+                qrTitle: "Escanear", qrHint: "Abra WeChat y escanee el código",
                 footerContact: "Contáctenos"
             },
             "it": {
@@ -251,7 +254,7 @@
                 f3Badge: "Inalterato", f3Title: "Filigrana Gemini", f3Desc: "Rimuovi accuratamente filigrane sulle immagini Google Gemini.",
                 f4Badge: "Rapidissimo", f4Title: "Filigrana Video", f4Desc: "Supporto totale per +20 siti con estrazione dai link.",
                 f5Badge: "Cassetta Strumenti", f5Title: "Kit Immagini", f5Desc: "Compressione fotogrammi, formattazione rapida in scioltezza.",
-                qrHint: "Scansiona con WeChat",
+                qrTitle: "Scansione", qrHint: "Apri WeChat e scansiona il codice",
                 footerContact: "Contatto"
             },
             "pt": {
@@ -262,7 +265,7 @@
                 f3Badge: "Alta Fidelidade", f3Title: "Marca Gemini", f3Desc: "Apaga logomarcas invisíveis feitas no Google AI puramente.",
                 f4Badge: "Muito Rápido", f4Title: "Vídeo Limpo", f4Desc: "Aceita vinte serviços de ponta pra você recolher do zero.",
                 f5Badge: "Kit Geral", f5Title: "Toolbox Mídia", f5Desc: "Corta os espaços excedentes das fotos, otimizando seu ambiente.",
-                qrHint: "Escaneie com WeChat",
+                qrTitle: "Escanear", qrHint: "Abra o WeChat e aponte pro código",
                 footerContact: "Fale Conosco"
             },
             "ru": {
@@ -273,7 +276,7 @@
                 f3Badge: "Без потери качества", f3Title: "Водяной знак Gemini", f3Desc: "Удаляйте скрытые маркеры от Google Gemini без вреда качеству.",
                 f4Badge: "Реактивный", f4Title: "Водяной знак Видео", f4Desc: "Захват ссылок из более чем двадцати источников в 1 клик.",
                 f5Badge: "Набор", f5Title: "Набор фото", f5Desc: "Сжимайте и конвертируйте картинки без потерь, как профессионал.",
-                qrHint: "Сканируйте в WeChat",
+                qrTitle: "Сканировать", qrHint: "Откройте камеру в WeChat",
                 footerContact: "Связаться с нами"
             }
         };
@@ -304,6 +307,7 @@
             document.getElementById('f5-title').innerText = data.f5Title;
             document.getElementById('f5-desc').innerText = data.f5Desc;
 
+            document.getElementById('qr-title').innerText = data.qrTitle || '';
             document.getElementById('qr-hint').innerText = data.qrHint || '';
             document.getElementById('footer-contact').innerText = data.footerContact;
         }
