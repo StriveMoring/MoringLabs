@@ -1,34 +1,5 @@
 (function () {
-  var host = location.hostname;
-  var isCom = host === "moringlabs.com" || host.endsWith(".moringlabs.com");
-  if (isCom) {
-    var langs = [];
-    if (navigator.languages && navigator.languages.length) {
-      langs = navigator.languages;
-    } else if (navigator.language) {
-      langs = [navigator.language];
-    }
-    var langCN = langs.some(function (l) {
-      if (typeof l !== "string") return false;
-      var lower = l.toLowerCase();
-      return lower.startsWith("zh") || lower.endsWith("-cn");
-    });
-    var tzCN = false;
-    try {
-      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
-      tzCN = ["Asia/Shanghai", "Asia/Chongqing", "Asia/Harbin", "Asia/Urumqi"].indexOf(tz) !== -1;
-    } catch (e) {
-      tzCN = false;
-    }
-    if (langCN || tzCN) {
-      var target = "https://moringlabs.cn" + location.pathname + location.search + location.hash;
-      if (target !== location.href) {
-        location.replace(target);
-        return;
-      }
-    }
-  }
-  var h = host;
+  var h = location.hostname;
   if (!(h === "moringlabs.cn" || h.endsWith(".moringlabs.cn") || h === "588280.xyz" || h.endsWith(".588280.xyz"))) return;
 
   var container = document.getElementById("icp-container");
