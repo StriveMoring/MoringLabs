@@ -268,13 +268,26 @@
         (function() {
             var h = location.hostname;
             if (h === "moringlabs.cn" || h.endsWith(".moringlabs.cn")) {
+                var c = document.getElementById("icp-container");
                 var a = document.createElement("a");
                 a.href = "https://beian.miit.gov.cn/";
                 a.target = "_blank";
                 a.rel = "noopener noreferrer";
                 a.className = "text-xs text-gray-400 hover:text-gray-500 transition-colors";
                 a.textContent = "苏ICP备2026018086号";
-                document.getElementById("icp-container").appendChild(a);
+                c.appendChild(a);
+
+                var s = document.createTextNode(" | ");
+                s.className = "text-xs text-gray-300";
+                c.appendChild(s);
+
+                var b = document.createElement("a");
+                b.href = "https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32010502011411";
+                b.target = "_blank";
+                b.rel = "noopener noreferrer";
+                b.className = "text-xs text-gray-400 hover:text-gray-500 transition-colors";
+                b.textContent = "苏公网安备32010502011411号";
+                c.appendChild(b);
             }
         })();
 
