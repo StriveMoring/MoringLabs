@@ -1,6 +1,6 @@
 (function () {
   var h = location.hostname;
-  if (!(h === "moringlabs.cn" || h.endsWith(".moringlabs.cn"))) return;
+  if (!(h === "moringlabs.cn" || h.endsWith(".moringlabs.cn") || h === "588280.xyz" || h.endsWith(".588280.xyz"))) return;
 
   var container = document.getElementById("icp-container");
   if (!container) {
