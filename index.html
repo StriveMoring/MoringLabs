@@ -664,16 +664,19 @@
                 container.innerHTML = ''; 
                 
                 const descMap = {
-                    'Qwen3.5-122B-A10B-MLX-3.7bit-VL': '3.7-bit quantization with vision. Alibaba 122B MoE, 10B active, 256K context. 122B models. Now possible on 64GB Apple Silicon.',
-                    'GPT-OSS-120B-MLX-3.6bit': '3.6-bit quantization. OpenAI\'s first open-source model, 5.1B active, near o4-mini reasoning. 120B models. Now possible on 64GB Apple Silicon.',
-                    'Nemotron-3-Super-120B-A12B-MLX-3.6bit': '3.6-bit quantization. NVIDIA Mamba-2 + MoE, 12B active, 2.2x faster than GPT-OSS, 1M context. 120B models. Now possible on 64GB Apple Silicon.'
+                    'Nemotron-3-Super-120B-A12B-MLX-3.6bit': 'NVIDIA hybrid Mamba2 + MoE architecture compressed from 240GB BF16 to 51GB. Brings 120B-class inference to 64GB Apple Silicon, with buttery-smooth long-context on 96GB.',
+                    'Qwen3.5-122B-A10B-MLX-3.7bit-VL': 'Alibaba\'s latest 122B MoE multimodal model, squeezed from 65GB to 52GB with the full vision pipeline preserved at BF16. First quant to fit 122B vision+language into 64GB.',
+                    'GPT-OSS-120B-MLX-3.6bit': 'OpenAI\'s open-source 120B MoE compressed from MXFP4\'s 65GB to 48GB — 17GB lighter, yet actually faster generation than the original thanks to better memory bandwidth.',
+                    'MiniMax-M2.5-REAP-139B-A10B-MLX-3.7bit': 'Experimental quant of Cerebras\' REAP-pruned MiniMax-M2.5 139B. Released for research — proves 139B MoE fits on 96GB Apple Silicon, but has known reasoning quality degradation.',
+                    'Qwen3.5-122B-A10B-MLX-3.7bit-VL-v2': 'Enhanced v2 of the 3.7-bit Qwen3.5 VL mix. +1.5GB invested in 8-bit embed/v/o_proj and edge layers — meaningfully better coherence, fewer repetitions, stronger reasoning (95/100 vs v1\'s 90/100).',
+                    'Qwen3.5-122B-A10B-MLX-4.7bit-VL': 'All-4-bit-expert build of Qwen3.5 122B VL at 66GB. Best perplexity in the family (5.21 vs 3.7bit\'s 5.32). Targets ≥96GB Apple Silicon for maximum fidelity.'
                 };
 
                 models.slice(0, 6).forEach(model => {
                     const modelName = model.id.split('/')[1];
                     const downloads = model.downloads || 0;
                     const likes = model.likes || 0;
-                    const desc = descMap[modelName] || 'Advanced MLX quantized AI model optimized for Apple Silicon.';
+                    const desc = descMap[modelName] || 'Mixed-precision MLX quantization tuned for Apple Silicon unified memory.';
                     
                     const cardHTML = `
                         <a href="https://huggingface.co/${model.id}" target="_blank" class="app-card model-card rounded-[1.5rem] p-4 sm:p-5 md:p-6 group relative overflow-hidden flex flex-col justify-between h-full min-h-[160px]">
